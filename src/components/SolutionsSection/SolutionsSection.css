@@ -1,0 +1,51 @@
+.solutions-section {
+  background: linear-gradient(135deg, #2251D8, #1A38A3);
+  padding: 60px 20px;
+  text-align: center;
+  color: #ffffff;
+  border-radius: 20px;
+  margin: 20px;
+}
+
+.solutions-header {
+  margin-bottom: 40px;
+}
+
+.solutions-title {
+  font-size: 36px;
+  font-weight: bold;
+  font-style: italic !important;
+}
+
+.solutions-subtitle {
+  font-size: 36px;
+  font-weight: 200;
+}
+
+.solutions-description {
+  margin-top: 10px;
+  font-size: 20px;
+  color: #c3e4ff;
+}
+
+.solutions-container {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+  .solutions-section {
+    padding: 30px 10px;
+  }
+
+  .solutions-title,
+  .solutions-subtitle {
+    font-size: 24px;
+  }
+
+  .solutions-description {
+    font-size: 16px;
+  }
+}

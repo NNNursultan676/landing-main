@@ -1,0 +1,31 @@
+/* PartnersSection.css */
+
+.partners-section {
+  text-align: center;
+  margin: 0 87px 157px 87px
+}
+
+.partners-section-text {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: left;
+}
+
+.partners-carousel {
+  margin: 0 auto;
+}
+
+.partner-slide {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.partner-slide img {
+  max-width: 100%;
+  max-height: 80px;
+  object-fit: contain;
+}

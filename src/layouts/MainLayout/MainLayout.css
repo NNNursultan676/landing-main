@@ -1,0 +1,8 @@
+.custom-text-background {
+  background: 
+    url(../../assets/images/circles.png) no-repeat center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

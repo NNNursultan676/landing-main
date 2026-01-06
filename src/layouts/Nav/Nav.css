@@ -1,0 +1,165 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
+
+.nav {
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 18px;
+  margin-left: 87px;
+  margin-right: 83px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
+.navMenu {
+  background: #F3FCFF;
+  border: 'none'
+}
+
+.navList {
+  list-style: none;
+  display: flex;
+}
+
+.nav-controllers {
+  display: flex;
+  gap: 16px;
+  z-index: 5;
+}
+
+.navList li {
+  padding: 17px 24px;
+}
+
+.navList li a {
+  color: #EFF1F9;
+  opacity: 0.4;
+  font-size: 14px;  
+  font-family: 'Inter';
+}
+
+.navList li a:hover, .menuList ul a:hover {
+  color:white;
+  opacity: 1;
+  transition: .3s all;
+}
+
+.ant-dropdown-trigger {
+  color: #FFFFFF;
+  font-size: 12px;
+}
+
+.lang:hover span {
+  color:#0D8BBA;
+  transition: .3s all;
+  text-decoration: underline;
+}
+
+.navLinks {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 36px;
+  z-index: 5;
+}
+
+
+.lang {
+  display: flex;
+  align-items: center;
+  cursor: pointer
+}
+.lang span {
+  color: #0D0403;
+}
+
+.lang:hover img {
+  transition: .3s all;
+  filter: brightness(0) saturate(100%) invert(31%) sepia(80%) saturate(3552%) hue-rotate(173deg) brightness(97%) contrast(101%);
+}
+
+.menuBurger {
+  display: none;
+}
+
+.lang-text {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+}
+
+
+.menuList {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  z-index: 2;
+  background-color: #0d040362;
+  width: 100%;
+}
+
+.menuList ul {
+  background-color: #F3FCFF;
+  list-style: none;
+  padding: 24px;
+  width: 217px;
+  position: fixed;
+  z-index: 1;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  gap: 36px;
+}
+
+.demo {
+  font-size: 16px;
+  font-weight: 500;
+  z-index: 2;
+}
+
+.menuList .close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 6px;
+  font-size: 20px;
+}
+.menuList ul a {
+  color: #0D0403;
+}
+@media (max-width: 980px) {
+  .nav {
+    margin-left: 16px;
+    margin-top: 20px;
+    justify-content: space-between;
+    width: 90%;
+  }
+  .navList {
+    display: none;
+  }
+
+  .nav-img img {
+    width: 100px;
+    z-index: 2;
+    cursor: pointer;
+  }
+  .demo {
+    display: none;
+  }
+  
+  .menuBurger {
+    display: inherit;
+    z-index: 5;
+  }
+
+  .navLinks {
+    gap: px;
+  }
+}

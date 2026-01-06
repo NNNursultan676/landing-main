@@ -1,0 +1,98 @@
+.aboutUs {
+  height: 797px;
+}
+
+h1 {
+  margin-bottom: 12px;
+}
+.aboutUsImage {
+  position: relative;
+  background-image: url('/src/assets/images/AboutUsFon.png');
+  background-size: cover; /* Cover the entire container */
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.forGroundImage{
+  /* position: absolute; */
+  right: 0;
+  bottom: 0;
+  height: 757px;
+  background-image: url('/src/assets/images/AboutUs.png');
+  background-size: contain; /* Scale the image */
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.aboutUsImageMobile {
+  display: none;
+}
+.aboutUsContent {
+  position: relative;
+  padding: 0 98px;
+  display: flex;
+  justify-content: center;
+  line-height: 26px;
+}
+
+.aboutUsContentText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.aboutUsContentText button {
+  margin-top: 36px;
+}
+
+.downBtn {
+  position: absolute;
+  left:20px;
+  bottom: 15px;
+}
+
+.astanahub {
+  position: absolute;
+  height: 65px;
+  width: 185px;
+  bottom: 30px;
+  right: 80px;
+}
+
+@media only screen and (min-device-width: 425px) and (max-device-width: 768px) {
+  .aboutUsImage {
+    display: none;
+  }
+}
+@media (max-width: 576px) {
+  .aboutUsImage {
+    display: none;
+  }
+
+  .aboutUsImageMobile {
+    display: inherit;
+    height: 400px;
+    width: 100%;
+    background-image: url('/src/assets/images/AboutUs.png');
+    background-size: cover; /* Scale the image */
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  .aboutUsContent {
+    padding: 16px 24px;
+  }
+
+  .aboutUsContentText button {
+    margin-top: 100px;
+    width: 100%;
+  }
+
+  .astanahub {
+    right: 24px;
+    bottom: 85px;
+  }
+  .pageDown {
+    display: none;
+  }
+}

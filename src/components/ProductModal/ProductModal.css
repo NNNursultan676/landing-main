@@ -1,0 +1,19 @@
+.projects, .services {
+  padding: 0 24px;
+  line-height: 26px;
+}
+
+.services {
+  list-style: none;
+  margin-top: 8px;
+}
+.services li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+.services li::before {
+  margin-right: 20px;
+  content: url('/src/assets/images/checked.svg');
+}

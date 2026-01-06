@@ -1,0 +1,17 @@
+.customButtonStyle {
+  width: 170px;
+  height: 50px;
+  border: none;
+  padding: 15px 26px;
+  border-radius: 14px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+}
+
+.customButtonStyle:hover {
+     opacity: 0.8;
+}
+
+.call-btn {
+  width: 200px !important;
+}

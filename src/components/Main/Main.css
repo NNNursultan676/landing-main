@@ -1,0 +1,122 @@
+/* Main.css */
+
+/* Main container to hold the background gradient and image */
+.main-container {
+  width: 100%;
+  background: 
+    url(../../assets/images/mainBackground.png);
+  background-blend-mode: overlay; /* This will layer the image and color */
+  background-size: cover;
+  background-position: center;
+  min-height: 60vh; /* Ensure it covers the viewport */
+  position: relative; /* So that absolute children are positioned relative to this */
+  border-bottom-left-radius: 45px;
+  border-bottom-right-radius: 45px;
+}
+
+
+@media (max-width: 600px) {
+  .elipse1,
+  .elipse2 {
+    display: none; /* Hide on small screens */
+  }
+}
+
+.main-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 70px 150px 62px 87px;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.main-content-left {
+  width: 600px;
+  flex: 1; /* Allow it to grow */
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.main-content-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.main-content-right img {
+  max-width: 100%;
+  height: auto;
+}
+
+.main-content-text {
+  font-size: 37.15px;
+  font-weight: 500;
+  line-height: 46px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  color: white;
+}
+
+.main-content-text-highlighted {
+  color: #50F5B0;
+  font-style: italic !important;  
+}
+
+/* Button styling */
+.primary-btn.demo {
+  background-color: #28d089;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  height: 48px;
+  padding: 0 24px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.primary-btn.demo:hover {
+  background-color: #22bb77;
+}
+
+@media (max-width: 980px) {
+  .main-content {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    padding: 40px 5%;
+  }
+
+  .main-content-right img {
+    height: auto; /* Let it scale */
+    max-width: 80%;
+  }
+
+  .main-content-left {
+    max-width: 100%;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        display: flex;
+  }
+
+  .main-content-text {
+    font-size: 20px;
+    line-height: 32px;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-content-right img {
+    max-width: 100%;
+  }
+
+  .main-content-text {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .main-content {
+    padding: 20px 5%;
+  }
+}

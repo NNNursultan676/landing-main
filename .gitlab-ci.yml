@@ -1,0 +1,14 @@
+variables:
+    VERSION: ${CI_COMMIT_BRANCH}-${CI_COMMIT_SHORT_SHA}
+    JOB_NAME: ${CI_JOB_NAME}
+
+stages:
+  - init
+  - build
+  - deploy
+
+include:
+  - project: devops/ci-cd/sdf
+    ref: main
+    file:
+      - landing-modules.yml

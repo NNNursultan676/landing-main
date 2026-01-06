@@ -1,0 +1,60 @@
+.solution-card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 380px;
+  text-align: start;
+  transition: transform 0.3s ease-in-out;
+
+  /* Added Flexbox properties */
+  display: flex;
+  flex-direction: column;
+}
+
+.solution-card:hover {
+  transform: translateY(-5px);
+}
+
+.solution-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 58px;
+}
+
+.solution-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: black;
+}
+
+/* Added flex-grow to make the description take up available space */
+.solution-description {
+  font-size: 16px;
+  color: #424E5D;
+  opacity: 0.7;
+  margin-bottom: 30px;
+
+  /* This allows the description to expand and push the button down */
+  flex-grow: 1;
+}
+
+/* Adjusted margin-top to auto to align the button at the bottom */
+.solution-button {
+  background-color: #00ffa3;
+  color: #1c59d1;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+
+  /* Pushes the button to the bottom of the card */
+  margin-top: auto;
+}
+
+.solution-button:hover {
+  background-color: #00e695;
+}

@@ -1,0 +1,308 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;1,400;0,500;1,500;0,600;1,600;0,700;1,700&family=Montserrat:wght@400;500;600;700&display=swap');
+
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #CFF2FF !important; /* Corrected syntax */
+  overflow-x: hidden;
+}
+
+/* Container Styles */
+.custom-container {
+  padding: 0 80px;
+  margin: 0 auto;
+  max-width: 1496px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.custom-text-div {
+  margin: 100px 153px 95px 153px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 70vw;
+  align-self: center;
+  color: black !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .custom-container {
+    max-width: 960px;
+    padding: 0 15px;
+  }
+
+  .custom-text-div {
+    padding: 20px;
+    text-align: start;
+  }
+}
+
+@media (max-width: 768px) {
+  .custom-container {
+    max-width: 720px;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .custom-container {
+    max-width: 100%;
+    padding: 0 5px;
+  }
+
+  .custom-text-div {
+    padding: 20px;
+    text-align: start;
+  }
+}
+
+/* Text Styles */
+.header-1 {
+  font-size: 96px;
+  font-weight: 800;
+  line-height: 116.18px;
+}
+
+.header-2 {
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 67px;
+}
+
+.header-3 {
+  font-weight: 800;
+  font-size: 72px;
+}
+
+.header-4 {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.header-5 {
+  font-size: 46px;
+  font-weight: 800;
+}
+
+.header-6 {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.header-7 {
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.paragraph-1 {
+  font-size: 18px;
+}
+
+.paragraph-2 {
+  font-size: 15px;
+}
+
+.paragraph-3 {
+  font-size: 26px;
+}
+
+.centerText {
+  text-align: center;
+}
+
+/* Responsive Text Adjustments */
+@media (max-width: 576px) {
+  .header-1 {
+    font-size: 54px;
+    line-height: 65.35px;
+  }
+
+  .header-2 {
+    font-size: 32px;
+    line-height: 38.73px;
+  }
+
+  .header-3 {
+    font-size: 32px;
+  }
+
+  .header-7 {
+    font-size: 24px;
+  }
+
+  .header-6 {
+    font-size: 18px;
+  }
+
+  .paragraph-1 {
+    font-size: 15px;
+  }
+}
+
+/* Button Styles */
+.button {
+  width: 206px;
+  font-size: 16px;
+  padding: 19px 0;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+.secondary-btn {
+  background-color: #fff;
+  color: #0A5875;
+}
+
+.primary-btn {
+  background-color: #50F5B0;
+  color: #1C59D1;
+}
+
+.success-btn {
+  background-color: #50F5B0;
+  color: #1C59D1;
+  width: 170px !important;
+}
+
+.kz-class {
+  width: 260px !important;
+}
+
+.success-btn:hover {
+  background-color: #00E695;
+}
+
+.default-btn {
+  background-color: #fff;
+  color: #1C59D1;
+}
+
+.pageDown {
+  width: 36px;
+  cursor: pointer;
+  height: 36px;
+}
+
+.mtBlock {
+  margin-top: 150px;
+}
+
+.mtBlock-md {
+  margin-top: 160px;
+}
+
+.mbBlock {
+  margin-bottom: 60px;
+}
+
+.dnone {
+  display: none;
+  transition: 0.3s all;
+}
+
+.success-img {
+  width: 114px;
+  height: 114px;
+}
+
+.success-header {
+  font-size: 26px !important;
+}
+
+/* Responsive Button and Success Header */
+@media (max-width: 576px) {
+  .button {
+    width: 160px;
+    padding: 18px 0;
+    font-size: 15px;
+  }
+
+  .mtBlock,
+  .mtBlock-md {
+    margin-top: 32px;
+  }
+
+  .success-header {
+    font-size: 24px !important;
+  }
+}
+
+/* Modal Styles */
+.ant-modal-content {
+  background-color: #FFFFFF;
+}
+
+.modalBlock {
+  width: 700px !important;
+}
+
+.modalBlock span {
+  color: #6E767C;
+}
+
+.modalBlock .title {
+  margin-bottom: 24px;
+}
+
+.modalBlock input {
+  padding: 17px 16px;
+  font-size: 15px;
+  margin-bottom: 8px;
+  border-radius: 12px;
+}
+
+.modalBlock .actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.modalBlock .actions button {
+  width: 206px;
+  font-size: 18px !important;
+  padding: 19px !important;
+}
+
+.modalBlock h3.secondary {
+  color: #009D77 !important;
+}
+
+.modalBlock .content div {
+  margin-bottom: 16px;
+}
+
+@media (max-width: 576px) {
+  .modalBlock {
+    width: 90%;
+  }
+
+  .ant-modal-content {
+    padding: 24px !important;
+  }
+
+  .modalBlock .actions {
+    flex-direction: column;
+  }
+
+  .modalBlock .actions .button {
+    width: 100% !important;
+  }
+}

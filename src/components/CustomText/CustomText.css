@@ -1,0 +1,16 @@
+.highlight {
+     font-weight: bold;
+     color: #1c59d1 !important; /* Blue color for highlights */
+     font-style: italic !important;
+   }
+   
+   .custom-text {
+     font-size: 36px;
+     font-weight: 300;
+   }
+   
+   .secondary-text {
+     font-size: 18px;
+     color: #6e767c;
+   }
+   

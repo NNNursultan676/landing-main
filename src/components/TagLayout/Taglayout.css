@@ -1,0 +1,25 @@
+.tag-layout {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, auto);
+  gap: 40px 8px;
+  margin: 0 0 200px 15px;
+  justify-items: center;
+}
+
+
+
+/* Medium devices (tablets) */
+@media screen and (max-width: 1199px) {
+  .tag-layout {
+    /* grid-template-columns: 1fr;
+    gap: 5px 5px;
+    margin: 0 0 50px 15px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px 8px;
+  }
+}
+

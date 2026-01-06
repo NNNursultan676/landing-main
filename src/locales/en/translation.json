@@ -1,0 +1,165 @@
+{
+
+     "aboutUs": "About Us",
+     "products": "Products",
+     "partners": "Partners",
+     "contactUs": "Contact Us",
+     "demo": "Order Demo",
+     "demoText": "Demo Request",
+     "contactButton": "Contact Us",
+     "contactButtonText": "Get in touch with us",
+     "mainTitle1": "Expert in Development",
+     "mainTitle2": "digital and custom",
+     "mainTitle3": "solutions of any complexity",
+     "mainTitle4": "We help businesses achieve effective results through innovative, simple, and convenient digital solutions",
+     "mainTitle5": "Create progressive technical solutions for optimizing and automating business processes",
+     "mainTitle6": "progressive technical solutions",
+     "tag1": "Automated document generation",
+     "tag2": "Increase Time 2 Market",
+     "tag3": "Intuitive interface",
+     "tag4": "Unique API",
+     "tag5": "Automation of the lending cycle",
+     "tag6": "Modular solution",
+     "tag7": "Increase customer base",
+     "tag8": "Microservice architecture",
+     "tag9": "BI analytics",
+     "tag10": "Integration with accounting systems",
+     "statsValue1": "25%",
+     "statsValue2": "250+",
+     "statsValue3": "95%",
+     "statslabel1": "OPTIMIZATION",
+     "statslabel2": "PARTNERS",
+     "statslabel3": "LOYALTY",
+     "statsDesc1": "Reduction of operating costs",
+     "statsDesc2": "Trusted by us",
+     "statsDesc3": "Customer satisfaction index",
+     "solutionCreditConveyorTitle": "Credit Conveyor",
+     "solutionCreditConveyorDesc": "A comprehensive solution for automating the business processes of personal lending, focused on scalability, flexibility, and high performance, based on a microservice architecture.",
+     "solutionCreditBrokerTitle": "Credit Broker",
+     "solutionCreditBrokerDesc": "A service offering the possibility to purchase goods on installment or by applying for a loan with the ability to submit applications to multiple financial organizations simultaneously.",
+     "solutionCustomSolutionsTitle": "Custom Solutions",
+     "solutionCustomSolutionsDesc": "The process of creating unique and individually tailored software according to the customer's specific needs.",
+     "solutionTitle1": "Innovative Solutions",
+     "solutionTitle2": "for your business",
+     "solutionTitle3": "Our Products",
+     "partnersSectionText": "Partners",
+     "aboutTitle": "About Us",
+     "aboutText1": "A Kazakhstani IT company, part of the Sapa group of companies,",
+     "aboutText2": "expert in the field of digital",
+     "aboutText3": "and custom solutions of any complexity.",
+     "aboutText4": "Our Mission",
+     "aboutText5": "We help businesses achieve effective results through innovative, simple, and convenient digital solutions",
+     "productTitle": "Our Products",
+     "partnerTitle": "Trusted by us",
+     "contactTitle": "Contacts",
+     "podrobnee": "Read more",
+   
+     "footer": {
+       "contacts": "Contacts",
+       "email": "Email",
+       "phone": "Phone",
+       "address": "Address",
+       "legalDocuments": "Legal Documents",
+       "legalDocument1": "Legal Documents",
+       "legalDocument2": "User Agreement",
+       "legalDocument3": "Privacy Policy",
+       "legalDocument4": "Consent to Personal Data Processing",
+       "footerPartners": "Partners",
+       "footerAboutUs": "About Us",
+       "social": "We are on socials!"
+     },
+   
+     "productsRes": {
+       "creditConveyor": {
+         "title": "Credit Conveyor",
+         "subtitle": "– a comprehensive solution for automating the business processes of personal lending, focused on scalability, flexibility, and high performance, based on a microservice architecture",
+         "points": [
+           "Automated generation of a complete set of credit documentation for applications",
+           "Universal APIs for connecting credit organizations",
+           "Increase in Time 2 Market speed of launching new products to the market",
+           "Modular solution – independent processes that can be connected both collectively and separately",
+           "Product catalog - rapid modification and launch of new products"
+         ],
+         "benefits": {
+           "headline": "By choosing SapaTech's Credit Conveyor, you get:",
+           "benefitsList": [
+             "Automation of the entire lending cycle",
+             "Omnichannel process",
+             "Reduction of review time by 3 times",
+             "Increase in customer base",
+             "Improvement of credit portfolio quality",
+             "Integration with accounting systems",
+             "BI analytics in real-time"
+           ],
+           "buttonText": "Order Demo"
+         }
+       },
+       "creditBroker": {
+         "title": "Credit Broker",
+         "subtitle": "– a service offering the possibility to purchase goods on installment or by applying for a loan with the ability to submit applications to multiple financial organizations simultaneously",
+         "points": [
+           "Omnichannel process — flexible and easily adaptable processes",
+           "Convenient customer journey — loan application processing within 5 minutes",
+           "Intuitive interface — ability to self-administer processes",
+           "Government services — integration with government data sources, biometrics, electronic signature",
+           "Connecting credit organizations — universal API for connecting",
+           "Full cycle of development and support of functionality — high speed of launching new products to the market"
+         ],
+         "benefits": {
+           "headline": "By choosing SapaTech's Credit Broker, you get:",
+           "benefitsList": [
+             "Access to partners without expanding the network",
+             "Analytics for partners",
+             "Convenient customer journey",
+             "Automated processes",
+             "Integration with government data sources, biometrics, electronic signature"
+           ],
+           "buttonText": "Order Demo"
+         }
+       },
+       "customSolutions": {
+         "title": "Custom Solutions",
+         "subtitle": "– the process of creating unique and individually tailored software according to the customer's specific needs",
+         "points": [
+           "Personalized credit offers",
+           "Client support at all stages of lending",
+           "Analytics and forecasting based on your financial data",
+           "Convenient integration with banks and financial institutions"
+         ],
+         "benefits": {
+           "headline": "By choosing SapaTech's Custom Solutions, you get:",
+           "benefitsList": [
+             "Omnichannel process",
+             "High process fault tolerance",
+             "Full cycle of development and support of functionality",
+             "Analytics for partners",
+             "Automated processes"
+           ],
+           "buttonText": "Order Demo"
+         }
+       }
+     },
+   
+    
+     "demoModal": {
+       "header": "Fill out the fields and we will contact you shortly",
+       "form": {
+         "name": "Name",
+         "companyName": "Company Name",
+         "phone": "Phone"
+       },
+       "validation": {
+         "required": "Required field"
+       },
+       "buttons": {
+         "submit": "Submit",
+         "close": "Close"
+       },
+       "alerts": {
+         "success": "Message sent successfully!",
+         "error": "Error sending message: ",
+         "serverError": "Server error"
+       }
+     }
+   }
+   
