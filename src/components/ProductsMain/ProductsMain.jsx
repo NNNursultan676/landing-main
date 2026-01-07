@@ -1,5 +1,4 @@
 import { Row } from "antd"
-import Nav from "../../layouts/Nav"
 import { useTranslation } from 'react-i18next';
 import Products from '../../assets/images/Products.svg'
 import './ProductsMain.css'
@@ -8,7 +7,6 @@ const Main = () => {
   const { t } = useTranslation();
   return (
     <div className="products-additional-container">
-     <Nav />
      <Row className="products-content">
           <div className="products-content-text">
                <div className="products-content-text-title">{t('productTitle')}</div>

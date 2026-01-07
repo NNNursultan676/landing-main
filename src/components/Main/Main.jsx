@@ -17,7 +17,7 @@ const Main = () => {
   const buttonClassName = `success-btn ${additionalButtonClass}`.trim();
 
   return (
-    <div className="main-container">
+    <div className="main-container" style={{ paddingTop: '100px' }}>
       <Nav />
       <Row className="main-content">
         <div className="main-content-left">

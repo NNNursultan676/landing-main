@@ -26,6 +26,16 @@ const Contacts = () => {
                <p className='contact-info-title'>Адрес</p>
                <p className='contact-info-text'>г. Алматы, ул. Зеина Шашкина, д. 24</p>
                </Row>
+               <Row style={{fontFamily: 'Inter', marginTop: '8px'}}>
+                 <a 
+                   href="https://2gis.kz/almaty/geo/70000001066943138/76.933728,43.222690" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   className='contact-2gis-button'
+                 >
+                   2ГИС
+                 </a>
+               </Row>
           </div>
           <div className='map'>
           <iframe

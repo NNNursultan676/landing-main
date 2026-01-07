@@ -13,11 +13,20 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Add scroll margin for anchor links to account for fixed navbar */
+#about,
+#products,
+#partners,
+#contacts,
+#solutions {
+  scroll-margin-top: 100px;
+}
+
 body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #CFF2FF !important; /* Corrected syntax */
+  background: #1A38A3 !important; /* Dark blue matching header */
   overflow-x: hidden;
 }
 

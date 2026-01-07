@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import React from 'react';
 import { Drawer, Menu, Dropdown, Button, Row } from 'antd';
 import ArrowDown from '../../assets/images/globe-alt.svg';
 import Logo from '../../assets/images/Logo.svg';
@@ -9,13 +10,10 @@ import CustomButton from '../../components/CustomButton';
 import LogoBlack from '../../assets/images/LogoBlack.svg';
 import CloseBlack from '../../assets/images/CloseBlack.svg';
 import modalService from '../../services/modalService';
-import { Link, useNavigate } from 'react-router-dom';
-
-
 const Nav = () => {
   const [visible, setVisible] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
   const { t, i18n } = useTranslation();
-  const navigate = useNavigate();
 
   const showDrawer = () => {
     setVisible(true);
@@ -24,6 +22,59 @@ const Nav = () => {
   const onClose = () => {
     setVisible(false);
   };
+
+  const scrollToSection = (sectionId) => {
+    if (sectionId === 'home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setActiveSection('home');
+      setVisible(false);
+      return;
+    }
+    
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const navHeight = 80; // Approximate height of fixed nav
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+      setActiveSection(sectionId);
+    }
+    setVisible(false); // Close mobile menu if open
+  };
+
+  // Track scroll position to update active section
+  React.useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['home', 'solutions', 'about', 'products', 'partners', 'contacts'];
+      const scrollPosition = window.scrollY + 150;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i];
+        if (section === 'home') {
+          if (scrollPosition < 200) {
+            setActiveSection('home');
+            return;
+          }
+        } else {
+          const element = document.getElementById(section);
+          if (element) {
+            const offsetTop = element.offsetTop;
+            if (scrollPosition >= offsetTop) {
+              setActiveSection(section);
+              return;
+            }
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Language options for the dropdown
   const languageOptions = [
@@ -59,22 +110,66 @@ const Nav = () => {
     <div className='nav'>
       <div className='nav-img'>
         <img onClick={
-          () => navigate('/')
-        } src={Logo} alt="Sapa Technologies" />        
+          () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        } src={Logo} alt="Sapa Technologies" style={{ cursor: 'pointer' }} />        
       </div>
       <div className='navLinks'>
         <ul className='navList'>
           <li>
-            <Link to="/about">{t('aboutUs')}</Link>
+            <a 
+              href="#home" 
+              onClick={(e) => { e.preventDefault(); scrollToSection('home'); }}
+              className={activeSection === 'home' ? 'active' : ''}
+            >
+              {t('home')}
+            </a>
           </li>
           <li>
-            <Link to="/products">{t('products')}</Link>
+            <a 
+              href="#solutions" 
+              onClick={(e) => { e.preventDefault(); scrollToSection('solutions'); }}
+              className={activeSection === 'solutions' ? 'active' : ''}
+            >
+              {t('solutions')}
+            </a>
           </li>
           <li>
-            <Link to="/partners">{t('partners')}</Link>
+            <a 
+              href="#about" 
+              onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}
+              className={activeSection === 'about' ? 'active' : ''}
+            >
+              {t('aboutUs')}
+            </a>
           </li>
           <li>
-            <Link to="/contacts">{t('contactUs')}</Link>
+            <a 
+              href="#products" 
+              onClick={(e) => { e.preventDefault(); scrollToSection('products'); }}
+              className={activeSection === 'products' ? 'active' : ''}
+            >
+              {t('products')}
+            </a>
+          </li>
+          <li>
+            <a 
+              href="#partners" 
+              onClick={(e) => { e.preventDefault(); scrollToSection('partners'); }}
+              className={activeSection === 'partners' ? 'active' : ''}
+            >
+              {t('partners')}
+            </a>
+          </li>
+          <li>
+            <a 
+              href="#contacts" 
+              onClick={(e) => { e.preventDefault(); scrollToSection('contacts'); }}
+              className={activeSection === 'contacts' ? 'active' : ''}
+            >
+              {t('contactUs')}
+            </a>
           </li>
         </ul>
       </div>
@@ -107,10 +202,12 @@ const Nav = () => {
                 <img src={CloseBlack
                 } alt='close-btn' onClick={onClose} />
               </Row>
-                <li><Link onClick={onClose} to="/about">{t('aboutUs')}</Link></li>
-                <li><Link onClick={onClose} to="/products">{t('products')}</Link></li>
-                <li><Link onClick={onClose} to="/partners">{t('partners')}</Link></li>
-                <li><Link onClick={onClose} to="/contacts">{t('contactUs')}</Link></li>
+                <li><a href="#home" onClick={(e) => { e.preventDefault(); scrollToSection('home'); }}>{t('home')}</a></li>
+                <li><a href="#solutions" onClick={(e) => { e.preventDefault(); scrollToSection('solutions'); }}>{t('solutions')}</a></li>
+                <li><a href="#about" onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}>{t('aboutUs')}</a></li>
+                <li><a href="#products" onClick={(e) => { e.preventDefault(); scrollToSection('products'); }}>{t('products')}</a></li>
+                <li><a href="#partners" onClick={(e) => { e.preventDefault(); scrollToSection('partners'); }}>{t('partners')}</a></li>
+                <li><a href="#contacts" onClick={(e) => { e.preventDefault(); scrollToSection('contacts'); }}>{t('contactUs')}</a></li>
               </ul>
             </div>
           </div>

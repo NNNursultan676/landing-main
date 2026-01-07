@@ -6,7 +6,6 @@ import astanaHub from '../../assets/images/astanaHub.svg';
 import sapaTech from '../../assets/images/sapaTech.svg';
 import { Col, Row } from 'antd';
 import { useTranslation } from 'react-i18next';
-import { InstagramOutlined, LinkedinFilled, LinkedinOutlined } from "@ant-design/icons"
 import '../../../src/AntReset.css';
 
 const FooterBlock = () => {
@@ -43,14 +42,6 @@ const FooterBlock = () => {
             <div className="footer-content">
               <p className="footer-subtitle">{t('footer.phone')}</p>
               <p className="footer-text">+7 775 880 52 34</p>
-            </div>
-          </div>
-
-          <div className="footer-section">
-            <p className="footer-title">{t('footer.social')}</p>
-            <div className="footer-content socials">
-            <a href="https://www.instagram.com/sapatech.kz?igsh=NGZwaG81ZTJuY2xx&utm_source=qr" target="_blank"><InstagramOutlined /></a>
-            <a href="https://www.linkedin.com/company/sapa-technologies/" target="_blank"><LinkedinFilled /></a>
             </div>
           </div>
         </Col>
