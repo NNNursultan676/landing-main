@@ -1,71 +1,158 @@
+/* DemoModal.css - Premium Modal Design */
+
 .custom-modal {
-     width: 100%;
-   }
-   
-   .ant-modal-body {
-     padding: 44px 34px !important;
-     gap: 8px;
-   }
-   
-   .actions {
-     display: flex;
-     flex-direction: row; /* Ensure horizontal layout */
-     gap: 8px;
-     justify-content: flex-start;
-   }
-   
-   .header-demo {
-     font-family: Inter;
-     font-size: 36px;
-     font-weight: 500;
-     line-height: 46px;
-     letter-spacing: -0.01em;
-     text-align: left;
-     color: #2345C0;
-   }
-   
-   .title span {
-     font-family: Inter;
-     font-size: 16px;
-     font-weight: 400;
-     line-height: 32px;
-     text-align: left;
-     color: #777B80;
-   }
-   
-   .ant-form-item-control-input-content input {
-     /* Removed opacity to ensure inputs are visible */
-     gap: 10px;
-     /* opacity: 0px; */ /* Remove this line */
-     height: 56px;
-   }
-   
-   @media (max-width: 576px) {
-     .custom-modal {
-       width: 100%;
-     }
-     .ant-modal-body {
-       gap: 8px;
-       padding: 10px !important;
-     }
-     .actions {
-       display: flex;
-       flex-direction: row; /* Ensure horizontal layout on small screens */
-       gap: 8px;
-           justify-content: flex-start;
-     }
-     .header-demo {
-       font-size: 20px;
-       line-height: 30px;
-     }
-     .title span {
-       font-size: 14px;
-       line-height: 20px;
-     }
-     .ant-form-item-control-input-content input {
-       gap: 10px;
-       /* opacity: 0px; */ /* Remove this line */
-       height: 56px;
-     }
-   }
-   
+  width: 100%;
+}
+
+.ant-modal-content {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 1) 100%);
+  border-radius: 24px;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.15),
+    0 8px 24px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+}
+
+.ant-modal-body {
+  padding: 48px 40px !important;
+  gap: 24px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  justify-content: flex-start;
+  margin-top: 32px;
+}
+
+.header-demo {
+  font-family: 'Inter', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  text-align: left;
+  color: #0f172a;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.title span {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  text-align: left;
+  color: #64748b;
+}
+
+.ant-form-item-control-input-content input {
+  height: 56px;
+  border-radius: 12px;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  padding: 16px 20px;
+  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.ant-form-item-control-input-content input:focus {
+  border-color: #1c59d1;
+  box-shadow: 0 0 0 3px rgba(28, 89, 209, 0.1);
+  outline: none;
+}
+
+.ant-form-item-control-input-content input:hover {
+  border-color: rgba(28, 89, 209, 0.5);
+}
+
+.ant-modal-close {
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(241, 245, 249, 0.8);
+  transition: all 0.3s ease;
+}
+
+.ant-modal-close:hover {
+  background: rgba(226, 232, 240, 0.9);
+  transform: rotate(90deg);
+}
+
+.ant-modal-close-x {
+  color: #64748b;
+  font-size: 18px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .ant-modal-body {
+    padding: 32px 24px !important;
+    gap: 20px;
+  }
+
+  .header-demo {
+    font-size: 32px;
+    margin-bottom: 12px;
+  }
+
+  .title span {
+    font-size: 15px;
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .actions .button {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .custom-modal {
+    width: 95%;
+  }
+
+  .ant-modal-content {
+    border-radius: 20px;
+  }
+
+  .ant-modal-body {
+    padding: 24px 20px !important;
+    gap: 16px;
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: stretch;
+  }
+
+  .header-demo {
+    font-size: 28px;
+    line-height: 1.3;
+  }
+
+  .title span {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .ant-form-item-control-input-content input {
+    height: 52px;
+    padding: 14px 18px;
+    font-size: 14px;
+  }
+}

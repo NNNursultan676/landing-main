@@ -1,43 +1,99 @@
-.partners-page-content {
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 110px;
-}
+/* Partners.css - Premium Partners Page */
 
-.partners-section-title {
-  font-size: 40px;
-  font-weight: 600;
-  margin-bottom: 50px;
+.partners-page-content {
+  max-width: 1400px;
+  margin: 80px auto;
+  padding: 0 40px;
 }
 
 .partners-section-row {
-  margin-bottom: 50px;
-  width: 100%; /* Ensure Row takes full width */
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 24px;
 }
 
 .partners-section-col {
-  padding: 10px; /* Gutter already handled by Row's gutter prop */
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  padding: 24px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.partners-section-col:hover {
+  transform: translateY(-4px) scale(1.05);
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  border-color: rgba(80, 245, 176, 0.3);
 }
 
 .partners-section-col img {
-  width: 100%;
-  max-width: 150px; /* Adjust if necessary */
-  height: auto;
+  max-width: 100%;
+  max-height: 80px;
   object-fit: contain;
-  display: block;
-  margin: 0 auto;
+  filter: grayscale(0.2) opacity(0.8);
+  transition: all 0.3s ease;
 }
 
-@media (max-width: 576px) {
+.partners-section-col:hover img {
+  filter: grayscale(0) opacity(1);
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .partners-page-content {
+    padding: 0 32px;
+  }
+
+  .partners-section-row {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .partners-page-content {
+    margin: 60px auto;
+    padding: 0 24px;
+  }
+
+  .partners-section-row {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .partners-section-col {
+    padding: 20px;
+  }
+
   .partners-section-col img {
-    width: 80%;
-    max-width: none; /* Remove max-width on smaller screens */
-    margin: 0 auto;
+    max-height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .partners-page-content {
+    margin: 48px auto;
+    padding: 0 16px;
+  }
+
+  .partners-section-row {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 12px;
+  }
+
+  .partners-section-col {
+    padding: 16px;
+  }
+
+  .partners-section-col img {
+    max-height: 50px;
   }
 }

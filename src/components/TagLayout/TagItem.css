@@ -1,57 +1,98 @@
+/* TagItem.css - Premium Tag Design */
+
 .tag-item {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   align-items: center;
-  background-color: #2047C0; /* Blue color */
-  padding: 10px 20px;
-  border-radius: 12px;
-  color: white;
+  background: linear-gradient(135deg, rgba(28, 89, 209, 0.95) 0%, rgba(26, 56, 163, 0.95) 100%);
+  padding: 12px 24px;
+  border-radius: 16px;
+  color: #ffffff;
   font-size: 16px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  font-weight: 500;
+  box-shadow: 
+    0 4px 16px rgba(28, 89, 209, 0.3),
+    0 2px 8px rgba(0, 0, 0, 0.1);
   white-space: nowrap;
   cursor: pointer;
-  transition: transform 0.3s ease-in-out;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.tag-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
 }
 
 .tag-item:hover {
-  transform: scale(1.02);
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 
+    0 8px 24px rgba(28, 89, 209, 0.4),
+    0 4px 12px rgba(80, 245, 176, 0.2);
+  border-color: rgba(80, 245, 176, 0.3);
+  background: linear-gradient(135deg, rgba(28, 89, 209, 1) 0%, rgba(26, 56, 163, 1) 100%);
+}
+
+.tag-item:hover::before {
+  left: 100%;
 }
 
 .tag-text {
-  font-family: 'Inter';
-  font-size: 18px;
-  font-weight: 300;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  position: relative;
+  z-index: 1;
 }
 
-/* Large devices (desktops) */
+/* Responsive */
 @media screen and (min-width: 1200px) {
   .tag-item {
-    padding: 12px 24px;
-    font-size: 18px;
+    padding: 14px 28px;
+    font-size: 17px;
+  }
+
+  .tag-text {
+    font-size: 17px;
   }
 }
 
-/* Medium devices (tablets) */
 @media screen and (max-width: 1199px) {
   .tag-item {
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 12px 24px;
+    font-size: 15px;
+  }
+
+  .tag-text {
+    font-size: 15px;
   }
 }
 
-/* Small devices (landscape phones) */
 @media screen and (max-width: 767px) {
   .tag-item {
-    padding: 8px 16px;
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .tag-text {
     font-size: 14px;
   }
 }
 
-/* Extra small devices (portrait phones) */
 @media screen and (max-width: 575px) {
   .tag-item {
-    padding: 6px 12px;
-    font-size: 12px;
+    padding: 10px 18px;
+    font-size: 13px;
     grid-column-start: auto !important;
     grid-column-end: auto !important;
     grid-row-start: auto !important;
@@ -59,8 +100,12 @@
     transform: none !important;
   }
 
+  .tag-item:hover {
+    transform: translateY(-2px) scale(1.02) !important;
+  }
+
   .tag-text {
-    font-size: 12px;
-    font-weight: 400;
+    font-size: 13px;
+    font-weight: 500;
   }
 }

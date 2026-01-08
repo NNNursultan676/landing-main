@@ -1,16 +1,67 @@
+/* CustomText.css - Premium Text Section */
+
 .highlight {
-     font-weight: bold;
-     color: #1c59d1 !important; /* Blue color for highlights */
-     font-style: italic !important;
-   }
-   
-   .custom-text {
-     font-size: 36px;
-     font-weight: 300;
-   }
-   
-   .secondary-text {
-     font-size: 18px;
-     color: #6e767c;
-   }
-   
+  font-weight: 700;
+  background: linear-gradient(135deg, #1c59d1 0%, #2251d8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-style: normal;
+  position: relative;
+  display: inline-block;
+}
+
+.custom-text {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+  text-align: center;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.secondary-text {
+  font-size: 20px;
+  color: #64748b;
+  line-height: 1.6;
+  font-weight: 400;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .custom-text {
+    font-size: 42px;
+  }
+
+  .secondary-text {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .custom-text {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+
+  .secondary-text {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .custom-text {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+
+  .secondary-text {
+    font-size: 15px;
+  }
+}

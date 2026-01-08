@@ -1,25 +1,50 @@
+/* Taglayout.css - Premium Tag Layout */
+
 .tag-layout {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(6, auto);
-  gap: 40px 8px;
-  margin: 0 0 200px 15px;
+  gap: 24px 16px;
+  margin: 80px auto 120px;
+  max-width: 1400px;
+  padding: 0 40px;
   justify-items: center;
+  align-items: center;
 }
 
-
-
-/* Medium devices (tablets) */
-@media screen and (max-width: 1199px) {
+/* Responsive */
+@media screen and (max-width: 1400px) {
   .tag-layout {
-    /* grid-template-columns: 1fr;
-    gap: 5px 5px;
-    margin: 0 0 50px 15px; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px 8px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px 12px;
   }
 }
 
+@media screen and (max-width: 1199px) {
+  .tag-layout {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 60px auto 80px;
+    padding: 0 32px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .tag-layout {
+    gap: 12px;
+    margin: 48px auto 64px;
+    padding: 0 24px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .tag-layout {
+    gap: 10px;
+    margin: 40px auto 56px;
+    padding: 0 16px;
+  }
+}
