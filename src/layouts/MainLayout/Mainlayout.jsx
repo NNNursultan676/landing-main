@@ -145,16 +145,18 @@ const Mainlayout = () => {
                 <div className="stat-item stat-item-top">
                   <div className="stat-value">25%</div>
                   <div className="stat-label">ОПТИМИЗАЦИЯ</div>
+                  <div className="stat-description">Сокращение операционных расходов</div>
                 </div>
                 <div className="stat-divider"></div>
                 <div className="stat-item stat-item-middle">
-                  <div className="stat-value">95%</div>
-                  <div className="stat-label">ЛОЯЛЬНОСТЬ</div>
+                  <div className="stat-value">250+</div>
+                  <div className="stat-label">ПАРТНЁРОВ</div>
                 </div>
                 <div className="stat-divider"></div>
                 <div className="stat-item stat-item-bottom">
-                  <div className="stat-value">250+</div>
-                  <div className="stat-label">ПАРТНЁРОВ</div>
+                  <div className="stat-value">95%</div>
+                  <div className="stat-label">ЛОЯЛЬНОСТЬ</div>
+                  <div className="stat-description">Индекс удовлетворенности клиентов</div>
                 </div>
               </div>
             </div>
