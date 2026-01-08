@@ -1,8 +1,81 @@
 /* Nav.css - Split Transparent Navigation */
 
-.nav {
+/* Scroll Progress Indicator */
+.scroll-indicator-container {
   position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  z-index: 10001;
+  background: rgba(26, 35, 50, 0.3);
+  pointer-events: none;
+}
+
+.scroll-indicator-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
+  transition: width 0.1s ease-out;
+  box-shadow: 0 0 8px rgba(80, 245, 176, 0.5);
+}
+
+.scroll-indicator-dots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  pointer-events: auto;
+}
+
+.scroll-indicator-dot {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: 2px solid rgba(80, 245, 176, 0.6);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: auto;
+  z-index: 10;
+}
+
+.scroll-indicator-dot::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--color-accent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.scroll-indicator-dot:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  transform: translate(-50%, -50%) scale(1.4);
+  box-shadow: 0 0 16px rgba(80, 245, 176, 0.9);
+}
+
+.scroll-indicator-dot.active {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  width: 16px;
+  height: 16px;
+  box-shadow: 0 0 16px rgba(80, 245, 176, 0.9);
+  transform: translate(-50%, -50%);
+}
+
+.nav {
+  position: fixed;
+  top: 4px;
   z-index: 10000;
   background: transparent;
   backdrop-filter: none;
@@ -322,6 +395,16 @@
   .nav-controllers .success-btn {
     padding: 6px 16px;
     font-size: 13px;
+  }
+
+  .scroll-indicator-dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .scroll-indicator-dot.active {
+    width: 14px;
+    height: 14px;
   }
 }
 

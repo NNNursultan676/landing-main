@@ -13,6 +13,7 @@ import modalService from '../../services/modalService';
 const Nav = () => {
   const [visible, setVisible] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [scrollProgress, setScrollProgress] = useState(0);
   const { t, i18n } = useTranslation();
 
   const showDrawer = () => {
@@ -33,12 +34,12 @@ const Nav = () => {
     
     const element = document.getElementById(sectionId);
     if (element) {
-      const navHeight = 80; // Approximate height of fixed nav
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+      const navHeight = 84; // Height of fixed nav + scroll indicator
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - navHeight;
       
       window.scrollTo({
-        top: offsetPosition,
+        top: Math.max(0, offsetPosition),
         behavior: 'smooth'
       });
       setActiveSection(sectionId);
@@ -46,13 +47,21 @@ const Nav = () => {
     setVisible(false); // Close mobile menu if open
   };
 
-  // Track scroll position to update active section and nav style
+  // Track scroll position to update active section, nav style, and scroll progress
   React.useEffect(() => {
     const nav = document.querySelector('.nav');
     
     const handleScroll = () => {
-      const sections = ['home', 'solutions', 'about', 'partners', 'contacts'];
+      const sections = ['home', 'about', 'solutions', 'contacts'];
       const scrollPosition = window.scrollY + 150;
+
+      // Calculate scroll progress (0 to 100%)
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const scrollableHeight = documentHeight - windowHeight;
+      const currentScroll = window.scrollY;
+      const progress = scrollableHeight > 0 ? (currentScroll / scrollableHeight) * 100 : 0;
+      setScrollProgress(Math.min(100, Math.max(0, progress)));
 
       // Update nav style on scroll
       if (nav) {
@@ -91,10 +100,10 @@ const Nav = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // Initial call
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [activeSection]);
 
   // Language options for the dropdown
   const languageOptions = [
@@ -126,8 +135,38 @@ const Nav = () => {
   // Combine base classes with the additional class
   const buttonClassName = `success-btn demo ${additionalButtonClass}`.trim();
 
+  // Handle click on scroll indicator to scroll to section
+  const handleScrollIndicatorClick = (sectionId) => {
+    scrollToSection(sectionId);
+  };
+
+  // Sections available for scrolling (excluding partners as it's inside about section)
+  const sections = ['home', 'about', 'solutions', 'contacts'];
+  const sectionLabels = {
+    home: t('home'),
+    about: t('aboutUs'),
+    solutions: t('solutions'),
+    contacts: t('contactUs')
+  };
+
   return (
     <>
+      {/* Scroll Progress Indicator */}
+      <div className='scroll-indicator-container'>
+        <div className='scroll-indicator-bar' style={{ width: `${scrollProgress}%` }}></div>
+        <div className='scroll-indicator-dots'>
+          {sections.map((section, index) => (
+            <div
+              key={section}
+              className={`scroll-indicator-dot ${activeSection === section ? 'active' : ''}`}
+              onClick={() => handleScrollIndicatorClick(section)}
+              title={sectionLabels[section]}
+              style={{ left: `${(index / (sections.length - 1)) * 100}%` }}
+            />
+          ))}
+        </div>
+      </div>
+
       <div className='nav nav-left'>
         <div className='nav-img'>
           <img onClick={
@@ -170,9 +209,9 @@ const Nav = () => {
           </li>
             <li>
               <a 
-                href="#partners" 
-                onClick={(e) => { e.preventDefault(); scrollToSection('partners'); }}
-                className={activeSection === 'partners' ? 'active' : ''}
+                href="#about" 
+                onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}
+                className={activeSection === 'about' ? 'active' : ''}
               >
                 {t('partners')}
               </a>
@@ -212,10 +251,8 @@ const Nav = () => {
                 } alt='close-btn' onClick={onClose} />
               </Row>
                 <li><a href="#home" onClick={(e) => { e.preventDefault(); scrollToSection('home'); }}>{t('home')}</a></li>
-                <li><a href="#solutions" onClick={(e) => { e.preventDefault(); scrollToSection('solutions'); }}>{t('solutions')}</a></li>
                 <li><a href="#about" onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}>{t('aboutUs')}</a></li>
-                <li><a href="#products" onClick={(e) => { e.preventDefault(); scrollToSection('products'); }}>{t('products')}</a></li>
-                <li><a href="#partners" onClick={(e) => { e.preventDefault(); scrollToSection('partners'); }}>{t('partners')}</a></li>
+                <li><a href="#solutions" onClick={(e) => { e.preventDefault(); scrollToSection('solutions'); }}>{t('solutions')}</a></li>
                 <li><a href="#contacts" onClick={(e) => { e.preventDefault(); scrollToSection('contacts'); }}>{t('contactUs')}</a></li>
               </ul>
             </div>
