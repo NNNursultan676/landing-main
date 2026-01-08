@@ -3,8 +3,7 @@ import React from 'react'
 import Main from '../../components/Main/Main'
 import './MainLayout.css'
 import CustomText from '../../components/CustomText/CustomText'
-import TagLayout from '../../components/TagLayout/Taglayout'
-import StatsSection from '../../components/StatsSection/StatsSections'
+import UnifiedFeatures from '../../components/UnifiedFeatures/UnifiedFeatures'
 import PartnersSection from '../../components/PartnersSection/PartnersSection'
 import SolutionsSection from '../../components/SolutionsSection/SolutionsSection'
 import PartnersRunner from '../../components/PartnersRunner/PartnersRunner'
@@ -136,11 +135,10 @@ const Mainlayout = () => {
                   </p> 
             </div>              
           </div>
-          <TagLayout />
-      </div>       
- 
-      {/* Stats Section */}
-      <StatsSection />
+      </div>
+      
+      {/* Unified Features & Stats Section */}
+      <UnifiedFeatures />
       
       {/* Solutions Section */}
       <div id="solutions">

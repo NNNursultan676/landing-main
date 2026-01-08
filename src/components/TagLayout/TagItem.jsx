@@ -1,9 +1,9 @@
 import React from 'react';
 import './TagItem.css';
 
-const TagItem = ({ text, position, variant = 'star' }) => {
+const TagItem = ({ text, position, variant = 'star', style }) => {
   return (
-    <div className={`tag-item tag-item-${variant}`}>
+    <div className={`tag-item tag-item-${variant}`} style={style}>
       <div className="tag-icon">
         {variant === 'star' ? (
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
