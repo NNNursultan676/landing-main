@@ -2,7 +2,7 @@
 
 .highlight {
   font-weight: 700;
-  background: linear-gradient(135deg, #1c59d1 0%, #2251d8 100%);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -27,7 +27,7 @@
 
 .secondary-text {
   font-size: 20px;
-  color: #64748b;
+  color: var(--color-text-muted);
   line-height: 1.6;
   font-weight: 400;
   text-align: center;
