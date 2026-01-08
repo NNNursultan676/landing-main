@@ -100,16 +100,43 @@
 .about-content-unified {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 48px;
+}
+
+.about-intro-text {
+  text-align: center;
+  max-width: 1000px;
+  margin: 0 auto 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.about-intro-main {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-text-primary);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.about-intro-sub {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  margin: 0;
 }
 
 .about-text-unified {
-  font-size: 18px;
-  line-height: 1.7;
+  font-size: 20px;
+  line-height: 1.8;
   color: var(--color-text-secondary);
   text-align: center;
   max-width: 1000px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
 .about-text-unified .highlighted {
@@ -125,14 +152,15 @@
 .about-mission-unified {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  gap: 32px;
+  gap: 40px;
   max-width: 1200px;
   margin: 0 auto;
   align-items: start;
+  padding: 0 20px;
 }
 
 .about-mission-title {
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 700;
   line-height: 1.3;
   letter-spacing: -0.02em;
@@ -145,13 +173,14 @@
 
 .about-mission-text {
   font-size: 18px;
-  line-height: 1.7;
-  color: var(--color-text-muted);
+  line-height: 1.8;
+  color: var(--color-text-secondary);
   font-weight: 400;
 }
 
 .stats-container-unified {
-  margin-top: 20px;
+  margin-top: 40px;
+  padding: 0 20px;
 }
 
 /* Custom Text Background (for other sections) */
@@ -350,28 +379,51 @@
 
   .about-section-unified {
     padding: 40px 24px 50px;
-    gap: 32px;
+    gap: 40px;
   }
 
   .about-header-unified h1 {
     font-size: 36px;
   }
 
-  .about-text-unified {
+  .about-intro-text {
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+
+  .about-intro-main {
+    font-size: 24px;
+    line-height: 1.3;
+  }
+
+  .about-intro-sub {
     font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .about-text-unified {
+    font-size: 18px;
+    padding: 0;
   }
 
   .about-mission-unified {
     grid-template-columns: 1fr;
     gap: 24px;
+    padding: 0;
   }
 
   .about-mission-title {
-    font-size: 24px;
+    font-size: 28px;
   }
 
   .about-mission-text {
     font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .stats-container-unified {
+    margin-top: 32px;
+    padding: 0;
   }
 
   .about-page-text {
@@ -409,23 +461,43 @@
 
   .about-section-unified {
     padding: 32px 16px 40px;
-    gap: 24px;
+    gap: 32px;
   }
 
   .about-header-unified h1 {
     font-size: 28px;
   }
 
-  .about-text-unified {
+  .about-intro-text {
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .about-intro-main {
+    font-size: 20px;
+    line-height: 1.3;
+  }
+
+  .about-intro-sub {
     font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .about-text-unified {
+    font-size: 16px;
   }
 
   .about-mission-title {
-    font-size: 20px;
+    font-size: 24px;
   }
 
   .about-mission-text {
     font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .stats-container-unified {
+    margin-top: 24px;
   }
 
   .about-page-text {

@@ -19,8 +19,8 @@ const Main = () => {
   return (
     <>
       <Nav />
-      <Row className="main-content animate-fade-up">
-        <div className="main-content-left animate-delay-1">
+      <Row className="main-content">
+        <div className="main-content-left">
           <div className="main-content-text">
             {t('mainTitle1')} <p className="main-content-text-highlighted">{t('mainTitle2')}</p> {t('mainTitle3')}
           </div>
@@ -30,7 +30,7 @@ const Main = () => {
             onClick={() => modalService.openModal(demoText)}
           />
         </div>
-        <div className="main-content-right animate-delay-2">
+        <div className="main-content-right">
           <img src={MainElement} alt="MainImage" />
         </div>
       </Row>

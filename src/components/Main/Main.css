@@ -67,7 +67,6 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-  animation: slideInLeft 0.8s ease-out;
 }
 
 @keyframes slideInLeft {
@@ -109,7 +108,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: slideInRight 0.8s ease-out 0.2s both;
 }
 
 @keyframes slideInRight {

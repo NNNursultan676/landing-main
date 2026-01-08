@@ -124,6 +124,14 @@ const Mainlayout = () => {
             <h1>{t('aboutTitle')}</h1>
           </div>
           <div className="about-content-unified">
+            <div className="about-intro-text">
+              <p className="about-intro-main">
+                {t('mainTitle5')}
+              </p>
+              <p className="about-intro-sub">
+                {t('mainTitle4')}
+              </p>
+            </div>
             <div className="about-text-unified">
               {t('aboutText1')} <span className="highlighted">{t('aboutText2')}</span> {t('aboutText3')}
             </div>
@@ -136,28 +144,6 @@ const Mainlayout = () => {
             </div>
           </div>
         </div>
-      </div>
-      
-      {/* Custom Text Section */}
-      <div className='custom-text-background'>
-          <div className='custom-text-div'>
-            <CustomText
-              text={t('mainTitle5')} 
-              highlightedParts={[t('mainTitle6')]}
-              highlightClass="highlight"
-              className="custom-text"
-            /> 
-            <div style={{maxWidth: '800px', alignSelf: 'center'}} >
-                <p style={{
-                  fontWeight: '400',
-                  color: '#777B80',
-                  fontSize: '20px',
-                  fontFamily: 'Inter',
-                }}>
-                  {t('mainTitle4')} 
-                  </p> 
-            </div>              
-          </div>
       </div>
       
       {/* Solutions Section */}
