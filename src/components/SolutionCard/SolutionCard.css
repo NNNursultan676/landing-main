@@ -152,7 +152,7 @@
 
 .solution-button {
   background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
-  color: #052c65;
+  color: var(--color-unified-dark);
   border: none;
   border-radius: 12px;
   padding: 14px 24px;

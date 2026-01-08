@@ -1,7 +1,7 @@
 /* Footer.css - Premium Footer Design */
 
 .footer {
-  background: linear-gradient(180deg, #0a1120 0%, #0f172a 100%);
+  background: linear-gradient(180deg, var(--color-bg-dark) 0%, var(--color-bg-darker) 100%);
   color: #ffffff;
   padding: 80px 80px 40px;
   position: relative;

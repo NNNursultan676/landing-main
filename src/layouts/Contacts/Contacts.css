@@ -6,7 +6,7 @@
 }
 
 .contact-container {
-  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  background: linear-gradient(180deg, var(--color-bg-light) 0%, var(--color-bg-soft) 100%);
   min-height: 100vh;
 }
 
@@ -52,7 +52,7 @@
   font-size: 14px;
   line-height: 1.5;
   gap: 8px;
-  color: #64748b;
+  color: var(--color-text-muted);
   width: 100%;
 }
 
@@ -60,7 +60,7 @@
   font-weight: 600;
   font-size: 13px;
   line-height: 1.4;
-  color: #94a3b8;
+  color: var(--color-text-light);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 4px;
@@ -70,7 +70,7 @@
   font-weight: 600;
   font-size: 18px;
   line-height: 1.5;
-  color: #0f172a;
+  color: var(--color-text-primary);
   margin: 0;
   transition: color 0.3s ease;
 }
@@ -84,7 +84,7 @@
   align-items: center;
   justify-content: center;
   padding: 14px 28px;
-  background: linear-gradient(135deg, #1c59d1 0%, #2251d8 100%);
+  background: linear-gradient(135deg, var(--color-unified) 0%, var(--color-unified-light) 100%);
   color: #ffffff;
   text-decoration: none;
   border-radius: 12px;
@@ -99,7 +99,7 @@
 .contact-2gis-button:hover {
   background: linear-gradient(135deg, #2251d8 0%, #1c59d1 100%);
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(28, 89, 209, 0.4);
+    box-shadow: var(--shadow-glow);
   color: #ffffff;
 }
 

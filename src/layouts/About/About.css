@@ -2,7 +2,7 @@
 
 .about-page-text {
   font-size: 20px;
-  color: #334155;
+  color: var(--color-text-secondary);
   text-align: center;
   margin: 80px auto;
   max-width: 1200px;
@@ -12,10 +12,10 @@
 }
 
 .about-page-text-highlighted {
-  color: #1c59d1;
+  color: var(--color-unified);
   font-weight: 700;
   font-style: normal;
-  background: linear-gradient(135deg, #1c59d1 0%, #2251d8 100%);
+  background: linear-gradient(135deg, var(--color-unified) 0%, var(--color-unified-light) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -26,7 +26,7 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 1.7;
-  color: #64748b;
+  color: var(--color-text-muted);
   text-align: left;
   margin: 60px auto 100px;
   max-width: 1200px;
@@ -45,7 +45,7 @@
   letter-spacing: -0.02em;
   color: #0f172a;
   margin-bottom: 0;
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  background: linear-gradient(135deg, var(--color-text-primary) 0%, var(--color-text-secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -58,7 +58,7 @@
   width: 100%;
   text-align: left;
   line-height: 1.7;
-  color: #64748b;
+  color: var(--color-text-muted);
 }
 
 /* Responsive */
