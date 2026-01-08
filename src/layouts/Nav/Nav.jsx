@@ -128,56 +128,56 @@ const Nav = () => {
           }
         } src={Logo} alt="Sapa Technologies" style={{ cursor: 'pointer' }} />        
       </div>
-      <div className='navLinks'>
-        <ul className='navList'>
-          <li>
-            <a 
-              href="#home" 
-              onClick={(e) => { e.preventDefault(); scrollToSection('home'); }}
-              className={activeSection === 'home' ? 'active' : ''}
-            >
-              {t('home')}
-            </a>
-          </li>
-          <li>
-            <a 
-              href="#solutions" 
-              onClick={(e) => { e.preventDefault(); scrollToSection('solutions'); }}
-              className={activeSection === 'solutions' ? 'active' : ''}
-            >
-              {t('solutions')}
-            </a>
-          </li>
-          <li>
-            <a 
-              href="#about" 
-              onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}
-              className={activeSection === 'about' ? 'active' : ''}
-            >
-              {t('aboutUs')}
-            </a>
-          </li>
-          <li>
-            <a 
-              href="#partners" 
-              onClick={(e) => { e.preventDefault(); scrollToSection('partners'); }}
-              className={activeSection === 'partners' ? 'active' : ''}
-            >
-              {t('partners')}
-            </a>
-          </li>
-          <li>
-            <a 
-              href="#contacts" 
-              onClick={(e) => { e.preventDefault(); scrollToSection('contacts'); }}
-              className={activeSection === 'contacts' ? 'active' : ''}
-            >
-              {t('contactUs')}
-            </a>
-          </li>
-        </ul>
-      </div>
       <div className='nav-controllers'>
+        <div className='navLinks'>
+          <ul className='navList'>
+            <li>
+              <a 
+                href="#home" 
+                onClick={(e) => { e.preventDefault(); scrollToSection('home'); }}
+                className={activeSection === 'home' ? 'active' : ''}
+              >
+                {t('home')}
+              </a>
+            </li>
+            <li>
+              <a 
+                href="#solutions" 
+                onClick={(e) => { e.preventDefault(); scrollToSection('solutions'); }}
+                className={activeSection === 'solutions' ? 'active' : ''}
+              >
+                {t('solutions')}
+              </a>
+            </li>
+            <li>
+              <a 
+                href="#about" 
+                onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}
+                className={activeSection === 'about' ? 'active' : ''}
+              >
+                {t('aboutUs')}
+              </a>
+            </li>
+            <li>
+              <a 
+                href="#partners" 
+                onClick={(e) => { e.preventDefault(); scrollToSection('partners'); }}
+                className={activeSection === 'partners' ? 'active' : ''}
+              >
+                {t('partners')}
+              </a>
+            </li>
+            <li>
+              <a 
+                href="#contacts" 
+                onClick={(e) => { e.preventDefault(); scrollToSection('contacts'); }}
+                className={activeSection === 'contacts' ? 'active' : ''}
+              >
+                {t('contactUs')}
+              </a>
+            </li>
+          </ul>
+        </div>
       <div className="lang">
         <Dropdown overlay={languageMenu} trigger={['click']}>
           <div className='lang-text'>
