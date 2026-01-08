@@ -150,24 +150,24 @@ const Nav = () => {
                 {t('home')}
               </a>
             </li>
-            <li>
-              <a 
-                href="#solutions" 
-                onClick={(e) => { e.preventDefault(); scrollToSection('solutions'); }}
-                className={activeSection === 'solutions' ? 'active' : ''}
-              >
-                {t('solutions')}
-              </a>
-            </li>
-            <li>
-              <a 
-                href="#about" 
-                onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}
-                className={activeSection === 'about' ? 'active' : ''}
-              >
-                {t('aboutUs')}
-              </a>
-            </li>
+          <li>
+            <a 
+              href="#about" 
+              onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}
+              className={activeSection === 'about' ? 'active' : ''}
+            >
+              {t('aboutUs')}
+            </a>
+          </li>
+          <li>
+            <a 
+              href="#solutions" 
+              onClick={(e) => { e.preventDefault(); scrollToSection('solutions'); }}
+              className={activeSection === 'solutions' ? 'active' : ''}
+            >
+              {t('solutions')}
+            </a>
+          </li>
             <li>
               <a 
                 href="#partners" 

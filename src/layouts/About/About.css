@@ -1,126 +1,97 @@
-/* About.css - Premium About Page Styles */
+/* About.css - Premium About Section with Sticky Header */
 
-.about-page-text {
-  font-size: 20px;
-  color: var(--color-text-secondary);
-  text-align: center;
-  margin: 80px auto;
-  max-width: 1200px;
-  padding: 0 40px;
-  font-weight: 400;
-  line-height: 1.8;
-}
-
-.about-page-text-highlighted {
-  color: var(--color-unified);
-  font-weight: 700;
-  font-style: normal;
-  background: linear-gradient(135deg, var(--color-unified) 0%, var(--color-unified-light) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: inline-block;
-}
-
-.about-page-text-2 {
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 1.7;
-  color: var(--color-text-muted);
-  text-align: left;
-  margin: 60px auto 100px;
-  max-width: 1200px;
-  padding: 0 40px;
-  font-family: 'Inter', sans-serif;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 40px;
-  align-items: start;
-}
-
-.about-page-text-2-highlighted {
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 1.3;
-  letter-spacing: -0.02em;
-  color: #0f172a;
-  margin-bottom: 0;
-  background: linear-gradient(135deg, var(--color-text-primary) 0%, var(--color-text-secondary) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.about-page-text-2-regular {
-  font-size: 18px;
-  font-weight: 400;
-  margin-bottom: 0;
+.about-section-wrapper {
   width: 100%;
-  text-align: left;
-  line-height: 1.7;
-  color: var(--color-text-muted);
+  min-height: 100vh;
+  position: relative;
+  background: linear-gradient(180deg, var(--color-bg-light) 0%, var(--color-bg-soft) 100%);
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-sticky-container {
+  position: sticky;
+  top: 80px;
+  z-index: 100;
+  background: linear-gradient(180deg, var(--color-bg-light) 0%, var(--color-bg-soft) 100%);
+  padding: 0;
+  margin: 0;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-top: -80px;
+}
+
+/* Заголовок попадает в вырез навбара */
+.about-sticky-container .about-main {
+  max-width: 1400px;
+  width: 100%;
+  padding: 0 40px;
+  margin: 0 auto;
+}
+
+.about-sticky-container .about-main h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.about-content {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 40px 60px;
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: calc(100vh - 180px);
 }
 
 /* Responsive */
-@media screen and (max-width: 1200px) {
-  .about-page-text {
+@media (max-width: 1200px) {
+  .about-sticky-container .about-main {
     padding: 0 32px;
   }
 
-  .about-page-text-2 {
-    padding: 0 32px;
-    grid-template-columns: 1fr;
-    gap: 32px;
+  .about-content {
+    padding: 32px 32px 100px;
   }
 }
 
-@media screen and (max-width: 768px) {
-  .about-page-text {
-    font-size: 18px;
-    line-height: 1.7;
-    text-align: left;
-    margin: 60px auto;
+@media (max-width: 768px) {
+  .about-sticky-container {
+    padding-top: 70px;
+    padding-bottom: 16px;
+  }
+
+  .about-sticky-container .about-main {
     padding: 0 24px;
   }
 
-  .about-page-text-2 {
-    margin: 48px auto 80px;
-    padding: 0 24px;
-    text-align: left;
-    font-size: 16px;
-    line-height: 1.6;
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
-  .about-page-text-2-highlighted {
-    font-size: 28px;
-    margin-bottom: 16px;
-  }
-
-  .about-page-text-2-regular {
-    font-size: 16px;
+  .about-content {
+    padding: 24px 24px 80px;
   }
 }
 
-@media screen and (max-width: 480px) {
-  .about-page-text {
-    font-size: 16px;
-    margin: 48px auto;
+@media (max-width: 480px) {
+  .about-sticky-container {
+    padding-top: 64px;
+    padding-bottom: 12px;
+  }
+
+  .about-sticky-container .about-main {
     padding: 0 16px;
   }
 
-  .about-page-text-2 {
-    margin: 40px auto 64px;
-    padding: 0 16px;
-    font-size: 15px;
-  }
-
-  .about-page-text-2-highlighted {
-    font-size: 24px;
-  }
-
-  .about-page-text-2-regular {
-    font-size: 15px;
+  .about-content {
+    padding: 20px 16px 60px;
   }
 }

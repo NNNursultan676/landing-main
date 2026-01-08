@@ -145,16 +145,20 @@ const Mainlayout = () => {
       </div>
       
       {/* About Section */}
-      <div id="about">
-        <AboutMain />
-        <div className="about-page-text">
-          {t('aboutText1')} <p className="about-page-text-highlighted">{t('aboutText2')}</p> {t('aboutText3')}
+      <div id="about" className="about-section-wrapper">
+        <div className="about-sticky-container">
+          <AboutMain />
         </div>
-        <div className='about-page-text-2'>
-          <div className='about-page-text-2-highlighted'>{t('aboutText4')}</div>
-          <div className='about-page-text-2-regular'>{t('aboutText5')}</div>
+        <div className="about-content">
+          <div className="about-page-text">
+            {t('aboutText1')} <p className="about-page-text-highlighted">{t('aboutText2')}</p> {t('aboutText3')}
+          </div>
+          <div className='about-page-text-2'>
+            <div className='about-page-text-2-highlighted'>{t('aboutText4')}</div>
+            <div className='about-page-text-2-regular'>{t('aboutText5')}</div>
+          </div>
+          <StatsSection show={true} />
         </div>
-        <StatsSection show={true} />
       </div>
       
       {/* Partners Section */}
