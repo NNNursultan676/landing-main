@@ -99,7 +99,8 @@
 /* ⚠️ ВАЖНО: z-index должен быть меньше навбара (10000), чтобы навбар был поверх */
 .about-section-unified {
   flex: 0 0 auto;
-  min-height: 100vh; /* Изменено с height на min-height для возможности скролла */
+  height: 100vh; /* ⚠️ Блок занимает весь экран */
+  min-height: 100vh;
   position: relative;
   z-index: 0; /* ⚠️ Меньше навбара (10000), чтобы навбар был всегда поверх */
   padding: 0;
@@ -112,8 +113,8 @@
   width: 100%;
   scroll-snap-align: start;
   scroll-snap-stop: always;
-  overflow: visible; /* Изменено с hidden на visible для корректного отображения */
-  background: #0f172a; /* Темный фон по умолчанию, но контент будет белым */
+  overflow: hidden;
+  background: #0f172a; /* Темный фон по умолчанию для header */
 }
 
 .about-section-unified * {
@@ -125,7 +126,7 @@
 .about-header-unified {
   text-align: center;
   margin: 0;
-  padding: 88px 0 40px 0; /* 88px = высота навбара, заголовок на его уровне */
+  padding: 92px 0 30px 0; /* 92px = немного выше навбара, заголовок ближе к нему */
   flex: 0 0 auto;
   position: relative;
   z-index: 1; /* ⚠️ Меньше навбара, но больше фона секции */
@@ -145,22 +146,23 @@
   background-clip: text;
 }
 
-/* ⚠️ ВАЖНО: Контент на белом фоне */
+/* ⚠️ ВАЖНО: Контент на белом фоне, занимает оставшееся пространство */
 .about-content-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
-  padding: 60px 60px 20px; /* Увеличен верхний padding для отступа от заголовка */
+  padding: 40px 60px 60px; /* Отступы для контента */
   flex: 1;
   min-height: 0;
   max-width: 1600px;
   margin: 0 auto;
   width: 100%;
   align-items: start;
-  overflow: hidden;
+  overflow-y: auto; /* Позволяем скролл контента если не помещается */
+  overflow-x: hidden;
   position: relative;
   z-index: 1; /* ⚠️ Меньше навбара (10000) */
-  background: #ffffff; /* ⚠️ Белый фон для контента */
+  background: #ffffff; /* ⚠️ Белый фон для всего контента */
 }
 
 .about-content-left {
@@ -538,12 +540,12 @@
   }
 
   .about-header-unified {
-    padding: 88px 0 30px 0; /* 88px = высота навбара, заголовок на его уровне */
-    background: #0f172a; /* Темный фон */
+    padding: 92px 0 24px 0; /* 92px = заголовок выше, ближе к навбару */
+    background: #0f172a; /* Темный фон - продолжение главной */
   }
   
   .about-content-layout {
-    background: #ffffff; /* Белый фон для контента */
+    background: #ffffff; /* Белый фон для всего контента */
   }
 
   .about-header-unified h1 {
@@ -598,8 +600,12 @@
   }
 
   .about-header-unified {
-    padding: 88px 0 24px 0; /* 88px = высота навбара */
-    background: #0f172a; /* Темный фон */
+    padding: 92px 0 20px 0; /* 92px = заголовок выше, ближе к навбару */
+    background: #0f172a; /* Темный фон - продолжение главной */
+  }
+  
+  .about-content-layout {
+    background: #ffffff; /* Белый фон для всего контента */
   }
 
   .about-header-unified h1 {
