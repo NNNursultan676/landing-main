@@ -3,7 +3,6 @@
 /* Combined Main + About Section */
 .main-about-unified {
   width: 100%;
-  min-height: 100vh;
   position: relative;
   background: 
     radial-gradient(ellipse 80% 50% at 50% 0%, var(--color-accent-soft) 0%, transparent 100%),
@@ -54,15 +53,22 @@
 
 /* Main Hero Section */
 .main-hero-section {
-  flex: 0 0 auto;
+  height: 100vh;
+  min-height: 100vh;
+  max-height: 100vh;
   padding: 100px 40px 0;
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
 }
 
 /* About Section within unified */
 .about-section-unified {
-  flex: 1;
+  flex: 0 0 auto;
+  min-height: 100vh;
   position: relative;
   z-index: 1;
   padding: 60px 40px 80px;
