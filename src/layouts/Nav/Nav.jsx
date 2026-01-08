@@ -2,7 +2,7 @@ import { useState } from 'react';
 import React from 'react';
 import { Drawer, Menu, Dropdown, Button, Row } from 'antd';
 import ArrowDown from '../../assets/images/globe-alt.svg';
-import Logo from '../../assets/images/sapaTech.svg';
+import Logo from '../../assets/images/LogoLight.svg';
 import MenuBurger from '../../assets/images/menu.svg';
 import './Nav.css';
 import { useTranslation } from 'react-i18next';
