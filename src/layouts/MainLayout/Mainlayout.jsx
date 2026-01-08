@@ -160,29 +160,9 @@ const Mainlayout = () => {
         <StatsSection show={true} />
       </div>
       
-      {/* Partners Runner Section */}
-      <PartnersRunner />
-      
       {/* Partners Section */}
       <div id="partners">
-        <div className='partners-page-content'>
-          <div className='partners-section-title'>{t('partnersSectionText')}</div>
-          <Row gutter={[16, 16]} className='partners-section-row'>
-            {partners.map((partner, index) => (
-              <Col
-                key={index}
-                xs={12}
-                sm={8}
-                md={6}
-                lg={5}
-                xl={{ flex: '0 0 20%', maxWidth: '20%' }}
-                className='partners-section-col'
-              >
-                <img src={partner.src} alt={partner.alt} />
-              </Col>
-            ))}
-          </Row>
-        </div>
+        <PartnersRunner />
       </div>
       
       {/* CTA Section */}
