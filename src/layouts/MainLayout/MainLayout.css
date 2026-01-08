@@ -114,7 +114,7 @@
   scroll-snap-align: start;
   scroll-snap-stop: always;
   overflow: hidden;
-  background: #0f172a; /* Темный фон по умолчанию для header */
+  background: #ffffff; /* ⚠️ Белый фон для всей секции, темный только в header */
 }
 
 .about-section-unified * {
