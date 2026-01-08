@@ -24,7 +24,7 @@ import crystal from '../../assets/images/partners/crystal.svg';
 import avtomarket from '../../assets/images/partners/avtomarket.svg';
 import tulpar from '../../assets/images/partners/tulpar.svg';
 
-const PartnersRunner = () => {
+const PartnersRunner = ({ compact = false }) => {
   const { t } = useTranslation();
 
   const partners = [
@@ -52,6 +52,22 @@ const PartnersRunner = () => {
 
   // Дублируем массив для бесконечной прокрутки
   const duplicatedPartners = [...partners, ...partners, ...partners];
+
+  if (compact) {
+    return (
+      <div className="partners-runner-compact">
+        <div className="partners-runner-container">
+          <div className="partners-runner-track">
+            {duplicatedPartners.map((partner, index) => (
+              <div key={index} className="partners-runner-item">
+                <img src={partner.src} alt={partner.alt} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="partners-runner-section">

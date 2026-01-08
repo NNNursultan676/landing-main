@@ -142,6 +142,10 @@ const Mainlayout = () => {
             <div className="stats-container-unified">
               <StatsSection show={true} />
             </div>
+            <div className="partners-in-about">
+              <h2 className="partners-in-about-title">Нам доверяют</h2>
+              <PartnersRunner compact={true} />
+            </div>
           </div>
         </div>
       </div>
@@ -151,10 +155,7 @@ const Mainlayout = () => {
         <SolutionsSection />
       </div>
       
-      {/* Partners Section */}
-      <div id="partners" className="section-snap">
-        <PartnersRunner />
-      </div>
+      {/* Partners Section - Removed, now in About */}
       
       {/* CTA Section */}
       <div className="section-snap">

@@ -200,11 +200,6 @@ const Nav = () => {
           </div>         
         </Dropdown>
       </div>
-      <CustomButton
-          title={t('demo')}
-          styleName={buttonClassName}  // Apply the conditional class here
-          onClick={() => modalService.openModal(demoText)}
-      />
         <div className='menuBurger'>
           <img src={MenuBurger} onClick={() => showDrawer()} />
 

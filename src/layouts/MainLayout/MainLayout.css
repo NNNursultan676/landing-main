@@ -212,6 +212,43 @@
   flex: 0 0 auto;
 }
 
+.partners-in-about {
+  margin-top: 0;
+  padding: 0 20px;
+  flex: 0 0 auto;
+}
+
+.partners-in-about-title {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 16px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.85) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
+}
+
+.partners-runner-compact .partners-runner-container {
+  padding: 20px 0;
+}
+
+.partners-runner-compact .partners-runner-item {
+  height: 60px;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.partners-runner-compact .partners-runner-item img {
+  max-height: 40px;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+
 /* Custom Text Background (for other sections) */
 .custom-text-background {
   background: 

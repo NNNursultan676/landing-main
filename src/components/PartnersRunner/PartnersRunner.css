@@ -1,5 +1,53 @@
 /* PartnersRunner.css - Premium Running Line with Partner Logos */
 
+.partners-runner-compact {
+  width: 100%;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  margin-top: 0;
+}
+
+.partners-runner-compact .partners-runner-container {
+  padding: 12px 0;
+  margin: 0;
+}
+
+.partners-runner-compact .partners-runner-container::before,
+.partners-runner-compact .partners-runner-container::after {
+  width: 100px;
+  background: linear-gradient(to right, rgba(30, 41, 59, 1), transparent);
+}
+
+.partners-runner-compact .partners-runner-container::after {
+  background: linear-gradient(to left, rgba(30, 41, 59, 1), transparent);
+}
+
+.partners-runner-compact .partners-runner-track {
+  gap: 40px;
+}
+
+.partners-runner-compact .partners-runner-item {
+  height: 50px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  min-width: 140px;
+}
+
+.partners-runner-compact .partners-runner-item img {
+  max-height: 32px;
+  filter: brightness(0) invert(1);
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+}
+
+.partners-runner-compact .partners-runner-item:hover img {
+  opacity: 1;
+}
+
 .partners-runner-section {
   width: 100%;
   min-height: 100vh;
@@ -62,7 +110,7 @@
   display: flex;
   gap: 60px;
   align-items: center;
-  animation: partners-run 40s linear infinite;
+  animation: partners-run 25s linear infinite;
   will-change: transform;
 }
 
