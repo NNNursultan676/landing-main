@@ -63,24 +63,31 @@ const Nav = () => {
         }
       }
 
-      // Update active section
+      // Update active section with smooth transition
+      let newActiveSection = 'home';
+      
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i];
         if (section === 'home') {
           if (scrollPosition < 200) {
-            setActiveSection('home');
-            return;
+            newActiveSection = 'home';
+            break;
           }
         } else {
           const element = document.getElementById(section);
           if (element) {
             const offsetTop = element.offsetTop;
-            if (scrollPosition >= offsetTop) {
-              setActiveSection(section);
-              return;
+            if (scrollPosition >= offsetTop - 100) {
+              newActiveSection = section;
+              break;
             }
           }
         }
+      }
+      
+      // Плавное переключение активного состояния
+      if (newActiveSection !== activeSection) {
+        setActiveSection(newActiveSection);
       }
     };
 
