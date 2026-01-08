@@ -16,6 +16,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 0;
 }
 
 .nav.scrolled {
@@ -46,8 +47,7 @@
 .navLinks {
   display: flex;
   align-items: center;
-  flex: 1;
-  justify-content: flex-end;
+  margin-left: auto;
   gap: 0;
 }
 
@@ -57,7 +57,7 @@
   margin: 0;
   padding: 0;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
 }
 
 .navList li {
@@ -70,7 +70,7 @@
   text-decoration: none;
   font-size: 15px;
   font-weight: 500;
-  padding: 10px 16px;
+  padding: 10px 12px;
   border-radius: 8px;
   transition: all 0.3s ease;
   position: relative;
@@ -101,9 +101,9 @@
 .nav-controllers {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
   flex-shrink: 0;
-  margin-left: 24px;
+  margin-left: 0;
 }
 
 .lang {
@@ -118,7 +118,7 @@
   color: rgba(255, 255, 255, 0.9);
   font-size: 15px;
   font-weight: 500;
-  padding: 8px 12px;
+  padding: 8px 10px;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
