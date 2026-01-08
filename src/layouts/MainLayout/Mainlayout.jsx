@@ -5,8 +5,7 @@
  * 1. Home (id="home") - Главная секция с hero-контентом
  * 2. About (id="about") - О компании (внутри main-about-unified)
  * 3. Solutions (id="solutions") - Решения/Продукты
- * 4. CTA - Призыв к действию (Заказ демо)
- * 5. Contacts (id="contacts") - Контакты
+ * 4. Contacts (id="contacts") - Контакты
  * 
  * ⚠️ ВАЖНО: ID секций должны соответствовать навигации в Nav.jsx
  */
@@ -17,7 +16,6 @@ import Main from '../../components/Main/Main'
 import './MainLayout.css'
 import SolutionsSection from '../../components/SolutionsSection/SolutionsSection'
 import PartnersRunner from '../../components/PartnersRunner/PartnersRunner'
-import CTASection from '../../components/CTASection/CTASection'
 import Footer from '../../layouts/Footer'
 import { useTranslation } from 'react-i18next'
 import ContactsMain from '../../components/ContactsMain/ContactsMain'
@@ -107,17 +105,7 @@ const Mainlayout = () => {
       
       {/* 
         ========================================
-        БЛОК 4: ПРИЗЫВ К ДЕЙСТВИЮ (CTA - Call To Action)
-        Заказ демо - ключевой блок для конверсии
-        ========================================
-      */}
-      <div className="section-snap">
-        <CTASection />
-      </div>
-      
-      {/* 
-        ========================================
-        БЛОК 5: КОНТАКТЫ (Contacts)
+        БЛОК 4: КОНТАКТЫ (Contacts)
         id="contacts" - обязателен для навигации
         ========================================
       */}
