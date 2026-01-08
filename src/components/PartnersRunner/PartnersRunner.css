@@ -83,7 +83,7 @@
   width: 100%;
   min-height: 100vh;
   padding: 100px 0;
-  background: linear-gradient(180deg, var(--color-bg-light) 0%, var(--color-bg-soft) 100%);
+  background: #ffffff;
   position: relative;
   overflow: hidden;
   display: flex;

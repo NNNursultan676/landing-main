@@ -7,7 +7,7 @@
   background: 
     radial-gradient(ellipse 80% 50% at 50% 0%, rgba(61, 107, 168, 0.15) 0%, transparent 100%),
     radial-gradient(ellipse 60% 40% at 100% 100%, rgba(80, 245, 176, 0.12) 0%, transparent 100%),
-    linear-gradient(180deg, #0f172a 0%, #1e293b 50%, #1e293b 100%);
+    #0f172a;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -85,13 +85,13 @@
   scroll-snap-align: start;
   scroll-snap-stop: always;
   overflow: hidden;
-  background: linear-gradient(180deg, #0f172a 0%, #1e293b 50%, #1e293b 100%);
+  background: #0f172a;
 }
 
 .about-header-unified {
   text-align: center;
   margin: 0;
-  padding: 80px 0 0 0;
+  padding: 80px 0 20px 0;
   flex: 0 0 auto;
   position: relative;
   z-index: 2;
@@ -114,13 +114,14 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
-  padding: 40px 80px;
+  padding: 20px 80px 40px;
   flex: 1;
   min-height: 0;
   max-width: 1600px;
   margin: 0 auto;
   width: 100%;
   align-items: start;
+  overflow-y: auto;
 }
 
 .about-content-left {
@@ -141,7 +142,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  background: #f8fafc;
+  background: #ffffff;
   padding: 40px;
   border-radius: 24px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
@@ -231,7 +232,7 @@
 
 /* Unified stats block */
 .stats-unified-block {
-  background: #f8fafc;
+  background: #ffffff;
   border-radius: 24px;
   padding: 40px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
@@ -240,6 +241,7 @@
   gap: 0;
   width: 100%;
   max-width: 400px;
+  border: 1px solid rgba(226, 232, 240, 0.8);
 }
 
 .stat-item {
