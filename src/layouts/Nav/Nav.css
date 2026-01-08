@@ -19,19 +19,6 @@
   pointer-events: auto;
 }
 
-/* Prevent drag on interactive elements inside nav-right */
-.nav-right a,
-.nav-right button,
-.nav-right .lang-text,
-.nav-right .menuBurger {
-  pointer-events: auto;
-  cursor: pointer;
-}
-
-.nav-right.dragging a,
-.nav-right.dragging button {
-  pointer-events: none;
-}
 
 .nav-left {
   left: 0;
@@ -51,39 +38,6 @@
   -webkit-backdrop-filter: blur(20px);
   clip-path: polygon(16px 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%, 0 16px);
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
-  position: relative;
-  cursor: grab;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
-}
-
-.nav-right:hover {
-  background: rgba(26, 35, 50, 0.9);
-  box-shadow: 0 4px 24px rgba(80, 245, 176, 0.15);
-}
-
-.nav-right.dragging {
-  cursor: grabbing;
-  background: rgba(26, 35, 50, 0.95);
-  box-shadow: 0 4px 24px rgba(80, 245, 176, 0.25);
-}
-
-/* Horizontal Progress Bar inside nav-right */
-.nav-right-progress-bar {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: rgba(255, 255, 255, 0.1);
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.nav-right-progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
-  transition: width 0.1s ease-out;
-  box-shadow: 0 0 8px rgba(80, 245, 176, 0.6);
 }
 
 .nav-img {
@@ -170,11 +124,16 @@
 .navList li a.active {
   color: var(--color-accent);
   font-weight: 600;
+  cursor: grab;
 }
 
 .navList li a.active::before {
   opacity: 1;
   background: rgba(80, 245, 176, 0.2);
+}
+
+.navList li a.active:active {
+  cursor: grabbing;
 }
 
 .lang {

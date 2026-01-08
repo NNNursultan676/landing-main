@@ -138,66 +138,92 @@ const Nav = () => {
   // Combine base classes with the additional class
   const buttonClassName = `success-btn demo ${additionalButtonClass}`.trim();
 
-  // Handle drag-to-scroll on right navbar
-  const handleNavRightMouseDown = (e) => {
-    // Don't start drag if clicking on interactive elements
-    const target = e.target;
-    const isInteractive = 
-      target.tagName === 'A' ||
-      target.tagName === 'BUTTON' ||
-      target.tagName === 'IMG' ||
-      target.closest('a') ||
-      target.closest('button') ||
-      target.closest('.ant-dropdown') ||
-      target.closest('.lang-text') ||
-      target.closest('.navList') ||
-      target.closest('.nav-demo-btn') ||
-      target.closest('.menuBurger');
-    
-    if (isInteractive) {
+  // Handle drag-to-scroll on active link (green highlighted area)
+  const dragStateRef = React.useRef({
+    isDragging: false,
+    startY: 0,
+    startScroll: 0,
+    activeLink: null
+  });
+
+  const handleActiveLinkMouseDown = (e) => {
+    // Only work on active links
+    const link = e.currentTarget;
+    if (!link.classList.contains('active')) {
       return;
     }
 
-    setIsDragging(true);
-    setDragStartY(e.clientY);
-    setDragStartScroll(window.scrollY);
-    e.preventDefault();
+    dragStateRef.current.startY = e.clientY;
+    dragStateRef.current.startScroll = window.scrollY;
+    dragStateRef.current.activeLink = link;
   };
 
   React.useEffect(() => {
-    if (!isDragging) return;
-
     const handleMouseMove = (e) => {
-      const deltaY = e.clientY - dragStartY;
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
-      const scrollableHeight = documentHeight - windowHeight;
-      const sensitivity = scrollableHeight / windowHeight;
+      if (!dragStateRef.current.activeLink) return;
+
+      const link = dragStateRef.current.activeLink;
+      if (!link.classList.contains('active')) {
+        dragStateRef.current.activeLink = null;
+        dragStateRef.current.isDragging = false;
+        setIsDragging(false);
+        return;
+      }
+
+      const deltaY = Math.abs(e.clientY - dragStateRef.current.startY);
       
-      const targetScroll = dragStartScroll + (deltaY * sensitivity);
-      
-      window.scrollTo({
-        top: Math.max(0, Math.min(targetScroll, scrollableHeight)),
-        behavior: 'auto'
-      });
+      // If moved more than 5px, treat as drag
+      if (deltaY > 5) {
+        if (!dragStateRef.current.isDragging) {
+          dragStateRef.current.isDragging = true;
+          setIsDragging(true);
+        }
+
+        const currentDeltaY = e.clientY - dragStateRef.current.startY;
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+        const scrollableHeight = documentHeight - windowHeight;
+        const sensitivity = scrollableHeight / windowHeight;
+        
+        const targetScroll = dragStateRef.current.startScroll + (currentDeltaY * sensitivity);
+        
+        window.scrollTo({
+          top: Math.max(0, Math.min(targetScroll, scrollableHeight)),
+          behavior: 'auto'
+        });
+        
+        e.preventDefault();
+        e.stopPropagation();
+      }
     };
 
     const handleMouseUp = () => {
-      setIsDragging(false);
+      if (dragStateRef.current.isDragging) {
+        dragStateRef.current.isDragging = false;
+        setIsDragging(false);
+      }
+      dragStateRef.current.activeLink = null;
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('mouseup', handleMouseUp);
-    document.body.style.userSelect = 'none';
-    document.body.style.cursor = 'grabbing';
-    
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseup', handleMouseUp);
-      document.body.style.userSelect = '';
-      document.body.style.cursor = '';
-    };
-  }, [isDragging, dragStartY, dragStartScroll]);
+    if (dragStateRef.current.activeLink) {
+      window.addEventListener('mousemove', handleMouseMove, { passive: false });
+      window.addEventListener('mouseup', handleMouseUp);
+      
+      if (dragStateRef.current.isDragging) {
+        document.body.style.userSelect = 'none';
+        document.body.style.cursor = 'grabbing';
+      }
+      
+      return () => {
+        window.removeEventListener('mousemove', handleMouseMove);
+        window.removeEventListener('mouseup', handleMouseUp);
+        document.body.style.userSelect = '';
+        document.body.style.cursor = '';
+        dragStateRef.current.activeLink = null;
+        dragStateRef.current.isDragging = false;
+      };
+    }
+  }, [isDragging]);
 
   return (
     <>
@@ -210,24 +236,22 @@ const Nav = () => {
           } src={Logo} alt="Sapa Technologies" style={{ cursor: 'pointer' }} />        
         </div>
       </div>
-      <div 
-        className={`nav nav-right ${isDragging ? 'dragging' : ''}`}
-        onMouseDown={handleNavRightMouseDown}
-      >
-        {/* Horizontal Progress Bar inside nav-right */}
-        <div className='nav-right-progress-bar'>
-          <div 
-            className='nav-right-progress-fill'
-            style={{ width: `${scrollProgress}%` }}
-          ></div>
-        </div>
+      <div className='nav nav-right'>
         <div className='nav-controllers'>
         <div className='navLinks'>
           <ul className='navList'>
             <li>
               <a 
                 href="#home" 
-                onClick={(e) => { e.preventDefault(); scrollToSection('home'); }}
+                onClick={(e) => { 
+                  if (dragStateRef.current.isDragging) {
+                    e.preventDefault();
+                    return;
+                  }
+                  e.preventDefault(); 
+                  scrollToSection('home'); 
+                }}
+                onMouseDown={handleActiveLinkMouseDown}
                 className={activeSection === 'home' ? 'active' : ''}
               >
                 {t('home')}
@@ -236,7 +260,15 @@ const Nav = () => {
           <li>
             <a 
               href="#about" 
-              onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}
+              onClick={(e) => { 
+                if (dragStateRef.current.isDragging) {
+                  e.preventDefault();
+                  return;
+                }
+                e.preventDefault(); 
+                scrollToSection('about'); 
+              }}
+              onMouseDown={handleActiveLinkMouseDown}
               className={activeSection === 'about' ? 'active' : ''}
             >
               {t('aboutUs')}
@@ -245,7 +277,15 @@ const Nav = () => {
           <li>
             <a 
               href="#solutions" 
-              onClick={(e) => { e.preventDefault(); scrollToSection('solutions'); }}
+              onClick={(e) => { 
+                if (dragStateRef.current.isDragging) {
+                  e.preventDefault();
+                  return;
+                }
+                e.preventDefault(); 
+                scrollToSection('solutions'); 
+              }}
+              onMouseDown={handleActiveLinkMouseDown}
               className={activeSection === 'solutions' ? 'active' : ''}
             >
               {t('solutions')}
@@ -254,7 +294,15 @@ const Nav = () => {
             <li>
               <a 
                 href="#contacts" 
-                onClick={(e) => { e.preventDefault(); scrollToSection('contacts'); }}
+                onClick={(e) => { 
+                  if (dragStateRef.current.isDragging) {
+                    e.preventDefault();
+                    return;
+                  }
+                  e.preventDefault(); 
+                  scrollToSection('contacts'); 
+                }}
+                onMouseDown={handleActiveLinkMouseDown}
                 className={activeSection === 'contacts' ? 'active' : ''}
               >
                 {t('contactUs')}
