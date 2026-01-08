@@ -1,54 +1,21 @@
+/**
+ * ⚠️ КРИТИЧЕСКИ ВАЖНО: БЛОК ГЛАВНОЙ СТРАНИЦЫ - НЕ ТРОГАТЬ! ⚠️
+ * 
+ * Стили главной секции с критически важными настройками:
+ * - z-index: 2 - контент должен быть поверх WaterParticles (z-index: 0)
+ * - Позиционирование кнопки по центру
+ * - Отступы и размеры для корректного отображения
+ * 
+ * НЕ МЕНЯТЬ:
+ * - z-index значений
+ * - Структуру grid layout
+ * - Позиционирование относительно частиц
+ * - Отступы верхнего padding (влияет на расположение текста)
+ */
+
 /* Main.css - Premium B2B Fintech Design */
 
-.main-container {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  flex: 1;
-}
-
-.main-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    url(../../assets/images/mainBackground.png) no-repeat center / cover;
-  opacity: 0.12;
-  mix-blend-mode: overlay;
-  pointer-events: none;
-}
-
-.main-container::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -20%;
-  width: 800px;
-  height: 800px;
-  background: radial-gradient(circle, var(--color-accent-soft) 0%, transparent 70%);
-  border-radius: 50%;
-  animation: pulse 8s ease-in-out infinite;
-  pointer-events: none;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.5;
-  }
-  50% {
-    transform: scale(1.2);
-    opacity: 0.8;
-  }
-}
-
+/* ⚠️ КРИТИЧНО: z-index должен быть 2, чтобы контент был поверх частиц */
 .main-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -71,23 +38,14 @@
   align-items: flex-start;
 }
 
+/* ⚠️ КРИТИЧНО: Центрирование кнопки - не менять */
 .main-content-left .customButtonStyle {
   align-self: center;
   margin-left: auto;
   margin-right: auto;
 }
 
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
+/* ⚠️ КРИТИЧНО: Стили текста с градиентом - не менять структуру */
 .main-content-text {
   font-size: 64px;
   font-weight: 700;
@@ -116,17 +74,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
 }
 
 .main-content-right img {
@@ -182,10 +129,6 @@
 }
 
 @media (max-width: 768px) {
-  .main-container {
-    min-height: 90vh;
-  }
-
   .main-content {
     padding: 60px 24px 40px;
     gap: 40px;

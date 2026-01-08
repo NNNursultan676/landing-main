@@ -1,3 +1,19 @@
+/**
+ * ⚠️ КРИТИЧЕСКИ ВАЖНО: БЛОК ГЛАВНОЙ СТРАНИЦЫ - НЕ ТРОГАТЬ! ⚠️
+ * 
+ * Стили для главной секции (main-hero-section) содержат критически важные настройки:
+ * - Интеграция с WaterParticles компонентом
+ * - Высота 100vh для полноэкранного отображения
+ * - z-index для правильного размещения слоев
+ * - overflow: hidden для корректной работы анимации
+ * 
+ * НЕ МЕНЯТЬ:
+ * - Структуру main-hero-section
+ * - z-index значения
+ * - height/max-height (100vh критично для полноэкранности)
+ * - overflow: hidden (нужно для частиц)
+ */
+
 /* MainLayout.css - Premium Layout Styles */
 
 /* Combined Main + About Section */
@@ -51,23 +67,29 @@
   }
 }
 
-/* Main Hero Section */
+/* 
+ * ⚠️ КРИТИЧНО: Главная секция - НЕ МЕНЯТЬ! 
+ * Интегрирована с WaterParticles, все параметры критически важны
+ */
 .main-hero-section {
+  /* ⚠️ 100vh критично для полноэкранного отображения */
   height: 100vh;
   min-height: 100vh;
   max-height: 100vh;
-  padding: 80px 40px 0; /* Уменьшаем верхний отступ, чтобы поднять текст выше */
+  /* ⚠️ padding-top влияет на позицию текста - не менять без крайней необходимости */
+  padding: 80px 40px 0;
   position: relative;
-  z-index: 1;
+  z-index: 1; /* ⚠️ Важно для правильного слоя с частицами */
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Меняем с center на flex-start, чтобы контент начинался выше */
+  justify-content: flex-start; /* ⚠️ flex-start для поднятия контента выше */
+  /* ⚠️ overflow: hidden критично для корректной работы анимации частиц */
   overflow: hidden;
   scroll-snap-align: start;
   scroll-snap-stop: always;
 }
 
-/* Убеждаемся, что контент поверх частиц */
+/* ⚠️ КРИТИЧНО: Контент должен быть поверх частиц (z-index: 2 vs 0) */
 .main-hero-section .main-content {
   position: relative;
   z-index: 2;

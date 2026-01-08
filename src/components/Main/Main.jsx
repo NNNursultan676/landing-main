@@ -1,6 +1,22 @@
+/**
+ * ⚠️ КРИТИЧЕСКИ ВАЖНО: БЛОК ГЛАВНОЙ СТРАНИЦЫ - НЕ ТРОГАТЬ! ⚠️
+ * 
+ * Этот компонент содержит критически важную структуру главной секции:
+ * - Интеграция с WaterParticles (3D анимация частиц)
+ * - Правильное позиционирование контента и кнопки
+ * - Стили и z-index для корректного отображения поверх анимации
+ * 
+ * Изменение этой структуры может сломать:
+ * - Анимацию частиц
+ * - Позиционирование элементов
+ * - Отображение на разных экранах
+ * 
+ * Можно безопасно изменять только:
+ * - Тексты через translation.json (mainTitle1, mainTitle2, mainTitle3, demo)
+ */
+
 import { Row } from "antd";
 import Nav from "../../layouts/Nav";
-import ElipseElement from "../ElipseElement/ElipseElement";
 import { useTranslation } from 'react-i18next';
 import './Main.css';
 import CustomButton from "../CustomButton";

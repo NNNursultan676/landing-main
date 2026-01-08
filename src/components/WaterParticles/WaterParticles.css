@@ -1,3 +1,18 @@
+/**
+ * ⚠️ КРИТИЧЕСКИ ВАЖНО: WATERPARTICLES CSS - НЕ МЕНЯТЬ КРИТИЧЕСКИЕ СВОЙСТВА! ⚠️
+ * 
+ * КРИТИЧЕСКИЕ СВОЙСТВА (НЕ ТРОГАТЬ):
+ * - z-index: 0 - должен быть ниже контента (z-index: 2)
+ * - position: absolute - для позиционирования на фоне
+ * - pointer-events: none - чтобы не блокировать взаимодействие
+ * - perspective: 1000px - для 3D эффекта
+ * 
+ * Можно изменять:
+ * - Цвета частиц
+ * - Размеры частиц
+ * - Эффекты свечения
+ */
+
 /* WaterParticles.css - 3D Animated Water Effect */
 
 .water-particles-container {
@@ -7,6 +22,7 @@
   width: 100%;
   height: 100%;
   pointer-events: none;
+  /* ⚠️ КРИТИЧНО: z-index должен быть 0, чтобы быть под контентом */
   z-index: 0;
   perspective: 1000px; /* 3D перспектива */
   overflow: hidden;
