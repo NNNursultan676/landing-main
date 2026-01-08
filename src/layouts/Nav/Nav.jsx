@@ -218,6 +218,12 @@ const Nav = () => {
             </li>
           </ul>
         </div>
+        <button 
+          className={`nav-demo-btn ${buttonClassName}`}
+          onClick={() => modalService.openModal(demoText)}
+        >
+          {t('demo')}
+        </button>
       <div className="lang">
         <Dropdown overlay={languageMenu} trigger={['click']}>
           <div className='lang-text'>

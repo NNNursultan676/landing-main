@@ -258,6 +258,31 @@
   opacity: 1;
 }
 
+.nav-demo-btn {
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
+  color: var(--color-unified-dark);
+  border: none;
+  border-radius: 8px;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 16px rgba(80, 245, 176, 0.3);
+  white-space: nowrap;
+  font-family: inherit;
+}
+
+.nav-demo-btn:hover {
+  background: linear-gradient(135deg, var(--color-accent-light) 0%, var(--color-accent) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(80, 245, 176, 0.4);
+}
+
+.nav-demo-btn:active {
+  transform: translateY(0);
+}
+
 .nav-controllers .success-btn {
   background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
   color: var(--color-unified-dark);
@@ -364,6 +389,10 @@
     display: none;
   }
 
+  .nav-demo-btn {
+    display: none;
+  }
+
   .menuBurger {
     display: block;
   }
@@ -390,6 +419,11 @@
   .lang-text {
     font-size: 13px;
     padding: 6px 10px;
+  }
+
+  .nav-demo-btn {
+    padding: 6px 16px;
+    font-size: 13px;
   }
 
   .nav-controllers .success-btn {
@@ -424,6 +458,11 @@
 
   .lang-text {
     padding: 6px 8px;
+    font-size: 12px;
+  }
+
+  .nav-demo-btn {
+    padding: 6px 14px;
     font-size: 12px;
   }
 
