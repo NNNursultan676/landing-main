@@ -64,8 +64,14 @@ body {
 }
 
 * {
-  max-width: 100%;
   box-sizing: border-box;
+}
+
+/* Exclude elements that need to exceed container bounds for animations */
+.partners-runner-track,
+.partners-runner-track *,
+.partners-runner-item {
+  max-width: none;
 }
 
 html {
