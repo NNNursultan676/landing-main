@@ -120,15 +120,18 @@ const Nav = () => {
   const buttonClassName = `success-btn demo ${additionalButtonClass}`.trim();
 
   return (
-    <div className='nav'>
-      <div className='nav-img'>
-        <img onClick={
-          () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }
-        } src={Logo} alt="Sapa Technologies" style={{ cursor: 'pointer' }} />        
+    <>
+      <div className='nav nav-left'>
+        <div className='nav-img'>
+          <img onClick={
+            () => {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          } src={Logo} alt="Sapa Technologies" style={{ cursor: 'pointer' }} />        
+        </div>
       </div>
-      <div className='nav-controllers'>
+      <div className='nav nav-right'>
+        <div className='nav-controllers'>
         <div className='navLinks'>
           <ul className='navList'>
             <li>
@@ -217,9 +220,8 @@ const Nav = () => {
           </div>
         </div>
       </div>
-        {/* Dropdown for language selection */}
-      
-      </div>    
+      </div>
+    </>
   );
 };
 

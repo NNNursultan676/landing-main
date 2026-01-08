@@ -1,22 +1,17 @@
-/* Nav.css - Premium Cyberpunk-Inspired Navigation */
+/* Nav.css - Split Transparent Navigation */
 
 .nav {
   position: fixed;
   top: 0;
-  left: 0;
-  right: 0;
   z-index: 1000;
   background: transparent;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
-  border-bottom: none;
+  border: none;
   transition: all 0.3s ease;
-  padding: 0;
   height: 80px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 0;
   pointer-events: none;
 }
 
@@ -24,21 +19,20 @@
   pointer-events: auto;
 }
 
-.nav.scrolled {
-  background: transparent;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  box-shadow: none;
-  border-bottom: none;
+.nav-left {
+  left: 0;
+  padding: 0 40px;
+}
+
+.nav-right {
+  right: 0;
+  padding: 0 40px;
 }
 
 .nav-img {
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  padding: 0 40px;
-  position: relative;
-  z-index: 2;
   background: transparent;
 }
 
@@ -56,19 +50,14 @@
 .nav-controllers {
   display: flex;
   align-items: center;
-  gap: 0;
+  gap: 8px;
   flex-shrink: 0;
-  margin-left: 0;
-  padding: 0 40px;
-  position: relative;
-  z-index: 2;
   background: transparent;
 }
 
 .navLinks {
   display: flex;
   align-items: center;
-  margin-left: 0;
   gap: 0;
 }
 
@@ -80,20 +69,11 @@
   align-items: center;
   gap: 0;
   background: transparent;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  border-radius: 0;
-  padding: 0;
-  clip-path: none;
 }
 
 .navList li {
   margin: 0;
   padding: 0;
-}
-
-.navList li:first-child a {
-  border-radius: 8px 0 0 8px;
 }
 
 .navList li a {
@@ -123,23 +103,19 @@
 .navList li a.active::after {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
   height: 2px;
   background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
+  border-radius: 2px;
 }
 
 .lang {
   display: flex;
   align-items: center;
   background: transparent;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  border-radius: 0;
-  padding: 0;
-  margin-left: 0;
-  clip-path: none;
 }
 
 .lang-text {
@@ -172,7 +148,6 @@
   opacity: 1;
 }
 
-/* Кнопка "Заказать демо" */
 .nav-controllers .success-btn {
   background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
   color: var(--color-unified-dark);
@@ -181,8 +156,6 @@
   padding: 10px 24px;
   font-size: 14px;
   font-weight: 600;
-  margin-left: 0;
-  clip-path: none;
   transition: all 0.3s ease;
   box-shadow: 0 4px 16px rgba(80, 245, 176, 0.3);
 }
@@ -196,12 +169,14 @@
 .menuBurger {
   display: none;
   position: relative;
-  background: rgba(26, 35, 50, 0.6);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 8px;
+  background: transparent;
   padding: 8px;
-  margin-left: 12px;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.menuBurger:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .menuBurger img {
@@ -263,11 +238,8 @@
 
 /* Responsive */
 @media (max-width: 1200px) {
-  .nav-img {
-    padding: 0 32px;
-  }
-
-  .nav-controllers {
+  .nav-left,
+  .nav-right {
     padding: 0 32px;
   }
 
@@ -289,11 +261,6 @@
   .nav-controllers {
     gap: 8px;
   }
-
-  .nav-img::after,
-  .nav-controllers::before {
-    display: none;
-  }
 }
 
 @media (max-width: 768px) {
@@ -301,11 +268,8 @@
     height: 70px;
   }
 
-  .nav-img {
-    padding: 0 24px;
-  }
-
-  .nav-controllers {
+  .nav-left,
+  .nav-right {
     padding: 0 24px;
   }
 
@@ -329,12 +293,12 @@
     height: 64px;
   }
 
-  .nav-img {
+  .nav-left,
+  .nav-right {
     padding: 0 16px;
   }
 
   .nav-controllers {
-    padding: 0 16px;
     gap: 6px;
   }
 
