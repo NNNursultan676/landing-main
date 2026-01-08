@@ -2,7 +2,7 @@ import { useState } from 'react';
 import React from 'react';
 import { Drawer, Menu, Dropdown, Button, Row } from 'antd';
 import ArrowDown from '../../assets/images/globe-alt.svg';
-import Logo from '../../assets/images/Logo.svg';
+import Logo from '../../assets/images/sapaTech.svg';
 import MenuBurger from '../../assets/images/menu.svg';
 import './Nav.css';
 import { useTranslation } from 'react-i18next';
@@ -14,6 +14,7 @@ const Nav = () => {
   const [visible, setVisible] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
   const { t, i18n } = useTranslation();
 
   const showDrawer = () => {
@@ -34,7 +35,7 @@ const Nav = () => {
     
     const element = document.getElementById(sectionId);
     if (element) {
-      const navHeight = 84; // Height of fixed nav + scroll indicator
+      const navHeight = 88; // Height of fixed nav
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
       const offsetPosition = elementPosition - navHeight;
       
@@ -135,38 +136,69 @@ const Nav = () => {
   // Combine base classes with the additional class
   const buttonClassName = `success-btn demo ${additionalButtonClass}`.trim();
 
-  // Handle click on scroll indicator to scroll to section
-  const handleScrollIndicatorClick = (sectionId) => {
-    scrollToSection(sectionId);
+  // Handle scrollbar drag
+  const handleScrollbarMouseDown = (e) => {
+    setIsDragging(true);
+    handleScrollbarClick(e);
   };
 
-  // Sections available for scrolling (excluding partners as it's inside about section)
-  const sections = ['home', 'about', 'solutions', 'contacts'];
-  const sectionLabels = {
-    home: t('home'),
-    about: t('aboutUs'),
-    solutions: t('solutions'),
-    contacts: t('contactUs')
+  const handleScrollbarClick = (e) => {
+    const scrollbar = e.currentTarget;
+    const rect = scrollbar.getBoundingClientRect();
+    const clickY = e.clientY - rect.top;
+    const percentage = clickY / rect.height;
+    
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    const scrollableHeight = documentHeight - windowHeight;
+    const targetScroll = percentage * scrollableHeight;
+    
+    window.scrollTo({
+      top: targetScroll,
+      behavior: 'smooth'
+    });
   };
+
+  const handleScrollbarMouseMove = (e) => {
+    if (!isDragging) return;
+    const scrollbar = document.querySelector('.nav-scrollbar-track');
+    if (!scrollbar) return;
+    
+    const rect = scrollbar.getBoundingClientRect();
+    const mouseY = e.clientY - rect.top;
+    const percentage = Math.max(0, Math.min(1, mouseY / rect.height));
+    
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    const scrollableHeight = documentHeight - windowHeight;
+    const targetScroll = percentage * scrollableHeight;
+    
+    window.scrollTo({
+      top: targetScroll,
+      behavior: 'auto'
+    });
+  };
+
+  const handleScrollbarMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  React.useEffect(() => {
+    if (isDragging) {
+      window.addEventListener('mousemove', handleScrollbarMouseMove);
+      window.addEventListener('mouseup', handleScrollbarMouseUp);
+      return () => {
+        window.removeEventListener('mousemove', handleScrollbarMouseMove);
+        window.removeEventListener('mouseup', handleScrollbarMouseUp);
+      };
+    }
+  }, [isDragging]);
+
+  // Sections available for scrolling
+  const sections = ['home', 'about', 'solutions', 'contacts'];
 
   return (
     <>
-      {/* Scroll Progress Indicator */}
-      <div className='scroll-indicator-container'>
-        <div className='scroll-indicator-bar' style={{ width: `${scrollProgress}%` }}></div>
-        <div className='scroll-indicator-dots'>
-          {sections.map((section, index) => (
-            <div
-              key={section}
-              className={`scroll-indicator-dot ${activeSection === section ? 'active' : ''}`}
-              onClick={() => handleScrollIndicatorClick(section)}
-              title={sectionLabels[section]}
-              style={{ left: `${(index / (sections.length - 1)) * 100}%` }}
-            />
-          ))}
-        </div>
-      </div>
-
       <div className='nav nav-left'>
         <div className='nav-img'>
           <img onClick={
@@ -256,6 +288,21 @@ const Nav = () => {
           </div>
         </div>
       </div>
+      </div>
+      
+      {/* Vertical Scrollbar in Navbar */}
+      <div 
+        className='nav-scrollbar-track'
+        onMouseDown={handleScrollbarMouseDown}
+        onClick={handleScrollbarClick}
+      >
+        <div 
+          className='nav-scrollbar-thumb'
+          style={{ 
+            top: `${scrollProgress}%`,
+            transform: 'translateY(-50%)'
+          }}
+        ></div>
       </div>
     </>
   );
