@@ -14,6 +14,9 @@ const Nav = () => {
   const [visible, setVisible] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStartY, setDragStartY] = useState(0);
+  const [dragStartScroll, setDragStartScroll] = useState(0);
   const { t, i18n } = useTranslation();
 
   const showDrawer = () => {
@@ -135,16 +138,69 @@ const Nav = () => {
   // Combine base classes with the additional class
   const buttonClassName = `success-btn demo ${additionalButtonClass}`.trim();
 
+  // Handle drag-to-scroll on right navbar
+  const handleNavRightMouseDown = (e) => {
+    // Don't start drag if clicking on interactive elements
+    const target = e.target;
+    const isInteractive = 
+      target.tagName === 'A' ||
+      target.tagName === 'BUTTON' ||
+      target.tagName === 'IMG' ||
+      target.closest('a') ||
+      target.closest('button') ||
+      target.closest('.ant-dropdown') ||
+      target.closest('.lang-text') ||
+      target.closest('.navList') ||
+      target.closest('.nav-demo-btn') ||
+      target.closest('.menuBurger');
+    
+    if (isInteractive) {
+      return;
+    }
+
+    setIsDragging(true);
+    setDragStartY(e.clientY);
+    setDragStartScroll(window.scrollY);
+    e.preventDefault();
+  };
+
+  React.useEffect(() => {
+    if (!isDragging) return;
+
+    const handleMouseMove = (e) => {
+      const deltaY = e.clientY - dragStartY;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const scrollableHeight = documentHeight - windowHeight;
+      const sensitivity = scrollableHeight / windowHeight;
+      
+      const targetScroll = dragStartScroll + (deltaY * sensitivity);
+      
+      window.scrollTo({
+        top: Math.max(0, Math.min(targetScroll, scrollableHeight)),
+        behavior: 'auto'
+      });
+    };
+
+    const handleMouseUp = () => {
+      setIsDragging(false);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseup', handleMouseUp);
+    document.body.style.userSelect = 'none';
+    document.body.style.cursor = 'grabbing';
+    
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
+      document.body.style.userSelect = '';
+      document.body.style.cursor = '';
+    };
+  }, [isDragging, dragStartY, dragStartScroll]);
+
   return (
     <>
-      {/* Horizontal Progress Bar in Navbar */}
-      <div className='nav-progress-container'>
-        <div 
-          className='nav-progress-bar'
-          style={{ width: `${scrollProgress}%` }}
-        ></div>
-      </div>
-
       <div className='nav nav-left'>
         <div className='nav-img'>
           <img onClick={
@@ -154,7 +210,17 @@ const Nav = () => {
           } src={Logo} alt="Sapa Technologies" style={{ cursor: 'pointer' }} />        
         </div>
       </div>
-      <div className='nav nav-right'>
+      <div 
+        className={`nav nav-right ${isDragging ? 'dragging' : ''}`}
+        onMouseDown={handleNavRightMouseDown}
+      >
+        {/* Horizontal Progress Bar inside nav-right */}
+        <div className='nav-right-progress-bar'>
+          <div 
+            className='nav-right-progress-fill'
+            style={{ width: `${scrollProgress}%` }}
+          ></div>
+        </div>
         <div className='nav-controllers'>
         <div className='navLinks'>
           <ul className='navList'>
