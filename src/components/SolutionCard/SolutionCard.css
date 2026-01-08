@@ -19,6 +19,10 @@
   backdrop-filter: blur(10px);
 }
 
+.solution-card--custom {
+  overflow: hidden;
+}
+
 .solution-card::before {
   content: '';
   position: absolute;
@@ -71,6 +75,57 @@
 
 .solution-card:hover .solution-image {
   transform: translateY(-4px) scale(1.05);
+}
+
+/* Animated orbits for \"Индивидуальные решения\" */
+.solution-orbits {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  margin-bottom: 32px;
+}
+
+.solution-orbit-dot {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: radial-gradient(circle, #50f5b0 0%, #1c59d1 80%);
+  box-shadow: 0 0 18px rgba(80, 245, 176, 0.7);
+  opacity: 0.9;
+  animation: orbit-move 10s ease-in-out infinite;
+}
+
+.solution-orbit-dot.dot-1 { top: 18%; left: 18%; animation-duration: 11s; }
+.solution-orbit-dot.dot-2 { top: 12%; right: 18%; animation-duration: 9s; }
+.solution-orbit-dot.dot-3 { top: 40%; left: 8%; animation-duration: 10s; }
+.solution-orbit-dot.dot-4 { top: 50%; right: 10%; animation-duration: 12s; }
+.solution-orbit-dot.dot-5 { bottom: 18%; left: 28%; animation-duration: 13s; }
+.solution-orbit-dot.dot-6 { bottom: 12%; right: 24%; animation-duration: 11s; }
+.solution-orbit-dot.dot-7 { top: 30%; left: 45%; animation-duration: 14s; }
+
+@keyframes orbit-move {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(
+      calc(var(--mouse-x, 0) * 10px + 12px),
+      calc(var(--mouse-y, 0) * 8px - 10px)
+    ) scale(1.05);
+  }
+  50% {
+    transform: translate(
+      calc(var(--mouse-x, 0) * -14px - 18px),
+      calc(var(--mouse-y, 0) * 12px + 8px)
+    ) scale(0.95);
+  }
+  75% {
+    transform: translate(
+      calc(var(--mouse-x, 0) * 12px - 6px),
+      calc(var(--mouse-y, 0) * -10px + 6px)
+    ) scale(1.08);
+  }
 }
 
 .solution-title {

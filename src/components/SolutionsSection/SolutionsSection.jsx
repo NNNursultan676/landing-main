@@ -14,16 +14,19 @@ const SolutionsSection = () => {
       image: CreditConveyorImg,
       title: t('solutionCreditConveyorTitle'),
       description: t('solutionCreditConveyorDesc'),
+      variant: 'default',
     },
     {
       image: CreditBrokerImg,
       title: t('solutionCreditBrokerTitle'),
       description: t('solutionCreditBrokerDesc'),
+      variant: 'default',
     },
     {
       image: CustomSolutionsImg,
       title: t('solutionCustomSolutionsTitle'),
       description: t('solutionCustomSolutionsDesc'),
+      variant: 'custom',
     },
   ];
   return (
@@ -40,6 +43,7 @@ const SolutionsSection = () => {
             image={solution.image}
             title={solution.title}
             description={solution.description}
+            variant={solution.variant}
           />
         ))}
       </div>
