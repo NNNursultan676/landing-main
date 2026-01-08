@@ -11,16 +11,29 @@
 .partners-runner-compact .partners-runner-container {
   padding: 12px 0;
   margin: 0;
+  position: relative;
+  overflow: visible;
+}
+
+.partners-runner-compact .partners-runner-track {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  animation: partners-run 25s linear infinite;
+  will-change: transform;
+  position: relative;
+  z-index: 1;
 }
 
 .partners-runner-compact .partners-runner-container::before,
 .partners-runner-compact .partners-runner-container::after {
-  width: 100px;
-  background: linear-gradient(to right, rgba(30, 41, 59, 1), transparent);
+  width: 120px;
+  background: linear-gradient(to right, rgba(30, 41, 59, 0.95), transparent);
+  z-index: 2;
 }
 
 .partners-runner-compact .partners-runner-container::after {
-  background: linear-gradient(to left, rgba(30, 41, 59, 1), transparent);
+  background: linear-gradient(to left, rgba(30, 41, 59, 0.95), transparent);
 }
 
 .partners-runner-compact .partners-runner-track {
@@ -28,24 +41,42 @@
 }
 
 .partners-runner-compact .partners-runner-item {
-  height: 50px;
-  padding: 10px 20px;
-  background: rgba(255, 255, 255, 0.08);
+  height: 60px;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.18);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 12px;
-  min-width: 140px;
+  min-width: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .partners-runner-compact .partners-runner-item img {
-  max-height: 32px;
-  filter: brightness(0) invert(1);
-  opacity: 0.85;
-  transition: opacity 0.3s ease;
+  max-height: 42px;
+  max-width: 140px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(255, 255, 255, 0.4));
+  opacity: 0.95;
+  transition: all 0.3s ease;
+  display: block;
+}
+
+.partners-runner-compact .partners-runner-item:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .partners-runner-compact .partners-runner-item:hover img {
   opacity: 1;
+  filter: brightness(0) invert(1) drop-shadow(0 0 6px rgba(255, 255, 255, 0.6));
 }
 
 .partners-runner-section {
@@ -91,6 +122,17 @@
   position: absolute;
   top: 0;
   width: 200px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.partners-runner-compact .partners-runner-container::before,
+.partners-runner-compact .partners-runner-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 120px;
   height: 100%;
   z-index: 2;
   pointer-events: none;
