@@ -6,6 +6,12 @@
   position: relative;
   overflow: hidden;
   margin-top: 0;
+  max-width: 100%;
+}
+
+.partners-runner-compact * {
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .partners-runner-compact .partners-runner-container {
