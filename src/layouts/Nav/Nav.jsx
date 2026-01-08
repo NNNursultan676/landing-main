@@ -209,15 +209,6 @@ const Nav = () => {
           </li>
             <li>
               <a 
-                href="#about" 
-                onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}
-                className={activeSection === 'about' ? 'active' : ''}
-              >
-                {t('partners')}
-              </a>
-            </li>
-            <li>
-              <a 
                 href="#contacts" 
                 onClick={(e) => { e.preventDefault(); scrollToSection('contacts'); }}
                 className={activeSection === 'contacts' ? 'active' : ''}
