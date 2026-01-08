@@ -6,6 +6,10 @@
   border-radius: 14px;
   cursor: pointer;
   font-family: 'Inter', sans-serif;
+  text-align: center; /* Выравниваем текст по центру внутри кнопки */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .customButtonStyle:hover {

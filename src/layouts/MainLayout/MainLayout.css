@@ -56,12 +56,12 @@
   height: 100vh;
   min-height: 100vh;
   max-height: 100vh;
-  padding: 100px 40px 0;
+  padding: 80px 40px 0; /* Уменьшаем верхний отступ, чтобы поднять текст выше */
   position: relative;
   z-index: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start; /* Меняем с center на flex-start, чтобы контент начинался выше */
   overflow: hidden;
   scroll-snap-align: start;
   scroll-snap-stop: always;
