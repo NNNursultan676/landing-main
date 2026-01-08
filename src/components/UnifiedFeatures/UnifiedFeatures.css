@@ -4,7 +4,7 @@
   width: 100%;
   min-height: 300vh;
   position: relative;
-  overflow: visible;
+  overflow: hidden;
   background: linear-gradient(180deg, var(--color-bg-light) 0%, var(--color-bg-soft) 100%);
   padding: 0;
 }
@@ -15,7 +15,7 @@
   width: 100%;
   height: 100vh;
   display: flex;
-  overflow: visible;
+  overflow: hidden;
   align-items: center;
   z-index: 1;
 }

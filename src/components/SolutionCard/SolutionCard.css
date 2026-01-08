@@ -284,16 +284,8 @@
 }
 
 .particle-field:hover .particle {
-  animation-duration: 5s;
+  animation-duration: 4s;
   box-shadow: 0 0 8px var(--color-unified-soft);
-}
-
-.particle-field:active .particle {
-  animation-duration: 2s;
-  transform: translate(
-    calc(var(--mouse-x, 50%) * 0.3 - 50%),
-    calc(var(--mouse-y, 50%) * 0.3 - 50%)
-  ) !important;
 }
 
 @keyframes particle-float {
@@ -305,20 +297,20 @@
   }
   25% {
     transform: translate(
-      calc(var(--speed-x, 0) * -40px + (var(--mouse-x, 50%) - 50%) * 0.2),
-      calc(var(--speed-y, 0) * 35px + (var(--mouse-y, 50%) - 50%) * 0.2)
-    ) scale(1.3);
+      calc(var(--speed-x, 0) * -40px + (var(--mouse-x, 50%) - 50%) * 0.15),
+      calc(var(--speed-y, 0) * 35px + (var(--mouse-y, 50%) - 50%) * 0.15)
+    ) scale(1.2);
   }
   50% {
     transform: translate(
-      calc(var(--speed-x, 0) * 35px - (var(--mouse-x, 50%) - 50%) * 0.25),
-      calc(var(--speed-y, 0) * -40px - (var(--mouse-y, 50%) - 50%) * 0.25)
-    ) scale(0.7);
+      calc(var(--speed-x, 0) * 35px - (var(--mouse-x, 50%) - 50%) * 0.2),
+      calc(var(--speed-y, 0) * -40px - (var(--mouse-y, 50%) - 50%) * 0.2)
+    ) scale(0.8);
   }
   75% {
     transform: translate(
-      calc(var(--speed-x, 0) * -30px + (var(--mouse-x, 50%) - 50%) * 0.15),
-      calc(var(--speed-y, 0) * 30px + (var(--mouse-y, 50%) - 50%) * 0.15)
+      calc(var(--speed-x, 0) * -30px + (var(--mouse-x, 50%) - 50%) * 0.1),
+      calc(var(--speed-y, 0) * 30px + (var(--mouse-y, 50%) - 50%) * 0.1)
     ) scale(1.1);
   }
 }

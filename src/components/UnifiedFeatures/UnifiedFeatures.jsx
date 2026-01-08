@@ -58,22 +58,23 @@ const UnifiedFeatures = () => {
         const rect = containerRef.current.getBoundingClientRect();
         const windowHeight = window.innerHeight;
         const elementTop = rect.top;
-        const elementHeight = rect.height || 3000;
+        const elementHeight = Math.max(rect.height, windowHeight * 3);
         
-        // Проверяем видимость элемента
-        if (elementTop < windowHeight * 1.5 && elementTop + elementHeight > -windowHeight) {
+        // Вычисляем прогресс прокрутки
+        const startOffset = windowHeight * 0.5;
+        const endOffset = elementHeight - windowHeight * 0.5;
+        const scrollRange = endOffset - startOffset;
+        
+        if (elementTop <= startOffset && elementTop + elementHeight >= -windowHeight) {
           setIsVisible(true);
-          // Вычисляем прогресс прокрутки (0-1)
-          const scrollRange = Math.max(elementHeight - windowHeight, windowHeight);
-          const scrolled = Math.max(0, Math.min(scrollRange, windowHeight - elementTop));
+          const scrolled = Math.max(0, Math.min(scrollRange, startOffset - elementTop));
           const progress = scrollRange > 0 ? Math.min(1, scrolled / scrollRange) : 0;
           setScrollProgress(progress);
-        } else if (elementTop < windowHeight) {
-          // Элемент уже прошел, показываем последнюю секцию
+        } else if (elementTop < startOffset) {
           setIsVisible(true);
           setScrollProgress(1);
         } else {
-          setIsVisible(true);
+          setIsVisible(false);
           setScrollProgress(0);
         }
       } catch (error) {
@@ -81,10 +82,10 @@ const UnifiedFeatures = () => {
       }
     };
 
-    // Вызываем сразу для начального состояния
+    // Начальное состояние
     const timeoutId = setTimeout(() => {
       handleScroll();
-    }, 100);
+    }, 200);
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('resize', handleScroll, { passive: true });
@@ -102,76 +103,73 @@ const UnifiedFeatures = () => {
     <div className="unified-features-container" ref={containerRef}>
       <div className="unified-features-scroll-wrapper">
         {stats.map((stat, index) => {
-          try {
-            // Каждая секция занимает 1/3 прогресса
-            const sectionStart = index / 3;
-            const sectionEnd = (index + 1) / 3;
-            
-            // Нормализуем прогресс для текущей секции
-            let sectionProgress = 0;
-            if (scrollProgress >= sectionStart && scrollProgress <= sectionEnd) {
-              sectionProgress = (scrollProgress - sectionStart) / (sectionEnd - sectionStart);
-            } else if (scrollProgress > sectionEnd) {
-              sectionProgress = 1;
-            } else if (scrollProgress < sectionStart && index === 0) {
-              sectionProgress = Math.max(0, scrollProgress * 3);
-            }
-            
-            // Горизонтальное смещение для эффекта "крутится в бок"
-            const totalOffset = scrollProgress * 100;
-            const sectionOffset = (index * 100) - totalOffset;
-            
-            return (
+          // Каждая секция занимает 1/3 прогресса
+          const sectionStart = index / 3;
+          const sectionEnd = (index + 1) / 3;
+          
+          // Нормализуем прогресс для текущей секции
+          let sectionProgress = 0;
+          if (scrollProgress >= sectionStart && scrollProgress < sectionEnd) {
+            sectionProgress = (scrollProgress - sectionStart) / (sectionEnd - sectionStart);
+          } else if (scrollProgress >= sectionEnd) {
+            sectionProgress = 1;
+          } else if (index === 0 && scrollProgress < sectionStart) {
+            sectionProgress = Math.max(0, scrollProgress * 3);
+          }
+          
+          // Горизонтальное смещение
+          const totalOffset = scrollProgress * 100;
+          const sectionOffset = (index * 100) - totalOffset;
+          
+          const showSection = isVisible && (scrollProgress >= sectionStart - 0.1 || index === 0);
+          
+          return (
+            <div 
+              key={`section-${index}`}
+              className="unified-features-section"
+              style={{
+                transform: `translateX(${sectionOffset}%)`,
+                opacity: showSection ? Math.max(0.1, Math.min(1, sectionProgress * 2.5 + 0.1)) : 0,
+                visibility: showSection ? 'visible' : 'hidden',
+              }}
+            >
+              {/* Теги слева */}
               <div 
-                key={index}
-                className="unified-features-section"
+                className="unified-features-tags"
                 style={{
-                  transform: `translateX(${sectionOffset}%)`,
-                  opacity: isVisible ? Math.max(0.3, Math.min(1, sectionProgress * 2 + 0.3)) : 0.1,
-                  visibility: isVisible || sectionProgress > 0 ? 'visible' : 'hidden',
+                  transform: `translateX(${showSection ? -(1 - sectionProgress) * 150 : -150}px)`,
+                  opacity: Math.max(0.3, sectionProgress),
                 }}
               >
-                {/* Теги слева */}
-                <div 
-                  className="unified-features-tags"
-                  style={{
-                    transform: `translateX(${isVisible ? -(1 - sectionProgress) * 150 : -150}px)`,
-                    opacity: Math.max(0.5, sectionProgress),
-                  }}
-                >
-                  {tagGroups[index] && tagGroups[index].map((tag, tagIndex) => (
-                    <TagItem 
-                      key={`tag-${index}-${tagIndex}`} 
-                      text={tag} 
-                      variant="star"
-                      style={{
-                        animationDelay: `${tagIndex * 0.15}s`,
-                      }}
-                    />
-                  ))}
-                </div>
-
-                {/* Кубик справа */}
-                <div 
-                  className="unified-features-cube"
-                  style={{
-                    transform: `translateX(${isVisible ? (1 - sectionProgress) * 150 : 150}px) rotateY(${sectionProgress * 90}deg)`,
-                    opacity: Math.max(0.5, sectionProgress),
-                  }}
-                >
-                  <StatCard
-                    value={stat.value}
-                    label={stat.label}
-                    description={stat.description}
-                    addClass={false}
+                {tagGroups[index] && tagGroups[index].map((tag, tagIndex) => (
+                  <TagItem 
+                    key={`tag-${index}-${tagIndex}`} 
+                    text={tag || ''} 
+                    variant="star"
+                    style={{
+                      animationDelay: `${tagIndex * 0.15}s`,
+                    }}
                   />
-                </div>
+                ))}
               </div>
-            );
-          } catch (error) {
-            console.error(`Error rendering section ${index}:`, error);
-            return null;
-          }
+
+              {/* Кубик справа */}
+              <div 
+                className="unified-features-cube"
+                style={{
+                  transform: `translateX(${showSection ? (1 - sectionProgress) * 150 : 150}px) rotateY(${sectionProgress * 90}deg)`,
+                  opacity: Math.max(0.3, sectionProgress),
+                }}
+              >
+                <StatCard
+                  value={stat.value || ''}
+                  label={stat.label || ''}
+                  description={stat.description || ''}
+                  addClass={false}
+                />
+              </div>
+            </div>
+          );
         })}
       </div>
       
@@ -179,12 +177,12 @@ const UnifiedFeatures = () => {
       <div 
         className="unified-features-cta"
         style={{
-          opacity: scrollProgress > 0.9 ? (scrollProgress - 0.9) * 10 : 0,
-          transform: `translateY(${(1 - Math.max(0, (scrollProgress - 0.9) * 10)) * 30}px)`,
+          opacity: scrollProgress > 0.85 ? Math.min(1, (scrollProgress - 0.85) * 6.67) : 0,
+          transform: `translateY(${(1 - Math.max(0, (scrollProgress - 0.85) * 6.67)) * 30}px)`,
         }}
       >
         <CustomButton
-          title={t('contactButton')}
+          title={t('contactButton') || 'Связаться с нами'}
           styleName="success-btn call-btn"
           onClick={() => modalService.openModal(contactText)}
         />

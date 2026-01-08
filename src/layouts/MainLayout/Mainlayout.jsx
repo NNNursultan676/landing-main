@@ -140,9 +140,7 @@ const Mainlayout = () => {
       </div>
       
       {/* Unified Features & Stats Section */}
-      {/* <UnifiedFeatures /> */}
-      <TagLayout />
-      <StatsSection />
+      <UnifiedFeatures />
       
       {/* Solutions Section */}
       <div id="solutions">

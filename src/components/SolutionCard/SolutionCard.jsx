@@ -142,12 +142,16 @@ const ParticleField = () => {
 
   const handleMouseMove = (e) => {
     if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    try {
+      const rect = containerRef.current.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
 
-    containerRef.current.style.setProperty('--mouse-x', `${x}%`);
-    containerRef.current.style.setProperty('--mouse-y', `${y}%`);
+      containerRef.current.style.setProperty('--mouse-x', `${x}%`);
+      containerRef.current.style.setProperty('--mouse-y', `${y}%`);
+    } catch (error) {
+      console.error('Error in handleMouseMove:', error);
+    }
   };
 
   return (
