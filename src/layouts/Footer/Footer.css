@@ -1,113 +1,177 @@
+/* Footer.css - Premium Footer Design */
+
 .footer {
-  background-color: #0D0403;
-  color: #FFFFFF;
-  padding: 50px 80px;
+  background: linear-gradient(180deg, #0a1120 0%, #0f172a 100%);
+  color: #ffffff;
+  padding: 80px 80px 40px;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(80, 245, 176, 0.3), transparent);
 }
 
 .footer-logo-section {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  gap: 16px;
 }
 
 .footer-logo {
   width: 150px;
-  margin-bottom: 10px;
+  height: auto;
+  margin-bottom: 0;
+  filter: brightness(0) invert(1);
+  transition: transform 0.3s ease;
+}
+
+.footer-logo:hover {
+  transform: scale(1.05);
 }
 
 .footer-partner-logo {
   width: 100px;
-  margin-bottom: 10px;
+  height: auto;
+  margin-bottom: 0;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.footer-partner-logo:hover {
+  opacity: 1;
 }
 
 .footer-section {
-  margin-bottom: 20px;
+  margin-bottom: 32px;
 }
 
 .footer-title {
-  font-family: 'Inter';
-  font-weight: 400;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
   font-size: 13px;
-  line-height: 16px;
-  opacity: 0.5;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
 }
 
 .footer-text {
-  font-family: 'Inter';
+  font-family: 'Inter', sans-serif;
   font-weight: 600;
-  font-size: 14px;
-  line-height: 17px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 8px;
 }
 
 .footer-subtitle {
-  font-family: 'Inter';
+  font-family: 'Inter', sans-serif;
   font-weight: 500;
   font-size: 14px;
-  line-height: 17px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .footer-content {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .footerLinks a {
-  color: #FFFFFF;
+  color: rgba(255, 255, 255, 0.7);
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.footerLinks a:hover {
+  color: #50f5b0;
+  transform: translateX(4px);
 }
 
 .socials {
   display: flex;
-  gap: 8px;
+  gap: 12px;
   font-size: 22px;
 }
 
 .socials a {
-  color: #FFFFFF!important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.socials a:hover {
+  color: #50f5b0 !important;
+  background: rgba(80, 245, 176, 0.15);
+  border-color: rgba(80, 245, 176, 0.3);
+  transform: translateY(-2px);
+}
 
-@media (max-width: 576px) {
+/* Responsive */
+@media (max-width: 1200px) {
   .footer {
-    padding: 24px 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    padding: 60px 60px 32px;
   }
+}
 
-  .footer-content {
-    text-align: left;
+@media (max-width: 768px) {
+  .footer {
+    padding: 48px 32px 24px;
   }
 
   .footer-logo-section,
   .footer-section {
-    text-align: center;
-    align-items: center;
+    margin-bottom: 32px;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer {
+    padding: 40px 24px 20px;
   }
 
   .footer-logo-section {
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
     align-items: flex-start;
+    margin-bottom: 32px;
   }
 
   .footer-section {
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    margin-bottom: 28px;
   }
 
   .footerLinks {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    text-align: left;
   }
 
-  .footer-section:last-child {
-    margin-bottom: 0;
-    
+  .socials {
+    gap: 10px;
+  }
+
+  .socials a {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
   }
 }

@@ -46,12 +46,24 @@ const Nav = () => {
     setVisible(false); // Close mobile menu if open
   };
 
-  // Track scroll position to update active section
+  // Track scroll position to update active section and nav style
   React.useEffect(() => {
+    const nav = document.querySelector('.nav');
+    
     const handleScroll = () => {
       const sections = ['home', 'solutions', 'about', 'products', 'partners', 'contacts'];
       const scrollPosition = window.scrollY + 150;
 
+      // Update nav style on scroll
+      if (nav) {
+        if (window.scrollY > 50) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
+      }
+
+      // Update active section
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i];
         if (section === 'home') {
@@ -73,6 +85,7 @@ const Nav = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial call
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
