@@ -3,7 +3,14 @@ import react from '@vitejs/plugin-react';
 import vitePluginImp from 'vite-plugin-imp';
 import path from 'path';
 
+// Для GitHub Pages: если репозиторий называется 'landing-main', 
+// то base должен быть '/landing-main/'
+// Если репозиторий называется 'username.github.io', то base должен быть '/'
+// Можно задать через переменную окружения: VITE_BASE_PATH=/your-repo-name/
+const base = process.env.VITE_BASE_PATH || '/';
+
 export default defineConfig({
+  base: base,
   plugins: [
     react(),
     vitePluginImp({

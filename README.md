@@ -1,8 +1,113 @@
-# React + Vite
+# Landing Page - React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Лендинг-страница на React с использованием Vite.
 
-Currently, two official plugins are available:
+## Требования
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Node.js (версия 16 или выше)
+- npm или yarn
+
+## Установка и запуск проекта
+
+### 1. Клонировать репозиторий
+
+```bash
+git clone <URL_РЕПОЗИТОРИЯ>
+cd landing-main
+```
+
+### 2. Переключиться на нужную ветку
+
+```bash
+git checkout <НАЗВАНИЕ_ВЕТКИ>
+```
+
+### 3. Установить зависимости
+
+```bash
+npm install
+```
+
+### 4. Запустить dev-сервер
+
+```bash
+npm run dev
+```
+
+После запуска проект будет доступен по адресу: **http://localhost:5173/**
+
+## Другие команды
+
+- `npm run build` - собрать проект для продакшена
+- `npm run preview` - предпросмотр собранного проекта
+- `npm run lint` - проверить код линтером
+
+## Деплой на GitHub Pages
+
+### Автоматический деплой (рекомендуется)
+
+1. **Включите GitHub Pages в настройках репозитория:**
+   - Перейдите в Settings → Pages
+   - В разделе "Source" выберите "GitHub Actions"
+
+2. **Настройте workflow файл:**
+   - Откройте `.github/workflows/deploy.yml`
+   - Измените название ветки в строке `branches: - main` на вашу ветку
+   - Измените `VITE_BASE_PATH: /landing-main/` на название вашего репозитория
+     - Если репозиторий называется `username.github.io`, используйте `VITE_BASE_PATH: /`
+     - Если репозиторий называется `landing-main`, используйте `VITE_BASE_PATH: /landing-main/`
+
+3. **Закоммитьте и запушьте изменения:**
+   ```bash
+   git add .
+   git commit -m "Настройка деплоя на GitHub Pages"
+   git push
+   ```
+
+4. **Деплой запустится автоматически** при пуше в указанную ветку. После завершения сайт будет доступен по адресу:
+   ```
+   https://<username>.github.io/<repository-name>/
+   ```
+
+### Ручной деплой
+
+1. **Установите gh-pages** (если еще не установлен):
+   ```bash
+   npm install
+   ```
+
+2. **Настройте base path в vite.config.js:**
+   - Откройте `vite.config.js`
+   - Измените значение `base` на название вашего репозитория:
+     ```js
+     const base = '/название-вашего-репозитория/';
+     ```
+
+3. **Выполните деплой:**
+   ```bash
+   npm run deploy
+   ```
+
+4. **Включите GitHub Pages:**
+   - Перейдите в Settings → Pages
+   - В разделе "Source" выберите ветку `gh-pages` и папку `/ (root)`
+
+### Важные замечания
+
+⚠️ **Некоторые функции могут не работать на GitHub Pages:**
+- API запросы к внешним серверам (прокси не работает)
+- Отправка форм (если используется серверный бэкенд)
+- Другие функции, требующие серверной части
+
+✅ **Что будет работать:**
+- Весь интерфейс и навигация
+- Статический контент
+- Якорные ссылки (#about, #products и т.д.)
+
+## Структура проекта
+
+- `src/` - исходный код приложения
+- `src/components/` - React компоненты
+- `src/layouts/` - макеты страниц
+- `src/locales/` - файлы переводов (ru, en, kz)
+- `public/` - статические файлы
