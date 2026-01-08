@@ -165,7 +165,6 @@ const Mainlayout = () => {
       
       {/* Partners Section */}
       <div id="partners">
-        <PartnersMain />
         <div className='partners-page-content'>
           <div className='partners-section-title'>{t('partnersSectionText')}</div>
           <Row gutter={[16, 16]} className='partners-section-row'>
