@@ -4,7 +4,6 @@ import Main from '../../components/Main/Main'
 import './MainLayout.css'
 import CustomText from '../../components/CustomText/CustomText'
 import TagLayout from '../../components/TagLayout/Taglayout'
-import StatsSection from '../../components/StatsSection/StatsSections'
 import UnifiedFeatures from '../../components/UnifiedFeatures/UnifiedFeatures'
 import PartnersSection from '../../components/PartnersSection/PartnersSection'
 import SolutionsSection from '../../components/SolutionsSection/SolutionsSection'
@@ -123,28 +122,41 @@ const Mainlayout = () => {
           <div className="about-header-unified">
             <h1>{t('aboutTitle')}</h1>
           </div>
-          <div className="about-content-unified">
-            <div className="about-intro-text">
-              <p className="about-intro-main">
-                {t('mainTitle5')}
-              </p>
-              <p className="about-intro-sub">
-                {t('mainTitle4')}
-              </p>
+          <div className="about-content-layout">
+            <div className="about-content-left">
+              <div className="about-text-combined">
+                <p className="about-text-main">{t('mainTitle5')}</p>
+                <p className="about-text-sub">{t('mainTitle4')}</p>
+                <p className="about-text-company">
+                  {t('aboutText1')} <span className="highlighted">{t('aboutText2')}</span> {t('aboutText3')}
+                </p>
+                <div className="about-mission-combined">
+                  <h3 className="about-mission-title-combined">{t('aboutText4')}</h3>
+                  <p className="about-mission-text-combined">{t('aboutText5')}</p>
+                </div>
+              </div>
+              <div className="partners-in-about">
+                <h2 className="partners-in-about-title">Нам доверяют</h2>
+                <PartnersRunner compact={true} />
+              </div>
             </div>
-            <div className="about-text-unified">
-              {t('aboutText1')} <span className="highlighted">{t('aboutText2')}</span> {t('aboutText3')}
-            </div>
-            <div className="about-mission-unified">
-              <div className="about-mission-title">{t('aboutText4')}</div>
-              <div className="about-mission-text">{t('aboutText5')}</div>
-            </div>
-            <div className="stats-container-unified">
-              <StatsSection show={true} />
-            </div>
-            <div className="partners-in-about">
-              <h2 className="partners-in-about-title">Нам доверяют</h2>
-              <PartnersRunner compact={true} />
+            <div className="about-content-right">
+              <div className="stats-unified-block">
+                <div className="stat-item stat-item-top">
+                  <div className="stat-value">25%</div>
+                  <div className="stat-label">ОПТИМИЗАЦИЯ</div>
+                </div>
+                <div className="stat-divider"></div>
+                <div className="stat-item stat-item-middle">
+                  <div className="stat-value">95%</div>
+                  <div className="stat-label">ЛОЯЛЬНОСТЬ</div>
+                </div>
+                <div className="stat-divider"></div>
+                <div className="stat-item stat-item-bottom">
+                  <div className="stat-value">250+</div>
+                  <div className="stat-label">ПАРТНЁРОВ</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
