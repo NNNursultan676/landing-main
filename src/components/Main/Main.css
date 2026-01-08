@@ -3,15 +3,17 @@
 /* Main container to hold the background gradient and image */
 .main-container {
   width: 100%;
-  background: 
+  background:
+    linear-gradient(135deg, rgba(26, 56, 163, 0.98), rgba(28, 89, 209, 0.98)),
     url(../../assets/images/mainBackground.png);
-  background-blend-mode: overlay; /* This will layer the image and color */
+  background-blend-mode: soft-light;
   background-size: cover;
   background-position: center;
-  min-height: 60vh; /* Ensure it covers the viewport */
-  position: relative; /* So that absolute children are positioned relative to this */
-  border-bottom-left-radius: 45px;
-  border-bottom-right-radius: 45px;
+  min-height: 70vh;
+  position: relative;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  box-shadow: 0 32px 80px rgba(15, 23, 42, 0.6);
 }
 
 
@@ -26,8 +28,10 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 70px 150px 62px 87px;
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  padding: 96px 80px 80px;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .main-content-left {
@@ -50,9 +54,9 @@
 }
 
 .main-content-text {
-  font-size: 37.15px;
-  font-weight: 500;
-  line-height: 46px;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.25;
   letter-spacing: -0.01em;
   text-align: left;
   color: white;
@@ -60,7 +64,7 @@
 
 .main-content-text-highlighted {
   color: #50F5B0;
-  font-style: italic !important;  
+  font-style: italic !important;
 }
 
 /* Button styling */
@@ -84,7 +88,7 @@
     flex-direction: column;
     gap: 20px;
     text-align: center;
-    padding: 40px 5%;
+    padding: 72px 5% 56px;
   }
 
   .main-content-right img {
@@ -101,8 +105,8 @@
   }
 
   .main-content-text {
-    font-size: 20px;
-    line-height: 32px;
+    font-size: 24px;
+    line-height: 34px;
   }
 }
 

@@ -26,7 +26,9 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #1A38A3 !important; /* Dark blue matching header */
+  background: radial-gradient(circle at top left, #1c59d1 0, transparent 55%),
+    radial-gradient(circle at top right, #50f5b033 0, transparent 40%),
+    #0b1120 !important;
   overflow-x: hidden;
 }
 
@@ -167,12 +169,22 @@ body {
 
 /* Button Styles */
 .button {
-  width: 206px;
+  min-width: 190px;
   font-size: 16px;
-  padding: 19px 0;
+  padding: 16px 24px;
   border: none;
   border-radius: 16px;
   cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 18px 45px rgba(7, 89, 230, 0.35);
+  transform: translateY(0);
+  transition: background-color 0.18s ease, color 0.18s ease,
+    box-shadow 0.18s ease, transform 0.18s ease;
 }
 
 .secondary-btn {
@@ -181,14 +193,13 @@ body {
 }
 
 .primary-btn {
-  background-color: #50F5B0;
-  color: #1C59D1;
+  background: linear-gradient(135deg, #50f5b0, #2ad49a);
+  color: #052c65;
 }
 
 .success-btn {
-  background-color: #50F5B0;
-  color: #1C59D1;
-  width: 170px !important;
+  background: linear-gradient(135deg, #50f5b0, #2ad49a);
+  color: #052c65;
 }
 
 .kz-class {
@@ -196,7 +207,9 @@ body {
 }
 
 .success-btn:hover {
-  background-color: #00E695;
+  background: linear-gradient(135deg, #6bffd0, #38e0a8);
+  box-shadow: 0 22px 60px rgba(7, 89, 230, 0.45);
+  transform: translateY(-1px);
 }
 
 .default-btn {
