@@ -99,8 +99,7 @@
 /* ⚠️ ВАЖНО: z-index должен быть меньше навбара (10000), чтобы навбар был поверх */
 .about-section-unified {
   flex: 0 0 auto;
-  height: 100vh;
-  max-height: 100vh;
+  min-height: 100vh; /* Изменено с height на min-height для возможности скролла */
   position: relative;
   z-index: 0; /* ⚠️ Меньше навбара (10000), чтобы навбар был всегда поверх */
   padding: 0;
@@ -113,8 +112,8 @@
   width: 100%;
   scroll-snap-align: start;
   scroll-snap-stop: always;
-  overflow: hidden;
-  background: #0f172a;
+  overflow: visible; /* Изменено с hidden на visible для корректного отображения */
+  background: #0f172a; /* Темный фон по умолчанию, но контент будет белым */
 }
 
 .about-section-unified * {
@@ -122,14 +121,15 @@
   box-sizing: border-box;
 }
 
-/* ⚠️ ВАЖНО: padding-top должен учитывать высоту навбара (88px) */
+/* ⚠️ ВАЖНО: Header на уровне навбара, темный фон как продолжение главной */
 .about-header-unified {
   text-align: center;
   margin: 0;
-  padding: 120px 0 20px 0; /* Увеличено с 80px до 120px, чтобы учесть навбар (88px) */
+  padding: 88px 0 40px 0; /* 88px = высота навбара, заголовок на его уровне */
   flex: 0 0 auto;
   position: relative;
   z-index: 1; /* ⚠️ Меньше навбара, но больше фона секции */
+  background: #0f172a; /* ⚠️ Темный фон как продолжение главной */
 }
 
 .about-header-unified h1 {
@@ -145,12 +145,12 @@
   background-clip: text;
 }
 
-/* ⚠️ ВАЖНО: z-index должен быть меньше навбара */
+/* ⚠️ ВАЖНО: Контент на белом фоне */
 .about-content-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
-  padding: 20px 60px 20px;
+  padding: 60px 60px 20px; /* Увеличен верхний padding для отступа от заголовка */
   flex: 1;
   min-height: 0;
   max-width: 1600px;
@@ -160,6 +160,7 @@
   overflow: hidden;
   position: relative;
   z-index: 1; /* ⚠️ Меньше навбара (10000) */
+  background: #ffffff; /* ⚠️ Белый фон для контента */
 }
 
 .about-content-left {
@@ -537,7 +538,12 @@
   }
 
   .about-header-unified {
-    padding: 110px 0 0 0; /* Увеличено для учета навбара на мобильных */
+    padding: 88px 0 30px 0; /* 88px = высота навбара, заголовок на его уровне */
+    background: #0f172a; /* Темный фон */
+  }
+  
+  .about-content-layout {
+    background: #ffffff; /* Белый фон для контента */
   }
 
   .about-header-unified h1 {
@@ -591,13 +597,19 @@
     padding: 70px 16px 0;
   }
 
+  .about-header-unified {
+    padding: 88px 0 24px 0; /* 88px = высота навбара */
+    background: #0f172a; /* Темный фон */
+  }
+
   .about-header-unified h1 {
     font-size: 28px;
   }
 
   .about-content-layout {
-    padding: 24px 16px;
+    padding: 40px 16px 24px; /* Увеличен верхний padding */
     gap: 24px;
+    background: #ffffff; /* Белый фон для контента */
   }
 
   .about-text-combined {
