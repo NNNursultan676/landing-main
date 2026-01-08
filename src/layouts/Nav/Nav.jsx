@@ -13,7 +13,6 @@ import modalService from '../../services/modalService';
 const Nav = () => {
   const [visible, setVisible] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [dragStartY, setDragStartY] = useState(0);
   const [dragStartScroll, setDragStartScroll] = useState(0);
@@ -50,21 +49,13 @@ const Nav = () => {
     setVisible(false); // Close mobile menu if open
   };
 
-  // Track scroll position to update active section, nav style, and scroll progress
+  // Track scroll position to update active section and nav style
   React.useEffect(() => {
     const nav = document.querySelector('.nav');
     
     const handleScroll = () => {
       const sections = ['home', 'about', 'solutions', 'contacts'];
       const scrollPosition = window.scrollY + 150;
-
-      // Calculate scroll progress (0 to 100%)
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
-      const scrollableHeight = documentHeight - windowHeight;
-      const currentScroll = window.scrollY;
-      const progress = scrollableHeight > 0 ? (currentScroll / scrollableHeight) * 100 : 0;
-      setScrollProgress(Math.min(100, Math.max(0, progress)));
 
       // Update nav style on scroll
       if (nav) {
