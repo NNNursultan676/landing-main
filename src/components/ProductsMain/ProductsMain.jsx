@@ -6,7 +6,7 @@ import { VerticalLeftOutlined } from "@ant-design/icons";
 const Main = () => {
   const { t } = useTranslation();
   return (
-    <div className="products-additional-container">
+    <div className="products-additional-container animate-fade-soft">
      <Row className="products-content">
           <div className="products-content-text">
                <div className="products-content-text-title">{t('productTitle')}</div>

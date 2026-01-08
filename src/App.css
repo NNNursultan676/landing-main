@@ -267,6 +267,60 @@ body {
   }
 }
 
+/* ===== Motion & Animations ===== */
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-soft {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-up {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: fade-up 0.8s ease-out forwards;
+}
+
+.animate-fade-soft {
+  opacity: 0;
+  animation: fade-in-soft 0.8s ease-out forwards;
+}
+
+.animate-delay-1 {
+  animation-delay: 0.12s;
+}
+
+.animate-delay-2 {
+  animation-delay: 0.22s;
+}
+
+.animate-delay-3 {
+  animation-delay: 0.32s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up,
+  .animate-fade-soft {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 /* Modal Styles */
 .ant-modal-content {
   background-color: #FFFFFF;

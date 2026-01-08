@@ -79,8 +79,10 @@ const PartnersSection = () => {
   };
 
   return (
-    <div className="partners-section">
-      <div className="partners-section-text">{t('partnersSectionText')}</div>
+    <div className="partners-section animate-fade-soft">
+      <div className="partners-section-text">
+        {t('partnersSectionText')}
+      </div>
       <Carousel
         responsive={responsive}
         infinite={true}

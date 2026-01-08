@@ -27,7 +27,7 @@ const SolutionsSection = () => {
     },
   ];
   return (
-    <div className="solutions-section">
+    <div className="solutions-section animate-fade-up">
       <div className="solutions-header">
         <h2 className="solutions-title">{t('solutionTitle1')}</h2>
         <h2 className="solutions-subtitle">{t('solutionTitle2')}</h2>

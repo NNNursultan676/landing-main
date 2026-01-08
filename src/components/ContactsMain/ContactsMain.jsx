@@ -6,7 +6,7 @@ import './ContactsMain.css'
 const Main = () => {
   const { t } = useTranslation();
   return (
-    <div className="additional-contacts-container">
+    <div className="additional-contacts-container animate-fade-soft">
      <Row className="about-content">
           <div className="about-content-text">
                {t('contactTitle')}

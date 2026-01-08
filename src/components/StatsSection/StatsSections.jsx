@@ -28,7 +28,7 @@ const StatsSection = ({show}) => {
     },
   ];
   return (
-    <div className="stats-section">
+    <div className="stats-section animate-fade-soft">
       <div className="stats-container">
         {stats.map((stat, index) => (
           <StatCard

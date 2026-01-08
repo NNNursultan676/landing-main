@@ -6,7 +6,7 @@ import './AboutMain.css';
 const Main = () => {
   const { t } = useTranslation();  
   return (
-    <div className="additional-container">
+    <div className="additional-container animate-fade-soft">
       <Row className="about-content additional-content">
         <div className="about-content-text">
           {t('aboutTitle')}
