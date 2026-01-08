@@ -51,7 +51,7 @@ const Nav = () => {
     const nav = document.querySelector('.nav');
     
     const handleScroll = () => {
-      const sections = ['home', 'solutions', 'about', 'products', 'partners', 'contacts'];
+      const sections = ['home', 'solutions', 'about', 'partners', 'contacts'];
       const scrollPosition = window.scrollY + 150;
 
       // Update nav style on scroll
@@ -155,15 +155,6 @@ const Nav = () => {
               className={activeSection === 'about' ? 'active' : ''}
             >
               {t('aboutUs')}
-            </a>
-          </li>
-          <li>
-            <a 
-              href="#products" 
-              onClick={(e) => { e.preventDefault(); scrollToSection('products'); }}
-              className={activeSection === 'products' ? 'active' : ''}
-            >
-              {t('products')}
             </a>
           </li>
           <li>

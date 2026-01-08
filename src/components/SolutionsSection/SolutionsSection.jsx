@@ -1,5 +1,6 @@
 import React from 'react';
 import SolutionCard from '../SolutionCard/';
+import SolutionsHeader from '../SolutionsHeader/SolutionsHeader';
 import './SolutionsSection.css';
 import CreditConveyorImg from '../../assets/images/ConveyerSvg.svg';
 import CreditBrokerImg from '../../assets/images/credit-broker.svg';
@@ -14,13 +15,13 @@ const SolutionsSection = () => {
       image: CreditConveyorImg,
       title: t('solutionCreditConveyorTitle'),
       description: t('solutionCreditConveyorDesc'),
-      variant: 'default',
+      variant: 'conveyor',
     },
     {
       image: CreditBrokerImg,
       title: t('solutionCreditBrokerTitle'),
       description: t('solutionCreditBrokerDesc'),
-      variant: 'default',
+      variant: 'broker',
     },
     {
       image: CustomSolutionsImg,
@@ -30,13 +31,10 @@ const SolutionsSection = () => {
     },
   ];
   return (
-    <div className="solutions-section animate-fade-up">
-      <div className="solutions-header">
-        <h2 className="solutions-title">{t('solutionTitle1')}</h2>
-        <h2 className="solutions-subtitle">{t('solutionTitle2')}</h2>
-        <p className="solutions-description">{t('solutionTitle3')}</p>
-      </div>
-      <div className="solutions-container">
+    <div className="solutions-section-wrapper">
+      <SolutionsHeader />
+      <div className="solutions-section animate-fade-up">
+        <div className="solutions-container">
         {solutions.map((solution, index) => (
           <SolutionCard
             key={index}
@@ -46,6 +44,7 @@ const SolutionsSection = () => {
             variant={solution.variant}
           />
         ))}
+        </div>
       </div>
     </div>
   );

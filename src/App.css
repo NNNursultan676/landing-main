@@ -43,6 +43,15 @@ body {
   box-sizing: border-box;
 }
 
+/* Убираем боковые белые линии */
+body {
+  overflow-x: hidden;
+}
+
+* {
+  max-width: 100vw;
+}
+
 .custom-text-div {
   margin: 100px 153px 95px 153px;
   text-align: center;

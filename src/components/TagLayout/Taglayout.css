@@ -1,50 +1,104 @@
-/* Taglayout.css - Premium Tag Layout */
+/* Taglayout.css - Premium Animated Tag Layout */
 
-.tag-layout {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(6, auto);
-  gap: 24px 16px;
-  margin: 80px auto 120px;
+.tag-layout-container {
+  width: 100%;
   max-width: 1400px;
+  margin: 80px auto 120px;
   padding: 0 40px;
-  justify-items: center;
+  position: relative;
+  min-height: 600px;
+  overflow: hidden;
+}
+
+.tag-layout-scroll-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
   align-items: center;
+  justify-content: center;
+}
+
+.tag-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  will-change: transform, opacity;
+}
+
+.tag-group-1 {
+  align-self: flex-end;
+  margin-right: 20%;
+}
+
+.tag-group-2 {
+  align-self: flex-start;
+  margin-left: 20%;
+}
+
+.tag-group-3 {
+  align-self: flex-end;
+  margin-right: 15%;
 }
 
 /* Responsive */
-@media screen and (max-width: 1400px) {
-  .tag-layout {
-    grid-template-columns: repeat(5, 1fr);
-    gap: 20px 12px;
-  }
-}
-
-@media screen and (max-width: 1199px) {
-  .tag-layout {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    margin: 60px auto 80px;
+@media (max-width: 1200px) {
+  .tag-layout-container {
     padding: 0 32px;
+    min-height: 500px;
+  }
+
+  .tag-group-1 {
+    margin-right: 10%;
+  }
+
+  .tag-group-2 {
+    margin-left: 10%;
+  }
+
+  .tag-group-3 {
+    margin-right: 5%;
   }
 }
 
-@media screen and (max-width: 768px) {
-  .tag-layout {
-    gap: 12px;
-    margin: 48px auto 64px;
+@media (max-width: 768px) {
+  .tag-layout-container {
+    margin: 60px auto 80px;
     padding: 0 24px;
+    min-height: 400px;
+  }
+
+  .tag-layout-scroll-wrapper {
+    gap: 40px;
+  }
+
+  .tag-group {
+    gap: 12px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .tag-group-1,
+  .tag-group-2,
+  .tag-group-3 {
+    margin: 0;
+    align-self: center;
   }
 }
 
-@media screen and (max-width: 480px) {
-  .tag-layout {
-    gap: 10px;
-    margin: 40px auto 56px;
+@media (max-width: 480px) {
+  .tag-layout-container {
+    margin: 48px auto 64px;
     padding: 0 16px;
+    min-height: 350px;
+  }
+
+  .tag-layout-scroll-wrapper {
+    gap: 32px;
   }
 }

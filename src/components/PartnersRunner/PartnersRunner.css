@@ -1,0 +1,185 @@
+/* PartnersRunner.css - Premium Running Line with Partner Logos */
+
+.partners-runner-section {
+  width: 100%;
+  padding: 100px 0;
+  background: linear-gradient(180deg, var(--color-bg-light) 0%, var(--color-bg-soft) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.partners-runner-title {
+  font-size: 48px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 64px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  background: linear-gradient(135deg, var(--color-text-primary) 0%, var(--color-text-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 40px;
+}
+
+.partners-runner-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 40px 0;
+}
+
+.partners-runner-container::before,
+.partners-runner-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 200px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.partners-runner-container::before {
+  left: 0;
+  background: linear-gradient(to right, var(--color-bg-soft), transparent);
+}
+
+.partners-runner-container::after {
+  right: 0;
+  background: linear-gradient(to left, var(--color-bg-soft), transparent);
+}
+
+.partners-runner-track {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+  animation: partners-run 40s linear infinite;
+  will-change: transform;
+}
+
+.partners-runner-item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 40px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--color-border);
+  transition: all 0.3s ease;
+  height: 100px;
+  min-width: 180px;
+}
+
+.partners-runner-item:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border-color: var(--color-unified-soft);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.partners-runner-item img {
+  max-width: 140px;
+  max-height: 60px;
+  object-fit: contain;
+  filter: grayscale(0.3) opacity(0.7);
+  transition: all 0.3s ease;
+}
+
+.partners-runner-item:hover img {
+  filter: grayscale(0) opacity(1);
+  transform: scale(1.1);
+}
+
+@keyframes partners-run {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-33.333% - 20px));
+  }
+}
+
+/* Pause on hover */
+.partners-runner-container:hover .partners-runner-track {
+  animation-play-state: paused;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .partners-runner-title {
+    font-size: 42px;
+    padding: 0 32px;
+  }
+
+  .partners-runner-item {
+    min-width: 160px;
+    height: 90px;
+    padding: 18px 32px;
+  }
+
+  .partners-runner-item img {
+    max-width: 120px;
+    max-height: 55px;
+  }
+}
+
+@media (max-width: 768px) {
+  .partners-runner-section {
+    padding: 80px 0;
+  }
+
+  .partners-runner-title {
+    font-size: 36px;
+    margin-bottom: 48px;
+    padding: 0 24px;
+  }
+
+  .partners-runner-track {
+    gap: 40px;
+  }
+
+  .partners-runner-item {
+    min-width: 140px;
+    height: 80px;
+    padding: 16px 24px;
+  }
+
+  .partners-runner-item img {
+    max-width: 100px;
+    max-height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .partners-runner-section {
+    padding: 60px 0;
+  }
+
+  .partners-runner-title {
+    font-size: 28px;
+    margin-bottom: 32px;
+    padding: 0 16px;
+  }
+
+  .partners-runner-track {
+    gap: 32px;
+  }
+
+  .partners-runner-item {
+    min-width: 120px;
+    height: 70px;
+    padding: 14px 20px;
+  }
+
+  .partners-runner-item img {
+    max-width: 90px;
+    max-height: 45px;
+  }
+}

@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import TagItem from './TagItem';
 import './Taglayout.css';
 import { useTranslation } from 'react-i18next';
 
 const TagLayout = () => {
   const { t } = useTranslation();
+  const containerRef = useRef(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
 
   const tags = [
     t('tag1'),
@@ -19,31 +22,82 @@ const TagLayout = () => {
     t('tag10'),
   ];
 
-  // Define fixed positions for each tag
-  const positions = [
-    { row: 1, col: 5, overlapColumns: true }, // tag1
-    { row: 1, col: 2, colSpan: 2 }, // tag2
-    { row: 2, col: 4, overlapColumns: true }, // tag3
-    { row: 2, col: 2 }, // tag4
-    { row: 3, col: 3, olSpan: 2 }, // tag5
-    { row: 3, col: 5, overlapColumns: true }, // tag6
-    { row: 4, col: 4, colSpan: 2 }, // tag7
-    { row: 4, col: 2, overlapColumns: true }, // tag8
-    { row: 5, col: 5 }, // tag9
-    { row: 5, col: 3 }, // tag10
-  ];
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!containerRef.current) return;
+      
+      const rect = containerRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const elementTop = rect.top;
+      const elementHeight = rect.height;
+      
+      // Проверяем видимость элемента
+      if (elementTop < windowHeight && elementTop + elementHeight > -200) {
+        setIsVisible(true);
+        // Вычисляем прогресс прокрутки (0-1)
+        const viewportCenter = windowHeight / 2;
+        const elementCenter = elementTop + elementHeight / 2;
+        const distance = Math.abs(viewportCenter - elementCenter);
+        const maxDistance = windowHeight;
+        const progress = Math.max(0, Math.min(1, 1 - (distance / maxDistance)));
+        setScrollProgress(progress);
+      } else {
+        setIsVisible(false);
+      }
+    };
 
-  // Map tags to positions
-  const tagsWithPositions = tags.map((tag, index) => ({
-    text: tag,
-    position: positions[index],
-  }));
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Разделяем теги на группы для анимации
+  const group1 = tags.slice(0, 3);
+  const group2 = tags.slice(3, 6);
+  const group3 = tags.slice(6, 10);
 
   return (
-    <div className="tag-layout">
-      {tagsWithPositions.map((tag, index) => (
-        <TagItem key={tag.index} text={tag.text} position={tag.position} />
-      ))}
+    <div className="tag-layout-container" ref={containerRef}>
+      <div className="tag-layout-scroll-wrapper">
+        {/* Группа 1 - появляется справа */}
+        <div 
+          className="tag-group tag-group-1"
+          style={{
+            transform: `translateX(${isVisible ? (1 - scrollProgress) * 150 : 150}px)`,
+            opacity: isVisible ? Math.min(1, scrollProgress * 3) : 0
+          }}
+        >
+          {group1.map((tag, index) => (
+            <TagItem key={`group1-${index}`} text={tag} variant="star" />
+          ))}
+        </div>
+
+        {/* Группа 2 - появляется слева */}
+        <div 
+          className="tag-group tag-group-2"
+          style={{
+            transform: `translateX(${isVisible ? -(1 - scrollProgress) * 150 : -150}px)`,
+            opacity: isVisible ? Math.min(1, (scrollProgress - 0.2) * 3) : 0
+          }}
+        >
+          {group2.map((tag, index) => (
+            <TagItem key={`group2-${index}`} text={tag} variant="star" />
+          ))}
+        </div>
+
+        {/* Группа 3 - появляется справа */}
+        <div 
+          className="tag-group tag-group-3"
+          style={{
+            transform: `translateX(${isVisible ? (1 - scrollProgress) * 150 : 150}px)`,
+            opacity: isVisible ? Math.min(1, (scrollProgress - 0.4) * 3) : 0
+          }}
+        >
+          {group3.map((tag, index) => (
+            <TagItem key={`group3-${index}`} text={tag} variant="star" />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,11 +1,11 @@
 :root {
   /* Unified Color Palette - Premium B2B Fintech */
-  /* Единый цвет между серым и синим: #4a6fa5 (Slate Blue) */
-  --color-unified: #4a6fa5;
-  --color-unified-dark: #3a5a85;
-  --color-unified-light: #5b7ba3;
-  --color-unified-soft: rgba(74, 111, 165, 0.15);
-  --color-unified-lighter: rgba(74, 111, 165, 0.08);
+  /* Единый цвет между серым и синим с повышенной насыщенностью синего: #3d6ba8 */
+  --color-unified: #3d6ba8;
+  --color-unified-dark: #2d4f7d;
+  --color-unified-light: #4d7bb8;
+  --color-unified-soft: rgba(61, 107, 168, 0.2);
+  --color-unified-lighter: rgba(61, 107, 168, 0.1);
   
   /* Заменяем все синие и серые на unified */
   --color-primary: var(--color-unified);
@@ -41,7 +41,7 @@
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
   --shadow-xl: 0 12px 48px rgba(0, 0, 0, 0.15);
-  --shadow-glow: 0 8px 24px rgba(74, 111, 165, 0.25);
+  --shadow-glow: 0 8px 24px rgba(61, 107, 168, 0.3);
   --shadow-glow-accent: 0 8px 24px rgba(80, 245, 176, 0.25);
 
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',

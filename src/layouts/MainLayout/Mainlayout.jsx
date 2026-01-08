@@ -7,6 +7,8 @@ import TagLayout from '../../components/TagLayout/Taglayout'
 import StatsSection from '../../components/StatsSection/StatsSections'
 import PartnersSection from '../../components/PartnersSection/PartnersSection'
 import SolutionsSection from '../../components/SolutionsSection/SolutionsSection'
+import PartnersRunner from '../../components/PartnersRunner/PartnersRunner'
+import CTASection from '../../components/CTASection/CTASection'
 import Footer from '../../layouts/Footer'
 import { useTranslation } from 'react-i18next'
 import AboutMain from '../../components/AboutMain/AboutMain'
@@ -158,29 +160,8 @@ const Mainlayout = () => {
         <StatsSection show={true} />
       </div>
       
-      {/* Products Section */}
-      <div id="products">
-        <ProductsMain />
-        <div className='products-container'>
-          <Row gutter={[16, 16]} justify="center">
-            {servicesData.map((service) => (
-              <Col key={service.key} xs={24} sm={24} md={24}>
-                <ServiceSection
-                  title={service.title}
-                  subtitle={service.subtitle}
-                  image={service.image}
-                  points={service.points}
-                />
-                <BenefitsSection
-                  headline={service.benefits.headline}
-                  benefits={service.benefits.benefitsList}
-                  buttonText={service.benefits.buttonText}
-                />
-              </Col>
-            ))}
-          </Row>
-        </div>
-      </div>
+      {/* Partners Runner Section */}
+      <PartnersRunner />
       
       {/* Partners Section */}
       <div id="partners">
@@ -204,6 +185,9 @@ const Mainlayout = () => {
           </Row>
         </div>
       </div>
+      
+      {/* CTA Section */}
+      <CTASection />
       
       {/* Contacts Section */}
       <div id="contacts">
