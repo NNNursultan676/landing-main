@@ -147,20 +147,22 @@ const Mainlayout = () => {
       </div>
       
       {/* Solutions Section */}
-      <div id="solutions">
+      <div id="solutions" className="section-snap">
         <SolutionsSection />
       </div>
       
       {/* Partners Section */}
-      <div id="partners">
+      <div id="partners" className="section-snap">
         <PartnersRunner />
       </div>
       
       {/* CTA Section */}
-      <CTASection />
+      <div className="section-snap">
+        <CTASection />
+      </div>
       
       {/* Contacts Section */}
-      <div id="contacts">
+      <div id="contacts" className="section-snap">
         <ContactsMain />
         <div className="contact-info">
           <div className='contact-info-container'>
