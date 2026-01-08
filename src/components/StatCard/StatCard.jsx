@@ -2,7 +2,8 @@ import React from 'react';
 import './StatCard.css';
 
 const StatCard = ({ value, label, description, addClass }) => {
-  let cl = addClass ? `stat-card stat-card-about` : 'stat-card'
+  const cl = addClass ? 'stat-card stat-card-about' : 'stat-card';
+  
   return (
     <div className={cl}>
       <div className='stat-card-title'>
