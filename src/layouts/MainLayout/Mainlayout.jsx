@@ -19,6 +19,7 @@ import PartnersRunner from '../../components/PartnersRunner/PartnersRunner'
 import Footer from '../../layouts/Footer'
 import { useTranslation } from 'react-i18next'
 import ContactsMain from '../../components/ContactsMain/ContactsMain'
+import WaterParticles from '../../components/WaterParticles/WaterParticles'
 import '../../layouts/Products/Products.css'
 import '../../layouts/Partners/Partners.css'
 import '../../layouts/Contacts/Contacts.css'
@@ -38,6 +39,8 @@ const Mainlayout = () => {
       */}
       <div className="main-about-unified" id="home">
         <div className="main-hero-section">
+          {/* 3D анимированные частицы - эффект движения воды */}
+          <WaterParticles />
           <Main />
         </div>
         

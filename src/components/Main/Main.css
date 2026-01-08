@@ -59,7 +59,7 @@
   max-width: 1400px;
   margin: 0 auto;
   position: relative;
-  z-index: 1;
+  z-index: 2; /* Поверх анимированных частиц */
   flex: 1;
   justify-content: center;
 }

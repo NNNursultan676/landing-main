@@ -67,6 +67,12 @@
   scroll-snap-stop: always;
 }
 
+/* Убеждаемся, что контент поверх частиц */
+.main-hero-section .main-content {
+  position: relative;
+  z-index: 2;
+}
+
 /* About Section within unified */
 .about-section-unified {
   flex: 0 0 auto;

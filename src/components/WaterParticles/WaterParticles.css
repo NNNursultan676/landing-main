@@ -1,0 +1,98 @@
+/* WaterParticles.css - 3D Animated Water Effect */
+
+.water-particles-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  perspective: 1000px; /* 3D перспектива */
+  overflow: hidden;
+}
+
+.water-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle, 
+    rgba(255, 255, 255, 0.9) 0%, 
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
+  box-shadow: 
+    0 0 4px rgba(255, 255, 255, 0.8),
+    0 0 8px rgba(255, 255, 255, 0.4),
+    0 0 12px rgba(255, 255, 255, 0.2);
+  will-change: transform, opacity;
+  transition: opacity 0.3s ease;
+  transform-style: preserve-3d; /* Сохраняем 3D трансформации */
+}
+
+/* Плавное появление частиц при загрузке */
+.water-particle {
+  animation: particleFadeIn 2s ease-out forwards;
+  animation-delay: var(--delay);
+  opacity: 0;
+}
+
+@keyframes particleFadeIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 0, -50px) scale(0);
+  }
+  to {
+    opacity: var(--opacity, 0.6);
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+/* Дополнительный эффект свечения для ближних частиц */
+.water-particle::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.3) 0%,
+    transparent 70%
+  );
+  animation: glowPulse 3s ease-in-out infinite;
+  animation-delay: var(--delay);
+  pointer-events: none;
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.2);
+  }
+}
+
+/* Адаптивность - меньше частиц на мобильных */
+@media (max-width: 768px) {
+  .water-particles-container {
+    perspective: 800px;
+  }
+  
+  .water-particle {
+    box-shadow: 
+      0 0 2px rgba(255, 255, 255, 0.6),
+      0 0 4px rgba(255, 255, 255, 0.3);
+  }
+}
+
+@media (max-width: 480px) {
+  .water-particles-container {
+    perspective: 600px;
+  }
+}
