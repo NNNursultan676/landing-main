@@ -1,21 +1,36 @@
+/**
+ * ⚠️ ВАЖНО: НАВБАР И СКРОЛЛЕР - НЕ МЕНЯТЬ! ⚠️
+ * 
+ * Этот компонент навбара содержит критически важную функциональность:
+ * 1. Drag-to-scroll на активных ссылках (зеленая подсветка) - НЕ ТРОГАТЬ
+ * 2. Автоматическое отслеживание активной секции при скролле - НЕ ТРОГАТЬ
+ * 3. Позиционирование навбара (fixed, top: 0) - НЕ ТРОГАТЬ
+ * 4. Логика scrollToSection с учетом высоты навбара (88px) - НЕ ТРОГАТЬ
+ * 
+ * Изменение любой из этих частей сломает навигацию и скроллинг страницы!
+ * 
+ * Можно безопасно изменять:
+ * - Тексты ссылок (через translation.json)
+ * - Стили (Nav.css), но не позиционирование и основные свойства
+ * - Добавлять новые ссылки (обязательно добавить id в sections массив и scrollToSection логику)
+ */
+
 import { useState } from 'react';
 import React from 'react';
-import { Drawer, Menu, Dropdown, Button, Row } from 'antd';
+import { Menu, Dropdown, Row } from 'antd';
 import ArrowDown from '../../assets/images/globe-alt.svg';
 import Logo from '../../assets/images/LogoLight.svg';
 import MenuBurger from '../../assets/images/menu.svg';
 import './Nav.css';
 import { useTranslation } from 'react-i18next';
-import CustomButton from '../../components/CustomButton';
 import LogoBlack from '../../assets/images/LogoBlack.svg';
 import CloseBlack from '../../assets/images/CloseBlack.svg';
 import modalService from '../../services/modalService';
+
 const Nav = () => {
   const [visible, setVisible] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [isDragging, setIsDragging] = useState(false);
-  const [dragStartY, setDragStartY] = useState(0);
-  const [dragStartScroll, setDragStartScroll] = useState(0);
   const { t, i18n } = useTranslation();
 
   const showDrawer = () => {
@@ -26,6 +41,7 @@ const Nav = () => {
     setVisible(false);
   };
 
+  // ⚠️ НЕ МЕНЯТЬ: Логика плавного скролла к секциям с учетом высоты навбара
   const scrollToSection = (sectionId) => {
     if (sectionId === 'home') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -36,6 +52,7 @@ const Nav = () => {
     
     const element = document.getElementById(sectionId);
     if (element) {
+      // ⚠️ ВАЖНО: Высота навбара 88px - используется для правильного позиционирования скролла
       const navHeight = 88; // Height of fixed nav
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
       const offsetPosition = elementPosition - navHeight;
@@ -49,11 +66,13 @@ const Nav = () => {
     setVisible(false); // Close mobile menu if open
   };
 
+  // ⚠️ НЕ МЕНЯТЬ: Автоматическое отслеживание активной секции при скролле
   // Track scroll position to update active section and nav style
   React.useEffect(() => {
     const nav = document.querySelector('.nav');
     
     const handleScroll = () => {
+      // ⚠️ ВАЖНО: Если добавляете новую секцию, добавьте её id сюда
       const sections = ['home', 'about', 'solutions', 'contacts'];
       const scrollPosition = window.scrollY + 150;
 
@@ -129,6 +148,8 @@ const Nav = () => {
   // Combine base classes with the additional class
   const buttonClassName = `success-btn demo ${additionalButtonClass}`.trim();
 
+  // ⚠️ НЕ МЕНЯТЬ: Drag-to-scroll функциональность на активных ссылках
+  // Позволяет перетаскивать активную (зеленую) ссылку для прокрутки страницы
   // Handle drag-to-scroll on active link (green highlighted area)
   const dragStateRef = React.useRef({
     isDragging: false,

@@ -1,45 +1,26 @@
-import { Layout, Row, Col } from 'antd'
+/**
+ * Главный лендинг - структура страницы
+ * 
+ * Структура блоков лендинга (соответствует навигации):
+ * 1. Home (id="home") - Главная секция с hero-контентом
+ * 2. About (id="about") - О компании (внутри main-about-unified)
+ * 3. Solutions (id="solutions") - Решения/Продукты
+ * 4. CTA - Призыв к действию (Заказ демо)
+ * 5. Contacts (id="contacts") - Контакты
+ * 
+ * ⚠️ ВАЖНО: ID секций должны соответствовать навигации в Nav.jsx
+ */
+
+import { Layout, Row } from 'antd'
 import React from 'react'
 import Main from '../../components/Main/Main'
 import './MainLayout.css'
-import CustomText from '../../components/CustomText/CustomText'
-import TagLayout from '../../components/TagLayout/Taglayout'
-import UnifiedFeatures from '../../components/UnifiedFeatures/UnifiedFeatures'
-import PartnersSection from '../../components/PartnersSection/PartnersSection'
 import SolutionsSection from '../../components/SolutionsSection/SolutionsSection'
 import PartnersRunner from '../../components/PartnersRunner/PartnersRunner'
 import CTASection from '../../components/CTASection/CTASection'
 import Footer from '../../layouts/Footer'
 import { useTranslation } from 'react-i18next'
-import AboutMain from '../../components/AboutMain/AboutMain'
-import ProductsMain from '../../components/ProductsMain/ProductsMain'
-import PartnersMain from '../../components/PartnersMain/PartnersMain'
 import ContactsMain from '../../components/ContactsMain/ContactsMain'
-import ServiceSection from '../../components/ServiceSection/ServiceSection'
-import BenefitsSection from '../../components/BenefitsSection/BenefitsSection'
-import CreditConveyorImg from '../../assets/images/ConveyerSvg.svg'
-import CreditBrokerImg from '../../assets/images/credit-broker.svg'
-import CustomSolutionsImg from '../../assets/images/custom-solutions.svg'
-import halyk from '../../assets/images/partners/halyk.svg'
-import centerCredit from '../../assets/images/partners/centerCredit.svg'
-import forte from '../../assets/images/partners/forte.svg'
-import eurasian from '../../assets/images/partners/eurasian.svg'
-import rbk from '../../assets/images/partners/rbk.svg'
-import sapa from '../../assets/images/partners/sapa.svg'
-import jetcar from '../../assets/images/partners/jetcar.svg'
-import astana from '../../assets/images/partners/astana.svg'
-import allur from '../../assets/images/partners/allur.svg'
-import orbis from '../../assets/images/partners/orbis.svg'
-import aster from '../../assets/images/partners/aster.svg'
-import bi from '../../assets/images/partners/bi.svg'
-import mycar from '../../assets/images/partners/mycar.svg'
-import toyota from '../../assets/images/partners/toyota.svg'
-import changan from '../../assets/images/partners/changan.svg'
-import nomadcar from '../../assets/images/partners/nomadcar.svg'
-import tamerlan from '../../assets/images/partners/tamerlan.svg'
-import crystal from '../../assets/images/partners/crystal.svg'
-import avtomarket from '../../assets/images/partners/avtomarket.svg'
-import tulpar from '../../assets/images/partners/tulpar.svg'
 import '../../layouts/Products/Products.css'
 import '../../layouts/Partners/Partners.css'
 import '../../layouts/Contacts/Contacts.css'
@@ -48,76 +29,26 @@ import '../../layouts/About/About.css'
 
 const Mainlayout = () => {
   const { t } = useTranslation();
-  
-  const servicesData = [
-    {
-      key: 'creditConveyor',
-      title: t('productsRes.creditConveyor.title'),
-      subtitle: t('productsRes.creditConveyor.subtitle'),
-      image: CreditConveyorImg,
-      points: t('productsRes.creditConveyor.points', { returnObjects: true }),
-      benefits: {
-        headline: t('productsRes.creditConveyor.benefits.headline'),
-        benefitsList: t('productsRes.creditConveyor.benefits.benefitsList', { returnObjects: true }),
-        buttonText: t('productsRes.creditConveyor.benefits.buttonText'),
-      },
-    },
-    {
-      key: 'creditBroker',
-      title: t('productsRes.creditBroker.title'),
-      subtitle: t('productsRes.creditBroker.subtitle'),
-      image: CreditBrokerImg,
-      points: t('productsRes.creditBroker.points', { returnObjects: true }),
-      benefits: {
-        headline: t('productsRes.creditBroker.benefits.headline'),
-        benefitsList: t('productsRes.creditBroker.benefits.benefitsList', { returnObjects: true }),
-        buttonText: t('productsRes.creditBroker.benefits.buttonText'),
-      },
-    },
-    {
-      key: 'customSolutions',
-      title: t('productsRes.customSolutions.title'),
-      subtitle: t('productsRes.customSolutions.subtitle'),
-      image: CustomSolutionsImg,
-      points: t('productsRes.customSolutions.points', { returnObjects: true }),
-      benefits: {
-        headline: t('productsRes.customSolutions.benefits.headline'),
-        benefitsList: t('productsRes.customSolutions.benefits.benefitsList', { returnObjects: true }),
-        buttonText: t('productsRes.customSolutions.benefits.buttonText'),
-      },
-    },
-  ];
-
-  const partners = [
-    { src: halyk, alt: 'Halyk' },
-    { src: centerCredit, alt: 'Center Credit' },
-    { src: forte, alt: 'Forte' },
-    { src: eurasian, alt: 'Eurasian' },
-    { src: rbk, alt: 'RBK' },
-    { src: sapa, alt: 'Sapa' },
-    { src: jetcar, alt: 'Jetcar' },
-    { src: astana, alt: 'Astana' },
-    { src: allur, alt: 'Allur' },
-    { src: orbis, alt: 'Orbis' },
-    { src: aster, alt: 'Aster' },
-    { src: bi, alt: 'BI' },
-    { src: mycar, alt: 'Mycar' },
-    { src: toyota, alt: 'Toyota' },
-    { src: changan, alt: 'Changan' },
-    { src: nomadcar, alt: 'Nomadcar' },
-    { src: tamerlan, alt: 'Tamerlan' },
-    { src: crystal, alt: 'Crystal' },
-    { src: avtomarket, alt: 'Avtomarket' },
-    { src: tulpar, alt: 'Tulpar' },
-  ];
 
   return (
     <Layout>
-      {/* Unified Main + About Section */}
+      {/* 
+        ========================================
+        БЛОК 1: ГЛАВНАЯ (Home)
+        id="home" - обязателен для навигации
+        ========================================
+      */}
       <div className="main-about-unified" id="home">
         <div className="main-hero-section">
           <Main />
         </div>
+        
+        {/* 
+          ========================================
+          БЛОК 2: О КОМПАНИИ (About)
+          id="about" - обязателен для навигации
+          ========================================
+        */}
         <div id="about" className="about-section-unified">
           <div className="about-header-unified">
             <h1>{t('aboutTitle')}</h1>
@@ -164,19 +95,32 @@ const Mainlayout = () => {
         </div>
       </div>
       
-      {/* Solutions Section */}
+      {/* 
+        ========================================
+        БЛОК 3: РЕШЕНИЯ (Solutions)
+        id="solutions" - обязателен для навигации
+        ========================================
+      */}
       <div id="solutions" className="section-snap">
         <SolutionsSection />
       </div>
       
-      {/* Partners Section - Removed, now in About */}
-      
-      {/* CTA Section */}
+      {/* 
+        ========================================
+        БЛОК 4: ПРИЗЫВ К ДЕЙСТВИЮ (CTA - Call To Action)
+        Заказ демо - ключевой блок для конверсии
+        ========================================
+      */}
       <div className="section-snap">
         <CTASection />
       </div>
       
-      {/* Contacts Section */}
+      {/* 
+        ========================================
+        БЛОК 5: КОНТАКТЫ (Contacts)
+        id="contacts" - обязателен для навигации
+        ========================================
+      */}
       <div id="contacts" className="section-snap">
         <ContactsMain />
         <div className="contact-info">

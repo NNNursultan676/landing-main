@@ -1,6 +1,23 @@
+/**
+ * ⚠️ ВАЖНО: НАВБАР CSS - НЕ МЕНЯТЬ КРИТИЧЕСКИЕ СВОЙСТВА! ⚠️
+ * 
+ * КРИТИЧЕСКИЕ СВОЙСТВА (НЕ ТРОГАТЬ):
+ * - position: fixed - навбар должен быть зафиксирован
+ * - top: 0 - всегда сверху
+ * - z-index: 10000 - поверх всего контента
+ * - height: 88px - используется в JavaScript для scrollToSection (Nav.jsx, строка 39)
+ * 
+ * Можно изменять:
+ * - Цвета, градиенты, blur эффекты
+ * - Размеры шрифтов, отступы
+ * - Анимации и переходы
+ * - clip-path для формы углов
+ */
+
 /* Nav.css - Split Transparent Navigation */
 
 .nav {
+  /* ⚠️ КРИТИЧНО: Не менять position, top, z-index, height */
   position: fixed;
   top: 0;
   z-index: 10000;
@@ -9,7 +26,7 @@
   -webkit-backdrop-filter: none;
   border: none;
   transition: all 0.3s ease;
-  height: 88px;
+  height: 88px; /* ⚠️ Используется в Nav.jsx для scrollToSection */
   display: flex;
   align-items: center;
   pointer-events: none;
