@@ -11,7 +11,7 @@ const UnifiedFeatures = () => {
   const containerRef = useRef(null);
   const wrapperRef = useRef(null);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   const tags = [
     t('tag1'),
@@ -60,22 +60,37 @@ const UnifiedFeatures = () => {
       const elementTop = rect.top;
       const elementHeight = rect.height;
       
-      if (elementTop < windowHeight && elementTop + elementHeight > -windowHeight) {
+      // Проверяем видимость элемента
+      if (elementTop < windowHeight * 1.5 && elementTop + elementHeight > -windowHeight) {
         setIsVisible(true);
         // Вычисляем прогресс прокрутки (0-1)
         // Когда элемент вверху экрана - прогресс 0, когда внизу - прогресс 1
-        const scrollRange = elementHeight - windowHeight;
+        const scrollRange = Math.max(elementHeight - windowHeight, windowHeight);
         const scrolled = Math.max(0, Math.min(scrollRange, windowHeight - elementTop));
-        const progress = scrollRange > 0 ? scrolled / scrollRange : 0;
+        const progress = scrollRange > 0 ? Math.min(1, scrolled / scrollRange) : 0;
         setScrollProgress(progress);
+      } else if (elementTop < windowHeight) {
+        // Элемент уже прошел, показываем последнюю секцию
+        setIsVisible(true);
+        setScrollProgress(1);
       } else {
         setIsVisible(false);
+        setScrollProgress(0);
       }
     };
 
+    // Вызываем сразу для начального состояния
+    setTimeout(() => {
+      handleScroll();
+    }, 100);
+
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
   }, []);
 
   const contactText = t('contactButtonText');
@@ -106,7 +121,8 @@ const UnifiedFeatures = () => {
               className="unified-features-section"
               style={{
                 transform: `translateX(${sectionOffset}%)`,
-                opacity: isVisible ? Math.min(1, sectionProgress * 3) : 0,
+                opacity: isVisible ? Math.max(0.3, Math.min(1, sectionProgress * 2 + 0.3)) : 0.1,
+                visibility: isVisible || sectionProgress > 0 ? 'visible' : 'hidden',
               }}
             >
               {/* Теги слева */}
@@ -114,7 +130,7 @@ const UnifiedFeatures = () => {
                 className="unified-features-tags"
                 style={{
                   transform: `translateX(${isVisible ? -(1 - sectionProgress) * 150 : -150}px)`,
-                  opacity: sectionProgress,
+                  opacity: Math.max(0.5, sectionProgress),
                 }}
               >
                 {tagGroups[index].map((tag, tagIndex) => (
@@ -134,7 +150,7 @@ const UnifiedFeatures = () => {
                 className="unified-features-cube"
                 style={{
                   transform: `translateX(${isVisible ? (1 - sectionProgress) * 150 : 150}px) rotateY(${sectionProgress * 90}deg)`,
-                  opacity: sectionProgress,
+                  opacity: Math.max(0.5, sectionProgress),
                 }}
               >
                 <StatCard
