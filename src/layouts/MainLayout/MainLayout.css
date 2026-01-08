@@ -122,15 +122,55 @@
   box-sizing: border-box;
 }
 
-/* ⚠️ ВАЖНО: Header на уровне навбара, темный фон как продолжение главной */
+/* ⚠️ ВАЖНО: Header на уровне навбара, синий фон с частицами как продолжение главной */
 .about-header-unified {
   text-align: center;
   margin: 0;
-  padding: 92px 0 30px 0; /* 92px = немного выше навбара, заголовок ближе к нему */
+  margin-top: 88px; /* ⚠️ Отступ сверху = высота навбара - полоска начинается сразу под навбаром */
+  padding: 16px 0; /* Минимальный padding для заголовка */
   flex: 0 0 auto;
   position: relative;
   z-index: 1; /* ⚠️ Меньше навбара, но больше фона секции */
-  background: #0f172a; /* ⚠️ Темный фон как продолжение главной */
+  /* ⚠️ Тот же фон что и главная страница - синий с частицами */
+  background: 
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(61, 107, 168, 0.15) 0%, transparent 100%),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(80, 245, 176, 0.12) 0%, transparent 100%),
+    #0f172a;
+  overflow: hidden;
+  display: flex;
+  align-items: center; /* Центрируем заголовок вертикально */
+  justify-content: center;
+  min-height: fit-content; /* Высота подстраивается под контент */
+}
+
+/* ⚠️ Добавляем частицы как на главной странице */
+.about-header-unified::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    url(../../assets/images/mainBackground.png) no-repeat center / cover;
+  opacity: 0.12;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.about-header-unified::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, var(--color-accent-soft) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: pulse 8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .about-header-unified h1 {
@@ -139,11 +179,14 @@
   line-height: 1.1;
   letter-spacing: -0.03em;
   margin: 0;
+  padding: 0;
   color: #ffffff;
   background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.9) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  position: relative;
+  z-index: 1; /* Поверх частиц */
 }
 
 /* ⚠️ ВАЖНО: Контент на белом фоне, занимает оставшееся пространство */
@@ -540,8 +583,12 @@
   }
 
   .about-header-unified {
-    padding: 92px 0 24px 0; /* 92px = заголовок выше, ближе к навбару */
-    background: #0f172a; /* Темный фон - продолжение главной */
+    margin-top: 88px; /* Отступ сверху = высота навбара */
+    padding: 12px 0; /* Меньший padding на мобильных */
+    background: 
+      radial-gradient(ellipse 80% 50% at 50% 0%, rgba(61, 107, 168, 0.15) 0%, transparent 100%),
+      radial-gradient(ellipse 60% 40% at 100% 100%, rgba(80, 245, 176, 0.12) 0%, transparent 100%),
+      #0f172a; /* Синий фон с частицами - продолжение главной */
   }
   
   .about-content-layout {
@@ -600,8 +647,12 @@
   }
 
   .about-header-unified {
-    padding: 92px 0 20px 0; /* 92px = заголовок выше, ближе к навбару */
-    background: #0f172a; /* Темный фон - продолжение главной */
+    margin-top: 88px; /* Отступ сверху = высота навбара */
+    padding: 10px 0; /* Еще меньший padding на маленьких экранах */
+    background: 
+      radial-gradient(ellipse 80% 50% at 50% 0%, rgba(61, 107, 168, 0.15) 0%, transparent 100%),
+      radial-gradient(ellipse 60% 40% at 100% 100%, rgba(80, 245, 176, 0.12) 0%, transparent 100%),
+      #0f172a; /* Синий фон с частицами - продолжение главной */
   }
   
   .about-content-layout {
