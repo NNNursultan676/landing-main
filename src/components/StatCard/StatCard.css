@@ -4,8 +4,8 @@
   background: linear-gradient(135deg, 
     rgba(26, 35, 50, 0.95) 0%, 
     rgba(21, 28, 40, 0.98) 100%);
-  border-radius: 24px;
-  padding: 48px 40px;
+  border-radius: 16px;
+  padding: 20px 16px;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -51,16 +51,16 @@
 }
 
 .stat-card-title {
-  margin-bottom: 24px;
+  margin-bottom: 12px;
   position: relative;
   z-index: 1;
 }
 
 .stat-card-title-1 {
-  font-size: 64px;
+  font-size: 42px;
   font-weight: 800;
   line-height: 1;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   background: linear-gradient(135deg, 
     var(--color-accent) 0%, 
     var(--color-accent-light) 50%,
@@ -95,12 +95,12 @@
 }
 
 .stat-card-title-2 {
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--color-accent);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 12px;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
   transition: all 0.4s ease;
   opacity: 0.95;
 }
@@ -112,8 +112,8 @@
 }
 
 .stat-card-description {
-  font-size: 16px;
-  line-height: 1.6;
+  font-size: 12px;
+  line-height: 1.4;
   color: rgba(255, 255, 255, 0.7);
   font-weight: 400;
   transition: all 0.4s ease;

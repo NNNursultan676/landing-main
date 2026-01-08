@@ -4,7 +4,7 @@
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 120px 40px;
+  padding: 0;
   text-align: center;
   position: relative;
 }
@@ -12,8 +12,8 @@
 .stats-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  margin-bottom: 64px;
+  gap: 16px;
+  margin-bottom: 0;
   position: relative;
 }
 

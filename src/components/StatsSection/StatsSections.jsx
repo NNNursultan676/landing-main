@@ -40,11 +40,6 @@ const StatsSection = ({show}) => {
           />
         ))}
       </div>
-      <CustomButton
-            title={t('contactButton')}
-            styleName="success-btn call-btn"
-            onClick={() => modalService.openModal(contactText)}
-          />
     </div>
   );
 };
