@@ -17,7 +17,7 @@ const Main = () => {
   const buttonClassName = `success-btn ${additionalButtonClass}`.trim();
 
   return (
-    <div className="main-container" style={{ paddingTop: '100px' }}>
+    <>
       <Nav />
       <Row className="main-content animate-fade-up">
         <div className="main-content-left animate-delay-1">
@@ -34,7 +34,7 @@ const Main = () => {
           <img src={MainElement} alt="MainImage" />
         </div>
       </Row>
-    </div>
+    </>
   );
 }
 

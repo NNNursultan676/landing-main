@@ -114,8 +114,29 @@ const Mainlayout = () => {
 
   return (
     <Layout>
-      {/* Main Hero Section */}
-      <Main />
+      {/* Unified Main + About Section */}
+      <div className="main-about-unified" id="home">
+        <div className="main-hero-section">
+          <Main />
+        </div>
+        <div id="about" className="about-section-unified">
+          <div className="about-header-unified">
+            <h1>{t('aboutTitle')}</h1>
+          </div>
+          <div className="about-content-unified">
+            <div className="about-text-unified">
+              {t('aboutText1')} <span className="highlighted">{t('aboutText2')}</span> {t('aboutText3')}
+            </div>
+            <div className="about-mission-unified">
+              <div className="about-mission-title">{t('aboutText4')}</div>
+              <div className="about-mission-text">{t('aboutText5')}</div>
+            </div>
+            <div className="stats-container-unified">
+              <StatsSection show={true} />
+            </div>
+          </div>
+        </div>
+      </div>
       
       {/* Custom Text Section */}
       <div className='custom-text-background'>
@@ -142,23 +163,6 @@ const Mainlayout = () => {
       {/* Solutions Section */}
       <div id="solutions">
         <SolutionsSection />
-      </div>
-      
-      {/* About Section */}
-      <div id="about" className="about-section-wrapper">
-        <div className="about-sticky-container">
-          <AboutMain />
-        </div>
-        <div className="about-content">
-          <div className="about-page-text">
-            {t('aboutText1')} <p className="about-page-text-highlighted">{t('aboutText2')}</p> {t('aboutText3')}
-          </div>
-          <div className='about-page-text-2'>
-            <div className='about-page-text-2-highlighted'>{t('aboutText4')}</div>
-            <div className='about-page-text-2-regular'>{t('aboutText5')}</div>
-          </div>
-          <StatsSection show={true} />
-        </div>
       </div>
       
       {/* Partners Section */}
