@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import './UnifiedFeatures.css';
 import { useTranslation } from 'react-i18next';
 import StatCard from '../StatCard/StatCard';
@@ -8,9 +8,6 @@ import modalService from '../../services/modalService';
 
 const UnifiedFeatures = () => {
   const { t } = useTranslation();
-  const containerRef = useRef(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [isVisible, setIsVisible] = useState(true);
 
   const tags = [
     t('tag1'),
@@ -43,144 +40,84 @@ const UnifiedFeatures = () => {
     },
   ];
 
-  // Разделяем теги на группы для каждого кубика
+  // Разделяем теги на группы: 3, 3-4, 3-4
   const tagGroups = [
-    tags.slice(0, 3),
-    tags.slice(3, 6),
-    tags.slice(6, 10),
+    tags.slice(0, 3),      // Первая группа: 3 предложения
+    tags.slice(3, 7),      // Вторая группа: 3-4 предложения
+    tags.slice(7, 10),     // Третья группа: 3 предложения
   ];
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!containerRef.current) return;
-      
-      try {
-        const rect = containerRef.current.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-        const elementTop = rect.top;
-        const elementHeight = Math.max(rect.height, windowHeight * 3);
-        
-        // Вычисляем прогресс прокрутки
-        const startOffset = windowHeight * 0.5;
-        const endOffset = elementHeight - windowHeight * 0.5;
-        const scrollRange = endOffset - startOffset;
-        
-        if (elementTop <= startOffset && elementTop + elementHeight >= -windowHeight) {
-          setIsVisible(true);
-          const scrolled = Math.max(0, Math.min(scrollRange, startOffset - elementTop));
-          const progress = scrollRange > 0 ? Math.min(1, scrolled / scrollRange) : 0;
-          setScrollProgress(progress);
-        } else if (elementTop < startOffset) {
-          setIsVisible(true);
-          setScrollProgress(1);
-        } else {
-          setIsVisible(false);
-          setScrollProgress(0);
-        }
-      } catch (error) {
-        console.error('Error in handleScroll:', error);
-      }
-    };
-
-    // Начальное состояние
-    const timeoutId = setTimeout(() => {
-      handleScroll();
-    }, 200);
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('resize', handleScroll, { passive: true });
-    
-    return () => {
-      clearTimeout(timeoutId);
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleScroll);
-    };
-  }, []);
 
   const contactText = t('contactButtonText');
 
   return (
-    <div className="unified-features-container" ref={containerRef}>
-      <div className="unified-features-scroll-wrapper">
-        {stats.map((stat, index) => {
-          // Каждая секция занимает 1/3 прогресса
-          const sectionStart = index / 3;
-          const sectionEnd = (index + 1) / 3;
-          
-          // Нормализуем прогресс для текущей секции
-          let sectionProgress = 0;
-          if (scrollProgress >= sectionStart && scrollProgress < sectionEnd) {
-            sectionProgress = (scrollProgress - sectionStart) / (sectionEnd - sectionStart);
-          } else if (scrollProgress >= sectionEnd) {
-            sectionProgress = 1;
-          } else if (index === 0 && scrollProgress < sectionStart) {
-            sectionProgress = Math.max(0, scrollProgress * 3);
-          }
-          
-          // Горизонтальное смещение
-          const totalOffset = scrollProgress * 100;
-          const sectionOffset = (index * 100) - totalOffset;
-          
-          const showSection = isVisible && (scrollProgress >= sectionStart - 0.1 || index === 0);
-          
-          return (
-            <div 
-              key={`section-${index}`}
-              className="unified-features-section"
-              style={{
-                transform: `translateX(${sectionOffset}%)`,
-                opacity: showSection ? Math.max(0.1, Math.min(1, sectionProgress * 2.5 + 0.1)) : 0,
-                visibility: showSection ? 'visible' : 'hidden',
-              }}
-            >
-              {/* Теги слева */}
-              <div 
-                className="unified-features-tags"
-                style={{
-                  transform: `translateX(${showSection ? -(1 - sectionProgress) * 150 : -150}px)`,
-                  opacity: Math.max(0.3, sectionProgress),
-                }}
-              >
-                {tagGroups[index] && tagGroups[index].map((tag, tagIndex) => (
-                  <TagItem 
-                    key={`tag-${index}-${tagIndex}`} 
-                    text={tag || ''} 
-                    variant="star"
-                    style={{
-                      animationDelay: `${tagIndex * 0.15}s`,
-                    }}
-                  />
-                ))}
-              </div>
+    <div className="unified-features-container">
+      <div className="unified-features-content">
+        {/* Первая секция: блок справа, слева 3 предложения */}
+        <div className="unified-features-section">
+          <div className="unified-features-tags">
+            {tagGroups[0].map((tag, index) => (
+              <TagItem 
+                key={`tag-0-${index}`} 
+                text={tag} 
+                variant="star"
+              />
+            ))}
+          </div>
+          <div className="unified-features-cube">
+            <StatCard
+              value={stats[0].value}
+              label={stats[0].label}
+              description={stats[0].description}
+              addClass={false}
+            />
+          </div>
+        </div>
 
-              {/* Кубик справа */}
-              <div 
-                className="unified-features-cube"
-                style={{
-                  transform: `translateX(${showSection ? (1 - sectionProgress) * 150 : 150}px) rotateY(${sectionProgress * 90}deg)`,
-                  opacity: Math.max(0.3, sectionProgress),
-                }}
-              >
-                <StatCard
-                  value={stat.value || ''}
-                  label={stat.label || ''}
-                  description={stat.description || ''}
-                  addClass={false}
-                />
-              </div>
-            </div>
-          );
-        })}
+        {/* Вторая секция: блок справа, слева 3-4 предложения */}
+        <div className="unified-features-section">
+          <div className="unified-features-tags">
+            {tagGroups[1].map((tag, index) => (
+              <TagItem 
+                key={`tag-1-${index}`} 
+                text={tag} 
+                variant="star"
+              />
+            ))}
+          </div>
+          <div className="unified-features-cube">
+            <StatCard
+              value={stats[1].value}
+              label={stats[1].label}
+              description={stats[1].description}
+              addClass={false}
+            />
+          </div>
+        </div>
+
+        {/* Третья секция: блок справа, слева 3 предложения */}
+        <div className="unified-features-section">
+          <div className="unified-features-tags">
+            {tagGroups[2].map((tag, index) => (
+              <TagItem 
+                key={`tag-2-${index}`} 
+                text={tag} 
+                variant="star"
+              />
+            ))}
+          </div>
+          <div className="unified-features-cube">
+            <StatCard
+              value={stats[2].value}
+              label={stats[2].label}
+              description={stats[2].description}
+              addClass={false}
+            />
+          </div>
+        </div>
       </div>
       
       {/* Кнопка призыва к действию внизу */}
-      <div 
-        className="unified-features-cta"
-        style={{
-          opacity: scrollProgress > 0.85 ? Math.min(1, (scrollProgress - 0.85) * 6.67) : 0,
-          transform: `translateY(${(1 - Math.max(0, (scrollProgress - 0.85) * 6.67)) * 30}px)`,
-        }}
-      >
+      <div className="unified-features-cta">
         <CustomButton
           title={t('contactButton') || 'Связаться с нами'}
           styleName="success-btn call-btn"
