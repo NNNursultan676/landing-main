@@ -14,7 +14,6 @@ const Nav = () => {
   const [visible, setVisible] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
   const { t, i18n } = useTranslation();
 
   const showDrawer = () => {
@@ -136,69 +135,16 @@ const Nav = () => {
   // Combine base classes with the additional class
   const buttonClassName = `success-btn demo ${additionalButtonClass}`.trim();
 
-  // Handle scrollbar drag
-  const handleScrollbarMouseDown = (e) => {
-    setIsDragging(true);
-    handleScrollbarClick(e);
-  };
-
-  const handleScrollbarClick = (e) => {
-    const scrollbar = e.currentTarget;
-    const rect = scrollbar.getBoundingClientRect();
-    const clickY = e.clientY - rect.top;
-    const percentage = clickY / rect.height;
-    
-    const windowHeight = window.innerHeight;
-    const documentHeight = document.documentElement.scrollHeight;
-    const scrollableHeight = documentHeight - windowHeight;
-    const targetScroll = percentage * scrollableHeight;
-    
-    window.scrollTo({
-      top: targetScroll,
-      behavior: 'smooth'
-    });
-  };
-
-  const handleScrollbarMouseMove = (e) => {
-    if (!isDragging) return;
-    const scrollbar = document.querySelector('.nav-scrollbar-track');
-    if (!scrollbar) return;
-    
-    const rect = scrollbar.getBoundingClientRect();
-    const mouseY = e.clientY - rect.top;
-    const percentage = Math.max(0, Math.min(1, mouseY / rect.height));
-    
-    const windowHeight = window.innerHeight;
-    const documentHeight = document.documentElement.scrollHeight;
-    const scrollableHeight = documentHeight - windowHeight;
-    const targetScroll = percentage * scrollableHeight;
-    
-    window.scrollTo({
-      top: targetScroll,
-      behavior: 'auto'
-    });
-  };
-
-  const handleScrollbarMouseUp = () => {
-    setIsDragging(false);
-  };
-
-  React.useEffect(() => {
-    if (isDragging) {
-      window.addEventListener('mousemove', handleScrollbarMouseMove);
-      window.addEventListener('mouseup', handleScrollbarMouseUp);
-      return () => {
-        window.removeEventListener('mousemove', handleScrollbarMouseMove);
-        window.removeEventListener('mouseup', handleScrollbarMouseUp);
-      };
-    }
-  }, [isDragging]);
-
-  // Sections available for scrolling
-  const sections = ['home', 'about', 'solutions', 'contacts'];
-
   return (
     <>
+      {/* Horizontal Progress Bar in Navbar */}
+      <div className='nav-progress-container'>
+        <div 
+          className='nav-progress-bar'
+          style={{ width: `${scrollProgress}%` }}
+        ></div>
+      </div>
+
       <div className='nav nav-left'>
         <div className='nav-img'>
           <img onClick={
@@ -288,21 +234,6 @@ const Nav = () => {
           </div>
         </div>
       </div>
-      </div>
-      
-      {/* Vertical Scrollbar in Navbar */}
-      <div 
-        className='nav-scrollbar-track'
-        onMouseDown={handleScrollbarMouseDown}
-        onClick={handleScrollbarClick}
-      >
-        <div 
-          className='nav-scrollbar-thumb'
-          style={{ 
-            top: `${scrollProgress}%`,
-            transform: 'translateY(-50%)'
-          }}
-        ></div>
       </div>
     </>
   );
