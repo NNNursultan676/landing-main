@@ -3,7 +3,7 @@
 .solutions-section-wrapper {
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(180deg, var(--color-bg-soft) 0%, var(--color-bg-light) 100%);
+  background: #f8fafc;
   padding: 0;
   margin: 0;
   scroll-snap-align: start;

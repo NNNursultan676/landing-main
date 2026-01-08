@@ -4,9 +4,7 @@
   width: 100%;
   min-height: 100vh;
   padding: 120px 40px;
-  background: 
-    radial-gradient(ellipse 80% 50% at 50% 50%, var(--color-unified-soft) 0%, transparent 100%),
-    linear-gradient(180deg, var(--color-bg-soft) 0%, var(--color-bg-light) 100%);
+  background: #f8fafc;
   position: relative;
   overflow: hidden;
   display: flex;
