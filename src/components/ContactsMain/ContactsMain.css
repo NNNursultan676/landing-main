@@ -1,14 +1,4 @@
-/* ContactsMain.css - Premium Section Header */
-
-.contact-content {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-}
+/* ContactsMain.css - Contact Section Header */
 
 .contact-content-text {
   font-weight: 700;
@@ -17,12 +7,11 @@
   letter-spacing: -0.02em;
   color: #0f172a;
   text-align: center;
-  margin: 32px 0 48px 0;
+  margin: 40px 0 48px 0;
   background: linear-gradient(135deg, #0f172a 0%, var(--color-unified) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  position: relative;
   padding: 0 24px;
 }
 
@@ -40,76 +29,19 @@
   align-items: center;
 }
 
-.additional-contacts-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    url(../../assets/images/contactsMain.png) no-repeat center / cover;
-  opacity: 0.1;
-  mix-blend-mode: overlay;
-  pointer-events: none;
-}
-
-.additional-contacts-container::after {
-  content: '';
-  position: absolute;
-  top: -20%;
-  left: -10%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, var(--color-accent-soft) 0%, transparent 70%);
-  border-radius: 50%;
-  animation: float 12s ease-in-out infinite;
-  pointer-events: none;
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(20px, 30px) scale(1.1);
-  }
-}
-
 /* Responsive */
-@media screen and (max-width: 1200px) {
-  .contact-content-text {
-    font-size: 48px;
-  }
-}
-
 @media screen and (max-width: 768px) {
-  .contact-content {
-    gap: 0;
-  }
-
   .contact-content-text {
-    font-size: 40px;
-    line-height: 1.2;
-    margin-top: 32px;
-    margin-bottom: 40px;
+    font-size: 36px;
+    margin: 32px 0 40px 0;
     padding: 0 16px;
-  }
-
-  .additional-contacts-container {
-    min-height: auto;
-    padding: 32px 0 0;
   }
 }
 
 @media screen and (max-width: 480px) {
   .contact-content-text {
-    font-size: 32px;
-    margin-top: 24px;
-    margin-bottom: 32px;
-  }
-
-  .additional-contacts-container {
-    padding: 24px 0 0;
+    font-size: 28px;
+    margin: 24px 0 32px 0;
+    padding: 0 16px;
   }
 }
