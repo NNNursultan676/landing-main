@@ -51,7 +51,7 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   position: relative;
-  overflow-y: auto; /* Позволяем скролл внутри блока если контент не помещается */
+  /* ⚠️ Убираем overflow-y: auto чтобы не мешать scroll-snap на родительском уровне */
   overflow-x: hidden;
 }
 
@@ -63,13 +63,13 @@ body {
   flex-direction: column;
 }
 
-/* Add scroll margin for anchor links to account for fixed navbar */
+/* ⚠️ Отступ для якорных ссылок с учетом фиксированного навбара */
 #about,
 #products,
 #partners,
 #contacts,
 #solutions {
-  scroll-margin-top: 100px;
+  scroll-margin-top: 0; /* Убираем отступ - секции должны быть на самом верху для автодоводки */
 }
 
 body {

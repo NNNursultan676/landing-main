@@ -41,27 +41,41 @@ const Nav = () => {
     setVisible(false);
   };
 
-  // ⚠️ НЕ МЕНЯТЬ: Логика плавного скролла к секциям с учетом высоты навбара
+  // ⚠️ НЕ МЕНЯТЬ: Логика плавного скролла к секциям с автодоводкой
   const scrollToSection = (sectionId) => {
     if (sectionId === 'home') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       setActiveSection('home');
       setVisible(false);
+      // ⚠️ Дополнительная автодоводка после скролла
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 600);
       return;
     }
     
     const element = document.getElementById(sectionId);
     if (element) {
-      // ⚠️ ВАЖНО: Высота навбара 88px - используется для правильного позиционирования скролла
-      const navHeight = 88; // Height of fixed nav
+      // ⚠️ ВАЖНО: Секция должна начинаться с самого верха (без отступа навбара)
+      // Автодоводка позаботится о правильном позиционировании
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-      const offsetPosition = elementPosition - navHeight;
       
       window.scrollTo({
-        top: Math.max(0, offsetPosition),
+        top: Math.max(0, elementPosition),
         behavior: 'smooth'
       });
       setActiveSection(sectionId);
+      
+      // ⚠️ Дополнительная автодоводка для идеального выравнивания
+      setTimeout(() => {
+        const rect = element.getBoundingClientRect();
+        if (Math.abs(rect.top) > 5) {
+          window.scrollTo({
+            top: window.scrollY + rect.top,
+            behavior: 'smooth'
+          });
+        }
+      }, 600);
     }
     setVisible(false); // Close mobile menu if open
   };
