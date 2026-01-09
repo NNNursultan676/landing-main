@@ -121,7 +121,7 @@
 
 /* About Section within unified */
 /* ⚠️ ВАЖНО: z-index должен быть меньше навбара (10000), чтобы навбар был поверх */
-/* ⚠️ ВАЖНО: Соединен с главной - темный фон с частицами как продолжение */
+/* ⚠️ ВАЖНО: Весь блок на белом фоне */
 .about-section-unified {
   flex: 0 0 auto;
   height: 100vh; /* ⚠️ Блок занимает весь экран */
@@ -140,98 +140,56 @@
   scroll-snap-align: start;
   scroll-snap-stop: normal; /* ⚠️ Изменено с always на normal для более плавного скролла */
   overflow: hidden;
-  /* ⚠️ Темный фон с частицами - продолжение главной страницы */
-  background: 
-    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(61, 107, 168, 0.15) 0%, transparent 100%),
-    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(80, 245, 176, 0.12) 0%, transparent 100%),
-    #0f172a;
+  /* ⚠️ Белый фон для всего блока, включая края */
+  background: #ffffff;
 }
 
-/* ⚠️ Добавляем частицы для всего блока "О нас" как на главной */
-.about-section-unified::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    url(../../assets/images/mainBackground.png) no-repeat center / cover;
-  opacity: 0.12;
-  mix-blend-mode: overlay;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.about-section-unified::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -20%;
-  width: 800px;
-  height: 800px;
-  background: radial-gradient(circle, var(--color-accent-soft) 0%, transparent 70%);
-  border-radius: 50%;
-  animation: pulse 8s ease-in-out infinite;
-  pointer-events: none;
-  z-index: 0;
-}
+/* Псевдоэлементы удалены - блок полностью белый */
 
 .about-section-unified * {
   max-width: 100%;
   box-sizing: border-box;
 }
 
-/* ⚠️ ВАЖНО: Header на уровне навбара, темный фон с частицами */
-.about-header-unified {
-  text-align: left; /* ⚠️ Выравнивание влево */
-  margin: 0;
-  margin-top: 88px; /* ⚠️ Отступ сверху = высота навбара */
-  padding: 20px 60px; /* ⚠️ Padding слева для позиционирования заголовка левее и выше */
-  flex: 0 0 auto;
-  position: relative;
-  z-index: 1; /* ⚠️ Меньше навбара, но больше фона секции */
-  /* ⚠️ Тот же фон что и главная страница - синий с частицами */
-  background: 
-    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(61, 107, 168, 0.15) 0%, transparent 100%),
-    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(80, 245, 176, 0.12) 0%, transparent 100%),
-    #0f172a;
-  overflow: hidden;
-  display: flex;
-  align-items: flex-start; /* ⚠️ Выравнивание по верху */
-  justify-content: flex-start; /* ⚠️ Выравнивание влево */
-  min-height: fit-content;
-}
-
-/* ⚠️ Добавляем частицы как на главной странице */
-.about-header-unified::before {
-  content: '';
-  position: absolute;
+/* ⚠️ Заголовок "О нас" на уровне навбара, между логотипом и кнопками */
+.about-header-in-navbar {
+  position: fixed;
   top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    url(../../assets/images/mainBackground.png) no-repeat center / cover;
-  opacity: 0.12;
-  mix-blend-mode: overlay;
-  pointer-events: none;
-  z-index: 0;
+  left: 50%; /* Центрируем по горизонтали */
+  transform: translateX(-50%); /* Точное центрирование */
+  height: 88px; /* Высота навбара */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999; /* Меньше навбара (10000), но выше всего остального */
+  pointer-events: none; /* Не мешаем кликам по навбару */
+  padding: 0;
+  margin: 0;
 }
 
-.about-header-unified::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -20%;
-  width: 800px;
-  height: 800px;
-  background: radial-gradient(circle, var(--color-accent-soft) 0%, transparent 70%);
-  border-radius: 50%;
-  animation: pulse 8s ease-in-out infinite;
-  pointer-events: none;
-  z-index: 0;
+.about-header-in-navbar h1 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin: 0;
+  padding: 0;
+  color: #ffffff;
+  background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.9) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  z-index: 1;
+  pointer-events: auto; /* Разрешаем взаимодействие с заголовком */
 }
+
+/* Старый класс - скрыт */
+.about-header-unified {
+  display: none;
+}
+
+/* Псевдоэлементы удалены - заголовок на уровне навбара */
 
 .about-header-unified h1 {
   font-size: 48px;
@@ -249,7 +207,7 @@
   z-index: 1; /* Поверх частиц */
 }
 
-/* ⚠️ ВАЖНО: Контент на белом фоне */
+/* ⚠️ ВАЖНО: Контент на белом фоне - весь блок включая края */
 .about-content-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -257,15 +215,16 @@
   padding: 40px 60px 40px; /* Уменьшили нижний padding, т.к. логотипы вынесены */
   flex: 1;
   min-height: 0;
-  max-width: 1600px;
-  margin: 0 auto;
+  max-width: 100%; /* Полная ширина для белого фона по краям */
+  margin: 0;
   width: 100%;
   align-items: start;
   overflow-y: auto; /* Позволяем скролл контента если не помещается */
   overflow-x: hidden;
   position: relative;
   z-index: 1; /* ⚠️ Меньше навбара (10000) */
-  background: #ffffff; /* ⚠️ Белый фон для контента */
+  background: #ffffff; /* ⚠️ Белый фон для всего контента */
+  margin-top: 88px; /* Отступ сверху = высота навбара */
 }
 
 .about-content-left {

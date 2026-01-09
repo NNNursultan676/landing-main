@@ -74,7 +74,8 @@ const Mainlayout = () => {
           ========================================
         */}
         <div id="about" className="about-section-unified">
-          <div className="about-header-unified">
+          {/* ⚠️ Заголовок "О нас" на уровне навбара, между логотипом и кнопками */}
+          <div className="about-header-in-navbar">
             <h1>{t('aboutTitle')}</h1>
           </div>
           <div className="about-content-layout">
