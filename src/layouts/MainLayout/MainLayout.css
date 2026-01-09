@@ -36,13 +36,15 @@
 
 /* Combined Main + About Section */
 /* ⚠️ ВАЖНО: scroll-snap-align для автодоводки */
+/* ⚠️ КРИТИЧНО: Темный фон главной секции - НЕ МЕНЯТЬ */
 .main-about-unified {
   width: 100%;
   position: relative;
+  /* ⚠️ Темный фон с градиентами - обязательно должен быть виден */
   background: 
     radial-gradient(ellipse 80% 50% at 50% 0%, rgba(61, 107, 168, 0.15) 0%, transparent 100%),
     radial-gradient(ellipse 60% 40% at 100% 100%, rgba(80, 245, 176, 0.12) 0%, transparent 100%),
-    #0f172a;
+    #0f172a !important; /* ⚠️ !important чтобы перекрыть любые другие фоны */
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -155,12 +157,12 @@
 .about-header-in-navbar {
   position: fixed;
   top: 0;
-  left: 50%; /* Центрируем по горизонтали */
-  transform: translateX(-50%); /* Точное центрирование */
+  left: 250px; /* ⚠️ Позиция после логотипа (примерно 200-250px) */
+  right: 550px; /* ⚠️ Позиция до кнопок (примерно 450-550px) */
   height: 88px; /* Высота навбара */
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; /* Центрируем между логотипом и кнопками */
   z-index: 9999; /* Меньше навбара (10000), но выше всего остального */
   pointer-events: none; /* Не мешаем кликам по навбару */
   padding: 0;

@@ -1,5 +1,14 @@
+/* ⚠️ КРИТИЧНО: Прозрачный фон для Layout чтобы не перекрывать фон секций */
 .ant-layout {
-  /* ⚠️ Прозрачный фон чтобы не перекрывать фон секций */
   background-color: transparent !important;
   font-family: 'Inter' !important;
+}
+
+/* ⚠️ Убираем белый фон у всех компонентов Layout от Ant Design */
+.ant-layout,
+.ant-layout-content,
+.ant-layout-header,
+.ant-layout-footer,
+.ant-layout-sider {
+  background: transparent !important;
 }
