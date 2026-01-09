@@ -91,11 +91,6 @@ const Mainlayout = () => {
                   <p className="about-mission-text-combined">{t('aboutText5')}</p>
                 </div>
               </div>
-              {/* ⚠️ Логотипы партнеров выше - перемещены в левую колонку */}
-              <div className="partners-in-about-bottom">
-                <h2 className="partners-in-about-title">Нам доверяют</h2>
-                <PartnersRunner compact={true} />
-              </div>
             </div>
             <div className="about-content-right">
               <div className="stats-unified-block">
@@ -117,6 +112,11 @@ const Mainlayout = () => {
                 </div>
               </div>
             </div>
+          </div>
+          {/* ⚠️ Логотипы партнеров растянуты на всю ширину экрана, чуть ниже контента */}
+          <div className="partners-in-about-bottom">
+            <h2 className="partners-in-about-title">Нам доверяют</h2>
+            <PartnersRunner compact={true} />
           </div>
         </div>
       </div>
