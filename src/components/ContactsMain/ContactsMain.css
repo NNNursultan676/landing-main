@@ -12,12 +12,13 @@
 
 .contact-content-text {
   font-weight: 700;
-  font-size: 72px;
+  font-size: 64px; /* Уменьшен размер для компактности */
   line-height: 1.1;
   letter-spacing: -0.03em;
   color: #ffffff;
   text-align: center;
-  margin-top: 120px;
+  margin-top: 60px; /* Уменьшен отступ сверху */
+  margin-bottom: 40px; /* Отступ снизу */
   background: linear-gradient(135deg, #ffffff 0%, rgba(74, 111, 165, 0.1) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -28,17 +29,16 @@
 
 .additional-contacts-container {
   width: 100%;
-  min-height: fit-content; /* Подстраивается под контент */
-  padding: 88px 0 40px 0; /* 88px = высота навбара */
+  min-height: auto; /* Автоматическая высота по контенту */
+  padding: 60px 0 40px 0; /* Уменьшен верхний отступ */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start; /* Выравнивание сверху */
   position: relative;
   /* ⚠️ Блок Contacts имеет белый фон по умолчанию */
   background: #ffffff !important;
-  overflow: hidden;
+  overflow: visible !important; /* Убираем скролл */
   align-items: center;
-  justify-content: center;
 }
 
 .additional-contacts-container::before {
@@ -93,12 +93,14 @@
   .contact-content-text {
     font-size: 42px;
     line-height: 1.2;
-    margin-top: 80px;
+    margin-top: 40px; /* Уменьшен отступ */
+    margin-bottom: 24px; /* Добавлен отступ снизу */
     padding: 0 16px;
   }
 
   .additional-contacts-container {
-    min-height: 50vh;
+    min-height: auto; /* Автоматическая высота */
+    padding: 40px 0 24px; /* Уменьшены отступы */
     border-bottom-left-radius: 32px;
     border-bottom-right-radius: 32px;
   }
