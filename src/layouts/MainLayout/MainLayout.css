@@ -108,8 +108,11 @@
   justify-content: flex-start; /* ⚠️ flex-start для поднятия контента выше */
   /* ⚠️ overflow: hidden критично для корректной работы анимации частиц */
   overflow: hidden;
-  /* ⚠️ Прозрачный фон - наследует темный фон от родителя main-about-unified */
-  background: transparent;
+  /* ⚠️ Темный фон главного блока - такой же как родитель main-about-unified */
+  background: 
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(61, 107, 168, 0.25) 0%, transparent 100%),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(80, 245, 176, 0.18) 0%, transparent 100%),
+    #05080d !important; /* ⚠️ Темный фон для главного блока */
   /* ⚠️ Автодоводка до идеальной позиции - ослаблена для плавного скролла */
   scroll-snap-align: start;
   scroll-snap-stop: normal; /* ⚠️ Изменено с always на normal для более плавного скролла */
