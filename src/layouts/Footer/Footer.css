@@ -1,7 +1,12 @@
 /* Footer.css - Premium Footer Design */
+/* ⚠️ ВАЖНО: Фон подвала должен быть таким же темным как главная страница */
 
 .footer {
-  background: linear-gradient(180deg, var(--color-bg-dark) 0%, var(--color-bg-darker) 100%);
+  /* ⚠️ Темный фон идентичный главной странице (#05080d) */
+  background: 
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(61, 107, 168, 0.25) 0%, transparent 100%),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(80, 245, 176, 0.18) 0%, transparent 100%),
+    #05080d !important; /* ⚠️ Такой же темный фон как главная страница */
   color: #ffffff;
   padding: 80px 80px 40px;
   position: relative;

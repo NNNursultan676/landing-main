@@ -76,6 +76,11 @@ body {
   flex-direction: column;
 }
 
+/* ⚠️ Секция контактов имеет белый фон по умолчанию */
+.contacts-section-fullscreen {
+  background: #ffffff !important;
+}
+
 /* ⚠️ Отступ для якорных ссылок с учетом фиксированного навбара */
 #about,
 #products,

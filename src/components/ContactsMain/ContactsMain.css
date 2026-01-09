@@ -34,7 +34,8 @@
   flex-direction: column;
   justify-content: center;
   position: relative;
-  background: #ffffff;
+  /* ⚠️ Блок Contacts имеет белый фон по умолчанию */
+  background: #ffffff !important;
   overflow: hidden;
   align-items: center;
   justify-content: center;

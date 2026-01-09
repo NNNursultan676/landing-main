@@ -4,7 +4,8 @@
   width: 100%;
   height: 100vh; /* ⚠️ Блок занимает весь экран */
   min-height: 100vh;
-  background: #ffffff;
+  /* ⚠️ Блок Solutions имеет белый фон по умолчанию */
+  background: #ffffff !important;
   padding: 0;
   margin: 0;
   /* ⚠️ Автодоводка до идеальной позиции */
