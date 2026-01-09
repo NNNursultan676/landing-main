@@ -153,21 +153,21 @@
   box-sizing: border-box;
 }
 
-/* ⚠️ Заголовок "О нас" закреплен на блоке "О нас", на уровне навбара */
+/* ⚠️ Заголовок "О нас" закреплен на блоке "О нас", на уровне навбара, чуть левее */
 .about-header-in-navbar {
   position: absolute; /* ⚠️ absolute - часть блока "О нас", а не fixed */
   top: 0; /* ⚠️ На уровне верха блока (навбара) */
-  left: 50%; /* Центрируем между логотипом и кнопками */
+  left: 45%; /* ⚠️ Чуть левее центра (было 50%) */
   transform: translateX(-50%); /* Точное центрирование */
   width: 100%;
   max-width: calc(100% - 500px); /* Ограничиваем ширину чтобы не заходить на логотип и кнопки */
   height: 88px; /* Высота навбара */
   display: flex;
   align-items: center;
-  justify-content: center; /* Центрируем */
+  justify-content: flex-start; /* ⚠️ Выравнивание влево */
+  padding-left: 20px; /* Дополнительный отступ слева */
   z-index: 1; /* Меньше навбара (10000), но выше контента блока */
   pointer-events: none; /* Не мешаем кликам по навбару */
-  padding: 0;
   margin: 0;
 }
 
@@ -233,6 +233,8 @@
   flex-direction: column;
   gap: 24px;
   overflow: hidden;
+  /* ⚠️ Основной текст чуть правее */
+  margin-left: 40px; /* Отступ слева для смещения вправо */
 }
 
 .about-content-right {
@@ -332,6 +334,41 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   letter-spacing: -0.02em;
+}
+
+/* ⚠️ Логотипы партнеров выше - в левой колонке после текста */
+.partners-in-about-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  margin-top: 32px; /* Отступ сверху от текста */
+  margin-bottom: 0;
+  background: transparent;
+  position: relative;
+  z-index: 1;
+}
+
+/* ⚠️ Надпись "Нам доверяют" над логотипами */
+.partners-in-about-bottom .partners-in-about-title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #0f172a; /* Темный цвет для белого фона */
+  margin: 0 0 16px 0;
+  text-align: left;
+  background: none; /* Убираем градиент, используем обычный цвет */
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
+  background-clip: unset;
+}
+
+.partners-in-about-bottom .partners-runner-compact {
+  width: 100%;
+  max-width: 100%;
 }
 
 /* Unified stats block - светлый фон для белого фона */
