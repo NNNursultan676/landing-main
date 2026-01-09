@@ -12,14 +12,14 @@
 
 .contact-content-text {
   font-weight: 700;
-  font-size: 64px; /* Уменьшен размер для компактности */
+  font-size: 56px;
   line-height: 1.1;
   letter-spacing: -0.03em;
-  color: #ffffff;
+  color: #0f172a;
   text-align: center;
-  margin-top: 60px; /* Уменьшен отступ сверху */
-  margin-bottom: 40px; /* Отступ снизу */
-  background: linear-gradient(135deg, #ffffff 0%, rgba(74, 111, 165, 0.1) 100%);
+  margin-top: 40px;
+  margin-bottom: 60px;
+  background: linear-gradient(135deg, #0f172a 0%, var(--color-unified) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -29,15 +29,14 @@
 
 .additional-contacts-container {
   width: 100%;
-  min-height: auto; /* Автоматическая высота по контенту */
-  padding: 60px 0 40px 0; /* Уменьшен верхний отступ */
+  min-height: auto;
+  padding: 40px 0 0 0;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Выравнивание сверху */
+  justify-content: flex-start;
   position: relative;
-  /* ⚠️ Блок Contacts имеет белый фон по умолчанию */
   background: #ffffff !important;
-  overflow: visible !important; /* Убираем скролл */
+  overflow: visible !important;
   align-items: center;
 }
 
@@ -80,8 +79,7 @@
 /* Responsive */
 @media screen and (max-width: 1200px) {
   .contact-content-text {
-    font-size: 64px;
-    margin-top: 100px;
+    font-size: 48px;
   }
 }
 
@@ -91,30 +89,27 @@
   }
 
   .contact-content-text {
-    font-size: 42px;
+    font-size: 40px;
     line-height: 1.2;
-    margin-top: 40px; /* Уменьшен отступ */
-    margin-bottom: 24px; /* Добавлен отступ снизу */
+    margin-top: 32px;
+    margin-bottom: 40px;
     padding: 0 16px;
   }
 
   .additional-contacts-container {
-    min-height: auto; /* Автоматическая высота */
-    padding: 40px 0 24px; /* Уменьшены отступы */
-    border-bottom-left-radius: 32px;
-    border-bottom-right-radius: 32px;
+    min-height: auto;
+    padding: 32px 0 0;
   }
 }
 
 @media screen and (max-width: 480px) {
   .contact-content-text {
     font-size: 32px;
-    margin-top: 60px;
+    margin-top: 24px;
+    margin-bottom: 32px;
   }
 
   .additional-contacts-container {
-    min-height: 40vh;
-    border-bottom-left-radius: 24px;
-    border-bottom-right-radius: 24px;
+    padding: 24px 0 0;
   }
 }

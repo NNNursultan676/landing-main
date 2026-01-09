@@ -140,41 +140,56 @@ const Mainlayout = () => {
       <div id="contacts" className="contacts-section-fullscreen">
         <div className="contacts-section-content">
           <ContactsMain />
-          <div className="contact-info">
-          <div className='contact-info-container'>
-            <Row className='contact-info-container-text' style={{fontFamily: 'Inter'}}>
-              <p className='contact-info-title'>Телефон</p>
-              <p className='contact-info-text'>+7 775 880 52 34</p>
-            </Row>
-            <Row className='contact-info-container-text' style={{fontFamily: 'Inter'}}>
-              <p className='contact-info-title'>E-mail:</p>
-              <p className='contact-info-text'>info@sapatech.kz</p>
-            </Row>
-            <Row className='contact-info-container-text' style={{fontFamily: 'Inter'}}>
-              <p className='contact-info-title'>Адрес</p>
-              <p className='contact-info-text'>г. Алматы, ул. Зеина Шашкина, д. 24</p>
-            </Row>
-            <Row style={{fontFamily: 'Inter', marginTop: '8px'}}>
-              <a 
-                href="https://2gis.kz/almaty/geo/70000001066943138/76.933728,43.222690" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className='contact-2gis-button'
-              >
-                2ГИС
-              </a>
-            </Row>
+          <div className="contacts-wrapper">
+            <div className="contacts-grid">
+              {/* Карточка телефона */}
+              <div className="contact-card">
+                <div className="contact-card-icon">📞</div>
+                <div className="contact-card-content">
+                  <h3 className="contact-card-title">Телефон</h3>
+                  <a href="tel:+77758805234" className="contact-card-link">+7 775 880 52 34</a>
+                </div>
+              </div>
+
+              {/* Карточка email */}
+              <div className="contact-card">
+                <div className="contact-card-icon">✉️</div>
+                <div className="contact-card-content">
+                  <h3 className="contact-card-title">Email</h3>
+                  <a href="mailto:info@sapatech.kz" className="contact-card-link">info@sapatech.kz</a>
+                </div>
+              </div>
+
+              {/* Карточка адреса */}
+              <div className="contact-card contact-card-address">
+                <div className="contact-card-icon">📍</div>
+                <div className="contact-card-content">
+                  <h3 className="contact-card-title">Адрес</h3>
+                  <p className="contact-card-text">г. Алматы, ул. Зеина Шашкина, д. 24</p>
+                  <a 
+                    href="https://2gis.kz/almaty/geo/70000001066943138/76.933728,43.222690" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className='contact-map-button'
+                  >
+                    Открыть в 2ГИС
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Карта */}
+            <div className='contact-map-wrapper'>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2907.3761568922578!2d76.9312009773613!3d43.22257248017424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38836f24c6b92751%3A0x8e0755bb3661cfad!2z0YPQu9C40YbQsCDQl9C10LnQvdCwINCo0LDRiNC60LjQvdCwIDI0LCDQkNC70LzQsNGC0YsgMDUwMDYw!5e0!3m2!1sru!2skz!4v1723115930036!5m2!1sru!2skz"
+                className='contact-map'
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Карта офиса Sapa Technologies"
+              />
+            </div>
           </div>
-          <div className='map'>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2907.3761568922578!2d76.9312009773613!3d43.22257248017424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38836f24c6b92751%3A0x8e0755bb3661cfad!2z0YPQu9C40YbQsCDQl9C10LnQvdCwINCo0LDRiNC60LjQvdCwIDI0LCDQkNC70LzQsNGC0YsgMDUwMDYw!5e0!3m2!1sru!2skz!4v1723115930036!5m2!1sru!2skz"
-              className='googleMap'
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-          </div>
-        </div>
         </div>
       </div>
       
