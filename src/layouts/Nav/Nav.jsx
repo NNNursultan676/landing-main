@@ -184,8 +184,9 @@ const Nav = () => {
 
       const deltaY = Math.abs(e.clientY - dragStateRef.current.startY);
       
-      // If moved more than 5px, treat as drag
-      if (deltaY > 5) {
+      // ⚠️ Увеличен порог для предотвращения случайных свайпов - требуется намеренное движение
+      // If moved more than 50px, treat as drag (увеличено с 5px для защиты от случайных касаний)
+      if (deltaY > 50) {
         if (!dragStateRef.current.isDragging) {
           dragStateRef.current.isDragging = true;
           setIsDragging(true);

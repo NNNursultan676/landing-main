@@ -28,7 +28,8 @@
 
 .additional-contacts-container {
   width: 100%;
-  min-height: 100vh;
+  min-height: fit-content; /* Подстраивается под контент */
+  padding: 88px 0 40px 0; /* 88px = высота навбара */
   display: flex;
   flex-direction: column;
   justify-content: center;

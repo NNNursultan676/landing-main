@@ -6,6 +6,8 @@ import DemoModal from './components/DemoModal/DemoModal';
 import { Layout } from 'antd';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useEffect } from 'react';
+import { initScrollProtection } from './utils/scrollProtection';
 
 const LayoutWrapper = ({ children }) => {
   return  <Layout className="ant-layout">
@@ -14,6 +16,12 @@ const LayoutWrapper = ({ children }) => {
 };
 
 function App() {
+  useEffect(() => {
+    // Инициализация защиты от случайных свайпов
+    const cleanup = initScrollProtection();
+    return cleanup;
+  }, []);
+
   return (
     <LayoutWrapper>
       <Mainlayout />

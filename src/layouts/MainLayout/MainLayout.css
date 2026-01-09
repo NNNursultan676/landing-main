@@ -17,6 +17,7 @@
 /* MainLayout.css - Premium Layout Styles */
 
 /* Combined Main + About Section */
+/* ⚠️ ВАЖНО: scroll-snap-align для автодоводки */
 .main-about-unified {
   width: 100%;
   position: relative;
@@ -27,6 +28,8 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .main-about-unified::before {
@@ -85,8 +88,9 @@
   justify-content: flex-start; /* ⚠️ flex-start для поднятия контента выше */
   /* ⚠️ overflow: hidden критично для корректной работы анимации частиц */
   overflow: hidden;
+  /* ⚠️ Автодоводка до идеальной позиции */
   scroll-snap-align: start;
-  scroll-snap-stop: always;
+  scroll-snap-stop: always; /* ⚠️ Всегда останавливается на блоке */
 }
 
 /* ⚠️ КРИТИЧНО: Контент должен быть поверх частиц (z-index: 2 vs 0) */
@@ -112,8 +116,9 @@
   max-width: 100%;
   margin: 0;
   width: 100%;
+  /* ⚠️ Автодоводка до идеальной позиции */
   scroll-snap-align: start;
-  scroll-snap-stop: always;
+  scroll-snap-stop: always; /* ⚠️ Всегда останавливается на блоке */
   overflow: hidden;
   /* ⚠️ Темный фон с частицами - продолжение главной страницы */
   background: 

@@ -122,11 +122,13 @@ const Mainlayout = () => {
         ========================================
         БЛОК 4: КОНТАКТЫ (Contacts)
         id="contacts" - обязателен для навигации
+        ⚠️ Блок занимает весь экран (100vh) с автодоводкой
         ========================================
       */}
-      <div id="contacts" className="section-snap">
-        <ContactsMain />
-        <div className="contact-info">
+      <div id="contacts" className="section-snap contacts-section-fullscreen">
+        <div className="contacts-section-content">
+          <ContactsMain />
+          <div className="contact-info">
           <div className='contact-info-container'>
             <Row className='contact-info-container-text' style={{fontFamily: 'Inter'}}>
               <p className='contact-info-title'>Телефон</p>
@@ -160,6 +162,7 @@ const Mainlayout = () => {
               referrerPolicy="no-referrer-when-downgrade"
             />
           </div>
+        </div>
         </div>
       </div>
       
