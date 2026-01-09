@@ -124,21 +124,20 @@ const Mainlayout = () => {
       {/* 
         ========================================
         БЛОК 3: РЕШЕНИЯ (Solutions)
-        ⚠️ КРИТИЧНО: id="solutions" и className="section-snap" - ОБЯЗАТЕЛЬНЫ
+        ⚠️ Без автодоводки и защиты
         ========================================
       */}
-      <div id="solutions" className="section-snap">
+      <div id="solutions" className="contacts-section-fullscreen">
         <SolutionsSection />
       </div>
       
       {/* 
         ========================================
         БЛОК 4: КОНТАКТЫ (Contacts)
-        ⚠️ КРИТИЧНО: id="contacts" и className="section-snap" - ОБЯЗАТЕЛЬНЫ
-        Блок занимает весь экран (100vh) с автодоводкой
+        ⚠️ Без автодоводки и защиты
         ========================================
       */}
-      <div id="contacts" className="section-snap contacts-section-fullscreen">
+      <div id="contacts" className="contacts-section-fullscreen">
         <div className="contacts-section-content">
           <ContactsMain />
           <div className="contact-info">

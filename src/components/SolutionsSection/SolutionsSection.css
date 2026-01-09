@@ -2,15 +2,12 @@
 
 .solutions-section-wrapper {
   width: 100%;
-  height: 100vh; /* ⚠️ Блок занимает весь экран */
-  min-height: 100vh;
+  min-height: 100vh; /* ⚠️ Минимальная высота экрана */
   /* ⚠️ Блок Solutions имеет белый фон по умолчанию */
   background: #ffffff !important;
   padding: 0;
   margin: 0;
-  /* ⚠️ Автодоводка до идеальной позиции */
-  scroll-snap-align: start;
-  scroll-snap-stop: always; /* ⚠️ Всегда останавливается на блоке */
+  /* ⚠️ УДАЛЕНО: Автодоводка отключена для этого блока */
   display: flex;
   flex-direction: column;
   justify-content: center;

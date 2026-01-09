@@ -20,13 +20,13 @@
   box-sizing: border-box;
 }
 
-/* ⚠️ КРИТИЧНО: Автодоводка секций - НЕ МЕНЯТЬ */
+/* ⚠️ Автодоводка только для главной и о нас */
 html {
   scroll-behavior: smooth;
   overflow-y: auto;
   overflow-x: hidden;
-  /* ⚠️ scroll-snap-type: y mandatory - КРИТИЧНО для автодоводки - НЕ МЕНЯТЬ */
-  scroll-snap-type: y mandatory;
+  /* ⚠️ scroll-snap-type работает только для блоков с scroll-snap-align (главная и о нас) */
+  scroll-snap-type: y proximity; /* proximity вместо mandatory для более мягкой доводки */
   /* Hide default scrollbar but keep functionality */
   -ms-overflow-style: none;
   scrollbar-width: none;
