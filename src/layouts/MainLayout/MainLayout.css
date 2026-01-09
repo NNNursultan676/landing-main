@@ -36,15 +36,15 @@
 
 /* Combined Main + About Section */
 /* ⚠️ ВАЖНО: scroll-snap-align для автодоводки */
-/* ⚠️ КРИТИЧНО: Темный фон главной секции - НЕ МЕНЯТЬ */
+/* ⚠️ КРИТИЧНО: Темный фон главной секции - темнее чем блок "О нас" */
 .main-about-unified {
   width: 100%;
   position: relative;
-  /* ⚠️ Темный фон с градиентами - обязательно должен быть виден */
+  /* ⚠️ Темный фон с градиентами - темнее блока "О нас" (который белый) */
   background: 
-    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(61, 107, 168, 0.15) 0%, transparent 100%),
-    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(80, 245, 176, 0.12) 0%, transparent 100%),
-    #0f172a !important; /* ⚠️ !important чтобы перекрыть любые другие фоны */
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(61, 107, 168, 0.2) 0%, transparent 100%),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(80, 245, 176, 0.15) 0%, transparent 100%),
+    #0a0f1a !important; /* ⚠️ Темнее чем было (#0f172a) - темнее белого блока "О нас" */
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -123,12 +123,12 @@
 
 /* About Section within unified */
 /* ⚠️ ВАЖНО: z-index должен быть меньше навбара (10000), чтобы навбар был поверх */
-/* ⚠️ ВАЖНО: Весь блок на белом фоне */
+/* ⚠️ ВАЖНО: Весь блок на белом фоне (светлее главного экрана) */
 .about-section-unified {
   flex: 0 0 auto;
   height: 100vh; /* ⚠️ Блок занимает весь экран */
   min-height: 100vh;
-  position: relative;
+  position: relative; /* ⚠️ relative для позиционирования заголовка внутри блока */
   z-index: 0; /* ⚠️ Меньше навбара (10000), чтобы навбар был всегда поверх */
   padding: 0;
   display: flex;
@@ -141,8 +141,8 @@
   /* ⚠️ Автодоводка до идеальной позиции - ослаблена для плавного скролла */
   scroll-snap-align: start;
   scroll-snap-stop: normal; /* ⚠️ Изменено с always на normal для более плавного скролла */
-  overflow: hidden;
-  /* ⚠️ Белый фон для всего блока, включая края */
+  overflow: visible; /* ⚠️ visible чтобы заголовок мог выходить за пределы */
+  /* ⚠️ Белый фон для всего блока - светлее главного экрана */
   background: #ffffff;
 }
 
@@ -153,17 +153,19 @@
   box-sizing: border-box;
 }
 
-/* ⚠️ Заголовок "О нас" на уровне навбара, между логотипом и кнопками */
+/* ⚠️ Заголовок "О нас" закреплен на блоке "О нас", на уровне навбара */
 .about-header-in-navbar {
-  position: fixed;
-  top: 0;
-  left: 250px; /* ⚠️ Позиция после логотипа (примерно 200-250px) */
-  right: 550px; /* ⚠️ Позиция до кнопок (примерно 450-550px) */
+  position: absolute; /* ⚠️ absolute - часть блока "О нас", а не fixed */
+  top: 0; /* ⚠️ На уровне верха блока (навбара) */
+  left: 50%; /* Центрируем между логотипом и кнопками */
+  transform: translateX(-50%); /* Точное центрирование */
+  width: 100%;
+  max-width: calc(100% - 500px); /* Ограничиваем ширину чтобы не заходить на логотип и кнопки */
   height: 88px; /* Высота навбара */
   display: flex;
   align-items: center;
-  justify-content: center; /* Центрируем между логотипом и кнопками */
-  z-index: 9999; /* Меньше навбара (10000), но выше всего остального */
+  justify-content: center; /* Центрируем */
+  z-index: 1; /* Меньше навбара (10000), но выше контента блока */
   pointer-events: none; /* Не мешаем кликам по навбару */
   padding: 0;
   margin: 0;
@@ -176,11 +178,8 @@
   letter-spacing: -0.03em;
   margin: 0;
   padding: 0;
-  color: #ffffff;
-  background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.9) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  /* ⚠️ Темный цвет для белого фона блока "О нас" */
+  color: #0f172a;
   position: relative;
   z-index: 1;
   pointer-events: auto; /* Разрешаем взаимодействие с заголовком */
