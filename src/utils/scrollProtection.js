@@ -63,8 +63,8 @@ export const initScrollProtection = () => {
       // Цель - выровнять секцию так, чтобы она начиналась с самого верха
       const targetScroll = window.scrollY + rect.top;
 
-      // Доводим только если расстояние больше порога (чтобы не было постоянных мелких движений)
-      if (Math.abs(rect.top) > 10) {
+      // ⚠️ Доводим только если расстояние больше порога - увеличен для более мягкой доводки
+      if (Math.abs(rect.top) > 30) { // Увеличено с 10 до 30 для более мягкой доводки
         window.scrollTo({
           top: targetScroll,
           behavior: 'smooth'
@@ -81,7 +81,8 @@ export const initScrollProtection = () => {
         }
       });
 
-      if (targetSection && minDistance < viewportHeight * 0.5) {
+      // ⚠️ Автодоводка только если секция достаточно близко - увеличен порог для мягкости
+      if (targetSection && minDistance < viewportHeight * 0.4) { // Уменьшено с 0.5 до 0.4
         const rect = targetSection.getBoundingClientRect();
         const targetScroll = window.scrollY + rect.top;
         window.scrollTo({
@@ -150,13 +151,13 @@ export const initScrollProtection = () => {
     touchStartTime = 0;
   };
 
-  // ⚠️ НЕ МЕНЯТЬ: Обработчик окончания прокрутки для автодоводки
+  // ⚠️ НЕ МЕНЯТЬ: Обработчик окончания прокрутки для автодоводки - ослаблена
   const handleScrollEnd = () => {
     clearTimeout(snapTimeout);
-    // Автодоводка после небольшой задержки
+    // Автодоводка после увеличенной задержки для более мягкого поведения
     snapTimeout = setTimeout(() => {
       snapToNearestSection();
-    }, 150);
+    }, 400); // Увеличено с 150 до 400 для более мягкой доводки
   };
 
   // ⚠️ НЕ МЕНЯТЬ: Обработчик скролла с throttling для автодоводки

@@ -90,10 +90,6 @@ const Mainlayout = () => {
                   <p className="about-mission-text-combined">{t('aboutText5')}</p>
                 </div>
               </div>
-              <div className="partners-in-about">
-                <h2 className="partners-in-about-title">Нам доверяют</h2>
-                <PartnersRunner compact={true} />
-              </div>
             </div>
             <div className="about-content-right">
               <div className="stats-unified-block">
@@ -115,6 +111,11 @@ const Mainlayout = () => {
                 </div>
               </div>
             </div>
+          </div>
+          {/* ⚠️ Логотипы компаний растянуты по низу по обоим краям */}
+          <div className="partners-in-about-bottom">
+            <h2 className="partners-in-about-title">Нам доверяют</h2>
+            <PartnersRunner compact={true} />
           </div>
         </div>
       </div>

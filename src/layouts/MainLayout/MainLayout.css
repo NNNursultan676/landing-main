@@ -47,7 +47,7 @@
   display: flex;
   flex-direction: column;
   scroll-snap-align: start;
-  scroll-snap-stop: always;
+  scroll-snap-stop: normal; /* ⚠️ Изменено с always на normal для более плавного скролла */
 }
 
 .main-about-unified::before {
@@ -106,9 +106,11 @@
   justify-content: flex-start; /* ⚠️ flex-start для поднятия контента выше */
   /* ⚠️ overflow: hidden критично для корректной работы анимации частиц */
   overflow: hidden;
-  /* ⚠️ Автодоводка до идеальной позиции - усилено */
+  /* ⚠️ Прозрачный фон - наследует темный фон от родителя main-about-unified */
+  background: transparent;
+  /* ⚠️ Автодоводка до идеальной позиции - ослаблена для плавного скролла */
   scroll-snap-align: start;
-  scroll-snap-stop: always; /* ⚠️ Всегда останавливается на блоке - обязательно для автодоводки */
+  scroll-snap-stop: normal; /* ⚠️ Изменено с always на normal для более плавного скролла */
 }
 
 /* ⚠️ КРИТИЧНО: Контент должен быть поверх частиц (z-index: 2 vs 0) */
@@ -134,9 +136,9 @@
   max-width: 100%;
   margin: 0;
   width: 100%;
-  /* ⚠️ Автодоводка до идеальной позиции */
+  /* ⚠️ Автодоводка до идеальной позиции - ослаблена для плавного скролла */
   scroll-snap-align: start;
-  scroll-snap-stop: always; /* ⚠️ Всегда останавливается на блоке - усилено */
+  scroll-snap-stop: normal; /* ⚠️ Изменено с always на normal для более плавного скролла */
   overflow: hidden;
   /* ⚠️ Темный фон с частицами - продолжение главной страницы */
   background: 
@@ -180,12 +182,12 @@
   box-sizing: border-box;
 }
 
-/* ⚠️ ВАЖНО: Header на уровне навбара, синий фон с частицами как продолжение главной */
+/* ⚠️ ВАЖНО: Header на уровне навбара, темный фон с частицами */
 .about-header-unified {
-  text-align: center;
+  text-align: left; /* ⚠️ Выравнивание влево */
   margin: 0;
-  margin-top: 88px; /* ⚠️ Отступ сверху = высота навбара - полоска начинается сразу под навбаром */
-  padding: 16px 0; /* Минимальный padding для заголовка */
+  margin-top: 88px; /* ⚠️ Отступ сверху = высота навбара */
+  padding: 20px 60px; /* ⚠️ Padding слева для позиционирования заголовка левее и выше */
   flex: 0 0 auto;
   position: relative;
   z-index: 1; /* ⚠️ Меньше навбара, но больше фона секции */
@@ -196,9 +198,9 @@
     #0f172a;
   overflow: hidden;
   display: flex;
-  align-items: center; /* Центрируем заголовок вертикально */
-  justify-content: center;
-  min-height: fit-content; /* Высота подстраивается под контент */
+  align-items: flex-start; /* ⚠️ Выравнивание по верху */
+  justify-content: flex-start; /* ⚠️ Выравнивание влево */
+  min-height: fit-content;
 }
 
 /* ⚠️ Добавляем частицы как на главной странице */
@@ -247,12 +249,12 @@
   z-index: 1; /* Поверх частиц */
 }
 
-/* ⚠️ ВАЖНО: Контент на темном фоне (продолжение главной), занимает оставшееся пространство */
+/* ⚠️ ВАЖНО: Контент на белом фоне */
 .about-content-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
-  padding: 40px 60px 60px; /* Отступы для контента */
+  padding: 40px 60px 40px; /* Уменьшили нижний padding, т.к. логотипы вынесены */
   flex: 1;
   min-height: 0;
   max-width: 1600px;
@@ -263,7 +265,7 @@
   overflow-x: hidden;
   position: relative;
   z-index: 1; /* ⚠️ Меньше навбара (10000) */
-  background: transparent; /* ⚠️ Прозрачный фон - просвечивает темный фон секции */
+  background: #ffffff; /* ⚠️ Белый фон для контента */
 }
 
 .about-content-left {
@@ -280,26 +282,24 @@
   align-items: center;
 }
 
-/* Combined text block - темный фон с прозрачностью для темной темы */
+/* Combined text block - белый фон для белой темы */
 .about-text-combined {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  background: rgba(255, 255, 255, 0.05); /* Полупрозрачный белый для темного фона */
-  padding: 32px;
-  border-radius: 24px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent; /* Прозрачный фон на белом фоне */
+  padding: 0; /* Убираем padding, т.к. фон прозрачный */
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
   overflow: hidden;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
 }
 
 .about-text-main {
   font-size: 24px;
   font-weight: 700;
   line-height: 1.3;
-  color: #ffffff; /* Белый текст на темном фоне */
+  color: #0f172a; /* Темный текст на белом фоне */
   margin: 0;
   letter-spacing: -0.02em;
 }
@@ -308,14 +308,14 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.8); /* Светлый текст */
+  color: #64748b; /* Серый текст */
   margin: 0;
 }
 
 .about-text-company {
   font-size: 16px;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.8); /* Светлый текст */
+  color: #64748b; /* Серый текст */
   margin: 0;
 }
 
@@ -340,18 +340,14 @@
   font-weight: 700;
   line-height: 1.3;
   letter-spacing: -0.02em;
-  color: #ffffff; /* Белый текст */
+  color: #0f172a; /* Темный текст на белом фоне */
   margin: 0 0 8px 0;
-  background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.8) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .about-mission-text-combined {
   font-size: 16px;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.8); /* Светлый текст */
+  color: #64748b; /* Серый текст */
   font-weight: 400;
   margin: 0;
 }
@@ -378,12 +374,13 @@
   letter-spacing: -0.02em;
 }
 
-/* Unified stats block - темный фон с прозрачностью */
+/* Unified stats block - светлый фон для белого фона */
 .stats-unified-block {
-  background: rgba(255, 255, 255, 0.05); /* Полупрозрачный белый для темного фона */
+  background: rgba(248, 250, 252, 0.8); /* Светлый фон для белого фона */
   border-radius: 24px;
   padding: 32px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(226, 232, 240, 0.8);
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -425,7 +422,7 @@
 .stat-label {
   font-size: 14px;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.7); /* Светлый текст на темном фоне */
+  color: #64748b; /* Серый текст на белом фоне */
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin-bottom: 6px;
@@ -434,7 +431,7 @@
 .stat-description {
   font-size: 13px;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.6); /* Светлый текст */
+  color: #94a3b8; /* Светло-серый текст */
   line-height: 1.4;
   margin-top: 4px;
 }
