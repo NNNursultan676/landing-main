@@ -74,21 +74,29 @@ body {
   overflow-x: hidden;
 }
 
-/* Обертка для контента внутри секции контактов - без скролла */
+/* Обертка для контента внутри секции контактов - нормальный блок */
 .contacts-section-content {
   width: 100%;
-  min-height: auto; /* Автоматическая высота по контенту */
+  min-height: auto;
+  height: auto;
   display: flex;
   flex-direction: column;
-  overflow: visible; /* Убираем скролл */
+  overflow: visible;
+  padding: 0;
+  margin: 0;
 }
 
-/* ⚠️ Секция контактов имеет белый фон по умолчанию, без скролла */
+/* ⚠️ Секция контактов имеет белый фон по умолчанию, нормальный блок */
 .contacts-section-fullscreen {
   background: #ffffff !important;
-  overflow: visible !important; /* Убираем скролл */
-  height: auto !important; /* Автоматическая высота */
-  min-height: auto !important; /* Автоматическая минимальная высота */
+  overflow: visible !important;
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: block;
 }
 
 /* ⚠️ Отступ для якорных ссылок с учетом фиксированного навбара */
