@@ -1,35 +1,29 @@
 /**
- * ⚠️ КРИТИЧЕСКИ ВАЖНО: БЛОК ГЛАВНОЙ СТРАНИЦЫ - НЕ ТРОГАТЬ! ⚠️
+ * ⚠️ КРИТИЧЕСКИ ВАЖНО: ЭТИ БЛОКИ НЕЛЬЗЯ ТРОГАТЬ! ⚠️
+ * 
+ * ЗАПРЕЩЕНО ИЗМЕНЯТЬ:
+ * 1. БЛОК "ГЛАВНАЯ" (main-hero-section, main-about-unified) - НЕ ТРОГАТЬ!
+ * 2. БЛОК "О НАС" (about-section-unified, about-content-layout) - НЕ ТРОГАТЬ!
+ * 3. НАВБАР (Nav.jsx, Nav.css) - НЕ ТРОГАТЬ!
+ * 4. ПОДВАЛ (Footer.jsx, Footer.css) - НЕ ТРОГАТЬ!
  * 
  * Этот файл содержит критически важные стили для:
- * 1. Главной секции (main-hero-section) - с анимацией частиц
- * 2. Секции "О нас" (about-section-unified) - соединенной с главной
- * 3. Секций Solutions и Contacts
+ * - Главной секции (main-hero-section) - с анимацией частиц WaterParticles
+ * - Секции "О нас" (about-section-unified) - соединенной с главной
+ * - Секций Solutions и Contacts
  * 
- * КРИТИЧЕСКИЕ СВОЙСТВА:
- * - scroll-snap-align: start - для автодоводки - НЕ МЕНЯТЬ
- * - scroll-snap-stop: always - для остановки на блоке - НЕ МЕНЯТЬ
- * - height: 100vh - для полноэкранных блоков - НЕ МЕНЯТЬ
- * - z-index слои (навбар: 10000, контент: 2, частицы: 0) - НЕ МЕНЯТЬ
+ * КРИТИЧЕСКИЕ СВОЙСТВА (НЕ МЕНЯТЬ):
+ * - scroll-snap-align: start - для автодоводки секций
+ * - scroll-snap-stop: normal - для плавного скролла
+ * - height: 100vh - для полноэкранных блоков
+ * - z-index слои (навбар: 10000, контент: 2, частицы: 0)
+ * - background цвета (главная: #05080d, о нас: #ffffff)
  * 
  * Изменение этих свойств сломает:
  * - Автодоводку секций
  * - Правильное отображение анимации частиц
  * - Навигацию и скроллинг
  * - Визуальную целостность страницы
- */
- * 
- * Стили для главной секции (main-hero-section) содержат критически важные настройки:
- * - Интеграция с WaterParticles компонентом
- * - Высота 100vh для полноэкранного отображения
- * - z-index для правильного размещения слоев
- * - overflow: hidden для корректной работы анимации
- * 
- * НЕ МЕНЯТЬ:
- * - Структуру main-hero-section
- * - z-index значения
- * - height/max-height (100vh критично для полноэкранности)
- * - overflow: hidden (нужно для частиц)
  */
 
 /* MainLayout.css - Premium Layout Styles */
@@ -188,28 +182,7 @@
   pointer-events: auto; /* Разрешаем взаимодействие с заголовком */
 }
 
-/* Старый класс - скрыт */
-.about-header-unified {
-  display: none;
-}
-
-/* Псевдоэлементы удалены - заголовок на уровне навбара */
-
-.about-header-unified h1 {
-  font-size: 48px;
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-  margin: 0;
-  padding: 0;
-  color: #ffffff;
-  background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.9) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  position: relative;
-  z-index: 1; /* Поверх частиц */
-}
+/* ⚠️ УДАЛЕНО: Старый класс .about-header-unified больше не используется (заменен на .about-header-in-navbar) */
 
 /* ⚠️ ВАЖНО: Контент на белом фоне - весь блок включая края */
 .about-content-layout {
@@ -645,23 +618,8 @@
     padding: 0;
   }
 
-  .about-header-unified {
-    margin-top: 88px; /* Отступ сверху = высота навбара */
-    padding: 12px 0; /* Меньший padding на мобильных */
-    background: 
-      radial-gradient(ellipse 80% 50% at 50% 0%, rgba(61, 107, 168, 0.15) 0%, transparent 100%),
-      radial-gradient(ellipse 60% 40% at 100% 100%, rgba(80, 245, 176, 0.12) 0%, transparent 100%),
-      #0f172a; /* Синий фон с частицами - продолжение главной */
-  }
+  /* ⚠️ УДАЛЕНО: .about-header-unified больше не используется */
   
-  .about-content-layout {
-    background: transparent; /* Прозрачный фон - просвечивает темный */
-  }
-
-  .about-header-unified h1 {
-    font-size: 36px;
-  }
-
   .about-content-layout {
     grid-template-columns: 1fr;
     gap: 32px;
@@ -709,27 +667,11 @@
     padding: 70px 16px 0;
   }
 
-  .about-header-unified {
-    margin-top: 88px; /* Отступ сверху = высота навбара */
-    padding: 10px 0; /* Еще меньший padding на маленьких экранах */
-    background: 
-      radial-gradient(ellipse 80% 50% at 50% 0%, rgba(61, 107, 168, 0.15) 0%, transparent 100%),
-      radial-gradient(ellipse 60% 40% at 100% 100%, rgba(80, 245, 176, 0.12) 0%, transparent 100%),
-      #0f172a; /* Синий фон с частицами - продолжение главной */
-  }
-  
-  .about-content-layout {
-    background: transparent; /* Прозрачный фон - просвечивает темный */
-  }
-
-  .about-header-unified h1 {
-    font-size: 28px;
-  }
+  /* ⚠️ УДАЛЕНО: .about-header-unified больше не используется */
 
   .about-content-layout {
-    padding: 40px 16px 24px; /* Увеличен верхний padding */
+    padding: 40px 16px 24px;
     gap: 24px;
-    background: transparent; /* Прозрачный фон - просвечивает темный */
   }
 
   .about-text-combined {
