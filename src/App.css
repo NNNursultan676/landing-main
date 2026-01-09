@@ -1,3 +1,14 @@
+/**
+ * ⚠️ КРИТИЧЕСКИ ВАЖНО: ГЛАВНЫЙ CSS ФАЙЛ - НЕ ТРОГАТЬ КРИТИЧЕСКИЕ СВОЙСТВА! ⚠️
+ * 
+ * Этот файл содержит критически важные стили:
+ * 1. scroll-snap-type: y mandatory - автодоводка секций - НЕ МЕНЯТЬ
+ * 2. .section-snap - стили для секций с автодоводкой - НЕ МЕНЯТЬ
+ * 3. Скрытие стандартного скроллбара - НЕ МЕНЯТЬ
+ * 
+ * Изменение этих свойств сломает автодоводку и защиту от случайных свайпов!
+ */
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;1,400;0,500;1,500;0,600;1,600;0,700;1,700&family=Montserrat:wght@400;500;600;700&display=swap');
 
 
@@ -9,11 +20,12 @@
   box-sizing: border-box;
 }
 
+/* ⚠️ КРИТИЧНО: Автодоводка секций - НЕ МЕНЯТЬ */
 html {
   scroll-behavior: smooth;
   overflow-y: auto;
   overflow-x: hidden;
-  /* ⚠️ Автодоводка до идеальной позиции для каждого блока */
+  /* ⚠️ scroll-snap-type: y mandatory - КРИТИЧНО для автодоводки - НЕ МЕНЯТЬ */
   scroll-snap-type: y mandatory;
 }
 
@@ -40,18 +52,19 @@ body {
   scroll-snap-align: none;
 }
 
-/* ⚠️ ВАЖНО: Каждый блок с автодоводкой до идеальной позиции */
+/* ⚠️ КРИТИЧНО: Каждый блок с автодоводкой до идеальной позиции - НЕ МЕНЯТЬ СВОЙСТВА */
 .section-snap {
+  /* ⚠️ КРИТИЧНЫЕ СВОЙСТВА ДЛЯ АВТОДОВОДКИ - НЕ МЕНЯТЬ */
   scroll-snap-align: start;
-  scroll-snap-stop: always; /* ⚠️ Всегда останавливается на блоке, даже при маленьком скролле */
-  height: 100vh; /* ⚠️ Каждый блок занимает весь экран */
+  scroll-snap-stop: always; /* ⚠️ Всегда останавливается на блоке - НЕ МЕНЯТЬ */
+  height: 100vh; /* ⚠️ Каждый блок занимает весь экран - НЕ МЕНЯТЬ */
   min-height: 100vh;
   max-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   position: relative;
-  /* ⚠️ Убираем overflow-y: auto чтобы не мешать scroll-snap на родительском уровне */
+  /* ⚠️ overflow-y убран специально чтобы не мешать scroll-snap - НЕ ДОБАВЛЯТЬ */
   overflow-x: hidden;
 }
 

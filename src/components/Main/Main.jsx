@@ -27,9 +27,8 @@ const Main = () => {
   const { t, i18n } = useTranslation();
   const demoText = t('demoText');
 
+  // ⚠️ НЕ МЕНЯТЬ: Логика для казахского языка
   const additionalButtonClass = i18n.language === 'kk' ? 'kz-class' : '';
-
-  // Combine base classes with the additional class
   const buttonClassName = `success-btn ${additionalButtonClass}`.trim();
 
   return (

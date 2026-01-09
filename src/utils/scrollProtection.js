@@ -1,20 +1,30 @@
 /**
- * ⚠️ ЗАЩИТА ОТ СЛУЧАЙНЫХ СВАЙПОВ И УСИЛЕНИЕ АВТОДОВОДКИ
+ * ⚠️ КРИТИЧЕСКИ ВАЖНО: ЗАЩИТА ОТ СЛУЧАЙНЫХ СВАЙПОВ И УСИЛЕНИЕ АВТОДОВОДКИ - НЕ ТРОГАТЬ! ⚠️
  * 
- * Защищает от случайных касаний и свайпов
- * Требует намеренного движения для прокрутки
- * Усиливает автодоводку до идеальной позиции
+ * Этот модуль содержит критически важную логику:
+ * 1. Защита от случайных касаний и свайпов - требует намеренного движения (80px для колесика, 150px для touch)
+ * 2. Усиленная автодоводка до идеальной позиции секций после прокрутки
+ * 3. Автоматическое выравнивание секций при скролле
+ * 
+ * Изменение этой логики сломает:
+ * - Защиту от случайных свайпов
+ * - Автодоводку секций
+ * - Плавность прокрутки
+ * 
+ * КРИТИЧЕСКИЕ ПАРАМЕТРЫ:
+ * - minDelta: 80 (порог для колесика мыши) - НЕ МЕНЯТЬ без тестирования
+ * - minSwipeDistance: 150 (порог для touch) - НЕ МЕНЯТЬ без тестирования
+ * - threshold: viewportHeight * 0.3 (порог для автодоводки) - НЕ МЕНЯТЬ
  */
 
-let isScrolling = false;
 let scrollTimer = null;
-let lastScrollTop = 0;
-let scrollDelta = 0;
 let wheelAccumulator = 0; // Накопитель для движений колесика
 let snapTimeout = null;
 
+/**
+ * ⚠️ НЕ МЕНЯТЬ: Инициализация защиты от случайных свайпов и автодоводки
+ */
 export const initScrollProtection = () => {
-  let wheelTimeout = null;
   let touchStartY = 0;
   let touchStartTime = 0;
 
@@ -32,8 +42,6 @@ export const initScrollProtection = () => {
 
     sections.forEach((section) => {
       const rect = section.getBoundingClientRect();
-      const sectionTop = scrollY + rect.top;
-      const sectionBottom = sectionTop + rect.height;
       
       // Проверяем, какая секция ближе всего к верху экрана
       const distanceFromTop = Math.abs(rect.top);
@@ -99,14 +107,12 @@ export const initScrollProtection = () => {
 
     // Сброс накопителя после разрешения скролла
     wheelAccumulator = 0;
-    isScrolling = true;
     
     // Автодоводка после окончания прокрутки
     clearTimeout(scrollTimer);
     clearTimeout(snapTimeout);
     
     scrollTimer = setTimeout(() => {
-      isScrolling = false;
       wheelAccumulator = 0;
     }, 200);
 
@@ -116,7 +122,7 @@ export const initScrollProtection = () => {
     }, 250);
   };
 
-  // Защита от случайных тач-свайпов
+  // ⚠️ НЕ МЕНЯТЬ: Защита от случайных тач-свайпов
   const handleTouchStart = (e) => {
     touchStartY = e.touches[0].clientY;
     touchStartTime = Date.now();
@@ -128,8 +134,8 @@ export const initScrollProtection = () => {
     const touchY = e.touches[0].clientY;
     const deltaY = Math.abs(touchY - touchStartY);
     const deltaTime = Date.now() - touchStartTime;
-    // ⚠️ Увеличенные пороги для защиты от случайных свайпов
-    const minSwipeDistance = 150; // Минимальное расстояние для свайпа (увеличено)
+    // ⚠️ КРИТИЧНО: Увеличенные пороги для защиты от случайных свайпов - НЕ МЕНЯТЬ
+    const minSwipeDistance = 150; // Минимальное расстояние для свайпа
     const minSwipeTime = 150; // Минимальное время для свайпа - быстрые касания игнорируем
 
     // Если движение слишком маленькое или слишком быстрое, блокируем
@@ -144,13 +150,7 @@ export const initScrollProtection = () => {
     touchStartTime = 0;
   };
 
-  // Добавляем обработчики с passive: false для возможности preventDefault
-  window.addEventListener('wheel', handleWheel, { passive: false });
-  window.addEventListener('touchstart', handleTouchStart, { passive: true });
-  window.addEventListener('touchmove', handleTouchMove, { passive: false });
-  window.addEventListener('touchend', handleTouchEnd, { passive: true });
-
-  // ⚠️ Обработчик окончания прокрутки для автодоводки - усилено
+  // ⚠️ НЕ МЕНЯТЬ: Обработчик окончания прокрутки для автодоводки
   const handleScrollEnd = () => {
     clearTimeout(snapTimeout);
     // Автодоводка после небольшой задержки
@@ -159,7 +159,7 @@ export const initScrollProtection = () => {
     }, 150);
   };
 
-  // Обработчик скролла с throttling для автодоводки
+  // ⚠️ НЕ МЕНЯТЬ: Обработчик скролла с throttling для автодоводки
   let scrollTimeout = null;
   const handleScroll = () => {
     if (scrollTimeout) return;
@@ -169,14 +169,14 @@ export const initScrollProtection = () => {
     }, 50);
   };
 
-  // Добавляем обработчики с passive: false для возможности preventDefault
+  // ⚠️ КРИТИЧНО: Добавляем обработчики событий - порядок важен
   window.addEventListener('wheel', handleWheel, { passive: false });
   window.addEventListener('scroll', handleScroll, { passive: true });
   window.addEventListener('touchstart', handleTouchStart, { passive: true });
   window.addEventListener('touchmove', handleTouchMove, { passive: false });
   window.addEventListener('touchend', handleTouchEnd, { passive: true });
 
-  // Очистка при размонтировании
+  // ⚠️ НЕ МЕНЯТЬ: Очистка при размонтировании компонента
   return () => {
     window.removeEventListener('wheel', handleWheel);
     window.removeEventListener('scroll', handleScroll);
@@ -184,7 +184,6 @@ export const initScrollProtection = () => {
     window.removeEventListener('touchmove', handleTouchMove);
     window.removeEventListener('touchend', handleTouchEnd);
     clearTimeout(scrollTimer);
-    clearTimeout(wheelTimeout);
     clearTimeout(snapTimeout);
     clearTimeout(scrollTimeout);
   };
