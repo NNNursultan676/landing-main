@@ -1,5 +1,5 @@
 .ant-layout {
-  /* background-color: #FFFFFF; */
-  background-color: #FFFFFF;
+  /* ⚠️ Прозрачный фон чтобы не перекрывать фон секций */
+  background-color: transparent !important;
   font-family: 'Inter' !important;
 }
