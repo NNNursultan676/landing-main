@@ -184,20 +184,19 @@
 
 /* ⚠️ УДАЛЕНО: Старый класс .about-header-unified больше не используется (заменен на .about-header-in-navbar) */
 
-/* ⚠️ ВАЖНО: Контент на белом фоне - весь блок включая края */
+/* ⚠️ ВАЖНО: Контент на белом фоне - весь блок включая края, без скролла */
 .about-content-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  padding: 40px 60px 40px; /* Уменьшили нижний padding, т.к. логотипы вынесены */
+  gap: 32px; /* Уменьшен gap */
+  padding: 24px 60px 24px; /* Уменьшены отступы для компактности */
   flex: 1;
   min-height: 0;
   max-width: 100%; /* Полная ширина для белого фона по краям */
   margin: 0;
   width: 100%;
   align-items: start;
-  overflow-y: auto; /* Позволяем скролл контента если не помещается */
-  overflow-x: hidden;
+  overflow: hidden; /* Убираем скролл - все должно помещаться */
   position: relative;
   z-index: 1; /* ⚠️ Меньше навбара (10000) */
   background: #ffffff; /* ⚠️ Белый фон для всего контента */
@@ -207,11 +206,11 @@
 .about-content-left {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px; /* Уменьшен gap для компактности */
   overflow: hidden;
   /* ⚠️ Основной текст еще правее и чуть спущен */
   margin-left: 100px; /* ⚠️ Увеличен отступ слева для смещения еще правее (было 40px) */
-  margin-top: 20px; /* ⚠️ Чуть спускаем текст вниз */
+  margin-top: 12px; /* Уменьшен отступ сверху */
 }
 
 .about-content-right {
@@ -225,7 +224,7 @@
 .about-text-combined {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px; /* Уменьшен gap для компактности */
   background: transparent; /* Прозрачный фон на белом фоне */
   padding: 0; /* Убираем padding, т.к. фон прозрачный */
   border-radius: 0;
@@ -235,18 +234,18 @@
 }
 
 .about-text-main {
-  font-size: 24px;
+  font-size: 22px; /* Уменьшен размер для компактности */
   font-weight: 700;
-  line-height: 1.3;
+  line-height: 1.25; /* Уменьшен line-height */
   color: #0f172a; /* Темный текст на белом фоне */
   margin: 0;
   letter-spacing: -0.02em;
 }
 
 .about-text-sub {
-  font-size: 16px;
+  font-size: 15px; /* Уменьшен размер */
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.5; /* Уменьшен line-height */
   color: #64748b; /* Серый текст */
   margin: 0;
 }
@@ -269,23 +268,23 @@
 }
 
 .about-mission-combined {
-  margin-top: 4px;
-  padding-top: 20px;
+  margin-top: 0;
+  padding-top: 16px; /* Уменьшен padding */
   border-top: 2px solid rgba(80, 245, 176, 0.3); /* Более яркая граница */
 }
 
 .about-mission-title-combined {
-  font-size: 20px;
+  font-size: 18px; /* Уменьшен размер */
   font-weight: 700;
   line-height: 1.3;
   letter-spacing: -0.02em;
   color: #0f172a; /* Темный текст на белом фоне */
-  margin: 0 0 8px 0;
+  margin: 0 0 6px 0; /* Уменьшен margin */
 }
 
 .about-mission-text-combined {
-  font-size: 16px;
-  line-height: 1.6;
+  font-size: 15px; /* Уменьшен размер */
+  line-height: 1.5; /* Уменьшен line-height */
   color: #64748b; /* Серый текст */
   font-weight: 400;
   margin: 0;
@@ -354,7 +353,7 @@
 .stats-unified-block {
   background: rgba(248, 250, 252, 0.8); /* Светлый фон для белого фона */
   border-radius: 24px;
-  padding: 32px;
+  padding: 24px; /* Уменьшен padding */
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(226, 232, 240, 0.8);
   display: flex;
@@ -362,7 +361,6 @@
   gap: 0;
   width: 100%;
   max-width: 380px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
@@ -371,7 +369,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 24px 20px;
+  padding: 18px 16px; /* Уменьшен padding */
   text-align: center;
 }
 
@@ -384,10 +382,10 @@
 }
 
 .stat-value {
-  font-size: 48px;
+  font-size: 42px; /* Уменьшен размер */
   font-weight: 800;
   line-height: 1;
-  margin-bottom: 8px;
+  margin-bottom: 6px; /* Уменьшен margin */
   background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -396,20 +394,20 @@
 }
 
 .stat-label {
-  font-size: 14px;
+  font-size: 13px; /* Уменьшен размер */
   font-weight: 700;
   color: #64748b; /* Серый текст на белом фоне */
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  margin-bottom: 6px;
+  margin-bottom: 4px; /* Уменьшен margin */
 }
 
 .stat-description {
-  font-size: 13px;
+  font-size: 12px; /* Уменьшен размер */
   font-weight: 400;
   color: #94a3b8; /* Светло-серый текст */
-  line-height: 1.4;
-  margin-top: 4px;
+  line-height: 1.3; /* Уменьшен line-height */
+  margin-top: 2px; /* Уменьшен margin */
 }
 
 .stat-divider {
