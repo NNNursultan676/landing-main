@@ -1,0 +1,140 @@
+/**
+ * Brex-style Career Styles
+ * Чистые карточки, белый фон
+ */
+.brex-career {
+  padding: 120px 24px;
+  background: #f8fafc;
+}
+
+.brex-career-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.brex-career-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.brex-career-title {
+  font-size: 56px !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.03em !important;
+  color: #0f172a !important;
+  margin-bottom: 16px !important;
+}
+
+.brex-career-subtitle {
+  font-size: 20px !important;
+  line-height: 1.6 !important;
+  color: #64748b !important;
+  max-width: 600px;
+  margin: 0 auto !important;
+}
+
+.brex-career-grid {
+  margin-top: 60px;
+}
+
+.brex-vacancy-card {
+  border-radius: 16px !important;
+  border: 1px solid #e2e8f0 !important;
+  padding: 32px 24px !important;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff !important;
+  transition: all 0.3s ease !important;
+}
+
+.brex-vacancy-card:hover {
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08) !important;
+  transform: translateY(-4px);
+}
+
+.brex-vacancy-title {
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  color: #0f172a !important;
+  margin-bottom: 16px !important;
+  line-height: 1.3 !important;
+}
+
+.brex-vacancy-tags {
+  margin-bottom: 20px;
+}
+
+.brex-vacancy-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding: 16px;
+  background: #f8fafc;
+  border-radius: 8px;
+}
+
+.brex-vacancy-info-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.brex-vacancy-info-item .anticon {
+  color: #4a9eff;
+}
+
+.brex-vacancy-description {
+  color: #475569 !important;
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  margin-bottom: 24px !important;
+  flex-grow: 1;
+}
+
+.brex-vacancy-button {
+  width: 100%;
+  height: 48px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  background: #4a9eff !important;
+  border: none !important;
+  margin-top: auto;
+}
+
+.brex-vacancy-button:hover {
+  background: #357abd !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(74, 158, 255, 0.3) !important;
+}
+
+.brex-modal-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .brex-career {
+    padding: 80px 24px;
+  }
+
+  .brex-career-title {
+    font-size: 36px !important;
+  }
+
+  .brex-career-subtitle {
+    font-size: 18px !important;
+  }
+}

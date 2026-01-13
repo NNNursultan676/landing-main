@@ -1,0 +1,97 @@
+/**
+ * Brex-style CTA Styles
+ * Минималистичный дизайн, белый фон
+ */
+.brex-cta {
+  padding: 120px 24px;
+  background: #f8fafc;
+  text-align: center;
+}
+
+.brex-cta-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.brex-cta-title {
+  font-size: 56px !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.03em !important;
+  color: #0f172a !important;
+  margin-bottom: 24px !important;
+}
+
+.brex-cta-description {
+  font-size: 20px !important;
+  line-height: 1.6 !important;
+  color: #64748b !important;
+  margin-bottom: 48px !important;
+}
+
+.brex-cta-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.brex-cta-button-primary {
+  height: 56px;
+  padding: 0 40px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  background: #4a9eff !important;
+  border: none !important;
+  transition: all 0.2s ease !important;
+}
+
+.brex-cta-button-primary:hover {
+  background: #357abd !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(74, 158, 255, 0.3) !important;
+}
+
+.brex-cta-button-secondary {
+  height: 56px;
+  padding: 0 40px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #0f172a !important;
+  transition: all 0.2s ease !important;
+}
+
+.brex-cta-button-secondary:hover {
+  border-color: #cbd5e1 !important;
+  background: #f8fafc !important;
+  transform: translateY(-1px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .brex-cta {
+    padding: 80px 24px;
+  }
+
+  .brex-cta-title {
+    font-size: 40px !important;
+  }
+
+  .brex-cta-description {
+    font-size: 18px !important;
+  }
+
+  .brex-cta-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .brex-cta-button-primary,
+  .brex-cta-button-secondary {
+    width: 100%;
+  }
+}

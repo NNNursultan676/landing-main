@@ -1,0 +1,125 @@
+/**
+ * Brex-style Team Styles
+ * Белый фон, чистый дизайн
+ */
+.brex-team {
+  padding: 120px 24px;
+  background: #ffffff;
+}
+
+.brex-team-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.brex-team-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.brex-team-title {
+  font-size: 56px !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.03em !important;
+  color: #0f172a !important;
+  margin-bottom: 16px !important;
+}
+
+.brex-team-subtitle {
+  font-size: 20px !important;
+  line-height: 1.6 !important;
+  color: #64748b !important;
+  max-width: 600px;
+  margin: 0 auto !important;
+}
+
+.brex-team-card {
+  border-radius: 16px !important;
+  border: 1px solid #e2e8f0 !important;
+  padding: 48px 40px !important;
+  text-align: center;
+  background: #ffffff !important;
+}
+
+.brex-team-icon {
+  font-size: 48px;
+  color: #4a9eff;
+  margin-bottom: 24px;
+}
+
+.brex-team-stat {
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 1;
+  color: #0f172a;
+  margin-bottom: 12px;
+}
+
+.brex-team-stat-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 24px;
+}
+
+.brex-team-description {
+  font-size: 16px !important;
+  line-height: 1.7 !important;
+  color: #475569 !important;
+  text-align: left !important;
+  margin-top: 24px !important;
+}
+
+.brex-team-photo-card {
+  border-radius: 16px !important;
+  border: 2px dashed #cbd5e1 !important;
+  padding: 48px 40px !important;
+  background: #f8fafc !important;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brex-team-photo-placeholder {
+  text-align: center;
+  color: #64748b;
+}
+
+.brex-team-photo-placeholder p {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #475569;
+}
+
+.brex-team-photo-note {
+  font-size: 14px !important;
+  color: #94a3b8 !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .brex-team {
+    padding: 80px 24px;
+  }
+
+  .brex-team-title {
+    font-size: 36px !important;
+  }
+
+  .brex-team-subtitle {
+    font-size: 18px !important;
+  }
+
+  .brex-team-card,
+  .brex-team-photo-card {
+    padding: 32px 24px !important;
+  }
+
+  .brex-team-stat {
+    font-size: 56px;
+  }
+}

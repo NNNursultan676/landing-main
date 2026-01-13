@@ -15,16 +15,17 @@
  */
 import { Layout } from 'antd';
 import React from 'react';
-import DashboardHero from '../../components/DashboardHero/DashboardHero';
-import TrustedBySection from '../../components/TrustedBySection/TrustedBySection';
-import DashboardProducts from '../../components/DashboardProducts/DashboardProducts';
-import DashboardAbout from '../../components/DashboardAbout/DashboardAbout';
-import FeatureSection from '../../components/FeatureSection/FeatureSection';
-import DashboardArticles from '../../components/DashboardArticles/DashboardArticles';
-import TeamSection from '../../components/TeamSection/TeamSection';
-import DashboardCareer from '../../components/DashboardCareer/DashboardCareer';
-import CTASection from '../../components/CTASection/CTASection';
-import ContactsMain from '../../components/ContactsMain/ContactsMain';
+import Nav from '../../layouts/Nav';
+import BrexHero from '../../components/BrexHero/BrexHero';
+import BrexTrustedBy from '../../components/BrexTrustedBy/BrexTrustedBy';
+import BrexProducts from '../../components/BrexProducts/BrexProducts';
+import BrexAbout from '../../components/BrexAbout/BrexAbout';
+import BrexFeatures from '../../components/BrexFeatures/BrexFeatures';
+import BrexArticles from '../../components/BrexArticles/BrexArticles';
+import BrexTeam from '../../components/BrexTeam/BrexTeam';
+import BrexCareer from '../../components/BrexCareer/BrexCareer';
+import BrexCTA from '../../components/BrexCTA/BrexCTA';
+import BrexContacts from '../../components/BrexContacts/BrexContacts';
 import Footer from '../../layouts/Footer';
 import './MainLayout.css';
 import '../../layouts/Contacts/Contacts.css';
@@ -32,149 +33,55 @@ import '../../layouts/Contacts/Contacts.css';
 const Mainlayout = () => {
   return (
     <Layout>
-      {/* 1. Dashboard Hero - Главная секция с метриками */}
-      <DashboardHero />
+      {/* Навигация */}
+      <Nav />
+      
+      {/* 1. Brex Hero - Главная секция в стиле Brex */}
+      <BrexHero />
 
-      {/* 2. Trusted By - Партнеры */}
-      <div id="partners" className="section-wrapper">
-        <TrustedBySection />
-      </div>
-
-      {/* 3. Dashboard Products - Продукты в grid */}
+      {/* 2. Brex Trusted By - Партнеры */}
       <div className="section-wrapper">
-        <DashboardProducts />
+        <BrexTrustedBy />
       </div>
 
-      {/* 4. Dashboard About - О компании с интерактивной статистикой */}
+      {/* 3. Brex Products - Продукты в стиле Brex */}
       <div className="section-wrapper">
-        <DashboardAbout />
+        <BrexProducts />
       </div>
 
-      {/* 5. Feature Sections - Детальные секции о продуктах */}
-      <div id="features" className="section-wrapper">
-        <FeatureSection
-          title="Кредитный конвейер — автоматизация всего цикла"
-          description="Комплексное решение для автоматизации всего цикла кредитования — от подачи заявки до принятия решения и сопровождения. Вся система является 100% собственной разработкой, что позволяет гибко адаптироваться под требования клиентов и регуляторов. Благодаря автоматизации бизнес-процессов клиенты достигают до 50% оптимизации операционных расходов."
-          imagePosition="left"
-          variant="light"
-          ctaText="Узнать больше о конвейере"
-          image={
-            <div style={{
-              width: '100%',
-              height: '400px',
-              background: 'linear-gradient(135deg, #4a9eff 0%, #357abd 100%)',
-              borderRadius: '16px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: '#ffffff',
-              fontSize: '24px',
-              fontWeight: 600
-            }}>
-              Кредитный конвейер
-            </div>
-          }
-        />
-        <FeatureSection
-          title="Кредитный брокер — единая платформа для всех"
-          description="Цифровая платформа, объединяющая дилерские центры, банки и МФО. Более 300 дилеров и 6 финансовых организаций уже работают через нашу платформу, обеспечивая быструю обработку заявок и прозрачность процесса. Платформа представлена более чем в 20 городах Казахстана."
-          imagePosition="right"
-          variant="default"
-          ctaText="Узнать больше о брокере"
-          image={
-            <div style={{
-              width: '100%',
-              height: '400px',
-              background: 'linear-gradient(135deg, #50F5B0 0%, #3dd89f 100%)',
-              borderRadius: '16px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: '#0f172a',
-              fontSize: '24px',
-              fontWeight: 600
-            }}>
-              Кредитный брокер
-            </div>
-          }
-        />
-      </div>
-
-      {/* 6. Dashboard Articles - Статьи в dashboard стиле */}
+      {/* 4. Brex About - О компании в стиле Brex */}
       <div className="section-wrapper">
-        <DashboardArticles />
+        <BrexAbout />
       </div>
 
-      {/* 7. Team - Команда */}
-      <div id="team" className="section-wrapper">
-        <TeamSection />
-      </div>
-
-      {/* 8. Dashboard Career - Карьера с примерами вакансий */}
+      {/* 5. Brex Features - Детальные секции о продуктах в стиле Brex */}
       <div className="section-wrapper">
-        <DashboardCareer />
+        <BrexFeatures />
       </div>
 
-      {/* 9. CTA Section - Призыв к действию */}
+      {/* 6. Brex Articles - Статьи в стиле Brex */}
       <div className="section-wrapper">
-        <CTASection />
+        <BrexArticles />
       </div>
 
-      {/* 10. Contacts - Контакты */}
-      <div id="contacts" className="section-wrapper">
-        <div className="contacts-section-content">
-          <ContactsMain />
-          <div className="contacts-wrapper">
-            <div className="contacts-grid">
-              {/* Карточка телефона */}
-              <div className="contact-card">
-                <div className="contact-card-icon">📞</div>
-                <div className="contact-card-content">
-                  <h3 className="contact-card-title">Телефон</h3>
-                  <a href="tel:+77758805234" className="contact-card-link">+7 775 880 52 34</a>
-                </div>
-              </div>
+      {/* 7. Brex Team - Команда в стиле Brex */}
+      <div className="section-wrapper">
+        <BrexTeam />
+      </div>
 
-              {/* Карточка email */}
-              <div className="contact-card">
-                <div className="contact-card-icon">✉️</div>
-                <div className="contact-card-content">
-                  <h3 className="contact-card-title">Email</h3>
-                  <a href="mailto:info@sapatech.kz" className="contact-card-link">info@sapatech.kz</a>
-                </div>
-              </div>
+      {/* 8. Brex Career - Карьера в стиле Brex */}
+      <div className="section-wrapper">
+        <BrexCareer />
+      </div>
 
-              {/* Карточка адреса */}
-              <div className="contact-card contact-card-address">
-                <div className="contact-card-icon">📍</div>
-                <div className="contact-card-content">
-                  <h3 className="contact-card-title">Адрес</h3>
-                  <p className="contact-card-text">г. Алматы, ул. Шашкина, 24, БЦ K Plaza</p>
-                  <a 
-                    href="https://2gis.kz/almaty/geo/70000001066943138/76.933728,43.222690" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className='contact-map-button'
-                  >
-                    Открыть в 2ГИС
-                  </a>
-                </div>
-              </div>
-            </div>
+      {/* 9. Brex CTA - Призыв к действию в стиле Brex */}
+      <div className="section-wrapper">
+        <BrexCTA />
+      </div>
 
-            {/* Карта */}
-            <div className='contact-map-wrapper'>
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2907.3761568922578!2d76.9312009773613!3d43.22257248017424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38836f24c6b92751%3A0x8e0755bb3661cfad!2z0YPQu9C40YbQsCDQl9C10LnQvdCwINCo0LDRiNC60LjQvdCwIDI0LCDQkNC70LzQsNGC0YsgMDUwMDYw!5e0!3m2!1sru!2skz!4v1723115930036!5m2!1sru!2skz"
-                className='contact-map'
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Карта офиса Sapa Technologies"
-              />
-            </div>
-          </div>
-        </div>
+      {/* 10. Brex Contacts - Контакты в стиле Brex */}
+      <div className="section-wrapper">
+        <BrexContacts />
       </div>
 
       {/* 11. Footer - Подвал */}

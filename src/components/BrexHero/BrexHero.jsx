@@ -1,0 +1,73 @@
+/**
+ * Brex-style Hero Section
+ * Чистый белый фон, минималистичный дизайн как в Brex
+ */
+import React, { useState } from 'react';
+import { Typography, Input, Button, Space } from 'antd';
+import { useTranslation } from 'react-i18next';
+// Nav уже включен в MainLayout, не нужно дублировать
+import modalService from '../../services/modalService';
+import { ArrowRightOutlined } from '@ant-design/icons';
+import './BrexHero.css';
+
+const { Title, Paragraph } = Typography;
+
+const BrexHero = () => {
+  const { t } = useTranslation();
+  const [email, setEmail] = useState('');
+
+  const handleGetStarted = () => {
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return;
+    }
+
+    const demoText = t('demoText');
+    const modalData = email 
+      ? `${demoText}\n\nEmail: ${email}` 
+      : demoText;
+    modalService.openModal(modalData);
+  };
+
+  return (
+    <div id="home" className="brex-hero">
+      <div className="brex-hero-container">
+        <div className="brex-hero-content">
+          <Title level={1} className="brex-hero-title">
+            {t('mainTitle1')} {t('mainTitle2')} {t('mainTitle3')}
+          </Title>
+          
+          <Paragraph className="brex-hero-subtitle">
+            {t('mainTitle4')}
+          </Paragraph>
+
+          {/* Форма как в Brex */}
+          <div className="brex-hero-form">
+            <Space.Compact style={{ width: '100%', maxWidth: '480px' }}>
+              <Input
+                placeholder="Введите email компании"
+                size="large"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="brex-hero-input"
+              />
+              <Button
+                type="primary"
+                size="large"
+                onClick={handleGetStarted}
+                className="brex-hero-button"
+              >
+                Заказать демо
+              </Button>
+            </Space.Compact>
+          </div>
+
+          <Paragraph className="brex-hero-note">
+            Sapa Technologies — ваш цифровой партнер на рынке fintech
+          </Paragraph>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default BrexHero;

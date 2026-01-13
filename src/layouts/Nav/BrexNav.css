@@ -1,0 +1,208 @@
+/**
+ * Brex-style Navigation
+ * Белый фон, чистый минималистичный дизайн
+ */
+.brex-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.brex-nav.scrolled {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.brex-nav-container {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brex-nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #0f172a;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.brex-nav-logo img {
+  height: 32px;
+  width: auto;
+}
+
+.brex-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.brex-nav-link {
+  position: relative;
+  padding: 8px 16px;
+  color: #475569;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.brex-nav-link:hover {
+  color: #0f172a;
+  background: #f1f5f9;
+}
+
+.brex-nav-link.active {
+  color: #4a9eff;
+  background: rgba(74, 158, 255, 0.1);
+}
+
+.brex-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brex-nav-button {
+  height: 40px;
+  padding: 0 20px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.brex-nav-button-primary {
+  background: #4a9eff;
+  color: #ffffff;
+}
+
+.brex-nav-button-primary:hover {
+  background: #357abd;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(74, 158, 255, 0.3);
+}
+
+.brex-nav-button-text {
+  background: transparent;
+  color: #475569;
+}
+
+.brex-nav-button-text:hover {
+  color: #0f172a;
+  background: #f1f5f9;
+}
+
+/* Dropdown для продуктов */
+.brex-nav-dropdown {
+  position: relative;
+}
+
+.brex-nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  min-width: 600px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.2s ease;
+  z-index: 10001;
+}
+
+.brex-nav-dropdown:hover .brex-nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.brex-nav-dropdown-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #0f172a;
+  transition: all 0.2s ease;
+}
+
+.brex-nav-dropdown-item:hover {
+  background: #f8fafc;
+}
+
+.brex-nav-dropdown-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 20px;
+}
+
+.brex-nav-dropdown-content {
+  flex: 1;
+}
+
+.brex-nav-dropdown-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+
+.brex-nav-dropdown-desc {
+  font-size: 14px;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .brex-nav-container {
+    padding: 0 16px;
+  }
+
+  .brex-nav-links {
+    display: none;
+  }
+
+  .brex-nav-dropdown-menu {
+    min-width: 320px;
+    grid-template-columns: 1fr;
+  }
+}

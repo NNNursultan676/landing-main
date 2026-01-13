@@ -1,0 +1,119 @@
+/**
+ * Brex-style Articles Styles
+ * Белый фон, чистые карточки
+ */
+.brex-articles {
+  padding: 120px 24px;
+  background: #ffffff;
+}
+
+.brex-articles-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.brex-articles-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.brex-articles-title {
+  font-size: 56px !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.03em !important;
+  color: #0f172a !important;
+  margin-bottom: 16px !important;
+}
+
+.brex-articles-subtitle {
+  font-size: 20px !important;
+  line-height: 1.6 !important;
+  color: #64748b !important;
+  max-width: 600px;
+  margin: 0 auto !important;
+}
+
+.brex-articles-grid {
+  margin-top: 60px;
+}
+
+.brex-article-card {
+  border-radius: 16px !important;
+  border: 1px solid #e2e8f0 !important;
+  padding: 32px 24px !important;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease !important;
+  background: #ffffff !important;
+  cursor: pointer;
+}
+
+.brex-article-card:hover {
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08) !important;
+  transform: translateY(-4px);
+}
+
+.brex-article-icon {
+  font-size: 40px;
+  color: #4a9eff;
+  margin-bottom: 20px;
+  opacity: 0.2;
+}
+
+.brex-article-source {
+  font-size: 12px;
+  font-weight: 600;
+  color: #4a9eff;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+
+.brex-article-title {
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  color: #0f172a !important;
+  margin-bottom: 16px !important;
+  line-height: 1.4 !important;
+  flex-grow: 1;
+}
+
+.brex-article-description {
+  color: #64748b !important;
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  margin-bottom: 24px !important;
+}
+
+.brex-article-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #4a9eff;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.brex-article-card:hover .brex-article-link {
+  color: #357abd;
+  transform: translateX(4px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .brex-articles {
+    padding: 80px 24px;
+  }
+
+  .brex-articles-title {
+    font-size: 36px !important;
+  }
+
+  .brex-articles-subtitle {
+    font-size: 18px !important;
+  }
+}

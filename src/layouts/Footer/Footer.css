@@ -12,16 +12,13 @@
  */
 
 .footer {
-  /* ⚠️ Темный фон идентичный главной странице (#05080d) */
-  background: 
-    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(61, 107, 168, 0.25) 0%, transparent 100%),
-    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(80, 245, 176, 0.18) 0%, transparent 100%),
-    #05080d !important; /* ⚠️ Такой же темный фон как главная страница */
+  /* Темный фон для подвала */
+  background: #0f172a !important;
   color: #ffffff;
   padding: 80px 80px 40px;
   position: relative;
   overflow: hidden;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid #1e293b;
 }
 
 .footer::before {
@@ -31,7 +28,7 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(80, 245, 176, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(74, 158, 255, 0.3), transparent);
 }
 
 .footer-logo-section {
@@ -112,7 +109,7 @@
 }
 
 .footerLinks a:hover {
-  color: #50f5b0;
+  color: #4a9eff;
   transform: translateX(4px);
 }
 
@@ -136,9 +133,9 @@
 }
 
 .socials a:hover {
-  color: #50f5b0 !important;
-  background: rgba(80, 245, 176, 0.15);
-  border-color: rgba(80, 245, 176, 0.3);
+  color: #4a9eff !important;
+  background: rgba(74, 158, 255, 0.15);
+  border-color: rgba(74, 158, 255, 0.3);
   transform: translateY(-2px);
 }
 

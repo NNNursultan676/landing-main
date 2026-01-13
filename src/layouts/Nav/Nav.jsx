@@ -19,7 +19,7 @@ import { useState } from 'react';
 import React from 'react';
 import { Menu, Dropdown, Row } from 'antd';
 import ArrowDown from '../../assets/images/globe-alt.svg';
-import Logo from '../../assets/images/LogoLight.svg';
+import Logo from '../../assets/images/LogoBlack.svg';
 import MenuBurger from '../../assets/images/menu.svg';
 import './Nav.css';
 import { useTranslation } from 'react-i18next';

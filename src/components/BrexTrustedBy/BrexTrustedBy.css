@@ -1,0 +1,40 @@
+/**
+ * Brex-style Trusted By Styles
+ * Белый фон, чистый дизайн
+ */
+.brex-trusted-by {
+  padding: 80px 24px;
+  background: #ffffff;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.brex-trusted-by-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.brex-trusted-by-title {
+  text-align: center;
+  font-size: 32px !important;
+  font-weight: 600 !important;
+  color: #0f172a !important;
+  margin-bottom: 48px !important;
+  letter-spacing: -0.02em;
+}
+
+.brex-trusted-by-logos {
+  width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .brex-trusted-by {
+    padding: 60px 24px;
+  }
+
+  .brex-trusted-by-title {
+    font-size: 24px !important;
+    margin-bottom: 32px !important;
+  }
+}
