@@ -34,7 +34,7 @@ const BrexCTA = () => {
             onClick={handleGetStarted}
             className="brex-cta-button-primary"
           >
-            Заказать демо
+            {t('demo')}
           </Button>
           <Button
             size="large"
@@ -46,7 +46,7 @@ const BrexCTA = () => {
               }
             }}
           >
-            Связаться с нами
+            {t('contactButton')}
           </Button>
         </Space>
       </div>

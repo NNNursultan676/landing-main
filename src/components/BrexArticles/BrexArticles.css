@@ -19,7 +19,7 @@
 
 .brex-articles-header {
   text-align: center;
-  margin-bottom: 80px;
+  margin-bottom: 40px;
 }
 
 .brex-articles-title {
@@ -28,7 +28,7 @@
   line-height: 1.2 !important;
   letter-spacing: -0.03em !important;
   color: #0f172a !important;
-  margin-bottom: 16px !important;
+  margin-bottom: 8px !important;
 }
 
 .brex-articles-subtitle {
@@ -45,15 +45,16 @@
 
 .brex-articles-carousel-wrapper {
   position: relative;
-  margin-top: 60px;
+  margin-top: 30px;
   padding: 0 70px;
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .brex-articles-carousel {
   position: relative;
   width: 100%;
+  overflow: hidden;
 }
 
 .brex-article-slide {
@@ -66,7 +67,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 10;
+  z-index: 100;
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -79,6 +80,7 @@
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   flex-shrink: 0;
+  pointer-events: auto;
 }
 
 .brex-articles-arrow-left {
@@ -158,7 +160,7 @@
 }
 
 .brex-article-card .ant-card-body {
-  padding: 24px !important;
+  padding: 20px !important;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -204,14 +206,14 @@
   color: #4a9eff;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
 
 .brex-article-title {
   font-size: 20px !important;
   font-weight: 700 !important;
   color: #0f172a !important;
-  margin-bottom: 12px !important;
+  margin-bottom: 8px !important;
   line-height: 1.4 !important;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -223,7 +225,7 @@
   color: #64748b !important;
   font-size: 15px !important;
   line-height: 1.6 !important;
-  margin-bottom: 16px !important;
+  margin-bottom: 12px !important;
   flex-grow: 1;
 }
 

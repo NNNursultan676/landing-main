@@ -35,7 +35,7 @@ const CTASection = () => {
             onClick={handleGetStarted}
             className="cta-button-primary"
           >
-            Заказать демо
+            {t('demo')}
           </Button>
           <Button
             size="large"
@@ -47,7 +47,7 @@ const CTASection = () => {
               }
             }}
           >
-            Связаться с нами
+            {t('contactButton')}
           </Button>
         </Space>
       </div>

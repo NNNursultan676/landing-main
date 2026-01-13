@@ -174,7 +174,7 @@ const BrexArticles = () => {
                       </Paragraph>
                     )}
                     <div className="brex-article-link">
-                      Читать статью <ArrowRightOutlined />
+                      {t('articles.readMore')} <ArrowRightOutlined />
                     </div>
                   </Card>
                 </div>
