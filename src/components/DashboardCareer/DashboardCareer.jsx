@@ -53,23 +53,56 @@ const DashboardCareer = () => {
 
   const handleSubmit = async (values) => {
     try {
-      // Здесь должна быть отправка на сервер
-      // const response = await axios.post(`${API_URL}/vacancies/${selectedVacancy?.id}/apply`, values);
-      
-      console.log('Отклик на вакансию:', {
-        vacancy: selectedVacancy?.title,
-        ...values,
-      });
-      
-      // Показываем успешное сообщение пользователю
-      message.success(t('career.applyForm.success') || 'Ваш отклик успешно отправлен! Мы свяжемся с вами в ближайшее время.');
-      
-      setIsModalOpen(false);
-      form.resetFields();
+      // Проверяем, что выбрана вакансия
+      if (!selectedVacancy || !selectedVacancy.id) {
+        message.error('Ошибка: вакансия не выбрана');
+        return;
+      }
+
+      // Отправляем отклик на сервер
+      const response = await axios.post(
+        `${API_URL}/vacancies/${selectedVacancy.id}/applications`,
+        {
+          ...values,
+          vacancyTitle: selectedVacancy.title,
+        }
+      );
+
+      // Проверяем успешность ответа
+      if (response.data && response.data.success) {
+        // Показываем успешное сообщение пользователю
+        message.success(
+          t('career.applyForm.success') || 
+          'Ваш отклик успешно отправлен! Мы свяжемся с вами в ближайшее время.'
+        );
+        
+        setIsModalOpen(false);
+        form.resetFields();
+      } else {
+        throw new Error('Сервер вернул неожиданный ответ');
+      }
     } catch (error) {
       console.error('Ошибка отправки отклика:', error);
+      
+      // Определяем тип ошибки для более информативного сообщения
+      let errorMessage = 'Произошла ошибка при отправке отклика. Пожалуйста, попробуйте еще раз.';
+      
+      if (error.response) {
+        // Сервер ответил с кодом ошибки
+        if (error.response.status === 404) {
+          errorMessage = 'Вакансия не найдена. Пожалуйста, обновите страницу.';
+        } else if (error.response.status >= 500) {
+          errorMessage = 'Ошибка на сервере. Пожалуйста, попробуйте позже.';
+        } else if (error.response.data && error.response.data.error) {
+          errorMessage = error.response.data.error;
+        }
+      } else if (error.request) {
+        // Запрос был отправлен, но ответа не получено
+        errorMessage = 'Не удалось подключиться к серверу. Проверьте подключение к интернету.';
+      }
+      
       // Показываем ошибку пользователю
-      message.error('Произошла ошибка при отправке отклика. Пожалуйста, попробуйте еще раз.');
+      message.error(errorMessage);
     }
   };
 

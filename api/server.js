@@ -32,6 +32,7 @@ const initDataFiles = () => {
     'vacancies.json': [],
     'articles.json': [],
     'team.json': [],
+    'applications.json': [],
     'products.json': {
       creditConveyor: {
         clients: ['СДФ', 'BI Finance']
@@ -117,6 +118,41 @@ app.delete('/api/vacancies/:id', (req, res) => {
     res.json({ success: true });
   } catch (error) {
     res.status(500).json({ error: 'Ошибка удаления вакансии' });
+  }
+});
+
+/**
+ * POST /api/vacancies/:id/applications - Отправить отклик на вакансию
+ */
+app.post('/api/vacancies/:id/applications', (req, res) => {
+  try {
+    const applicationsFilePath = path.join(DATA_DIR, 'applications.json');
+    
+    // Инициализируем файл applications.json, если его нет
+    let applications = [];
+    if (fs.existsSync(applicationsFilePath)) {
+      applications = fs.readJsonSync(applicationsFilePath);
+    }
+    
+    const newApplication = {
+      id: Date.now().toString(),
+      vacancyId: req.params.id,
+      vacancyTitle: req.body.vacancyTitle || '',
+      ...req.body,
+      submittedAt: new Date().toISOString()
+    };
+    
+    applications.push(newApplication);
+    fs.writeJsonSync(applicationsFilePath, applications, { spaces: 2 });
+    
+    res.json({ 
+      success: true, 
+      message: 'Отклик успешно отправлен',
+      applicationId: newApplication.id 
+    });
+  } catch (error) {
+    console.error('Ошибка сохранения отклика:', error);
+    res.status(500).json({ error: 'Ошибка отправки отклика' });
   }
 });
 
