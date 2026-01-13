@@ -18,9 +18,8 @@ import DemoModal from './components/DemoModal/DemoModal';
 import { Layout } from 'antd';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// ⚠️ УДАЛЕНО: Защита от случайных свайпов отключена
-// import { useEffect } from 'react';
-// import { initScrollProtection } from './utils/scrollProtection';
+import { useEffect } from 'react';
+import { initScrollProtection } from './utils/scrollProtection';
 
 const LayoutWrapper = ({ children }) => {
   return (
@@ -31,11 +30,11 @@ const LayoutWrapper = ({ children }) => {
 };
 
 function App() {
-  // ⚠️ УДАЛЕНО: Защита от случайных свайпов отключена
-  // useEffect(() => {
-  //   const cleanup = initScrollProtection();
-  //   return cleanup;
-  // }, []);
+  // ⚠️ КРИТИЧЕСКИ ВАЖНО: Инициализация защиты от случайных свайпов - НЕ УДАЛЯТЬ
+  useEffect(() => {
+    const cleanup = initScrollProtection();
+    return cleanup;
+  }, []);
 
   return (
     <LayoutWrapper>
