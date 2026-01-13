@@ -20,6 +20,9 @@
   /* ⚠️ КРИТИЧНО: Не менять position, top, z-index, height */
   position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
   z-index: 10000;
   background: #ffffff;
   backdrop-filter: none;
@@ -29,8 +32,11 @@
   height: 72px; /* ⚠️ Используется в Nav.jsx для scrollToSection */
   display: flex;
   align-items: center;
+  justify-content: space-between;
   pointer-events: none;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  max-width: 100vw;
+  overflow: hidden;
 }
 
 .nav.scrolled {
@@ -50,6 +56,8 @@
   -webkit-backdrop-filter: none;
   clip-path: none;
   box-shadow: none;
+  position: relative;
+  z-index: 10001;
 }
 
 .nav-right {
@@ -60,6 +68,8 @@
   -webkit-backdrop-filter: none;
   clip-path: none;
   box-shadow: none;
+  position: relative;
+  z-index: 10001;
 }
 
 .nav-img {

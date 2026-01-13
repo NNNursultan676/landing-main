@@ -5,6 +5,8 @@
 .brex-team {
   padding: 120px 24px;
   background: #ffffff;
+  position: relative;
+  z-index: 1;
 }
 
 .brex-team-container {

@@ -125,8 +125,8 @@ const Nav = () => {
   const buttonClassName = `success-btn demo ${additionalButtonClass}`.trim();
 
   return (
-    <>
-      <div className='nav nav-left'>
+    <div className='nav'>
+      <div className='nav-left'>
         <div className='nav-img'>
           <img 
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
@@ -136,7 +136,7 @@ const Nav = () => {
           />        
         </div>
       </div>
-      <div className='nav nav-right'>
+      <div className='nav-right'>
         <div className='nav-controllers'>
           <div className='navLinks'>
             <ul className='navList'>
@@ -266,11 +266,10 @@ const Nav = () => {
                   <li><a href="#contacts" onClick={(e) => { e.preventDefault(); scrollToSection('contacts'); }}>{t('contactUs')}</a></li>
                 </ul>
               </div>
-            </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
