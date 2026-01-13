@@ -20,7 +20,7 @@ const BrexTrustedBy = () => {
           Нам доверяют 300+ партнеров по всей стране
         </p>
         <div className="brex-trusted-by-logos">
-          <PartnersRunner compact={false} />
+          <PartnersRunner compact={true} />
         </div>
       </div>
     </div>
