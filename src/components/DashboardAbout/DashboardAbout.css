@@ -3,7 +3,7 @@
  * Интерактивная статистика с уникальными карточками
  */
 .dashboard-about {
-  padding: 120px 24px;
+  padding: 60px 24px;
   background: #ffffff;
   position: relative;
 }
@@ -194,7 +194,7 @@
 /* Responsive */
 @media (max-width: 1200px) {
   .dashboard-about {
-    padding: 100px 24px;
+    padding: 50px 24px;
   }
 
   .dashboard-about-title {

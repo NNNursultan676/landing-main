@@ -26,12 +26,12 @@
      "tag8": "Microservice architecture",
      "tag9": "BI analytics",
      "tag10": "Integration with accounting systems",
-     "statsValue1": "25%",
-     "statsValue2": "250+",
-     "statsValue3": "95%",
+     "statsValue1": "50%",
+     "statsValue2": "300+",
+     "statsValue3": "93%",
      "statslabel1": "OPTIMIZATION",
      "statslabel2": "PARTNERS",
-     "statslabel3": "LOYALTY",
+     "statslabel3": "NPS",
      "statsDesc1": "Reduction of operating costs",
      "statsDesc2": "Trusted by us",
      "statsDesc3": "Customer satisfaction index",
@@ -46,11 +46,11 @@
      "solutionTitle3": "Our Products",
      "partnersSectionText": "Partners",
      "aboutTitle": "About Us",
-     "aboutText1": "A Kazakhstani IT company, part of the Sapa group of companies,",
-     "aboutText2": "expert in the field of digital",
-     "aboutText3": "and custom solutions of any complexity.",
-     "aboutText4": "Our Mission",
-     "aboutText5": "We help businesses achieve effective results through innovative, simple, and convenient digital solutions",
+     "aboutText1": "We have been working in the market since 2023 and in a short time have built a sustainable ecosystem of digital solutions in the lending sector. Our platform is represented in more than 20 cities of Kazakhstan and unites 300+ partners across the country.",
+     "aboutText2": "The company develops and implements 2 proprietary products that provide complete automation of the entire lending cycle - from application submission to decision-making and support. The entire system is 100% proprietary development, which allows flexible adaptation to customer and regulatory requirements.",
+     "aboutText3": "Today, the team consists of 40+ employees, and our solutions are already used in 20+ GovTech projects. Thanks to business process automation, clients achieve up to 50% optimization of operating expenses (OPEX).",
+     "aboutText4": "The quality and reliability of our products is confirmed by a high level of user satisfaction - NPS is 93%.",
+     "aboutText5": "",
      "productTitle": "Our Products",
      "partnerTitle": "Trusted by us",
      "contactTitle": "Contacts",
@@ -161,6 +161,46 @@
          "success": "Message sent successfully!",
          "error": "Error sending message: ",
          "serverError": "Server error"
+       }
+     },
+     "navigation": {
+       "company": "Company",
+       "articles": "Media about us",
+       "products": "Products",
+       "solutions": "Solutions",
+       "team": "Team",
+       "career": "Career",
+       "contacts": "Contacts"
+     },
+     "articles": {
+       "title": "Media about us",
+       "subtitle": "Publications and articles about Sapa Technologies",
+       "readMore": "Read article",
+       "source": "Source"
+     },
+     "team": {
+       "title": "Our team",
+       "subtitle": "40+ professionals working on creating the best solutions",
+       "employees": "employees",
+       "description": "Today, the team consists of 40+ employees, and our solutions are already used in 20+ GovTech projects."
+     },
+     "career": {
+       "title": "Career",
+       "subtitle": "Join our team",
+       "noVacancies": "There are currently no open vacancies",
+       "apply": "Apply",
+       "vacancyTitle": "Title",
+       "vacancyDescription": "Description",
+       "vacancyRequirements": "Requirements",
+       "vacancyLocation": "Location",
+       "applyForm": {
+         "title": "Job application",
+         "name": "Name",
+         "email": "Email",
+         "phone": "Phone",
+         "resume": "Resume",
+         "submit": "Submit",
+         "success": "Your application has been successfully submitted!"
        }
      }
    }

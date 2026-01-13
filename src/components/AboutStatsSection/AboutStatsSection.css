@@ -3,7 +3,7 @@
  * Премиальный B2B дизайн
  */
 .about-stats-section {
-  padding: 120px 24px;
+  padding: 60px 24px;
   background: #ffffff;
 }
 
@@ -91,7 +91,7 @@
 /* Responsive */
 @media (max-width: 1200px) {
   .about-stats-section {
-    padding: 100px 24px;
+    padding: 50px 24px;
   }
 
   .about-section-title {

@@ -13,7 +13,7 @@
     radial-gradient(ellipse 60% 40% at 100% 100%, rgba(80, 245, 176, 0.18) 0%, transparent 100%),
     #05080d;
   overflow: hidden;
-  padding: 120px 24px 80px;
+  padding: 60px 24px 40px;
 }
 
 .hero-container {
@@ -95,7 +95,7 @@
 
 @media (max-width: 768px) {
   .hero-section {
-    padding: 100px 24px 60px;
+    padding: 50px 24px 40px;
     min-height: auto;
   }
 

@@ -3,7 +3,7 @@
 .solutions-section-wrapper {
   width: 100%;
   background: #ffffff;
-  padding: 120px 24px;
+  padding: 60px 24px;
   position: relative;
 }
 
@@ -149,7 +149,7 @@
 /* Responsive */
 @media (max-width: 1200px) {
   .solutions-section-wrapper {
-    padding: 100px 24px;
+    padding: 50px 24px;
   }
 
   .solutions-container {

@@ -3,7 +3,7 @@
  * Белый фон, чистый дизайн
  */
 .brex-about {
-  padding: 120px 24px;
+  padding: 60px 24px;
   background: #f8fafc;
 }
 
@@ -103,7 +103,7 @@
 /* Responsive */
 @media (max-width: 1200px) {
   .brex-about {
-    padding: 100px 24px;
+    padding: 50px 24px;
   }
 
   .brex-about-title {

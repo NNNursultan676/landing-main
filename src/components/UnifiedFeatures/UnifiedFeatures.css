@@ -4,7 +4,7 @@
   width: 100%;
   position: relative;
   background: linear-gradient(180deg, var(--color-bg-light) 0%, var(--color-bg-soft) 100%);
-  padding: 120px 40px;
+  padding: 60px 40px;
 }
 
 .unified-features-content {
@@ -50,7 +50,7 @@
 /* Responsive */
 @media (max-width: 1200px) {
   .unified-features-container {
-    padding: 100px 32px;
+    padding: 50px 32px;
   }
 
   .unified-features-section {

@@ -3,7 +3,7 @@
  * Белый фон, чистый дизайн
  */
 .brex-team {
-  padding: 120px 24px;
+  padding: 80px 24px;
   background: #ffffff;
   position: relative;
   z-index: 1;
@@ -125,7 +125,7 @@
 /* Responsive */
 @media (max-width: 768px) {
   .brex-team {
-    padding: 80px 24px;
+    padding: 60px 24px;
   }
 
   .brex-team-title {

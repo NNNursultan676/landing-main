@@ -3,7 +3,7 @@
  * Премиальный B2B дизайн по образцу референсов
  */
 .feature-section {
-  padding: 120px 24px;
+  padding: 60px 24px;
   position: relative;
 }
 
@@ -96,7 +96,7 @@
 /* Responsive */
 @media (max-width: 1200px) {
   .feature-section {
-    padding: 100px 24px;
+    padding: 50px 24px;
   }
 
   .feature-title {

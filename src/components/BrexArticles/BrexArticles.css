@@ -3,7 +3,7 @@
  * Белый фон, чистые карточки
  */
 .brex-articles {
-  padding: 120px 24px;
+  padding: 80px 24px;
   background: #ffffff;
   width: 100%;
   box-sizing: border-box;
@@ -270,7 +270,7 @@
 
 @media (max-width: 768px) {
   .brex-articles {
-    padding: 80px 24px;
+    padding: 60px 24px;
   }
 
   .brex-articles-title {
