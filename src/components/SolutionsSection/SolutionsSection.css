@@ -27,6 +27,125 @@
   margin: 0 auto;
 }
 
+/* Карусель с перелистыванием картинок */
+.solutions-carousel-wrapper {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+
+.solutions-carousel-container {
+  position: relative;
+  width: 100%;
+}
+
+.solutions-slide {
+  padding: 0 20px;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.solutions-slide .solution-card {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.solutions-carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-size: 20px;
+  color: #4a9eff;
+}
+
+.solutions-carousel-arrow:hover {
+  background: #4a9eff;
+  border-color: #4a9eff;
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(74, 158, 255, 0.4);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.solutions-carousel-arrow-left {
+  left: 0;
+}
+
+.solutions-carousel-arrow-right {
+  right: 0;
+}
+
+/* Стили для точек навигации (dots) */
+.solutions-carousel-container .slick-dots {
+  bottom: -50px;
+  position: relative;
+  margin-top: 40px;
+}
+
+.solutions-carousel-container .slick-dots li {
+  width: 12px;
+  height: 12px;
+  margin: 0 6px;
+}
+
+.solutions-carousel-container .slick-dots li button {
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border-radius: 50%;
+  background: #cbd5e1;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.solutions-carousel-container .slick-dots li button:before {
+  display: none;
+}
+
+.solutions-carousel-container .slick-dots li.slick-active button {
+  background: #4a9eff;
+  width: 32px;
+  border-radius: 6px;
+}
+
+/* Плавные переходы для fade эффекта */
+.solutions-carousel-container .slick-slide {
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+}
+
+.solutions-carousel-container .slick-slide.slick-active {
+  opacity: 1;
+}
+
+.solutions-carousel-container .slick-slide.slick-current {
+  opacity: 1;
+}
+
+/* Убираем стандартные стили slick */
+.solutions-carousel-container .slick-list {
+  overflow: visible;
+}
+
+.solutions-carousel-container .slick-track {
+  display: flex;
+  align-items: center;
+}
+
 /* Responsive */
 @media (max-width: 1200px) {
   .solutions-section-wrapper {
@@ -36,6 +155,16 @@
   .solutions-container {
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
+  }
+
+  .solutions-carousel-wrapper {
+    padding: 0 70px;
+  }
+
+  .solutions-carousel-arrow {
+    width: 48px;
+    height: 48px;
+    font-size: 18px;
   }
 }
 
@@ -48,6 +177,25 @@
     grid-template-columns: 1fr;
     gap: 24px;
   }
+
+  .solutions-carousel-wrapper {
+    padding: 0 60px;
+  }
+
+  .solutions-carousel-arrow {
+    width: 44px;
+    height: 44px;
+    font-size: 16px;
+  }
+
+  .solutions-slide {
+    padding: 0 10px;
+  }
+
+  .solutions-carousel-container .slick-dots {
+    bottom: -40px;
+    margin-top: 30px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -57,5 +205,20 @@
 
   .solutions-container {
     gap: 20px;
+  }
+
+  .solutions-carousel-wrapper {
+    padding: 0 50px;
+  }
+
+  .solutions-carousel-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .solutions-carousel-container .slick-dots {
+    bottom: -30px;
+    margin-top: 20px;
   }
 }
