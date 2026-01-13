@@ -44,12 +44,12 @@
 
 .partners-runner-compact .partners-runner-container::before {
   left: 0;
-  background: linear-gradient(to right, #1e293b, transparent);
+  background: linear-gradient(to right, #f1f5f9, transparent);
 }
 
 .partners-runner-compact .partners-runner-container::after {
   right: 0;
-  background: linear-gradient(to left, #1e293b, transparent);
+  background: linear-gradient(to left, #f1f5f9, transparent);
 }
 
 .partners-runner-compact .partners-runner-track {
