@@ -1,12 +1,15 @@
 /**
  * Brex-style Articles Section
- * Белый фон, чистые карточки
+ * Белый фон, чистые карточки с каруселью
  */
-import React, { useState, useEffect } from 'react';
-import { Typography, Row, Col, Card } from 'antd';
+import React, { useState, useEffect, useRef } from 'react';
+import { Typography, Card } from 'antd';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
-import { FileTextOutlined, ArrowRightOutlined } from '@ant-design/icons';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { FileTextOutlined, ArrowRightOutlined, LeftOutlined, RightOutlined } from '@ant-design/icons';
 import './BrexArticles.css';
 
 const { Title, Paragraph } = Typography;
@@ -18,6 +21,7 @@ const BrexArticles = () => {
   const { t } = useTranslation();
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
+  const sliderRef = useRef(null);
 
   useEffect(() => {
     const fetchArticles = async () => {
@@ -79,6 +83,43 @@ const BrexArticles = () => {
     fetchArticles();
   }, []);
 
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    arrows: false,
+    responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        }
+      }
+    ]
+  };
+
+  const next = () => {
+    sliderRef.current?.slickNext();
+  };
+
+  const previous = () => {
+    sliderRef.current?.slickPrev();
+  };
+
+  if (loading) {
+    return <div className="brex-articles">Загрузка...</div>;
+  }
+
   return (
     <div id="articles" className="brex-articles">
       <div className="brex-articles-container">
@@ -91,46 +132,58 @@ const BrexArticles = () => {
           </Paragraph>
         </div>
 
-        <Row gutter={[24, 24]} className="brex-articles-grid">
-          {articles.map((article) => (
-            <Col xs={24} sm={12} lg={8} key={article.id}>
-              <Card 
-                className="brex-article-card"
-                hoverable
-                onClick={() => window.open(article.url, '_blank', 'noopener,noreferrer')}
-                cover={article.image ? (
-                  <div className="brex-article-image-container">
-                    <img 
-                      src={article.image} 
-                      alt={article.title}
-                      className="brex-article-image"
-                      onError={(e) => {
-                        e.target.style.display = 'none';
-                      }}
-                    />
-                  </div>
-                ) : (
-                  <div className="brex-article-icon">
-                    <FileTextOutlined />
-                  </div>
-                )}
-              >
-                <div className="brex-article-source">{article.source}</div>
-                <Title level={4} className="brex-article-title">
-                  {article.title}
-                </Title>
-                {article.description && (
-                  <Paragraph className="brex-article-description" ellipsis={{ rows: 3 }}>
-                    {article.description}
-                  </Paragraph>
-                )}
-                <div className="brex-article-link">
-                  Читать статью <ArrowRightOutlined />
+        <div className="brex-articles-carousel-wrapper">
+          <button className="brex-articles-arrow brex-articles-arrow-left" onClick={previous}>
+            <LeftOutlined />
+          </button>
+          
+          <div className="brex-articles-carousel">
+            <Slider ref={sliderRef} {...settings}>
+              {articles.map((article) => (
+                <div key={article.id} className="brex-article-slide">
+                  <Card 
+                    className="brex-article-card"
+                    hoverable
+                    onClick={() => window.open(article.url, '_blank', 'noopener,noreferrer')}
+                    cover={article.image ? (
+                      <div className="brex-article-image-container">
+                        <img 
+                          src={article.image} 
+                          alt={article.title}
+                          className="brex-article-image"
+                          onError={(e) => {
+                            e.target.style.display = 'none';
+                          }}
+                        />
+                      </div>
+                    ) : (
+                      <div className="brex-article-icon">
+                        <FileTextOutlined />
+                      </div>
+                    )}
+                  >
+                    <div className="brex-article-source">{article.source}</div>
+                    <Title level={4} className="brex-article-title">
+                      {article.title}
+                    </Title>
+                    {article.description && (
+                      <Paragraph className="brex-article-description" ellipsis={{ rows: 3 }}>
+                        {article.description}
+                      </Paragraph>
+                    )}
+                    <div className="brex-article-link">
+                      Читать статью <ArrowRightOutlined />
+                    </div>
+                  </Card>
                 </div>
-              </Card>
-            </Col>
-          ))}
-        </Row>
+              ))}
+            </Slider>
+          </div>
+
+          <button className="brex-articles-arrow brex-articles-arrow-right" onClick={next}>
+            <RightOutlined />
+          </button>
+        </div>
       </div>
     </div>
   );

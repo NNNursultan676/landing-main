@@ -38,11 +38,102 @@
   margin-top: 60px;
 }
 
+.brex-articles-carousel-wrapper {
+  position: relative;
+  margin-top: 60px;
+  padding: 0 60px;
+}
+
+.brex-articles-carousel {
+  position: relative;
+}
+
+.brex-article-slide {
+  padding: 0 12px;
+  height: 100%;
+}
+
+.brex-articles-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.brex-articles-arrow:hover {
+  background: #4a9eff;
+  border-color: #4a9eff;
+  box-shadow: 0 4px 12px rgba(74, 158, 255, 0.3);
+}
+
+.brex-articles-arrow:hover svg {
+  color: #ffffff !important;
+}
+
+.brex-articles-arrow svg {
+  font-size: 18px;
+  color: #4a9eff;
+  transition: color 0.3s ease;
+}
+
+.brex-articles-arrow-left {
+  left: 0;
+}
+
+.brex-articles-arrow-right {
+  right: 0;
+}
+
+/* Slick carousel overrides */
+.brex-articles-carousel .slick-slide {
+  padding: 0;
+}
+
+.brex-articles-carousel .slick-list {
+  margin: 0 -12px;
+}
+
+.brex-articles-carousel .slick-track {
+  display: flex;
+  align-items: stretch;
+}
+
+.brex-articles-carousel .slick-slide > div {
+  height: 100%;
+  padding: 0 12px;
+}
+
+.brex-articles-carousel .slick-slide .brex-article-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.brex-articles-carousel .slick-slide {
+  height: auto;
+}
+
+.brex-articles-carousel .slick-slide > div {
+  height: 100%;
+}
+
 .brex-article-card {
   border-radius: 16px !important;
   border: 1px solid #e2e8f0 !important;
   padding: 0 !important;
   height: 100%;
+  min-height: 480px;
   display: flex;
   flex-direction: column;
   transition: all 0.3s ease !important;
@@ -66,23 +157,26 @@
 
 .brex-article-image-container {
   width: 100%;
-  height: 200px;
+  height: 220px;
   overflow: hidden;
   background: #f8fafc;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .brex-article-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  object-position: center;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: block;
 }
 
 .brex-article-card:hover .brex-article-image {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
 .brex-article-icon {
@@ -134,6 +228,21 @@
 }
 
 /* Responsive */
+@media (max-width: 1200px) {
+  .brex-articles-carousel-wrapper {
+    padding: 0 50px;
+  }
+
+  .brex-articles-arrow {
+    width: 40px;
+    height: 40px;
+  }
+
+  .brex-articles-arrow svg {
+    font-size: 16px;
+  }
+}
+
 @media (max-width: 768px) {
   .brex-articles {
     padding: 80px 24px;
@@ -145,5 +254,30 @@
 
   .brex-articles-subtitle {
     font-size: 18px !important;
+  }
+
+  .brex-articles-carousel-wrapper {
+    padding: 0 40px;
+  }
+
+  .brex-articles-arrow {
+    width: 36px;
+    height: 36px;
+  }
+
+  .brex-articles-arrow svg {
+    font-size: 14px;
+  }
+
+  .brex-article-slide {
+    padding: 0 8px;
+  }
+
+  .brex-articles-carousel .slick-list {
+    margin: 0 -8px;
+  }
+
+  .brex-articles-carousel .slick-slide > div {
+    padding: 0 8px;
   }
 }
