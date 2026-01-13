@@ -3,7 +3,7 @@
  * Улучшенные карточки вакансий с примерами и интерактивностью
  */
 import React, { useState, useEffect } from 'react';
-import { Typography, Row, Col, Card, Button, Modal, Form, Input, Tag, Space } from 'antd';
+import { Typography, Row, Col, Card, Button, Modal, Form, Input, Tag, Space, message } from 'antd';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 import { 
@@ -53,19 +53,28 @@ const DashboardCareer = () => {
 
   const handleSubmit = async (values) => {
     try {
+      // Здесь должна быть отправка на сервер
+      // const response = await axios.post(`${API_URL}/vacancies/${selectedVacancy?.id}/apply`, values);
+      
       console.log('Отклик на вакансию:', {
         vacancy: selectedVacancy?.title,
         ...values,
       });
+      
+      // Показываем успешное сообщение пользователю
+      message.success(t('career.applyForm.success') || 'Ваш отклик успешно отправлен! Мы свяжемся с вами в ближайшее время.');
+      
       setIsModalOpen(false);
       form.resetFields();
     } catch (error) {
-      console.error('Ошибка отправки отклика');
+      console.error('Ошибка отправки отклика:', error);
+      // Показываем ошибку пользователю
+      message.error('Произошла ошибка при отправке отклика. Пожалуйста, попробуйте еще раз.');
     }
   };
 
-  // Примеры вакансий для демонстрации
-  const exampleVacancies = [
+  // Примеры вакансий для демонстрации (только в development режиме)
+  const exampleVacancies = process.env.NODE_ENV === 'development' ? [
     {
       id: 'example-1',
       title: 'Senior Frontend Developer',
@@ -78,6 +87,7 @@ const DashboardCareer = () => {
       benefits: ['Гибкий график', 'Медицинская страховка', 'Обучение за счет компании'],
       gradient: 'linear-gradient(135deg, #4a9eff 0%, #357abd 100%)',
       icon: '💻',
+      isExample: true, // Маркер для примера
     },
     {
       id: 'example-2',
@@ -91,9 +101,11 @@ const DashboardCareer = () => {
       benefits: ['Премии', 'Офис в центре', 'Корпоративные мероприятия'],
       gradient: 'linear-gradient(135deg, #50F5B0 0%, #3dd89f 100%)',
       icon: '📊',
+      isExample: true, // Маркер для примера
     },
-  ];
+  ] : [];
 
+  // В production показываем только реальные вакансии из API
   const allVacancies = [...exampleVacancies, ...vacancies];
 
   return (

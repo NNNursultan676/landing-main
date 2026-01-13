@@ -48,8 +48,23 @@ const DashboardHero = () => {
   }, []);
 
   const handleGetStarted = () => {
+    // Валидация email (базовая проверка)
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      // Можно добавить toast notification для ошибки валидации
+      return;
+    }
+
     const demoText = t('demoText');
-    modalService.openModal(demoText);
+    // Передаем email вместе с текстом демо, если он был введен
+    const modalData = email 
+      ? `${demoText}\n\nEmail: ${email}` 
+      : demoText;
+    modalService.openModal(modalData);
+    
+    // Логируем email для отладки (в production можно убрать)
+    if (email && process.env.NODE_ENV === 'development') {
+      console.log('Email для демо:', email);
+    }
   };
 
   return (
