@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react';
 import { Typography, Row, Col, Card } from 'antd';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
-import { FileTextOutlined, ExternalLinkOutlined } from '@ant-design/icons';
+import { FileTextOutlined, ArrowRightOutlined } from '@ant-design/icons';
 import './DashboardArticles.css';
 
 const { Title, Paragraph } = Typography;
@@ -92,7 +92,7 @@ const DashboardArticles = () => {
                   </Paragraph>
                 )}
                 <div className="article-link">
-                  Читать статью <ExternalLinkOutlined />
+                  Читать статью <ArrowRightOutlined />
                 </div>
               </Card>
             </div>
