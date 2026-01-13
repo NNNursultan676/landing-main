@@ -1,0 +1,114 @@
+/**
+ * Стили для раздела "Команда/Сотрудники"
+ * Премиальный B2B дизайн
+ */
+.team-section {
+  min-height: 100vh;
+  padding: 120px 0 80px;
+  background: linear-gradient(180deg, #0a0f15 0%, #05080d 100%);
+  color: #fff;
+}
+
+.team-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.team-title {
+  color: #fff !important;
+  text-align: center;
+  margin-bottom: 16px !important;
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.team-subtitle {
+  color: #a0a0a0;
+  text-align: center;
+  margin-bottom: 60px !important;
+  font-size: 18px;
+}
+
+.team-content {
+  margin-top: 60px;
+}
+
+.team-info-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  height: 100%;
+}
+
+.team-stats {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.team-stat-number {
+  font-size: 72px;
+  font-weight: 700;
+  color: #4a9eff;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.team-stat-label {
+  font-size: 18px;
+  color: #a0a0a0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.team-description {
+  color: #b0b0b0;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0 !important;
+}
+
+.team-photos {
+  height: 100%;
+  min-height: 400px;
+}
+
+.team-photo-placeholder {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  height: 100%;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #a0a0a0;
+  text-align: center;
+  padding: 40px;
+}
+
+.team-photo-placeholder p {
+  margin: 8px 0;
+  font-size: 18px;
+}
+
+.placeholder-note {
+  font-size: 14px !important;
+  color: #666 !important;
+}
+
+@media (max-width: 768px) {
+  .team-section {
+    padding: 80px 0 60px;
+  }
+
+  .team-title {
+    font-size: 32px;
+  }
+
+  .team-stat-number {
+    font-size: 48px;
+  }
+}

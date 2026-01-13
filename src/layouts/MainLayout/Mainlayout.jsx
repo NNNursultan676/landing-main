@@ -31,6 +31,9 @@ import Footer from '../../layouts/Footer'
 import { useTranslation } from 'react-i18next'
 import ContactsMain from '../../components/ContactsMain/ContactsMain'
 import WaterParticles from '../../components/WaterParticles/WaterParticles'
+import ArticlesSection from '../../components/ArticlesSection/ArticlesSection'
+import TeamSection from '../../components/TeamSection/TeamSection'
+import CareerSection from '../../components/CareerSection/CareerSection'
 import '../../layouts/Products/Products.css'
 import '../../layouts/Partners/Partners.css'
 import '../../layouts/Contacts/Contacts.css'
@@ -81,34 +84,31 @@ const Mainlayout = () => {
           <div className="about-content-layout">
             <div className="about-content-left">
               <div className="about-text-combined">
-                <p className="about-text-main">{t('mainTitle5')}</p>
-                <p className="about-text-sub">{t('mainTitle4')}</p>
-                <p className="about-text-company">
-                  {t('aboutText1')} <span className="highlighted">{t('aboutText2')}</span> {t('aboutText3')}
-                </p>
-                <div className="about-mission-combined">
-                  <h3 className="about-mission-title-combined">{t('aboutText4')}</h3>
-                  <p className="about-mission-text-combined">{t('aboutText5')}</p>
-                </div>
+                <p className="about-text-main">{t('aboutText1')}</p>
+                <p className="about-text-sub">{t('aboutText2')}</p>
+                <p className="about-text-company">{t('aboutText3')}</p>
+                {t('aboutText4') && (
+                  <p className="about-text-nps">{t('aboutText4')}</p>
+                )}
               </div>
             </div>
             <div className="about-content-right">
               <div className="stats-unified-block">
                 <div className="stat-item stat-item-top">
-                  <div className="stat-value">25%</div>
-                  <div className="stat-label">ОПТИМИЗАЦИЯ</div>
-                  <div className="stat-description">Сокращение операционных расходов</div>
+                  <div className="stat-value">{t('statsValue1')}</div>
+                  <div className="stat-label">{t('statslabel1')}</div>
+                  <div className="stat-description">{t('statsDesc1')}</div>
                 </div>
                 <div className="stat-divider"></div>
                 <div className="stat-item stat-item-middle">
-                  <div className="stat-value">250+</div>
-                  <div className="stat-label">ПАРТНЁРОВ</div>
+                  <div className="stat-value">{t('statsValue2')}</div>
+                  <div className="stat-label">{t('statslabel2')}</div>
                 </div>
                 <div className="stat-divider"></div>
                 <div className="stat-item stat-item-bottom">
-                  <div className="stat-value">95%</div>
-                  <div className="stat-label">ЛОЯЛЬНОСТЬ</div>
-                  <div className="stat-description">Индекс удовлетворенности клиентов</div>
+                  <div className="stat-value">{t('statsValue3')}</div>
+                  <div className="stat-label">{t('statslabel3')}</div>
+                  <div className="stat-description">{t('statsDesc3')}</div>
                 </div>
               </div>
             </div>
@@ -123,17 +123,44 @@ const Mainlayout = () => {
       
       {/* 
         ========================================
-        БЛОК 3: РЕШЕНИЯ (Solutions)
+        БЛОК 3: СТАТЬИ/СМИ (Articles)
+        ========================================
+      */}
+      <div id="articles" className="contacts-section-fullscreen">
+        <ArticlesSection />
+      </div>
+
+      {/* 
+        ========================================
+        БЛОК 4: РЕШЕНИЯ (Solutions)
         ⚠️ Без автодоводки и защиты
         ========================================
       */}
       <div id="solutions" className="contacts-section-fullscreen">
         <SolutionsSection />
       </div>
+
+      {/* 
+        ========================================
+        БЛОК 5: КОМАНДА (Team)
+        ========================================
+      */}
+      <div id="team" className="contacts-section-fullscreen">
+        <TeamSection />
+      </div>
+
+      {/* 
+        ========================================
+        БЛОК 6: КАРЬЕРА (Career)
+        ========================================
+      */}
+      <div id="career" className="contacts-section-fullscreen">
+        <CareerSection />
+      </div>
       
       {/* 
         ========================================
-        БЛОК 4: КОНТАКТЫ (Contacts)
+        БЛОК 7: КОНТАКТЫ (Contacts)
         ⚠️ Без автодоводки и защиты
         ========================================
       */}
@@ -165,7 +192,7 @@ const Mainlayout = () => {
                 <div className="contact-card-icon">📍</div>
                 <div className="contact-card-content">
                   <h3 className="contact-card-title">Адрес</h3>
-                  <p className="contact-card-text">г. Алматы, ул. Зеина Шашкина, д. 24</p>
+                  <p className="contact-card-text">г. Алматы, ул. Шашкина, 24, БЦ K Plaza</p>
                   <a 
                     href="https://2gis.kz/almaty/geo/70000001066943138/76.933728,43.222690" 
                     target="_blank" 

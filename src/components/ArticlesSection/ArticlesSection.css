@@ -1,0 +1,95 @@
+/**
+ * Стили для раздела "Статьи/СМИ о нас"
+ * Премиальный B2B дизайн
+ */
+.articles-section {
+  min-height: 100vh;
+  padding: 120px 0 80px;
+  background: linear-gradient(180deg, #05080d 0%, #0a0f15 100%);
+  color: #fff;
+}
+
+.articles-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.articles-title {
+  color: #fff !important;
+  text-align: center;
+  margin-bottom: 16px !important;
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.articles-subtitle {
+  color: #a0a0a0;
+  text-align: center;
+  margin-bottom: 60px !important;
+  font-size: 18px;
+}
+
+.articles-grid {
+  margin-top: 40px;
+}
+
+.article-card {
+  height: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+}
+
+.article-card:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.article-source {
+  color: #4a9eff;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.article-title {
+  color: #fff !important;
+  margin-bottom: 16px !important;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.article-description {
+  color: #b0b0b0;
+  margin-bottom: 20px !important;
+}
+
+.article-link {
+  color: #4a9eff;
+  font-weight: 600;
+  font-size: 14px;
+  margin-top: auto;
+}
+
+@media (max-width: 768px) {
+  .articles-section {
+    padding: 80px 0 60px;
+  }
+
+  .articles-title {
+    font-size: 32px;
+  }
+
+  .articles-subtitle {
+    font-size: 16px;
+  }
+}

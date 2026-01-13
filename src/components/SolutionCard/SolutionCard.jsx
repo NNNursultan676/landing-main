@@ -2,7 +2,11 @@ import React, { useRef, useEffect, useState } from 'react';
 import './SolutionCard.css';
 import { useTranslation } from 'react-i18next';
 
-const SolutionCard = ({ image, title, description, variant = 'default' }) => {
+/**
+ * Компонент карточки продукта/решения
+ * Отображает карточку с анимацией и открывает модал с детальной информацией при клике
+ */
+const SolutionCard = ({ image, title, description, variant = 'default', onClick }) => {
   const { t } = useTranslation();
   const cardRef = useRef(null);
   const isCustom = variant === 'custom';
@@ -10,11 +14,16 @@ const SolutionCard = ({ image, title, description, variant = 'default' }) => {
   const isBroker = variant === 'broker';
   
   const handleCardClick = () => {
-    // Переход на отдельную страницу решения (будет реализовано позже)
-    const solutionId = variant === 'custom' ? 'custom-solutions' : 
-                      variant === 'conveyor' ? 'credit-conveyor' : 
-                      variant === 'broker' ? 'credit-broker' : 'default';
-    console.log('Navigate to:', solutionId);
+    // Если передан обработчик onClick, вызываем его
+    if (onClick) {
+      onClick();
+    } else {
+      // Иначе используем старую логику (для обратной совместимости)
+      const solutionId = variant === 'custom' ? 'custom-solutions' : 
+                        variant === 'conveyor' ? 'credit-conveyor' : 
+                        variant === 'broker' ? 'credit-broker' : 'default';
+      console.log('Navigate to:', solutionId);
+    }
   };
 
   const handleMouseMove = (event) => {

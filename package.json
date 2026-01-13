@@ -7,7 +7,11 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "deploy": "npm run build && gh-pages -d dist"
+    "deploy": "npm run build && gh-pages -d dist",
+    "dev:all": "concurrently \"npm run dev\" \"npm run dev:api\" \"npm run dev:admin\"",
+    "dev:api": "cd api && npm run dev",
+    "dev:admin": "cd admin && npm run dev",
+    "install:all": "npm install && cd api && npm install && cd ../admin && npm install"
   },
   "dependencies": {
     "@ant-design/icons": "^5.4.0",

@@ -87,7 +87,7 @@ const Nav = () => {
     
     const handleScroll = () => {
       // ⚠️ ВАЖНО: Если добавляете новую секцию, добавьте её id сюда
-      const sections = ['home', 'about', 'solutions', 'contacts'];
+      const sections = ['home', 'about', 'articles', 'solutions', 'team', 'career', 'contacts'];
       const scrollPosition = window.scrollY + 150;
 
       // Update nav style on scroll
@@ -303,6 +303,23 @@ const Nav = () => {
           </li>
           <li>
             <a 
+              href="#articles" 
+              onClick={(e) => { 
+                if (dragStateRef.current.isDragging) {
+                  e.preventDefault();
+                  return;
+                }
+                e.preventDefault(); 
+                scrollToSection('articles'); 
+              }}
+              onMouseDown={handleActiveLinkMouseDown}
+              className={activeSection === 'articles' ? 'active' : ''}
+            >
+              {t('navigation.articles')}
+            </a>
+          </li>
+          <li>
+            <a 
               href="#solutions" 
               onClick={(e) => { 
                 if (dragStateRef.current.isDragging) {
@@ -316,6 +333,40 @@ const Nav = () => {
               className={activeSection === 'solutions' ? 'active' : ''}
             >
               {t('solutions')}
+            </a>
+          </li>
+          <li>
+            <a 
+              href="#team" 
+              onClick={(e) => { 
+                if (dragStateRef.current.isDragging) {
+                  e.preventDefault();
+                  return;
+                }
+                e.preventDefault(); 
+                scrollToSection('team'); 
+              }}
+              onMouseDown={handleActiveLinkMouseDown}
+              className={activeSection === 'team' ? 'active' : ''}
+            >
+              {t('navigation.team')}
+            </a>
+          </li>
+          <li>
+            <a 
+              href="#career" 
+              onClick={(e) => { 
+                if (dragStateRef.current.isDragging) {
+                  e.preventDefault();
+                  return;
+                }
+                e.preventDefault(); 
+                scrollToSection('career'); 
+              }}
+              onMouseDown={handleActiveLinkMouseDown}
+              className={activeSection === 'career' ? 'active' : ''}
+            >
+              {t('navigation.career')}
             </a>
           </li>
             <li>
@@ -368,7 +419,10 @@ const Nav = () => {
               </Row>
                 <li><a href="#home" onClick={(e) => { e.preventDefault(); scrollToSection('home'); }}>{t('home')}</a></li>
                 <li><a href="#about" onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}>{t('aboutUs')}</a></li>
+                <li><a href="#articles" onClick={(e) => { e.preventDefault(); scrollToSection('articles'); }}>{t('navigation.articles')}</a></li>
                 <li><a href="#solutions" onClick={(e) => { e.preventDefault(); scrollToSection('solutions'); }}>{t('solutions')}</a></li>
+                <li><a href="#team" onClick={(e) => { e.preventDefault(); scrollToSection('team'); }}>{t('navigation.team')}</a></li>
+                <li><a href="#career" onClick={(e) => { e.preventDefault(); scrollToSection('career'); }}>{t('navigation.career')}</a></li>
                 <li><a href="#contacts" onClick={(e) => { e.preventDefault(); scrollToSection('contacts'); }}>{t('contactUs')}</a></li>
               </ul>
             </div>

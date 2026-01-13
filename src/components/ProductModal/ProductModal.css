@@ -17,3 +17,18 @@
   margin-right: 20px;
   content: url('/src/assets/images/checked.svg');
 }
+
+/* Стили для списка клиентов и партнеров */
+.clients-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.client-tag {
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 8px;
+  font-weight: 500;
+}
