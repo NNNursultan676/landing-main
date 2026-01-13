@@ -90,6 +90,8 @@ const BrexArticles = () => {
     slidesToShow: 3,
     slidesToScroll: 1,
     arrows: false,
+    variableWidth: false,
+    centerMode: false,
     responsive: [
       {
         breakpoint: 1200,

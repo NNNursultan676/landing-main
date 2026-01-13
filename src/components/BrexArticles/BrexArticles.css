@@ -5,11 +5,16 @@
 .brex-articles {
   padding: 120px 24px;
   background: #ffffff;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .brex-articles-container {
   max-width: 1400px;
   margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .brex-articles-header {
@@ -41,16 +46,20 @@
 .brex-articles-carousel-wrapper {
   position: relative;
   margin-top: 60px;
-  padding: 0 60px;
+  padding: 0 70px;
+  width: 100%;
+  overflow: hidden;
 }
 
 .brex-articles-carousel {
   position: relative;
+  width: 100%;
 }
 
 .brex-article-slide {
-  padding: 0 12px;
+  padding: 0 8px;
   height: 100%;
+  box-sizing: border-box;
 }
 
 .brex-articles-arrow {
@@ -69,6 +78,15 @@
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  flex-shrink: 0;
+}
+
+.brex-articles-arrow-left {
+  left: 10px;
+}
+
+.brex-articles-arrow-right {
+  right: 10px;
 }
 
 .brex-articles-arrow:hover {
@@ -87,45 +105,35 @@
   transition: color 0.3s ease;
 }
 
-.brex-articles-arrow-left {
-  left: 0;
-}
-
-.brex-articles-arrow-right {
-  right: 0;
-}
 
 /* Slick carousel overrides */
 .brex-articles-carousel .slick-slide {
   padding: 0;
+  height: auto;
 }
 
 .brex-articles-carousel .slick-list {
-  margin: 0 -12px;
+  margin: 0 -8px;
+  overflow: hidden;
 }
 
 .brex-articles-carousel .slick-track {
   display: flex;
   align-items: stretch;
+  margin: 0;
 }
 
 .brex-articles-carousel .slick-slide > div {
   height: 100%;
-  padding: 0 12px;
+  padding: 0 8px;
+  box-sizing: border-box;
 }
 
 .brex-articles-carousel .slick-slide .brex-article-card {
   height: 100%;
   display: flex;
   flex-direction: column;
-}
-
-.brex-articles-carousel .slick-slide {
-  height: auto;
-}
-
-.brex-articles-carousel .slick-slide > div {
-  height: 100%;
+  margin: 0;
 }
 
 .brex-article-card {
@@ -133,13 +141,14 @@
   border: 1px solid #e2e8f0 !important;
   padding: 0 !important;
   height: 100%;
-  min-height: 480px;
   display: flex;
   flex-direction: column;
   transition: all 0.3s ease !important;
   background: #ffffff !important;
   cursor: pointer;
   overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .brex-article-card:hover {
@@ -149,21 +158,23 @@
 }
 
 .brex-article-card .ant-card-body {
-  padding: 32px 24px !important;
+  padding: 24px !important;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  min-height: 0;
 }
 
 .brex-article-image-container {
   width: 100%;
-  height: 220px;
+  height: 200px;
   overflow: hidden;
   background: #f8fafc;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+  flex-shrink: 0;
 }
 
 .brex-article-image {
@@ -197,19 +208,23 @@
 }
 
 .brex-article-title {
-  font-size: 22px !important;
+  font-size: 20px !important;
   font-weight: 700 !important;
   color: #0f172a !important;
-  margin-bottom: 16px !important;
+  margin-bottom: 12px !important;
   line-height: 1.4 !important;
-  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .brex-article-description {
   color: #64748b !important;
   font-size: 15px !important;
   line-height: 1.6 !important;
-  margin-bottom: 24px !important;
+  margin-bottom: 16px !important;
+  flex-grow: 1;
 }
 
 .brex-article-link {
@@ -220,6 +235,8 @@
   font-size: 15px;
   font-weight: 600;
   transition: all 0.2s ease;
+  margin-top: auto;
+  flex-shrink: 0;
 }
 
 .brex-article-card:hover .brex-article-link {
@@ -230,7 +247,7 @@
 /* Responsive */
 @media (max-width: 1200px) {
   .brex-articles-carousel-wrapper {
-    padding: 0 50px;
+    padding: 0 60px;
   }
 
   .brex-articles-arrow {
@@ -240,6 +257,14 @@
 
   .brex-articles-arrow svg {
     font-size: 16px;
+  }
+
+  .brex-articles-arrow-left {
+    left: 5px;
+  }
+
+  .brex-articles-arrow-right {
+    right: 5px;
   }
 }
 
@@ -257,7 +282,7 @@
   }
 
   .brex-articles-carousel-wrapper {
-    padding: 0 40px;
+    padding: 0 50px;
   }
 
   .brex-articles-arrow {
@@ -269,15 +294,23 @@
     font-size: 14px;
   }
 
+  .brex-articles-arrow-left {
+    left: 5px;
+  }
+
+  .brex-articles-arrow-right {
+    right: 5px;
+  }
+
   .brex-article-slide {
-    padding: 0 8px;
+    padding: 0 6px;
   }
 
   .brex-articles-carousel .slick-list {
-    margin: 0 -8px;
+    margin: 0 -6px;
   }
 
   .brex-articles-carousel .slick-slide > div {
-    padding: 0 8px;
+    padding: 0 6px;
   }
 }
