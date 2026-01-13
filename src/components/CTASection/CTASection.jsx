@@ -1,25 +1,55 @@
+/**
+ * CTA Section - Секция призыва к действию
+ * Следует структуре референсов (Brex)
+ * Размещается перед контактами
+ */
 import React from 'react';
-import './CTASection.css';
+import { Typography, Button, Space } from 'antd';
 import { useTranslation } from 'react-i18next';
-import CustomButton from '../CustomButton';
 import modalService from '../../services/modalService';
+import './CTASection.css';
+
+const { Title, Paragraph } = Typography;
 
 const CTASection = () => {
   const { t } = useTranslation();
-  const demoText = t('demoText');
+
+  const handleGetStarted = () => {
+    const demoText = t('demoText');
+    modalService.openModal(demoText);
+  };
 
   return (
     <div className="cta-section">
-      <div className="cta-content">
-        <h2 className="cta-title">{t('ctaTitle') || 'Готовы начать?'}</h2>
-        <p className="cta-description">
-          {t('ctaDescription') || 'Свяжитесь с нами, чтобы узнать больше о наших решениях и начать сотрудничество'}
-        </p>
-        <CustomButton
-          title={t('demo')}
-          styleName="cta-button"
-          onClick={() => modalService.openModal(demoText)}
-        />
+      <div className="cta-container">
+        <Title level={2} className="cta-title">
+          Готовы начать работу с Sapa Technologies?
+        </Title>
+        <Paragraph className="cta-description">
+          Узнайте, как наши решения могут помочь вашему бизнесу достичь новых высот
+        </Paragraph>
+        <Space size="large" className="cta-buttons">
+          <Button
+            type="primary"
+            size="large"
+            onClick={handleGetStarted}
+            className="cta-button-primary"
+          >
+            Заказать демо
+          </Button>
+          <Button
+            size="large"
+            className="cta-button-secondary"
+            onClick={() => {
+              const contactsSection = document.getElementById('contacts');
+              if (contactsSection) {
+                contactsSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          >
+            Связаться с нами
+          </Button>
+        </Space>
       </div>
     </div>
   );

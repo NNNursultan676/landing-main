@@ -1,0 +1,126 @@
+/**
+ * About + Stats Section Styles
+ * Премиальный B2B дизайн
+ */
+.about-stats-section {
+  padding: 120px 24px;
+  background: #ffffff;
+}
+
+.about-stats-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.about-content {
+  padding: 20px 0;
+}
+
+.about-section-title {
+  font-size: 56px !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.03em !important;
+  color: #0f172a !important;
+  margin-bottom: 32px !important;
+}
+
+.about-text {
+  font-size: 18px !important;
+  line-height: 1.7 !important;
+  color: #64748b !important;
+  margin-bottom: 20px !important;
+}
+
+.about-text-nps {
+  font-weight: 600 !important;
+  color: #0f172a !important;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.stat-card {
+  text-align: center;
+  padding: 32px 24px !important;
+  border-radius: 16px !important;
+  border: 1px solid rgba(0, 0, 0, 0.06) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important;
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08) !important;
+}
+
+.stat-card .stat-value {
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, #4a9eff 0%, #357abd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-card .stat-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+
+.stat-card .stat-description {
+  font-size: 14px;
+  color: #94a3b8;
+  line-height: 1.5;
+}
+
+/* Третья карточка занимает всю ширину */
+.stats-grid .stat-card:nth-child(3) {
+  grid-column: 1 / -1;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .about-stats-section {
+    padding: 100px 24px;
+  }
+
+  .about-section-title {
+    font-size: 48px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-stats-section {
+    padding: 80px 24px;
+  }
+
+  .about-section-title {
+    font-size: 36px !important;
+  }
+
+  .about-text {
+    font-size: 16px !important;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid .stat-card:nth-child(3) {
+    grid-column: 1;
+  }
+
+  .stat-card .stat-value {
+    font-size: 48px;
+  }
+}

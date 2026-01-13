@@ -1,734 +1,144 @@
 /**
- * ⚠️ КРИТИЧЕСКИ ВАЖНО: ЭТИ БЛОКИ НЕЛЬЗЯ ТРОГАТЬ! ⚠️
- * 
- * ЗАПРЕЩЕНО ИЗМЕНЯТЬ:
- * 1. БЛОК "ГЛАВНАЯ" (main-hero-section, main-about-unified) - НЕ ТРОГАТЬ!
- * 2. БЛОК "О НАС" (about-section-unified, about-content-layout) - НЕ ТРОГАТЬ!
- * 3. НАВБАР (Nav.jsx, Nav.css) - НЕ ТРОГАТЬ!
- * 4. ПОДВАЛ (Footer.jsx, Footer.css) - НЕ ТРОГАТЬ!
- * 
- * Этот файл содержит критически важные стили для:
- * - Главной секции (main-hero-section) - с анимацией частиц WaterParticles
- * - Секции "О нас" (about-section-unified) - соединенной с главной
- * - Секций Solutions и Contacts
- * 
- * КРИТИЧЕСКИЕ СВОЙСТВА (НЕ МЕНЯТЬ):
- * - scroll-snap-align: start - для автодоводки секций
- * - scroll-snap-stop: normal - для плавного скролла
- * - height: 100vh - для полноэкранных блоков
- * - z-index слои (навбар: 10000, контент: 2, частицы: 0)
- * - background цвета (главная: #05080d, о нас: #ffffff)
- * 
- * Изменение этих свойств сломает:
- * - Автодоводку секций
- * - Правильное отображение анимации частиц
- * - Навигацию и скроллинг
- * - Визуальную целостность страницы
+ * MainLayout.css - Новые стили для перестроенной структуры
+ * Следует структуре референсов (Brex, Snowflake)
  */
 
-/* MainLayout.css - Premium Layout Styles */
-
-/* Combined Main + About Section */
-/* ⚠️ ВАЖНО: scroll-snap-align для автодоводки */
-/* ⚠️ КРИТИЧНО: Темный фон главной секции - темнее чем блок "О нас" */
-.main-about-unified {
+/* Общие стили для секций */
+.section-wrapper {
   width: 100%;
   position: relative;
-  /* ⚠️ Темный фон с градиентами - темнее блока "О нас" (который белый), темнее чем было */
-  background: 
-    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(61, 107, 168, 0.25) 0%, transparent 100%),
-    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(80, 245, 176, 0.18) 0%, transparent 100%),
-    #05080d !important; /* ⚠️ Темнее (#0a0f1a -> #05080d) - темный фон для главной */
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  scroll-snap-align: start;
-  scroll-snap-stop: normal; /* ⚠️ Изменено с always на normal для более плавного скролла */
 }
 
-.main-about-unified::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    url(../../assets/images/mainBackground.png) no-repeat center / cover;
-  opacity: 0.12;
-  mix-blend-mode: overlay;
-  pointer-events: none;
-}
-
-.main-about-unified::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -20%;
-  width: 800px;
-  height: 800px;
-  background: radial-gradient(circle, var(--color-accent-soft) 0%, transparent 70%);
-  border-radius: 50%;
-  animation: pulse 8s ease-in-out infinite;
-  pointer-events: none;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.5;
-  }
-  50% {
-    transform: scale(1.2);
-    opacity: 0.8;
-  }
-}
-
-/* 
- * ⚠️ КРИТИЧНО: Главная секция - НЕ МЕНЯТЬ! 
- * Интегрирована с WaterParticles, все параметры критически важны
- */
-.main-hero-section {
-  /* ⚠️ 100vh критично для полноэкранного отображения */
-  height: 100vh;
-  min-height: 100vh;
-  max-height: 100vh;
-  /* ⚠️ padding-top влияет на позицию текста - не менять без крайней необходимости */
-  padding: 80px 40px 0;
-  position: relative;
-  z-index: 1; /* ⚠️ Важно для правильного слоя с частицами */
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* ⚠️ flex-start для поднятия контента выше */
-  /* ⚠️ overflow: hidden критично для корректной работы анимации частиц */
-  overflow: hidden;
-  /* ⚠️ Темный фон главного блока - такой же как родитель main-about-unified */
-  background: 
-    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(61, 107, 168, 0.25) 0%, transparent 100%),
-    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(80, 245, 176, 0.18) 0%, transparent 100%),
-    #05080d !important; /* ⚠️ Темный фон для главного блока */
-  /* ⚠️ Автодоводка до идеальной позиции - ослаблена для плавного скролла */
-  scroll-snap-align: start;
-  scroll-snap-stop: normal; /* ⚠️ Изменено с always на normal для более плавного скролла */
-}
-
-/* ⚠️ КРИТИЧНО: Контент должен быть поверх частиц (z-index: 2 vs 0) */
-.main-hero-section .main-content {
-  position: relative;
-  z-index: 2;
-}
-
-/* About Section within unified */
-/* ⚠️ ВАЖНО: z-index должен быть меньше навбара (10000), чтобы навбар был поверх */
-/* ⚠️ ВАЖНО: Весь блок на белом фоне (светлее главного экрана) */
-.about-section-unified {
-  flex: 0 0 auto;
-  height: 100vh; /* ⚠️ Блок занимает весь экран */
-  min-height: 100vh;
-  position: relative; /* ⚠️ relative для позиционирования заголовка внутри блока */
-  z-index: 0; /* ⚠️ Меньше навбара (10000), чтобы навбар был всегда поверх */
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 0;
-  max-width: 100%;
-  margin: 0;
-  width: 100%;
-  /* ⚠️ Автодоводка до идеальной позиции - ослаблена для плавного скролла */
-  scroll-snap-align: start;
-  scroll-snap-stop: normal; /* ⚠️ Изменено с always на normal для более плавного скролла */
-  overflow: visible; /* ⚠️ visible чтобы заголовок мог выходить за пределы */
-  /* ⚠️ Белый фон для всего блока - светлее главного экрана */
-  background: #ffffff;
-}
-
-/* Псевдоэлементы удалены - блок полностью белый */
-
-.about-section-unified * {
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-/* ⚠️ Заголовок "О нас" закреплен на блоке "О нас", по центру над текстом, чуть левее */
-.about-header-in-navbar {
-  position: absolute; /* ⚠️ absolute - часть блока "О нас", а не fixed */
-  top: 0; /* ⚠️ На уровне верха блока (навбара) */
-  left: 32%; /* ⚠️ Чуть левее (было 35%) - примерно по центру над левой колонкой текста */
-  transform: translateX(-50%); /* ⚠️ Центрируем заголовок относительно этой точки */
-  width: auto; /* Автоматическая ширина по содержимому */
-  max-width: calc(100% - 500px); /* Ограничиваем, чтобы не заходить на логотип и кнопки */
-  height: 88px; /* Высота навбара */
-  display: flex;
-  align-items: center;
-  justify-content: center; /* ⚠️ Центрируем текст */
-  padding: 0;
-  z-index: 1; /* Меньше навбара (10000), но выше контента блока */
-  pointer-events: none; /* Не мешаем кликам по навбару */
-  margin: 0;
-}
-
-.about-header-in-navbar h1 {
-  font-size: 48px; /* Увеличен размер для лучшей видимости (было 32px) */
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-  margin: 0;
-  padding: 0;
-  /* ⚠️ Темный цвет для белого фона блока "О нас" */
-  color: #0f172a;
-  position: relative;
-  z-index: 1;
-  pointer-events: auto; /* Разрешаем взаимодействие с заголовком */
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* ⚠️ УДАЛЕНО: Старый класс .about-header-unified больше не используется (заменен на .about-header-in-navbar) */
-
-/* ⚠️ ВАЖНО: Контент на белом фоне - весь блок включая края, без скролла */
-.about-content-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px; /* Уменьшен gap */
-  padding: 24px 60px 24px; /* Уменьшены отступы для компактности */
-  flex: 1;
-  min-height: 0;
-  max-width: 100%; /* Полная ширина для белого фона по краям */
-  margin: 0;
-  width: 100%;
-  align-items: start;
-  overflow: hidden; /* Убираем скролл - все должно помещаться */
-  position: relative;
-  z-index: 1; /* ⚠️ Меньше навбара (10000) */
-  background: #ffffff; /* ⚠️ Белый фон для всего контента */
-  margin-top: 88px; /* Отступ сверху = высота навбара */
-}
-
-.about-content-left {
-  display: flex;
-  flex-direction: column;
-  gap: 16px; /* Уменьшен gap для компактности */
-  overflow: hidden;
-  /* ⚠️ Основной текст еще правее и чуть спущен */
-  margin-left: 100px; /* ⚠️ Увеличен отступ слева для смещения еще правее (было 40px) */
-  margin-top: 12px; /* Уменьшен отступ сверху */
-}
-
-.about-content-right {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Combined text block - белый фон для белой темы */
-.about-text-combined {
-  display: flex;
-  flex-direction: column;
-  gap: 12px; /* Уменьшен gap для компактности */
-  background: transparent; /* Прозрачный фон на белом фоне */
-  padding: 0; /* Убираем padding, т.к. фон прозрачный */
-  border-radius: 0;
-  box-shadow: none;
-  border: none;
-  overflow: hidden;
-}
-
-.about-text-main {
-  font-size: 22px; /* Уменьшен размер для компактности */
-  font-weight: 700;
-  line-height: 1.25; /* Уменьшен line-height */
-  color: #0f172a; /* Темный текст на белом фоне */
-  margin: 0;
-  letter-spacing: -0.02em;
-}
-
-.about-text-sub {
-  font-size: 15px; /* Уменьшен размер */
-  font-weight: 400;
-  line-height: 1.5; /* Уменьшен line-height */
-  color: #64748b; /* Серый текст */
-  margin: 0;
-}
-
-.about-text-company {
-  font-size: 16px;
-  line-height: 1.6;
-  color: #64748b; /* Серый текст */
-  margin: 0;
-}
-
-.about-text-company .highlighted {
-  color: var(--color-accent);
-  font-weight: 700;
-  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: inline-block;
-}
-
-.about-mission-combined {
-  margin-top: 0;
-  padding-top: 16px; /* Уменьшен padding */
-  border-top: 2px solid rgba(80, 245, 176, 0.3); /* Более яркая граница */
-}
-
-.about-mission-title-combined {
-  font-size: 18px; /* Уменьшен размер */
-  font-weight: 700;
-  line-height: 1.3;
-  letter-spacing: -0.02em;
-  color: #0f172a; /* Темный текст на белом фоне */
-  margin: 0 0 6px 0; /* Уменьшен margin */
-}
-
-.about-mission-text-combined {
-  font-size: 15px; /* Уменьшен размер */
-  line-height: 1.5; /* Уменьшен line-height */
-  color: #64748b; /* Серый текст */
-  font-weight: 400;
-  margin: 0;
-}
-
-/* Partners in about */
-.partners-in-about {
-  margin-top: 0;
-  padding: 0;
-  flex: 0 0 auto;
-  width: 100%;
-  overflow: hidden;
-}
-
-.partners-in-about-title {
-  font-size: 20px;
-  font-weight: 700;
-  text-align: left;
-  margin-bottom: 12px;
-  color: #ffffff; /* Белый текст на темном фоне */
-  background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.8) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  letter-spacing: -0.02em;
-}
-
-/* ⚠️ Логотипы партнеров растянуты на всю ширину экрана, подняты выше */
+/* Удаляем старые стили, которые больше не нужны */
+.main-about-unified,
+.main-hero-section,
+.about-section-unified,
+.about-header-in-navbar,
+.about-content-layout,
+.about-content-left,
+.about-content-right,
+.about-text-combined,
+.about-text-main,
+.about-text-sub,
+.about-text-company,
+.about-mission-combined,
+.stats-unified-block,
+.stat-item,
+.stat-value,
+.stat-label,
+.stat-description,
+.stat-divider,
 .partners-in-about-bottom {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  width: 100vw; /* ⚠️ На всю ширину экрана */
-  max-width: 100vw;
-  padding: 0 60px 60px; /* Отступы по бокам и снизу */
-  margin-top: 30px; /* ⚠️ Подняты выше (было 60px) */
-  margin-left: calc(-50vw + 50%); /* ⚠️ Выравнивание на всю ширину экрана */
-  margin-bottom: 0;
-  background: #ffffff; /* Белый фон */
-  position: relative;
-  z-index: 1;
-  box-sizing: border-box;
+  /* Старые стили удалены - используем новые компоненты */
 }
 
-/* ⚠️ Надпись "Нам доверяют" над логотипами - выровнена как основной текст */
-.partners-in-about-bottom .partners-in-about-title {
-  font-size: 28px;
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  color: #0f172a; /* Темный цвет для белого фона */
-  margin: 0 0 24px 100px; /* ⚠️ Выровнено как основной текст (margin-left: 100px) */
-  text-align: left;
-  background: none; /* Убираем градиент, используем обычный цвет */
-  -webkit-background-clip: unset;
-  -webkit-text-fill-color: unset;
-  background-clip: unset;
-}
-
-.partners-in-about-bottom .partners-runner-compact {
-  width: 100%;
-  max-width: 100%;
-}
-
-/* Unified stats block - светлый фон для белого фона */
-.stats-unified-block {
-  background: rgba(248, 250, 252, 0.95); /* Более непрозрачный фон */
-  border-radius: 24px;
-  padding: 40px 32px; /* Увеличен padding для лучшего spacing */
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(226, 232, 240, 0.8);
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  width: 100%;
-  max-width: 420px; /* Немного увеличен для крупных чисел */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.stats-unified-block:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15), 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.stat-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 24px 20px; /* Увеличен padding для лучшего spacing */
-  text-align: center;
-}
-
-.stat-item-top {
-  padding-top: 0;
-}
-
-.stat-item-bottom {
-  padding-bottom: 0;
-}
-
-.stat-value {
-  font-size: 72px; /* Увеличен размер согласно рекомендациям (было 42px) */
-  font-weight: 800;
-  line-height: 1;
-  margin-bottom: 12px;
-  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  letter-spacing: -0.03em;
-  animation: countUp 1.5s ease-out forwards;
-}
-
-@keyframes countUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.stat-label {
-  font-size: 16px; /* Увеличен размер для лучшей читаемости */
-  font-weight: 700;
-  color: #64748b; /* Серый текст на белом фоне */
-  text-transform: uppercase;
-  letter-spacing: 0.12em; /* Увеличен letter-spacing */
-  margin-bottom: 8px;
-}
-
-.stat-description {
-  font-size: 12px; /* Уменьшен размер */
-  font-weight: 400;
-  color: #94a3b8; /* Светло-серый текст */
-  line-height: 1.3; /* Уменьшен line-height */
-  margin-top: 2px; /* Уменьшен margin */
-}
-
-.stat-divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(80, 245, 176, 0.3) 50%, transparent 100%);
-  margin: 0 16px;
-}
-
-.stats-container-unified {
-  margin-top: 0;
-  padding: 0 20px;
-  flex: 0 0 auto;
-}
-
-/* Custom Text Background (for other sections) */
-.custom-text-background {
-  background: 
-    radial-gradient(ellipse 60% 40% at 50% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 100%),
-    linear-gradient(180deg, var(--color-bg-light) 0%, var(--color-bg-soft) 100%);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 120px 40px 60px;
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  max-width: 100vw;
-  min-height: calc(100vh - 80px);
-}
-
-.custom-text-background::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -20%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, var(--color-unified-lighter) 0%, transparent 70%);
-  border-radius: 50%;
-  animation: float 15s ease-in-out infinite;
-  pointer-events: none;
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(-30px, 30px) scale(1.1);
-  }
-}
-
-.custom-text-div {
-  margin: 0 auto;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  max-width: 1000px;
-  width: 100%;
-  align-self: center;
-  color: #0f172a;
-  position: relative;
-  z-index: 1;
-}
-
-.about-page-text {
-  max-width: 1200px;
-  margin: 80px auto;
-  padding: 0 40px;
-  font-size: 20px;
-  line-height: 1.8;
-  color: #334155;
-  text-align: center;
-  font-weight: 400;
-}
-
-.about-page-text-highlighted {
-  color: #1c59d1;
-  font-weight: 700;
-  background: linear-gradient(135deg, #1c59d1 0%, #2251d8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: inline-block;
-}
-
-.about-page-text-2 {
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 1.7;
-  color: var(--color-text-muted);
-  text-align: left;
-  margin: 60px auto 100px;
-  max-width: 1200px;
-  padding: 0 40px;
-  font-family: 'Inter', sans-serif;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 40px;
-  align-items: start;
-}
-
-.about-page-text-2-highlighted {
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 1.3;
-  letter-spacing: -0.02em;
-  color: #0f172a;
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.about-page-text-2-regular {
-  font-size: 18px;
-  line-height: 1.7;
-  color: #64748b;
-  font-weight: 400;
-}
-
-.partners-page-content {
+/* Стили для контактов */
+.contacts-section-content {
   max-width: 1400px;
-  margin: 80px auto;
-  padding: 0 40px;
-}
-
-.partners-section-title {
-  font-size: 48px;
-  font-weight: 700;
-  margin-bottom: 48px;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  color: #0f172a;
+  margin: 0 auto;
+  padding: 120px 24px;
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #ffffff;
 }
 
-.partners-section-row {
-  margin-top: 32px;
+.contacts-wrapper {
+  margin-top: 60px;
 }
 
-.partners-section-col {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 24px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+.contacts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.contact-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.5);
+  padding: 32px;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(226, 232, 240, 0.8);
-}
-
-.partners-section-col:hover {
-  transform: translateY(-4px) scale(1.05);
-  background: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  border-color: rgba(80, 245, 176, 0.3);
-}
-
-.partners-section-col img {
-  max-width: 100%;
-  max-height: 80px;
-  object-fit: contain;
-  filter: grayscale(0.2) opacity(0.8);
   transition: all 0.3s ease;
 }
 
-.partners-section-col:hover img {
-  filter: grayscale(0) opacity(1);
-  transform: scale(1.05);
+.contact-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.contact-card-icon {
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+
+.contact-card-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.contact-card-link {
+  color: #4a9eff;
+  font-size: 16px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-card-link:hover {
+  color: #5ab0ff;
+}
+
+.contact-card-text {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 16px;
+}
+
+.contact-map-button {
+  display: inline-block;
+  padding: 8px 16px;
+  background: rgba(74, 158, 255, 0.2);
+  border: 1px solid rgba(74, 158, 255, 0.4);
+  border-radius: 8px;
+  color: #4a9eff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.contact-map-button:hover {
+  background: rgba(74, 158, 255, 0.3);
+  border-color: rgba(74, 158, 255, 0.6);
+  color: #5ab0ff;
+}
+
+.contact-map-wrapper {
+  width: 100%;
+  height: 500px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.contact-map {
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 
 /* Responsive */
-@media (max-width: 1200px) {
-  .about-content-layout {
-    gap: 40px;
-    padding: 40px 60px;
-  }
-
-  .about-header-unified h1 {
-    font-size: 42px;
-  }
-
-  .stats-unified-block {
-    max-width: 350px;
-    padding: 32px;
-  }
-
-  .stat-value {
-    font-size: 64px; /* Увеличен размер для tablet (было 48px) */
-  }
-}
-
 @media (max-width: 768px) {
-  .main-hero-section {
-    padding: 80px 24px 0;
+  .contacts-section-content {
+    padding: 80px 24px;
   }
 
-  .about-section-unified {
-    padding: 0;
-  }
-
-  /* ⚠️ УДАЛЕНО: .about-header-unified больше не используется */
-  
-  .about-content-layout {
+  .contacts-grid {
     grid-template-columns: 1fr;
-    gap: 32px;
-    padding: 32px 24px;
   }
 
-  .about-text-combined {
-    padding: 32px 24px;
-  }
-
-  .about-text-main {
-    font-size: 24px;
-  }
-
-  .about-text-sub,
-  .about-text-company,
-  .about-mission-text-combined {
-    font-size: 16px;
-  }
-
-  .about-mission-title-combined {
-    font-size: 20px;
-  }
-
-  .stats-unified-block {
-    max-width: 100%;
-    padding: 32px 24px;
-  }
-
-  .stat-value {
-    font-size: 56px; /* Увеличен размер для mobile (было 42px) */
-  }
-
-  .stat-label {
-    font-size: 14px;
-  }
-
-  .partners-in-about-title {
-    font-size: 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .main-hero-section {
-    padding: 70px 16px 0;
-  }
-
-  /* ⚠️ УДАЛЕНО: .about-header-unified больше не используется */
-
-  .about-content-layout {
-    padding: 40px 16px 24px;
-    gap: 24px;
-  }
-
-  .about-text-combined {
-    padding: 24px 20px;
-  }
-
-  .about-text-main {
-    font-size: 20px;
-  }
-
-  .about-text-sub,
-  .about-text-company,
-  .about-mission-text-combined {
-    font-size: 15px;
-  }
-
-  .about-mission-title-combined {
-    font-size: 18px;
-  }
-
-  .stats-unified-block {
-    padding: 24px 20px;
-  }
-
-  .stat-item {
-    padding: 24px 16px;
-  }
-
-  .stat-value {
-    font-size: 36px;
-  }
-
-  .stat-label {
-    font-size: 12px;
-  }
-
-  .partners-in-about-title {
-    font-size: 18px;
+  .contact-map-wrapper {
+    height: 400px;
   }
 }

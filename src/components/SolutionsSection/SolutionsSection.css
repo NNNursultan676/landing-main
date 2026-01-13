@@ -2,73 +2,18 @@
 
 .solutions-section-wrapper {
   width: 100%;
-  min-height: 100vh; /* ⚠️ Минимальная высота экрана */
-  /* ⚠️ Блок Solutions имеет белый фон по умолчанию */
-  background: #ffffff !important;
-  padding: 0;
-  margin: 0;
-  /* ⚠️ УДАЛЕНО: Автодоводка отключена для этого блока */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  background: #ffffff;
+  padding: 120px 24px;
   position: relative;
-  overflow: hidden;
 }
 
 .solutions-section {
-  background: linear-gradient(135deg, 
-    rgba(58, 90, 133, 0.95) 0%, 
-    rgba(74, 111, 165, 0.98) 50%,
-    rgba(26, 35, 50, 0.95) 100%);
-  padding: 80px 40px 120px;
-  text-align: center;
-  color: #ffffff;
-  border-radius: 32px;
-  margin: 0 auto 80px;
   max-width: 1400px;
+  margin: 0 auto;
   position: relative;
-  overflow: hidden;
-  box-shadow: 
-    0 20px 60px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-.solutions-section::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -20%;
-  width: 800px;
-  height: 800px;
-  background: radial-gradient(circle, var(--color-accent-soft) 0%, transparent 70%);
-  border-radius: 50%;
-  animation: pulse 10s ease-in-out infinite;
-  pointer-events: none;
-}
-
-.solutions-section::after {
-  content: '';
-  position: absolute;
-  bottom: -30%;
-  left: -10%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, var(--color-unified-soft) 0%, transparent 70%);
-  border-radius: 50%;
-  animation: pulse 12s ease-in-out infinite reverse;
-  pointer-events: none;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.5;
-  }
-  50% {
-    transform: scale(1.2);
-    opacity: 0.8;
-  }
-}
+/* Удалены декоративные элементы для более чистого дизайна */
 
 
 .solutions-container {
@@ -84,9 +29,8 @@
 
 /* Responsive */
 @media (max-width: 1200px) {
-  .solutions-section {
-    padding: 60px 32px 100px;
-    margin: 0 auto 60px;
+  .solutions-section-wrapper {
+    padding: 100px 24px;
   }
 
   .solutions-container {
@@ -96,10 +40,8 @@
 }
 
 @media (max-width: 768px) {
-  .solutions-section {
-    padding: 48px 24px 80px;
-    margin: 0 auto 40px;
-    border-radius: 24px;
+  .solutions-section-wrapper {
+    padding: 80px 24px;
   }
 
   .solutions-container {
@@ -109,10 +51,8 @@
 }
 
 @media (max-width: 480px) {
-  .solutions-section {
-    padding: 40px 16px 60px;
-    margin: 0 auto 32px;
-    border-radius: 20px;
+  .solutions-section-wrapper {
+    padding: 60px 16px;
   }
 
   .solutions-container {

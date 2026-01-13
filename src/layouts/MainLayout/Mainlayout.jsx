@@ -1,170 +1,127 @@
 /**
- * ⚠️ КРИТИЧЕСКИ ВАЖНО: ГЛАВНЫЙ ЛЕНДИНГ - СТРУКТУРА СТРАНИЦЫ - НЕ ТРОГАТЬ! ⚠️
- * 
- * Этот файл содержит всю структуру лендинга с критически важными настройками:
- * 
- * Структура блоков лендинга (соответствует навигации):
- * 1. Home (id="home") - Главная секция с hero-контентом и анимацией частиц
- * 2. About (id="about") - О компании (внутри main-about-unified)
- * 3. Solutions (id="solutions") - Решения/Продукты
- * 4. Contacts (id="contacts") - Контакты
- * 
- * ⚠️ КРИТИЧЕСКИ ВАЖНО:
- * - ID секций ОБЯЗАТЕЛЬНО должны соответствовать навигации в Nav.jsx
- * - Класс section-snap ОБЯЗАТЕЛЕН для автодоводки
- * - Структура блоков (div с id и className) НЕ МОЖЕТ быть изменена
- * - WaterParticles компонент должен оставаться в main-hero-section
- * 
- * Изменение структуры сломает:
- * - Навигацию (scrollToSection не найдет секции)
- * - Автодоводку (scroll-snap не сработает)
- * - Отслеживание активной секции в навбаре
+ * Главный макет сайта
+ * Новая структура согласно референсам (Brex, Snowflake):
+ * 1. Hero Section - главная секция с формой
+ * 2. Trusted By - партнеры
+ * 3. Products Overview - обзор продуктов
+ * 4. About + Stats - о компании и статистика
+ * 5. Feature Sections - детальные секции о продуктах
+ * 6. Articles/Media - статьи и СМИ
+ * 7. Team - команда
+ * 8. Career - карьера
+ * 9. CTA Section - призыв к действию
+ * 10. Contacts - контакты
+ * 11. Footer - подвал
  */
-
-import { Layout, Row } from 'antd'
-import React from 'react'
-import Main from '../../components/Main/Main'
-import './MainLayout.css'
-import SolutionsSection from '../../components/SolutionsSection/SolutionsSection'
-import PartnersRunner from '../../components/PartnersRunner/PartnersRunner'
-import Footer from '../../layouts/Footer'
-import { useTranslation } from 'react-i18next'
-import ContactsMain from '../../components/ContactsMain/ContactsMain'
-import WaterParticles from '../../components/WaterParticles/WaterParticles'
-import ArticlesSection from '../../components/ArticlesSection/ArticlesSection'
-import TeamSection from '../../components/TeamSection/TeamSection'
-import CareerSection from '../../components/CareerSection/CareerSection'
-import '../../layouts/Products/Products.css'
-import '../../layouts/Partners/Partners.css'
-import '../../layouts/Contacts/Contacts.css'
-import '../../layouts/About/About.css'
-
+import { Layout } from 'antd';
+import React from 'react';
+import HeroSection from '../../components/HeroSection/HeroSection';
+import TrustedBySection from '../../components/TrustedBySection/TrustedBySection';
+import SolutionsSection from '../../components/SolutionsSection/SolutionsSection';
+import AboutStatsSection from '../../components/AboutStatsSection/AboutStatsSection';
+import FeatureSection from '../../components/FeatureSection/FeatureSection';
+import ArticlesSection from '../../components/ArticlesSection/ArticlesSection';
+import TeamSection from '../../components/TeamSection/TeamSection';
+import CareerSection from '../../components/CareerSection/CareerSection';
+import CTASection from '../../components/CTASection/CTASection';
+import ContactsMain from '../../components/ContactsMain/ContactsMain';
+import Footer from '../../layouts/Footer';
+import './MainLayout.css';
+import '../../layouts/Contacts/Contacts.css';
 
 const Mainlayout = () => {
-  const { t } = useTranslation();
-
   return (
     <Layout>
-      {/* 
-        ⚠️ КРИТИЧЕСКИ ВАЖНО: БЛОК ГЛАВНОЙ - НЕ ТРОГАТЬ! ⚠️
-        ========================================
-        БЛОК 1: ГЛАВНАЯ (Home) - ЗАПРЕЩЕНО ИЗМЕНЯТЬ
-        id="home" - обязателен для навигации
-        
-        Этот блок содержит:
-        - WaterParticles (3D анимация частиц) - НЕ УДАЛЯТЬ
-        - Main компонент с текстом и кнопкой
-        - Критически важные z-index и позиционирование
-        
-        Изменение структуры сломает:
-        - Анимацию частиц
-        - Позиционирование элементов
-        - Навигацию и скролл
-        ========================================
-      */}
-      <div className="main-about-unified" id="home">
-        <div className="main-hero-section">
-          {/* ⚠️ НЕ УДАЛЯТЬ: 3D анимированные частицы - эффект движения воды */}
-          <WaterParticles />
-          {/* ⚠️ НЕ МЕНЯТЬ: Main компонент с критической структурой */}
-          <Main />
-        </div>
-        
-        {/* 
-          ========================================
-          БЛОК 2: О КОМПАНИИ (About)
-          id="about" - обязателен для навигации
-          ========================================
-        */}
-        <div id="about" className="about-section-unified">
-          {/* ⚠️ Заголовок "О нас" на уровне навбара, между логотипом и кнопками */}
-          <div className="about-header-in-navbar">
-            <h1>{t('aboutTitle')}</h1>
-          </div>
-          <div className="about-content-layout">
-            <div className="about-content-left">
-              <div className="about-text-combined">
-                <p className="about-text-main">{t('aboutText1')}</p>
-                <p className="about-text-sub">{t('aboutText2')}</p>
-                <p className="about-text-company">{t('aboutText3')}</p>
-                {t('aboutText4') && (
-                  <p className="about-text-nps">{t('aboutText4')}</p>
-                )}
-              </div>
-            </div>
-            <div className="about-content-right">
-              <div className="stats-unified-block">
-                <div className="stat-item stat-item-top">
-                  <div className="stat-value">{t('statsValue1')}</div>
-                  <div className="stat-label">{t('statslabel1')}</div>
-                  <div className="stat-description">{t('statsDesc1')}</div>
-                </div>
-                <div className="stat-divider"></div>
-                <div className="stat-item stat-item-middle">
-                  <div className="stat-value">{t('statsValue2')}</div>
-                  <div className="stat-label">{t('statslabel2')}</div>
-                </div>
-                <div className="stat-divider"></div>
-                <div className="stat-item stat-item-bottom">
-                  <div className="stat-value">{t('statsValue3')}</div>
-                  <div className="stat-label">{t('statslabel3')}</div>
-                  <div className="stat-description">{t('statsDesc3')}</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* ⚠️ Логотипы партнеров растянуты на всю ширину экрана, чуть ниже контента */}
-          <div className="partners-in-about-bottom">
-            <h2 className="partners-in-about-title">Нам доверяют</h2>
-            <PartnersRunner compact={true} />
-          </div>
-        </div>
-      </div>
-      
-      {/* 
-        ========================================
-        БЛОК 3: СТАТЬИ/СМИ (Articles)
-        ========================================
-      */}
-      <div id="articles" className="contacts-section-fullscreen">
-        <ArticlesSection />
+      {/* 1. Hero Section - Главная секция */}
+      <HeroSection />
+
+      {/* 2. Trusted By - Партнеры */}
+      <div id="partners" className="section-wrapper">
+        <TrustedBySection />
       </div>
 
-      {/* 
-        ========================================
-        БЛОК 4: РЕШЕНИЯ (Solutions)
-        ⚠️ Без автодоводки и защиты
-        ========================================
-      */}
-      <div id="solutions" className="contacts-section-fullscreen">
+      {/* 3. Products Overview - Обзор продуктов */}
+      <div id="solutions" className="section-wrapper">
         <SolutionsSection />
       </div>
 
-      {/* 
-        ========================================
-        БЛОК 5: КОМАНДА (Team)
-        ========================================
-      */}
-      <div id="team" className="contacts-section-fullscreen">
+      {/* 4. About + Stats - О компании и статистика */}
+      <div id="about" className="section-wrapper">
+        <AboutStatsSection />
+      </div>
+
+      {/* 5. Feature Sections - Детальные секции о продуктах */}
+      <div id="features" className="section-wrapper">
+        <FeatureSection
+          title="Кредитный конвейер — автоматизация всего цикла"
+          description="Комплексное решение для автоматизации всего цикла кредитования — от подачи заявки до принятия решения и сопровождения. Вся система является 100% собственной разработкой, что позволяет гибко адаптироваться под требования клиентов и регуляторов. Благодаря автоматизации бизнес-процессов клиенты достигают до 50% оптимизации операционных расходов."
+          imagePosition="left"
+          variant="light"
+          ctaText="Узнать больше о конвейере"
+          image={
+            <div style={{
+              width: '100%',
+              height: '400px',
+              background: 'linear-gradient(135deg, #4a9eff 0%, #357abd 100%)',
+              borderRadius: '16px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: '#ffffff',
+              fontSize: '24px',
+              fontWeight: 600
+            }}>
+              Кредитный конвейер
+            </div>
+          }
+        />
+        <FeatureSection
+          title="Кредитный брокер — единая платформа для всех"
+          description="Цифровая платформа, объединяющая дилерские центры, банки и МФО. Более 300 дилеров и 6 финансовых организаций уже работают через нашу платформу, обеспечивая быструю обработку заявок и прозрачность процесса. Платформа представлена более чем в 20 городах Казахстана."
+          imagePosition="right"
+          variant="default"
+          ctaText="Узнать больше о брокере"
+          image={
+            <div style={{
+              width: '100%',
+              height: '400px',
+              background: 'linear-gradient(135deg, #50F5B0 0%, #3dd89f 100%)',
+              borderRadius: '16px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: '#0f172a',
+              fontSize: '24px',
+              fontWeight: 600
+            }}>
+              Кредитный брокер
+            </div>
+          }
+        />
+      </div>
+
+      {/* 6. Articles/Media - Статьи и СМИ */}
+      <div id="articles" className="section-wrapper">
+        <ArticlesSection />
+      </div>
+
+      {/* 7. Team - Команда */}
+      <div id="team" className="section-wrapper">
         <TeamSection />
       </div>
 
-      {/* 
-        ========================================
-        БЛОК 6: КАРЬЕРА (Career)
-        ========================================
-      */}
-      <div id="career" className="contacts-section-fullscreen">
+      {/* 8. Career - Карьера */}
+      <div id="career" className="section-wrapper">
         <CareerSection />
       </div>
-      
-      {/* 
-        ========================================
-        БЛОК 7: КОНТАКТЫ (Contacts)
-        ⚠️ Без автодоводки и защиты
-        ========================================
-      */}
-      <div id="contacts" className="contacts-section-fullscreen">
+
+      {/* 9. CTA Section - Призыв к действию */}
+      <div className="section-wrapper">
+        <CTASection />
+      </div>
+
+      {/* 10. Contacts - Контакты */}
+      <div id="contacts" className="section-wrapper">
         <div className="contacts-section-content">
           <ContactsMain />
           <div className="contacts-wrapper">
@@ -219,16 +176,11 @@ const Mainlayout = () => {
           </div>
         </div>
       </div>
-      
-      {/* 
-        ========================================
-        ПОДВАЛ (Footer) - ЗАПРЕЩЕНО ИЗМЕНЯТЬ
-        ⚠️ КРИТИЧНО: Фон должен быть идентичен главной странице (#05080d)
-        ========================================
-      */}
+
+      {/* 11. Footer - Подвал */}
       <Footer />
     </Layout>
-  )
-}
+  );
+};
 
-export default Mainlayout
+export default Mainlayout;

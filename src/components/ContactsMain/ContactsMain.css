@@ -2,16 +2,12 @@
 
 .contact-content-text {
   font-weight: 700;
-  font-size: 48px;
+  font-size: 56px;
   line-height: 1.2;
-  letter-spacing: -0.02em;
-  color: #0f172a;
+  letter-spacing: -0.03em;
+  color: #ffffff;
   text-align: center;
-  margin: 40px 0 48px 0;
-  background: linear-gradient(135deg, #0f172a 0%, var(--color-unified) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  margin: 0 0 48px 0;
   padding: 0 24px;
 }
 
