@@ -41,13 +41,14 @@
 .brex-article-card {
   border-radius: 16px !important;
   border: 1px solid #e2e8f0 !important;
-  padding: 32px 24px !important;
+  padding: 0 !important;
   height: 100%;
   display: flex;
   flex-direction: column;
   transition: all 0.3s ease !important;
   background: #ffffff !important;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .brex-article-card:hover {
@@ -56,11 +57,40 @@
   transform: translateY(-4px);
 }
 
+.brex-article-card .ant-card-body {
+  padding: 32px 24px !important;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.brex-article-image-container {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brex-article-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.brex-article-card:hover .brex-article-image {
+  transform: scale(1.05);
+}
+
 .brex-article-icon {
   font-size: 40px;
   color: #4a9eff;
   margin-bottom: 20px;
   opacity: 0.2;
+  padding: 32px 24px 0;
 }
 
 .brex-article-source {

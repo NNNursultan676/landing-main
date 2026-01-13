@@ -33,12 +33,14 @@ const ArticlesSection = () => {
             title: 'Как сделать кредитование быстрее, прозрачнее и удобнее для всех участников',
             source: 'Forbes Kazakhstan',
             url: 'https://forbes.kz/articles/kak-sdelat-kreditovanie-bystree-prozrachnee-i-udobnee-dlya-vseh-uchastnikov-33c466',
+            image: 'https://img.forbes.kz/forbes-photobank/media/2025-04-14/c8024a19-1a34-4967-8bda-850d83f9214d.webp',
           },
           {
             id: '2',
             title: 'Как казахстанский стартап SapaTech автоматизирует кредитование',
             source: 'Digital Business',
             url: 'https://digitalbusiness.kz/2025-04-16/kak-kazahstanskiy-startap-sapatech-avtomatiziruet-kreditovanie/',
+            image: 'https://digitalbusiness.kz/wp-content/uploads/2025/04/photo_2025-04-16_10-31-31-1024x682.jpg',
           },
         ]);
       } finally {
@@ -66,6 +68,18 @@ const ArticlesSection = () => {
                 hoverable
                 className="article-card"
                 onClick={() => window.open(article.url, '_blank', 'noopener,noreferrer')}
+                cover={article.image ? (
+                  <div className="article-image-container">
+                    <img 
+                      src={article.image} 
+                      alt={article.title}
+                      className="article-image"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                      }}
+                    />
+                  </div>
+                ) : null}
               >
                 <div className="article-source">{article.source}</div>
                 <Title level={4} className="article-title">

@@ -33,36 +33,42 @@ const BrexArticles = () => {
             title: 'Как сделать кредитование быстрее, прозрачнее и удобнее для всех участников',
             source: 'Forbes Kazakhstan',
             url: 'https://forbes.kz/articles/kak-sdelat-kreditovanie-bystree-prozrachnee-i-udobnee-dlya-vseh-uchastnikov-33c466',
+            image: 'https://img.forbes.kz/forbes-photobank/media/2025-04-14/c8024a19-1a34-4967-8bda-850d83f9214d.webp',
           },
           {
             id: '2',
             title: 'Как казахстанский стартап SapaTech автоматизирует кредитование',
             source: 'Digital Business',
             url: 'https://digitalbusiness.kz/2025-04-16/kak-kazahstanskiy-startap-sapatech-avtomatiziruet-kreditovanie/',
+            image: 'https://digitalbusiness.kz/wp-content/uploads/2025/04/photo_2025-04-16_10-31-31-1024x682.jpg',
           },
           {
             id: '3',
             title: 'Sapa Technologies в Instagram',
             source: 'Instagram',
             url: 'https://www.instagram.com/p/DIfvw8Bs1sT/',
+            image: 'https://digitalbusiness.kz/wp-content/uploads/2025/04/photo_2025-04-16_10-31-37.jpg',
           },
           {
             id: '4',
             title: 'Микрокредитование: будущее доступного кредитования',
             source: 'Stan.kz',
             url: 'https://stan.kz/mikrokarzhilandirudin-bolashagi-salalik-kezdesudin-negi-426037/',
+            image: 'https://stan.kz/download/uploads/2025/11/full_1762834372e9c8d85611aec741b9fd119ff9b3d200_webp.webp',
           },
           {
             id: '5',
             title: 'Sapa Technologies в Tengenomika',
             source: 'Tengenomika',
             url: 'https://t.me/tengenomika/7961',
+            image: 'https://storage.yandexcloud.kz/sapaedu/photo_2026-01-13_20-15-06.jpg',
           },
           {
             id: '6',
             title: 'Sapa Technologies в Finance.kz',
             source: 'Finance.kz',
             url: 'https://t.me/FINANCEkaz/17371',
+            image: 'https://storage.yandexcloud.kz/sapaedu/ChatGPT%20Image%2013%20%D1%8F%D0%BD%D0%B2.%202026%20%D0%B3.%2C%2020_28_46.png',
           },
         ]);
       } finally {
@@ -92,10 +98,23 @@ const BrexArticles = () => {
                 className="brex-article-card"
                 hoverable
                 onClick={() => window.open(article.url, '_blank', 'noopener,noreferrer')}
+                cover={article.image ? (
+                  <div className="brex-article-image-container">
+                    <img 
+                      src={article.image} 
+                      alt={article.title}
+                      className="brex-article-image"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                      }}
+                    />
+                  </div>
+                ) : (
+                  <div className="brex-article-icon">
+                    <FileTextOutlined />
+                  </div>
+                )}
               >
-                <div className="brex-article-icon">
-                  <FileTextOutlined />
-                </div>
                 <div className="brex-article-source">{article.source}</div>
                 <Title level={4} className="brex-article-title">
                   {article.title}
