@@ -5,8 +5,9 @@
 .brex-hero {
   min-height: 90vh;
   background: #ffffff;
-  padding: 140px 24px 80px;
+  padding: 120px 24px 80px;
   position: relative;
+  margin-top: 72px; /* Высота навигации */
 }
 
 .brex-hero-container {

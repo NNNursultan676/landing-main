@@ -54,11 +54,10 @@ const Nav = () => {
       return;
     }
     
-    const element = document.getElementById(sectionId);
+      const element = document.getElementById(sectionId);
     if (element) {
-      // ⚠️ ВАЖНО: Секция должна начинаться с самого верха (без отступа навбара)
-      // Автодоводка позаботится о правильном позиционировании
-      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      // Учитываем высоту навигации (72px)
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset - 72;
       
       window.scrollTo({
         top: Math.max(0, elementPosition),
@@ -66,12 +65,12 @@ const Nav = () => {
       });
       setActiveSection(sectionId);
       
-      // ⚠️ Дополнительная автодоводка для идеального выравнивания
+      // Дополнительная автодоводка для идеального выравнивания
       setTimeout(() => {
         const rect = element.getBoundingClientRect();
-        if (Math.abs(rect.top) > 5) {
+        if (Math.abs(rect.top - 72) > 5) {
           window.scrollTo({
-            top: window.scrollY + rect.top,
+            top: window.scrollY + rect.top - 72,
             behavior: 'smooth'
           });
         }
@@ -88,7 +87,7 @@ const Nav = () => {
     const handleScroll = () => {
       // ⚠️ ВАЖНО: Если добавляете новую секцию, добавьте её id сюда
       const sections = ['home', 'partners', 'solutions', 'about', 'features', 'articles', 'team', 'career', 'contacts'];
-      const scrollPosition = window.scrollY + 150;
+      const scrollPosition = window.scrollY + 100; // Учитываем новую высоту навигации
 
       // Update nav style on scroll
       if (nav) {
