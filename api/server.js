@@ -123,9 +123,19 @@ app.delete('/api/vacancies/:id', (req, res) => {
 
 /**
  * POST /api/vacancies/:id/applications - Отправить отклик на вакансию
+ * Безопасность: используем whitelist полей, чтобы предотвратить перезапись серверных полей
  */
 app.post('/api/vacancies/:id/applications', (req, res) => {
   try {
+    // Проверяем существование вакансии
+    const vacanciesFilePath = path.join(DATA_DIR, 'vacancies.json');
+    const vacancies = fs.readJsonSync(vacanciesFilePath);
+    const vacancy = vacancies.find(v => v.id === req.params.id);
+    
+    if (!vacancy) {
+      return res.status(404).json({ error: 'Вакансия не найдена' });
+    }
+
     const applicationsFilePath = path.join(DATA_DIR, 'applications.json');
     
     // Инициализируем файл applications.json, если его нет
@@ -134,12 +144,26 @@ app.post('/api/vacancies/:id/applications', (req, res) => {
       applications = fs.readJsonSync(applicationsFilePath);
     }
     
+    // Whitelist разрешенных полей от клиента (безопасность)
+    const allowedFields = ['name', 'email', 'phone', 'resume'];
+    const clientData = {};
+    
+    // Извлекаем только разрешенные поля из req.body
+    allowedFields.forEach(field => {
+      if (req.body[field] !== undefined) {
+        clientData[field] = req.body[field];
+      }
+    });
+    
+    // Создаем объект отклика с серверными полями, которые нельзя перезаписать
     const newApplication = {
+      // Серверные поля (не могут быть перезаписаны клиентом)
       id: Date.now().toString(),
       vacancyId: req.params.id,
-      vacancyTitle: req.body.vacancyTitle || '',
-      ...req.body,
-      submittedAt: new Date().toISOString()
+      vacancyTitle: vacancy.title || req.body.vacancyTitle || '',
+      submittedAt: new Date().toISOString(),
+      // Данные от клиента (только разрешенные поля)
+      ...clientData
     };
     
     applications.push(newApplication);
