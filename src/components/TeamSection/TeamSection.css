@@ -18,9 +18,15 @@
 .team-title {
   color: #fff !important;
   text-align: center;
-  margin-bottom: 16px !important;
-  font-size: 48px;
+  margin-bottom: 24px !important;
+  font-size: 64px; /* Увеличен размер согласно рекомендациям */
   font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.8) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .team-subtitle {
@@ -48,11 +54,16 @@
 }
 
 .team-stat-number {
-  font-size: 72px;
+  font-size: 96px; /* Увеличен размер для более выразительного эффекта */
   font-weight: 700;
   color: #4a9eff;
   line-height: 1;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, #4a9eff 0%, #357abd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: countUp 1.5s ease-out forwards;
 }
 
 .team-stat-label {
@@ -105,10 +116,10 @@
   }
 
   .team-title {
-    font-size: 32px;
+    font-size: 40px; /* Увеличен размер для mobile (было 32px) */
   }
 
   .team-stat-number {
-    font-size: 48px;
+    font-size: 64px; /* Увеличен размер для mobile (было 48px) */
   }
 }

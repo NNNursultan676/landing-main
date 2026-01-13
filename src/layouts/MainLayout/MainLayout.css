@@ -169,7 +169,7 @@
 }
 
 .about-header-in-navbar h1 {
-  font-size: 32px;
+  font-size: 48px; /* Увеличен размер для лучшей видимости (было 32px) */
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.03em;
@@ -180,6 +180,10 @@
   position: relative;
   z-index: 1;
   pointer-events: auto; /* Разрешаем взаимодействие с заголовком */
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* ⚠️ УДАЛЕНО: Старый класс .about-header-unified больше не используется (заменен на .about-header-in-navbar) */
@@ -351,25 +355,31 @@
 
 /* Unified stats block - светлый фон для белого фона */
 .stats-unified-block {
-  background: rgba(248, 250, 252, 0.8); /* Светлый фон для белого фона */
+  background: rgba(248, 250, 252, 0.95); /* Более непрозрачный фон */
   border-radius: 24px;
-  padding: 24px; /* Уменьшен padding */
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  padding: 40px 32px; /* Увеличен padding для лучшего spacing */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(226, 232, 240, 0.8);
   display: flex;
   flex-direction: column;
   gap: 0;
   width: 100%;
-  max-width: 380px;
+  max-width: 420px; /* Немного увеличен для крупных чисел */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stats-unified-block:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15), 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .stat-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 18px 16px; /* Уменьшен padding */
+  padding: 24px 20px; /* Увеличен padding для лучшего spacing */
   text-align: center;
 }
 
@@ -382,24 +392,36 @@
 }
 
 .stat-value {
-  font-size: 42px; /* Уменьшен размер */
+  font-size: 72px; /* Увеличен размер согласно рекомендациям (было 42px) */
   font-weight: 800;
   line-height: 1;
-  margin-bottom: 6px; /* Уменьшен margin */
+  margin-bottom: 12px;
   background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
+  animation: countUp 1.5s ease-out forwards;
+}
+
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .stat-label {
-  font-size: 13px; /* Уменьшен размер */
+  font-size: 16px; /* Увеличен размер для лучшей читаемости */
   font-weight: 700;
   color: #64748b; /* Серый текст на белом фоне */
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 4px; /* Уменьшен margin */
+  letter-spacing: 0.12em; /* Увеличен letter-spacing */
+  margin-bottom: 8px;
 }
 
 .stat-description {
@@ -603,7 +625,7 @@
   }
 
   .stat-value {
-    font-size: 48px;
+    font-size: 64px; /* Увеличен размер для tablet (было 48px) */
   }
 }
 
@@ -648,7 +670,7 @@
   }
 
   .stat-value {
-    font-size: 42px;
+    font-size: 56px; /* Увеличен размер для mobile (было 42px) */
   }
 
   .stat-label {

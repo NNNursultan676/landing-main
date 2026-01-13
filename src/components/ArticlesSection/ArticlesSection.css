@@ -18,9 +18,15 @@
 .articles-title {
   color: #fff !important;
   text-align: center;
-  margin-bottom: 16px !important;
-  font-size: 48px;
+  margin-bottom: 24px !important;
+  font-size: 64px; /* Увеличен размер согласно рекомендациям */
   font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.8) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .articles-subtitle {
@@ -45,10 +51,12 @@
 }
 
 .article-card:hover {
-  transform: translateY(-8px);
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  transform: translateY(-12px); /* Увеличен подъем для более выраженного эффекта */
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(74, 158, 255, 0.4);
+  box-shadow: 
+    0 24px 48px rgba(0, 0, 0, 0.4),
+    0 8px 16px rgba(74, 158, 255, 0.2);
 }
 
 .article-source {
@@ -86,7 +94,7 @@
   }
 
   .articles-title {
-    font-size: 32px;
+    font-size: 40px; /* Увеличен размер для mobile (было 32px) */
   }
 
   .articles-subtitle {
