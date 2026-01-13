@@ -33,13 +33,23 @@
 
 .partners-runner-compact .partners-runner-container::before,
 .partners-runner-compact .partners-runner-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
   width: 120px;
-  background: linear-gradient(to right, #f8fafc, transparent);
+  height: 100%;
   z-index: 2;
+  pointer-events: none;
+}
+
+.partners-runner-compact .partners-runner-container::before {
+  left: 0;
+  background: linear-gradient(to right, #1e293b, transparent);
 }
 
 .partners-runner-compact .partners-runner-container::after {
-  background: linear-gradient(to left, #f8fafc, transparent);
+  right: 0;
+  background: linear-gradient(to left, #1e293b, transparent);
 }
 
 .partners-runner-compact .partners-runner-track {
