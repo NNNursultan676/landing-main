@@ -266,6 +266,7 @@ const Nav = () => {
                   <li><a href="#contacts" onClick={(e) => { e.preventDefault(); scrollToSection('contacts'); }}>{t('contactUs')}</a></li>
                 </ul>
               </div>
+            </div>
           </div>
         </div>
       </div>
