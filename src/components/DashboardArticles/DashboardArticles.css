@@ -1,0 +1,204 @@
+/**
+ * Dashboard Articles Styles
+ * Уникальные карточки статей с hover эффектами
+ */
+.dashboard-articles {
+  padding: 120px 24px;
+  background: #f8fafc;
+  position: relative;
+}
+
+.dashboard-articles-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.dashboard-articles-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.dashboard-articles-title {
+  font-size: 56px !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.03em !important;
+  color: #0f172a !important;
+  margin-bottom: 16px !important;
+}
+
+.dashboard-articles-subtitle {
+  font-size: 20px !important;
+  line-height: 1.6 !important;
+  color: #64748b !important;
+  max-width: 600px;
+  margin: 0 auto !important;
+}
+
+.dashboard-articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 32px;
+}
+
+.article-card-wrapper {
+  position: relative;
+  cursor: pointer;
+}
+
+.article-card-glow {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  border-radius: 24px;
+  opacity: 0;
+  filter: blur(40px);
+  transition: opacity 0.6s ease;
+  z-index: 0;
+}
+
+.article-card-wrapper:hover .article-card-glow {
+  opacity: 0.4;
+}
+
+.dashboard-article-card {
+  position: relative;
+  z-index: 1;
+  border-radius: 20px !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06) !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff !important;
+}
+
+.dashboard-article-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #4a9eff, #50F5B0);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.article-card-wrapper:hover .dashboard-article-card {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12) !important;
+  border-color: rgba(74, 158, 255, 0.3) !important;
+}
+
+.article-card-wrapper:hover .dashboard-article-card::before {
+  transform: scaleX(1);
+}
+
+.article-icon {
+  font-size: 48px;
+  color: #4a9eff;
+  margin-bottom: 20px;
+  opacity: 0.2;
+  transition: all 0.4s ease;
+}
+
+.article-card-wrapper:hover .article-icon {
+  opacity: 0.4;
+  transform: scale(1.1) rotate(5deg);
+}
+
+.article-source {
+  font-size: 12px;
+  font-weight: 600;
+  color: #4a9eff;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+
+.article-title {
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  color: #0f172a !important;
+  margin-bottom: 16px !important;
+  line-height: 1.4 !important;
+  flex-grow: 1;
+}
+
+.article-description {
+  color: #64748b !important;
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  margin-bottom: 24px !important;
+}
+
+.article-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #4a9eff;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.article-card-wrapper:hover .article-link {
+  color: #357abd;
+  transform: translateX(4px);
+}
+
+/* Уникальные анимации */
+.article-card-1 .dashboard-article-card {
+  animation: article-float-1 8s ease-in-out infinite;
+}
+
+.article-card-2 .dashboard-article-card {
+  animation: article-float-2 8s ease-in-out infinite;
+  animation-delay: 0.4s;
+}
+
+@keyframes article-float-1 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes article-float-2 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .dashboard-articles-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-articles {
+    padding: 80px 24px;
+  }
+
+  .dashboard-articles-header {
+    margin-bottom: 60px;
+  }
+
+  .dashboard-articles-title {
+    font-size: 36px !important;
+  }
+
+  .dashboard-articles-subtitle {
+    font-size: 18px !important;
+  }
+
+  .dashboard-articles-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}

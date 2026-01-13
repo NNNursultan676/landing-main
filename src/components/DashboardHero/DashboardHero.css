@@ -1,0 +1,256 @@
+/**
+ * Dashboard Hero Styles
+ * Премиальный dashboard-style дизайн с вау-эффектами
+ */
+.dashboard-hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: 
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(74, 158, 255, 0.15) 0%, transparent 100%),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(80, 245, 176, 0.12) 0%, transparent 100%),
+    #05080d;
+  overflow: hidden;
+  padding: 120px 24px 80px;
+}
+
+.dashboard-hero-container {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.dashboard-hero-content {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 80px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background: rgba(74, 158, 255, 0.1);
+  border: 1px solid rgba(74, 158, 255, 0.3);
+  border-radius: 50px;
+  color: #4a9eff;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 32px;
+  backdrop-filter: blur(10px);
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(74, 158, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(74, 158, 255, 0.5);
+  }
+}
+
+.dashboard-hero-title {
+  font-size: 72px !important;
+  font-weight: 800 !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.04em !important;
+  color: #ffffff !important;
+  margin-bottom: 24px !important;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #4a9eff 0%, #50F5B0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+}
+
+.dashboard-hero-subtitle {
+  font-size: 22px !important;
+  line-height: 1.6 !important;
+  color: rgba(255, 255, 255, 0.75) !important;
+  margin-bottom: 48px !important;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dashboard-hero-form {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.dashboard-hero-input {
+  height: 56px !important;
+  font-size: 16px !important;
+  border-radius: 12px 0 0 12px !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  backdrop-filter: blur(10px);
+}
+
+.dashboard-hero-input::placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.dashboard-hero-input:focus {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(74, 158, 255, 0.5) !important;
+}
+
+.dashboard-hero-button {
+  height: 56px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  border-radius: 0 12px 12px 0 !important;
+  background: linear-gradient(135deg, #4a9eff 0%, #357abd 100%) !important;
+  border: none !important;
+  padding: 0 32px !important;
+  box-shadow: 0 8px 24px rgba(74, 158, 255, 0.4) !important;
+  transition: all 0.3s ease !important;
+}
+
+.dashboard-hero-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(74, 158, 255, 0.5) !important;
+  background: linear-gradient(135deg, #5ab0ff 0%, #4085c5 100%) !important;
+}
+
+/* Dashboard метрики */
+.dashboard-hero-metrics {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.metric-card {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 20px !important;
+  padding: 32px 24px !important;
+  text-align: center;
+  backdrop-filter: blur(20px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.metric-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gradient-color, #4a9eff), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.metric-card:hover::before {
+  transform: translateX(100%);
+}
+
+.metric-card-1 {
+  --gradient-color: #4a9eff;
+}
+
+.metric-card-2 {
+  --gradient-color: #50F5B0;
+}
+
+.metric-card-3 {
+  --gradient-color: #ff6b6b;
+}
+
+.metric-card-4 {
+  --gradient-color: #feca57;
+}
+
+.metric-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.3),
+    0 0 40px var(--gradient-color, rgba(74, 158, 255, 0.3));
+}
+
+.metric-icon {
+  font-size: 32px;
+  color: var(--gradient-color, #4a9eff);
+  margin-bottom: 16px;
+  transition: transform 0.3s ease;
+}
+
+.metric-card:hover .metric-icon {
+  transform: scale(1.2) rotate(5deg);
+}
+
+.metric-value {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.8) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.metric-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .dashboard-hero-title {
+    font-size: 56px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-hero {
+    padding: 100px 24px 60px;
+  }
+
+  .dashboard-hero-title {
+    font-size: 40px !important;
+  }
+
+  .dashboard-hero-subtitle {
+    font-size: 18px !important;
+  }
+
+  .dashboard-hero-form {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .dashboard-hero-form .ant-space-compact {
+    width: 100% !important;
+    flex-direction: column;
+  }
+
+  .dashboard-hero-form .ant-space-compact .ant-input,
+  .dashboard-hero-form .ant-space-compact .ant-btn {
+    border-radius: 12px !important;
+    width: 100% !important;
+  }
+
+  .metric-value {
+    font-size: 36px;
+  }
+}

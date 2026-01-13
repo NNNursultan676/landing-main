@@ -15,14 +15,14 @@
  */
 import { Layout } from 'antd';
 import React from 'react';
-import HeroSection from '../../components/HeroSection/HeroSection';
+import DashboardHero from '../../components/DashboardHero/DashboardHero';
 import TrustedBySection from '../../components/TrustedBySection/TrustedBySection';
-import SolutionsSection from '../../components/SolutionsSection/SolutionsSection';
-import AboutStatsSection from '../../components/AboutStatsSection/AboutStatsSection';
+import DashboardProducts from '../../components/DashboardProducts/DashboardProducts';
+import DashboardAbout from '../../components/DashboardAbout/DashboardAbout';
 import FeatureSection from '../../components/FeatureSection/FeatureSection';
-import ArticlesSection from '../../components/ArticlesSection/ArticlesSection';
+import DashboardArticles from '../../components/DashboardArticles/DashboardArticles';
 import TeamSection from '../../components/TeamSection/TeamSection';
-import CareerSection from '../../components/CareerSection/CareerSection';
+import DashboardCareer from '../../components/DashboardCareer/DashboardCareer';
 import CTASection from '../../components/CTASection/CTASection';
 import ContactsMain from '../../components/ContactsMain/ContactsMain';
 import Footer from '../../layouts/Footer';
@@ -32,22 +32,22 @@ import '../../layouts/Contacts/Contacts.css';
 const Mainlayout = () => {
   return (
     <Layout>
-      {/* 1. Hero Section - Главная секция */}
-      <HeroSection />
+      {/* 1. Dashboard Hero - Главная секция с метриками */}
+      <DashboardHero />
 
       {/* 2. Trusted By - Партнеры */}
       <div id="partners" className="section-wrapper">
         <TrustedBySection />
       </div>
 
-      {/* 3. Products Overview - Обзор продуктов */}
-      <div id="solutions" className="section-wrapper">
-        <SolutionsSection />
+      {/* 3. Dashboard Products - Продукты в grid */}
+      <div className="section-wrapper">
+        <DashboardProducts />
       </div>
 
-      {/* 4. About + Stats - О компании и статистика */}
-      <div id="about" className="section-wrapper">
-        <AboutStatsSection />
+      {/* 4. Dashboard About - О компании с интерактивной статистикой */}
+      <div className="section-wrapper">
+        <DashboardAbout />
       </div>
 
       {/* 5. Feature Sections - Детальные секции о продуктах */}
@@ -100,9 +100,9 @@ const Mainlayout = () => {
         />
       </div>
 
-      {/* 6. Articles/Media - Статьи и СМИ */}
-      <div id="articles" className="section-wrapper">
-        <ArticlesSection />
+      {/* 6. Dashboard Articles - Статьи в dashboard стиле */}
+      <div className="section-wrapper">
+        <DashboardArticles />
       </div>
 
       {/* 7. Team - Команда */}
@@ -110,9 +110,9 @@ const Mainlayout = () => {
         <TeamSection />
       </div>
 
-      {/* 8. Career - Карьера */}
-      <div id="career" className="section-wrapper">
-        <CareerSection />
+      {/* 8. Dashboard Career - Карьера с примерами вакансий */}
+      <div className="section-wrapper">
+        <DashboardCareer />
       </div>
 
       {/* 9. CTA Section - Призыв к действию */}

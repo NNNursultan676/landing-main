@@ -1,0 +1,279 @@
+/**
+ * Dashboard Career Styles
+ * Уникальные карточки вакансий с примерами
+ */
+.dashboard-career {
+  padding: 120px 24px;
+  background: #ffffff;
+  position: relative;
+}
+
+.dashboard-career-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.dashboard-career-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.dashboard-career-title {
+  font-size: 56px !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.03em !important;
+  color: #0f172a !important;
+  margin-bottom: 16px !important;
+}
+
+.dashboard-career-subtitle {
+  font-size: 20px !important;
+  line-height: 1.6 !important;
+  color: #64748b !important;
+  max-width: 600px;
+  margin: 0 auto !important;
+}
+
+.dashboard-career-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 32px;
+}
+
+.vacancy-card-wrapper {
+  position: relative;
+}
+
+.vacancy-card-glow {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  border-radius: 24px;
+  opacity: 0;
+  filter: blur(40px);
+  transition: opacity 0.6s ease;
+  z-index: 0;
+}
+
+.vacancy-card-wrapper:hover .vacancy-card-glow {
+  opacity: 0.4;
+}
+
+.dashboard-vacancy-card {
+  position: relative;
+  z-index: 1;
+  border-radius: 20px !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06) !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-vacancy-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #4a9eff, #50F5B0);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.vacancy-card-wrapper:hover .dashboard-vacancy-card {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12) !important;
+  border-color: rgba(74, 158, 255, 0.3) !important;
+}
+
+.vacancy-card-wrapper:hover .dashboard-vacancy-card::before {
+  transform: scaleX(1);
+}
+
+.vacancy-header {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+  align-items: flex-start;
+}
+
+.vacancy-icon {
+  font-size: 48px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.vacancy-header-content {
+  flex: 1;
+}
+
+.vacancy-title {
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  color: #0f172a !important;
+  margin-bottom: 12px !important;
+  line-height: 1.3 !important;
+}
+
+.vacancy-tags {
+  margin-bottom: 0;
+}
+
+.vacancy-tag {
+  margin: 0 !important;
+  border-radius: 8px !important;
+  font-size: 12px !important;
+  padding: 4px 12px !important;
+}
+
+.vacancy-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding: 16px;
+  background: rgba(74, 158, 255, 0.05);
+  border-radius: 12px;
+}
+
+.vacancy-info-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.vacancy-info-item .anticon {
+  color: #4a9eff;
+}
+
+.vacancy-description {
+  color: #475569 !important;
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  margin-bottom: 20px !important;
+  flex-grow: 1;
+}
+
+.vacancy-requirements {
+  margin-bottom: 24px;
+}
+
+.vacancy-requirements-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #64748b;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.requirement-tag {
+  background: rgba(74, 158, 255, 0.1) !important;
+  border: 1px solid rgba(74, 158, 255, 0.2) !important;
+  color: #4a9eff !important;
+  border-radius: 8px !important;
+  font-size: 12px !important;
+  padding: 4px 12px !important;
+  margin: 0 !important;
+}
+
+.vacancy-apply-btn {
+  width: 100%;
+  height: 48px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #4a9eff 0%, #357abd 100%) !important;
+  border: none !important;
+  box-shadow: 0 4px 16px rgba(74, 158, 255, 0.3) !important;
+  transition: all 0.3s ease !important;
+}
+
+.vacancy-apply-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(74, 158, 255, 0.4) !important;
+  background: linear-gradient(135deg, #5ab0ff 0%, #4085c5 100%) !important;
+}
+
+/* Уникальные анимации для карточек */
+.vacancy-card-1 .dashboard-vacancy-card {
+  animation: card-float-1 8s ease-in-out infinite;
+}
+
+.vacancy-card-2 .dashboard-vacancy-card {
+  animation: card-float-2 8s ease-in-out infinite;
+  animation-delay: 0.3s;
+}
+
+@keyframes card-float-1 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes card-float-2 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Modal */
+.career-modal .modal-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.career-modal .ant-modal-header {
+  border-bottom: 2px solid rgba(74, 158, 255, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .dashboard-career-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-career {
+    padding: 80px 24px;
+  }
+
+  .dashboard-career-header {
+    margin-bottom: 60px;
+  }
+
+  .dashboard-career-title {
+    font-size: 36px !important;
+  }
+
+  .dashboard-career-subtitle {
+    font-size: 18px !important;
+  }
+
+  .dashboard-career-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .vacancy-header {
+    flex-direction: column;
+  }
+
+  .vacancy-icon {
+    font-size: 40px;
+  }
+}
