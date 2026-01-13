@@ -34,12 +34,12 @@
 .partners-runner-compact .partners-runner-container::before,
 .partners-runner-compact .partners-runner-container::after {
   width: 120px;
-  background: linear-gradient(to right, rgba(248, 250, 252, 0.98), transparent);
+  background: linear-gradient(to right, #f8fafc, transparent);
   z-index: 2;
 }
 
 .partners-runner-compact .partners-runner-container::after {
-  background: linear-gradient(to left, rgba(248, 250, 252, 0.98), transparent);
+  background: linear-gradient(to left, #f8fafc, transparent);
 }
 
 .partners-runner-compact .partners-runner-track {
@@ -49,16 +49,17 @@
 .partners-runner-compact .partners-runner-item {
   height: 60px;
   padding: 12px 24px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(226, 232, 240, 0.8);
+  background: #ffffff;
+  backdrop-filter: none;
+  border: 1px solid #e2e8f0;
   border-radius: 12px;
   min-width: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: visible;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
 }
 
 .partners-runner-compact .partners-runner-item img {
@@ -68,21 +69,22 @@
   height: auto;
   object-fit: contain;
   filter: none;
-  opacity: 0.8;
-  transition: all 0.3s ease;
+  opacity: 0.7;
+  transition: all 0.2s ease;
   display: block;
 }
 
 .partners-runner-compact .partners-runner-item:hover {
-  background: rgba(255, 255, 255, 1);
-  border-color: var(--color-accent);
+  background: #ffffff;
+  border-color: #4a9eff;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(80, 245, 176, 0.2);
+  box-shadow: 0 4px 12px rgba(74, 158, 255, 0.15);
 }
 
 .partners-runner-compact .partners-runner-item:hover img {
   opacity: 1;
   filter: none;
+  transform: scale(1.02);
 }
 
 .partners-runner-section {
@@ -146,12 +148,12 @@
 
 .partners-runner-container::before {
   left: 0;
-  background: linear-gradient(to right, var(--color-bg-soft), transparent);
+  background: linear-gradient(to right, #f8fafc, transparent);
 }
 
 .partners-runner-container::after {
   right: 0;
-  background: linear-gradient(to left, var(--color-bg-soft), transparent);
+  background: linear-gradient(to left, #f8fafc, transparent);
 }
 
 .partners-runner-track {
@@ -167,34 +169,35 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px 40px;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 16px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-  border: 1px solid var(--color-border);
-  transition: all 0.3s ease;
-  height: 100px;
+  padding: 24px 32px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+  height: 90px;
   min-width: 180px;
 }
 
 .partners-runner-item:hover {
-  transform: translateY(-4px) scale(1.05);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-  border-color: var(--color-unified-soft);
-  background: rgba(255, 255, 255, 0.95);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(74, 158, 255, 0.15);
+  border-color: #4a9eff;
+  background: #ffffff;
 }
 
 .partners-runner-item img {
   max-width: 140px;
   max-height: 60px;
   object-fit: contain;
-  filter: grayscale(0.3) opacity(0.7);
-  transition: all 0.3s ease;
+  filter: none;
+  opacity: 0.7;
+  transition: all 0.2s ease;
 }
 
 .partners-runner-item:hover img {
-  filter: grayscale(0) opacity(1);
-  transform: scale(1.1);
+  opacity: 1;
+  transform: scale(1.02);
 }
 
 @keyframes partners-run {

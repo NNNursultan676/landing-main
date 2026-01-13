@@ -14,8 +14,11 @@ const BrexTrustedBy = () => {
     <div id="partners" className="brex-trusted-by">
       <div className="brex-trusted-by-container">
         <Title level={2} className="brex-trusted-by-title">
-          Нам доверяют 300+ партнеров по всей стране
+          Партнёры
         </Title>
+        <p className="brex-trusted-by-subtitle">
+          Нам доверяют 300+ партнеров по всей стране
+        </p>
         <div className="brex-trusted-by-logos">
           <PartnersRunner compact={false} />
         </div>

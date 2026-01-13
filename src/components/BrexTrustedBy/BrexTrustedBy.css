@@ -1,12 +1,12 @@
 /**
  * Brex-style Trusted By Styles
- * Белый фон, чистый дизайн
+ * Минималистичный дизайн с обновленным цветом
  */
 .brex-trusted-by {
-  padding: 80px 24px;
-  background: #ffffff;
-  border-top: 1px solid #e2e8f0;
-  border-bottom: 1px solid #e2e8f0;
+  padding: 100px 24px;
+  background: #f8fafc;
+  border-top: none;
+  border-bottom: none;
 }
 
 .brex-trusted-by-container {
@@ -16,11 +16,23 @@
 
 .brex-trusted-by-title {
   text-align: center;
-  font-size: 32px !important;
-  font-weight: 600 !important;
+  font-size: 36px !important;
+  font-weight: 700 !important;
   color: #0f172a !important;
-  margin-bottom: 48px !important;
-  letter-spacing: -0.02em;
+  margin-bottom: 16px !important;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+.brex-trusted-by-subtitle {
+  text-align: center;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  color: #64748b !important;
+  margin-bottom: 64px !important;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .brex-trusted-by-logos {
@@ -30,11 +42,16 @@
 /* Responsive */
 @media (max-width: 768px) {
   .brex-trusted-by {
-    padding: 60px 24px;
+    padding: 80px 24px;
   }
 
   .brex-trusted-by-title {
-    font-size: 24px !important;
-    margin-bottom: 32px !important;
+    font-size: 28px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .brex-trusted-by-subtitle {
+    font-size: 16px !important;
+    margin-bottom: 48px !important;
   }
 }
