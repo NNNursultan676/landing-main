@@ -26,6 +26,7 @@ const BrexArticles = () => {
         setArticles(response.data);
       } catch (error) {
         console.error('Ошибка загрузки статей:', error);
+        // Все статьи из README
         setArticles([
           {
             id: '1',
@@ -38,6 +39,30 @@ const BrexArticles = () => {
             title: 'Как казахстанский стартап SapaTech автоматизирует кредитование',
             source: 'Digital Business',
             url: 'https://digitalbusiness.kz/2025-04-16/kak-kazahstanskiy-startap-sapatech-avtomatiziruet-kreditovanie/',
+          },
+          {
+            id: '3',
+            title: 'Sapa Technologies в Instagram',
+            source: 'Instagram',
+            url: 'https://www.instagram.com/p/DIfvw8Bs1sT/',
+          },
+          {
+            id: '4',
+            title: 'Микрокредитование: будущее доступного кредитования',
+            source: 'Stan.kz',
+            url: 'https://stan.kz/mikrokarzhilandirudin-bolashagi-salalik-kezdesudin-negi-426037/',
+          },
+          {
+            id: '5',
+            title: 'Sapa Technologies в Tengenomika',
+            source: 'Tengenomika',
+            url: 'https://t.me/tengenomika/7961',
+          },
+          {
+            id: '6',
+            title: 'Sapa Technologies в Finance.kz',
+            source: 'Finance.kz',
+            url: 'https://t.me/FINANCEkaz/17371',
           },
         ]);
       } finally {

@@ -24,7 +24,6 @@ import BrexFeatures from '../../components/BrexFeatures/BrexFeatures';
 import BrexArticles from '../../components/BrexArticles/BrexArticles';
 import BrexTeam from '../../components/BrexTeam/BrexTeam';
 import BrexCareer from '../../components/BrexCareer/BrexCareer';
-import BrexCTA from '../../components/BrexCTA/BrexCTA';
 import BrexContacts from '../../components/BrexContacts/BrexContacts';
 import Footer from '../../layouts/Footer';
 import './MainLayout.css';
@@ -74,12 +73,7 @@ const Mainlayout = () => {
         <BrexCareer />
       </div>
 
-      {/* 9. Brex CTA - Призыв к действию в стиле Brex */}
-      <div className="section-wrapper">
-        <BrexCTA />
-      </div>
-
-      {/* 10. Brex Contacts - Контакты в стиле Brex */}
+      {/* 9. Brex Contacts - Контакты в стиле Brex */}
       <div className="section-wrapper">
         <BrexContacts />
       </div>

@@ -27,9 +27,9 @@ const BrexTeam = () => {
       } catch (error) {
         console.error('Ошибка загрузки данных команды:', error);
         setTeamData({
-          description: t('team.description'),
+          description: 'Сегодня в команде работает 40+ сотрудников, а наши решения уже используются в 20+ GovTech-проектах.',
           employeesCount: 40,
-          photos: [],
+          photos: ['https://storage.yandexcloud.kz/sapaedu/Sapa%202-106.jpg'],
         });
       } finally {
         setLoading(false);
@@ -62,24 +62,40 @@ const BrexTeam = () => {
                 <TeamOutlined />
               </div>
               <div className="brex-team-stat">
-                {teamData?.employeesCount || 40}+
+                40+
               </div>
               <div className="brex-team-stat-label">
-                {t('team.employees') || 'Сотрудников'}
+                Сотрудников
               </div>
               <Paragraph className="brex-team-description">
-                {teamData?.description || t('team.description')}
+                Сегодня в команде работает 40+ сотрудников, а наши решения уже используются в 20+ GovTech-проектах.
               </Paragraph>
             </Card>
           </Col>
           <Col xs={24} lg={12}>
             <Card className="brex-team-photo-card">
-              <div className="brex-team-photo-placeholder">
-                <TeamOutlined style={{ fontSize: 64, color: '#cbd5e1', marginBottom: 16 }} />
-                <p>Фото команды с фотосессии</p>
-                <p className="brex-team-photo-note">
-                  Загрузите фото через админ-панель
-                </p>
+              <div className="brex-team-photo-container">
+                <img 
+                  src={teamData?.photos && teamData.photos.length > 0 
+                    ? teamData.photos[0] 
+                    : "https://storage.yandexcloud.kz/sapaedu/Sapa%202-106.jpg"} 
+                  alt="Фото команды Sapa Technologies" 
+                  className="brex-team-photo"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    const placeholder = e.target.nextElementSibling;
+                    if (placeholder) {
+                      placeholder.style.display = 'block';
+                    }
+                  }}
+                />
+                <div className="brex-team-photo-placeholder" style={{ display: 'none' }}>
+                  <TeamOutlined style={{ fontSize: 64, color: '#cbd5e1', marginBottom: 16 }} />
+                  <p>Фото команды с фотосессии</p>
+                  <p className="brex-team-photo-note">
+                    Загрузите фото через админ-панель
+                  </p>
+                </div>
               </div>
             </Card>
           </Col>

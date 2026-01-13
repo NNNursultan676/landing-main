@@ -97,7 +97,8 @@ const BrexCareer = () => {
     }
   };
 
-  const exampleVacancies = process.env.NODE_ENV === 'development' ? [
+  // Примеры вакансий для отображения
+  const exampleVacancies = [
     {
       id: 'example-1',
       title: 'Senior Frontend Developer',
@@ -111,6 +112,17 @@ const BrexCareer = () => {
     },
     {
       id: 'example-2',
+      title: 'Backend Developer (Node.js)',
+      location: 'Алматы',
+      salary: 'от 900 000 ₸',
+      type: 'Полная занятость',
+      experience: '3+ года',
+      description: 'Разработка серверной части fintech-платформ. Работа с микросервисной архитектурой, базами данных, API интеграциями.',
+      requirements: ['Node.js', 'PostgreSQL', 'Redis', 'Docker'],
+      isExample: true,
+    },
+    {
+      id: 'example-3',
       title: 'Product Manager',
       location: 'Алматы',
       salary: 'от 1 200 000 ₸',
@@ -120,7 +132,7 @@ const BrexCareer = () => {
       requirements: ['Product Management', 'Agile', 'Analytics', 'Fintech'],
       isExample: true,
     },
-  ] : [];
+  ];
 
   const allVacancies = [...exampleVacancies, ...vacancies];
 
