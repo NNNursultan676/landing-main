@@ -23,9 +23,11 @@ import 'react-toastify/dist/ReactToastify.css';
 // import { initScrollProtection } from './utils/scrollProtection';
 
 const LayoutWrapper = ({ children }) => {
-  return  <Layout className="ant-layout">
-              {children}
-          </Layout>
+  return (
+    <Layout className="ant-layout">
+      {children}
+    </Layout>
+  );
 };
 
 function App() {
