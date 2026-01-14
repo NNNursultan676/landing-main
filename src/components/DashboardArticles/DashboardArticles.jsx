@@ -60,10 +60,9 @@ const DashboardArticles = () => {
     <div id="articles" className="dashboard-articles">
       <div className="dashboard-articles-container">
         <div className="dashboard-articles-header">
-          <div className="section-badge">СМИ о нас</div>
+          <div className="section-badge">{t('articles.title') || 'СМИ о нас'}</div>
           <Title level={2} className="dashboard-articles-title">
             {t('articles.title') || 'СМИ о нас'}
-          </Title>
           <Paragraph className="dashboard-articles-subtitle">
             {t('articles.subtitle') || 'Что пишут о нас в медиа'}
           </Paragraph>
@@ -110,7 +109,7 @@ const DashboardArticles = () => {
                   </Paragraph>
                 )}
                 <div className="article-link">
-                  Читать статью <ArrowRightOutlined />
+                  {t('articles.readMore')} <ArrowRightOutlined />
                 </div>
               </Card>
             </div>
