@@ -166,15 +166,15 @@
          "serverError": "Сервердегі қателік"
        }
      },
-     "navigation": {
-       "company": "Компания",
-       "articles": "СМИ о нас",
-       "products": "Өнімдер",
-       "solutions": "Шешімдер",
-       "team": "Команда",
-       "career": "Мансап",
-       "contacts": "Байланысу"
-     },
+    "navigation": {
+      "company": "Компания",
+      "articles": "БАҚ-та біз туралы",
+      "products": "Өнімдер",
+      "solutions": "Шешімдер",
+      "team": "Команда",
+      "career": "Мансап",
+      "contacts": "Байланысу"
+    },
      "articles": {
        "title": "СМИ о нас",
        "subtitle": "Sapa Technologies компаниясы туралы жарияланымдар мен мақалалар",
