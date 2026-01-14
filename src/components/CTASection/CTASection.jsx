@@ -23,10 +23,10 @@ const CTASection = () => {
     <div className="cta-section">
       <div className="cta-container">
         <Title level={2} className="cta-title">
-          Готовы начать работу с Sapa Technologies?
+          {t('cta.title')}
         </Title>
         <Paragraph className="cta-description">
-          Узнайте, как наши решения могут помочь вашему бизнесу достичь новых высот
+          {t('cta.description')}
         </Paragraph>
         <Space size="large" className="cta-buttons">
           <Button
@@ -35,7 +35,7 @@ const CTASection = () => {
             onClick={handleGetStarted}
             className="cta-button-primary"
           >
-            Заказать демо
+            {t('cta.primary')}
           </Button>
           <Button
             size="large"
@@ -47,7 +47,7 @@ const CTASection = () => {
               }
             }}
           >
-            Связаться с нами
+            {t('cta.secondary')}
           </Button>
         </Space>
       </div>

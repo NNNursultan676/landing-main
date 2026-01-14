@@ -59,6 +59,20 @@
      "contactTitle": "Contacts",
      "podrobnee": "Read more",
    
+     "cta": {
+       "title": "Ready to start working with Sapa Technologies?",
+       "description": "Discover how our solutions can help your business reach new heights",
+       "primary": "Order Demo",
+       "secondary": "Contact us"
+     },
+
+     "contactsSection": {
+       "subtitle": "Contact us in any convenient way",
+       "phone": "Phone",
+       "email": "Email",
+       "address": "Address",
+       "openIn2gis": "Open in 2GIS"
+     },
      "footer": {
        "contacts": "Contacts",
        "email": "Email",
@@ -185,7 +199,16 @@
        "title": "Our team",
        "subtitle": "40+ professionals working on creating the best solutions",
        "employees": "employees",
-       "description": "Today, the team consists of 40+ employees, and our solutions are already used in 20+ GovTech projects."
+       "description": "Today, the team consists of 40+ employees, and our solutions are already used in 20+ GovTech projects.",
+       "loading": "Loading...",
+       "photoPlaceholder": "Team photos from the photoshoot",
+       "photoNote": "Upload photos via the admin panel"
+     },
+     "heroStats": {
+       "badge": "Innovation in fintech",
+       "partners": "Partners",
+       "cities": "Cities",
+       "optimization": "Optimization"
      },
      "career": {
        "title": "Career",

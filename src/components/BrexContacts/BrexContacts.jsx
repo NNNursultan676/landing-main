@@ -21,7 +21,7 @@ const BrexContacts = () => {
             {t('contactUs') || 'Контакты'}
           </Title>
           <Paragraph className="brex-contacts-subtitle">
-            Свяжитесь с нами любым удобным способом
+            {t('contactsSection.subtitle')}
           </Paragraph>
         </div>
 
@@ -32,7 +32,7 @@ const BrexContacts = () => {
                 <PhoneOutlined />
               </div>
               <Title level={4} className="brex-contact-title">
-                Телефон
+                {t('contactsSection.phone')}
               </Title>
               <a href="tel:+77758805234" className="brex-contact-link">
                 +7 775 880 52 34
@@ -46,7 +46,7 @@ const BrexContacts = () => {
                 <MailOutlined />
               </div>
               <Title level={4} className="brex-contact-title">
-                Email
+                {t('contactsSection.email')}
               </Title>
               <a href="mailto:info@sapatech.kz" className="brex-contact-link">
                 info@sapatech.kz
@@ -60,7 +60,7 @@ const BrexContacts = () => {
                 <EnvironmentOutlined />
               </div>
               <Title level={4} className="brex-contact-title">
-                Адрес
+                {t('contactsSection.address')}
               </Title>
               <Paragraph className="brex-contact-text">
                 г. Алматы, ул. Шашкина, 24, БЦ K Plaza
@@ -71,7 +71,7 @@ const BrexContacts = () => {
                 rel="noopener noreferrer"
                 className="brex-contact-button"
               >
-                Открыть в 2ГИС
+                {t('contactsSection.openIn2gis')}
               </a>
             </Card>
           </Col>

@@ -76,7 +76,7 @@ const DashboardHero = () => {
         {/* Главный контент */}
         <div className="dashboard-hero-content">
           <div className="hero-badge">
-            <ThunderboltOutlined /> Инновации в fintech
+            <ThunderboltOutlined /> {t('heroStats.badge')}
           </div>
           
           <Title level={1} className="dashboard-hero-title">
@@ -91,7 +91,7 @@ const DashboardHero = () => {
           <div className="dashboard-hero-form">
             <Space.Compact style={{ width: '100%', maxWidth: '520px' }}>
               <Input
-                placeholder="Введите email компании"
+                placeholder={t('emailPlaceholder')}
                 size="large"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -119,7 +119,7 @@ const DashboardHero = () => {
                   <GlobalOutlined />
                 </div>
                 <div className="metric-value">{stats.partners}+</div>
-                <div className="metric-label">Партнеров</div>
+                <div className="metric-label">{t('heroStats.partners')}</div>
               </Card>
             </Col>
             <Col xs={12} sm={12} md={6}>
@@ -128,7 +128,7 @@ const DashboardHero = () => {
                   <RocketOutlined />
                 </div>
                 <div className="metric-value">{stats.cities}+</div>
-                <div className="metric-label">Городов</div>
+                <div className="metric-label">{t('heroStats.cities')}</div>
               </Card>
             </Col>
             <Col xs={12} sm={12} md={6}>
@@ -137,7 +137,7 @@ const DashboardHero = () => {
                   <ThunderboltOutlined />
                 </div>
                 <div className="metric-value">{stats.optimization}%</div>
-                <div className="metric-label">Оптимизация</div>
+                <div className="metric-label">{t('heroStats.optimization')}</div>
               </Card>
             </Col>
             <Col xs={12} sm={12} md={6}>

@@ -22,10 +22,10 @@ const BrexCTA = () => {
     <div className="brex-cta">
       <div className="brex-cta-container">
         <Title level={2} className="brex-cta-title">
-          Готовы начать работу с Sapa Technologies?
+          {t('cta.title')}
         </Title>
         <Paragraph className="brex-cta-description">
-          Узнайте, как наши решения могут помочь вашему бизнесу достичь новых высот
+          {t('cta.description')}
         </Paragraph>
         <Space size="large" className="brex-cta-buttons">
           <Button
@@ -34,7 +34,7 @@ const BrexCTA = () => {
             onClick={handleGetStarted}
             className="brex-cta-button-primary"
           >
-            Заказать демо
+            {t('cta.primary')}
           </Button>
           <Button
             size="large"
@@ -46,7 +46,7 @@ const BrexCTA = () => {
               }
             }}
           >
-            Связаться с нами
+            {t('cta.secondary')}
           </Button>
         </Space>
       </div>

@@ -40,7 +40,11 @@ const BrexTeam = () => {
   }, [t]);
 
   if (loading) {
-    return <div className="brex-team">Загрузка...</div>;
+    return (
+      <div className="brex-team">
+        {t('team.loading')}
+      </div>
+    );
   }
 
   return (
@@ -65,10 +69,10 @@ const BrexTeam = () => {
                 40+
               </div>
               <div className="brex-team-stat-label">
-                Сотрудников
+                {t('team.employees')}
               </div>
               <Paragraph className="brex-team-description">
-                Сегодня в команде работает 40+ сотрудников, а наши решения уже используются в 20+ GovTech-проектах.
+                {t('team.description')}
               </Paragraph>
             </Card>
           </Col>
@@ -91,9 +95,9 @@ const BrexTeam = () => {
                 />
                 <div className="brex-team-photo-placeholder" style={{ display: 'none' }}>
                   <TeamOutlined style={{ fontSize: 64, color: '#cbd5e1', marginBottom: 16 }} />
-                  <p>Фото команды с фотосессии</p>
+                  <p>{t('team.photoPlaceholder')}</p>
                   <p className="brex-team-photo-note">
-                    Загрузите фото через админ-панель
+                    {t('team.photoNote')}
                   </p>
                 </div>
               </div>
