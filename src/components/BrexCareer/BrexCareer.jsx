@@ -22,12 +22,77 @@ const API_URL = process.env.NODE_ENV === 'production'
   : 'http://localhost:3002/api';
 
 const BrexCareer = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [vacancies, setVacancies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedVacancy, setSelectedVacancy] = useState(null);
   const [form] = Form.useForm();
+
+  const currentLang = (i18n.language || 'ru').split('-')[0];
+
+  const uiTexts = {
+    badge: {
+      en: 'Career',
+      kk: 'Мансап',
+      ru: 'Карьера',
+    },
+    loading: {
+      en: 'Loading vacancies...',
+      kk: 'Вакансиялар жүктелуде...',
+      ru: 'Загрузка вакансий...',
+    },
+    requirementsTitle: {
+      en: 'Requirements:',
+      kk: 'Талаптар:',
+      ru: 'Требования:',
+    },
+    applyButton: {
+      en: 'Apply',
+      kk: 'Өтініш беру',
+      ru: 'Откликнуться',
+    },
+    modalTitlePrefix: {
+      en: 'Application for vacancy:',
+      kk: 'Вакансияға өтініш:',
+      ru: 'Отклик на вакансию:',
+    },
+    formNameLabel: {
+      en: 'Name',
+      kk: 'Аты',
+      ru: 'Имя',
+    },
+    formNamePlaceholder: {
+      en: 'Your name',
+      kk: 'Атыңыз',
+      ru: 'Ваше имя',
+    },
+    formPhoneLabel: {
+      en: 'Phone',
+      kk: 'Телефон',
+      ru: 'Телефон',
+    },
+    formPhonePlaceholder: {
+      en: '+7 (___) ___-__-__',
+      kk: '+7 (___) ___-__-__',
+      ru: '+7 (___) ___-__-__',
+    },
+    formAboutLabel: {
+      en: 'About you',
+      kk: 'Өзіңіз туралы',
+      ru: 'О себе',
+    },
+    formAboutPlaceholder: {
+      en: 'Tell us about your experience and skills',
+      kk: 'Тәжірибеңіз бен дағдыларыңыз туралы жазыңыз',
+      ru: 'Расскажите о себе, опыте работы и навыках',
+    },
+    formSubmit: {
+      en: 'Send application',
+      kk: 'Өтініш жіберу',
+      ru: 'Отправить отклик',
+    },
+  };
 
   useEffect(() => {
     const fetchVacancies = async () => {
@@ -141,15 +206,17 @@ const BrexCareer = () => {
       <div className="brex-career-container">
         <div className="brex-career-header">
           <Title level={2} className="brex-career-title">
-            {t('career.title') || 'Карьера'}
+            {t('career.title') || uiTexts.badge[currentLang] || uiTexts.badge.ru}
           </Title>
           <Paragraph className="brex-career-subtitle">
-            {t('career.subtitle') || 'Присоединяйтесь к нашей команде'}
+            {t('career.subtitle') || 'We are looking for talented people to build the future of fintech'}
           </Paragraph>
         </div>
 
         {loading ? (
-          <div className="brex-career-loading">Загрузка вакансий...</div>
+          <div className="brex-career-loading">
+            {uiTexts.loading[currentLang] || uiTexts.loading.ru}
+          </div>
         ) : (
           <Row gutter={[24, 24]} className="brex-career-grid">
             {allVacancies.map((vacancy, index) => (
@@ -194,7 +261,7 @@ const BrexCareer = () => {
                     icon={<RocketOutlined />}
                     block
                   >
-                    Откликнуться
+                    {uiTexts.applyButton[currentLang] || uiTexts.applyButton.ru}
                   </Button>
                 </Card>
               </Col>
@@ -206,7 +273,8 @@ const BrexCareer = () => {
       <Modal
         title={
           <div className="brex-modal-title">
-            <RocketOutlined /> Отклик на вакансию: {selectedVacancy?.title}
+            <RocketOutlined /> {uiTexts.modalTitlePrefix[currentLang] || uiTexts.modalTitlePrefix.ru}{' '}
+            {selectedVacancy?.title}
           </div>
         }
         open={isModalOpen}
@@ -218,8 +286,15 @@ const BrexCareer = () => {
         width={600}
       >
         <Form form={form} layout="vertical" onFinish={handleSubmit}>
-          <Form.Item name="name" label="Имя" rules={[{ required: true }]}>
-            <Input size="large" placeholder="Ваше имя" />
+          <Form.Item
+            name="name"
+            label={uiTexts.formNameLabel[currentLang] || uiTexts.formNameLabel.ru}
+            rules={[{ required: true }]}
+          >
+            <Input
+              size="large"
+              placeholder={uiTexts.formNamePlaceholder[currentLang] || uiTexts.formNamePlaceholder.ru}
+            />
           </Form.Item>
           <Form.Item 
             name="email" 
@@ -228,18 +303,31 @@ const BrexCareer = () => {
           >
             <Input size="large" type="email" placeholder="your.email@example.com" />
           </Form.Item>
-          <Form.Item name="phone" label="Телефон" rules={[{ required: true }]}>
-            <Input size="large" placeholder="+7 (___) ___-__-__" />
+          <Form.Item
+            name="phone"
+            label={uiTexts.formPhoneLabel[currentLang] || uiTexts.formPhoneLabel.ru}
+            rules={[{ required: true }]}
+          >
+            <Input
+              size="large"
+              placeholder={uiTexts.formPhonePlaceholder[currentLang] || uiTexts.formPhonePlaceholder.ru}
+            />
           </Form.Item>
-          <Form.Item name="resume" label="О себе" rules={[{ required: true }]}>
-            <TextArea 
-              rows={6} 
-              placeholder="Расскажите о себе, опыте работы и навыках"
+          <Form.Item
+            name="resume"
+            label={uiTexts.formAboutLabel[currentLang] || uiTexts.formAboutLabel.ru}
+            rules={[{ required: true }]}
+          >
+            <TextArea
+              rows={6}
+              placeholder={
+                uiTexts.formAboutPlaceholder[currentLang] || uiTexts.formAboutPlaceholder.ru
+              }
             />
           </Form.Item>
           <Form.Item>
             <Button type="primary" htmlType="submit" block size="large" icon={<CheckCircleOutlined />}>
-              Отправить отклик
+              {uiTexts.formSubmit[currentLang] || uiTexts.formSubmit.ru}
             </Button>
           </Form.Item>
         </Form>
