@@ -18,7 +18,7 @@ const TrustedBySection = () => {
     <div className="trusted-by-section">
       <div className="trusted-by-container">
         <Title level={2} className="trusted-by-title">
-          Нам доверяют 300+ партнеров по всей стране
+          {t('trustedBy.description')}
         </Title>
         <div className="trusted-by-logos">
           <PartnersRunner compact={false} />

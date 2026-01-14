@@ -192,8 +192,9 @@
      "articles": {
        "title": "БАҚ-та біз туралы",
        "subtitle": "Sapa Technologies компаниясы туралы жарияланымдар мен мақалалар",
-       "readMore": "Мақаланы оқу",
-       "source": "Дереккөз"
+      "readMore": "Мақаланы оқу",
+      "source": "Дереккөз",
+      "loading": "Жүктелуде..."
      },
      "team": {
        "title": "Біздің команда",
@@ -219,15 +220,23 @@
        "vacancyDescription": "Сипаттамасы",
        "vacancyRequirements": "Талаптары",
        "vacancyLocation": "Орналасуы",
-       "applyForm": {
+      "loading": "Вакансиялар жүктелуде...",
+      "applyForm": {
          "title": "Вакансияға өтініш",
          "name": "Аты",
          "email": "Email",
          "phone": "Телефон",
          "resume": "Резюме",
          "submit": "Жіберу",
-         "success": "Сіздің өтінішіңіз сәтті жіберілді!"
+        "success": "Сіздің өтінішіңіз сәтті жіберілді!",
+        "placeholder": "Өзіңіз, тәжірибеңіз және дағдыларыңыз туралы жазыңыз"
        }
+     },
+     "trustedBy": {
+       "description": "Бізге 300+ серіктес сенім білдіреді"
+     },
+     "demoModalSuccess": {
+       "title": "Өтініш қабылданды!"
      }
    }
    

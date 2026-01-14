@@ -192,8 +192,9 @@
      "articles": {
        "title": "Media about us",
        "subtitle": "Publications and articles about Sapa Technologies",
-       "readMore": "Read article",
-       "source": "Source"
+      "readMore": "Read article",
+      "source": "Source",
+      "loading": "Loading..."
      },
      "team": {
        "title": "Our team",
@@ -219,15 +220,23 @@
        "vacancyDescription": "Description",
        "vacancyRequirements": "Requirements",
        "vacancyLocation": "Location",
-       "applyForm": {
+      "loading": "Loading vacancies...",
+      "applyForm": {
          "title": "Job application",
          "name": "Name",
          "email": "Email",
          "phone": "Phone",
          "resume": "Resume",
          "submit": "Submit",
-         "success": "Your application has been successfully submitted!"
+        "success": "Your application has been successfully submitted!",
+        "placeholder": "Tell us about your experience and skills"
        }
+     },
+     "trustedBy": {
+       "description": "Trusted by 300+ partners across the country"
+     },
+     "demoModalSuccess": {
+       "title": "Request accepted!"
      }
    }
    

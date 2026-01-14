@@ -119,7 +119,11 @@ const BrexArticles = () => {
   };
 
   if (loading) {
-    return <div className="brex-articles">Загрузка...</div>;
+    return (
+      <div className="brex-articles">
+        {t('articles.loading')}
+      </div>
+    );
   }
 
   return (

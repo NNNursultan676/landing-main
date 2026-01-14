@@ -41,7 +41,11 @@ const TeamSection = () => {
   }, [t]);
 
   if (loading) {
-    return <div className="team-section">Загрузка...</div>;
+    return (
+      <div className="team-section">
+        {t('team.loading')}
+      </div>
+    );
   }
 
   return (
@@ -73,11 +77,10 @@ const TeamSection = () => {
             </Col>
             <Col xs={24} lg={12}>
               <div className="team-photos">
-                {/* Здесь будут фото с фотосессии */}
                 <div className="team-photo-placeholder">
-                  <p>Фото команды с фотосессии</p>
+                  <p>{t('team.photoPlaceholder')}</p>
                   <p className="placeholder-note">
-                    Загрузите фото через админ-панель
+                    {t('team.photoNote')}
                   </p>
                 </div>
               </div>

@@ -76,7 +76,7 @@ const CareerSection = () => {
         </Paragraph>
 
         {loading ? (
-          <div className="career-loading">Загрузка вакансий...</div>
+          <div className="career-loading">{t('career.loading')}</div>
         ) : vacancies.length === 0 ? (
           <Card className="career-empty-card">
             <Paragraph className="career-empty-text">
@@ -133,7 +133,7 @@ const CareerSection = () => {
           <Form.Item
             name="name"
             label={t('career.applyForm.name')}
-            rules={[{ required: true, message: 'Введите имя' }]}
+            rules={[{ required: true, message: t('demoModal.validation.required') }]}
           >
             <Input />
           </Form.Item>
@@ -141,8 +141,8 @@ const CareerSection = () => {
             name="email"
             label={t('career.applyForm.email')}
             rules={[
-              { required: true, message: 'Введите email' },
-              { type: 'email', message: 'Введите корректный email' },
+              { required: true, message: t('demoModal.validation.required') },
+              { type: 'email' },
             ]}
           >
             <Input type="email" />
@@ -150,16 +150,16 @@ const CareerSection = () => {
           <Form.Item
             name="phone"
             label={t('career.applyForm.phone')}
-            rules={[{ required: true, message: 'Введите телефон' }]}
+            rules={[{ required: true, message: t('demoModal.validation.required') }]}
           >
             <Input />
           </Form.Item>
           <Form.Item
             name="resume"
             label={t('career.applyForm.resume')}
-            rules={[{ required: true, message: 'Введите информацию о себе' }]}
+            rules={[{ required: true, message: t('demoModal.validation.required') }]}
           >
-            <TextArea rows={6} placeholder="Расскажите о себе, опыте работы и навыках" />
+            <TextArea rows={6} placeholder={t('career.applyForm.placeholder')} />
           </Form.Item>
           <Form.Item>
             <Button type="primary" htmlType="submit" block>

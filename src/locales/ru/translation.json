@@ -193,8 +193,9 @@
   "articles": {
     "title": "СМИ о нас",
     "subtitle": "Публикации и статьи о компании Sapa Technologies",
-    "readMore": "Читать статью",
-    "source": "Источник"
+  "readMore": "Читать статью",
+  "source": "Источник",
+  "loading": "Загрузка..."
   },
   "team": {
     "title": "Наша команда",
@@ -220,6 +221,7 @@
     "vacancyDescription": "Описание",
     "vacancyRequirements": "Требования",
     "vacancyLocation": "Локация",
+    "loading": "Загрузка вакансий...",
     "applyForm": {
       "title": "Отклик на вакансию",
       "name": "Имя",
@@ -227,7 +229,14 @@
       "phone": "Телефон",
       "resume": "Резюме",
       "submit": "Отправить",
-      "success": "Ваш отклик успешно отправлен!"
+      "success": "Ваш отклик успешно отправлен!",
+      "placeholder": "Расскажите о себе, опыте работы и навыках"
     }
+  },
+  "trustedBy": {
+    "description": "Нам доверяют 300+ партнёров по всей стране"
+  },
+  "demoModalSuccess": {
+    "title": "Заявка принята!"
   }
 }
