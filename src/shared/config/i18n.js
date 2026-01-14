@@ -1,7 +1,8 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-import Backend from 'i18next-http-backend';
+// Backend отключен - используем прямые импорты из src/locales
+// import Backend from 'i18next-http-backend';
 import I18nextBrowserLanguageDetector from 'i18next-browser-languagedetector';
 
 import kk from '../../locales/kz/translation.json';
@@ -18,7 +19,9 @@ export const resources = {
 };
 
 i18n
-  .use(Backend)
+  // Backend отключен - все переводы загружаются напрямую из импортов
+  // Это предотвращает перезапись ресурсов старыми файлами с сервера
+  // .use(Backend)
   .use(new I18nextBrowserLanguageDetector(null, {
       lookupLocalStorage: 'locale',
       // Сначала читаем язык только из localStorage.
@@ -27,7 +30,6 @@ i18n
       order: ['localStorage'],
     })
   )
-  // .use(LanguageDetector)
   .use(initReactI18next)
   .init({
     load: 'languageOnly',
