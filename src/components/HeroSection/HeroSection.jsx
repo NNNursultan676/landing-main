@@ -38,7 +38,7 @@ const HeroSection = () => {
           <div className="hero-form">
             <Space.Compact style={{ width: '100%', maxWidth: '500px' }}>
               <Input
-                placeholder="Введите email компании"
+                placeholder={t('emailPlaceholder')}
                 size="large"
                 style={{
                   height: '56px',
@@ -60,13 +60,13 @@ const HeroSection = () => {
                   padding: '0 32px',
                 }}
               >
-                Заказать демо
+                {t('demo')}
               </Button>
             </Space.Compact>
           </div>
 
           <Paragraph className="hero-note">
-            Sapa Technologies — ваш цифровой партнер на рынке fintech
+            {t('heroNote')}
           </Paragraph>
 
           <Button
@@ -74,7 +74,7 @@ const HeroSection = () => {
             className="hero-cta-secondary"
             onClick={handleGetStarted}
           >
-            Узнать больше →
+            {t('learnMore')} →
           </Button>
         </div>
       </div>
