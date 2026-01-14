@@ -10,9 +10,7 @@ import { TeamOutlined } from '@ant-design/icons';
 import './BrexTeam.css';
 
 const { Title, Paragraph } = Typography;
-const API_URL = process.env.NODE_ENV === 'production' 
-  ? 'https://api.sapatech.kz/api' 
-  : 'http://localhost:3002/api';
+const API_URL = 'http://localhost:3002/api';
 
 const BrexTeam = () => {
   const { t } = useTranslation();
@@ -21,13 +19,28 @@ const BrexTeam = () => {
 
   useEffect(() => {
     const fetchTeamData = async () => {
+      // В продакшне (GitHub Pages) отдельный API недоступен, поэтому сразу используем статические данные,
+      // а запросы к удалённому серверу выполняем только в режиме разработки.
+      if (process.env.NODE_ENV === 'production') {
+        setTeamData({
+          description: t('team.description'),
+          employeesCount: 40,
+          photos: ['https://storage.yandexcloud.kz/sapaedu/Sapa%202-106.jpg'],
+        });
+        setLoading(false);
+        return;
+      }
+
       try {
         const response = await axios.get(`${API_URL}/team`);
         setTeamData(response.data);
       } catch (error) {
-        console.error('Ошибка загрузки данных команды:', error);
+        if (process.env.NODE_ENV === 'development') {
+          // eslint-disable-next-line no-console
+          console.error('Ошибка загрузки данных команды:', error);
+        }
         setTeamData({
-          description: 'Сегодня в команде работает 40+ сотрудников, а наши решения уже используются в 20+ GovTech-проектах.',
+          description: t('team.description'),
           employeesCount: 40,
           photos: ['https://storage.yandexcloud.kz/sapaedu/Sapa%202-106.jpg'],
         });

@@ -10,9 +10,7 @@ import './CareerSection.css';
 
 const { Title, Paragraph } = Typography;
 const { TextArea } = Input;
-const API_URL = process.env.NODE_ENV === 'production' 
-  ? 'https://api.sapatech.kz/api' 
-  : 'http://localhost:3002/api';
+const API_URL = 'http://localhost:3002/api';
 
 const CareerSection = () => {
   const { t } = useTranslation();
@@ -25,11 +23,22 @@ const CareerSection = () => {
   // Загрузка вакансий из API
   useEffect(() => {
     const fetchVacancies = async () => {
+      // В продакшне (GitHub Pages) внешнего API нет, поэтому показываем только локальные вакансии,
+      // а сетевые запросы выполняем только в режиме разработки.
+      if (process.env.NODE_ENV === 'production') {
+        setVacancies([]);
+        setLoading(false);
+        return;
+      }
+
       try {
         const response = await axios.get(`${API_URL}/vacancies`);
         setVacancies(response.data);
       } catch (error) {
-        console.error('Ошибка загрузки вакансий:', error);
+        if (process.env.NODE_ENV === 'development') {
+          // eslint-disable-next-line no-console
+          console.error('Ошибка загрузки вакансий:', error);
+        }
         setVacancies([]);
       } finally {
         setLoading(false);

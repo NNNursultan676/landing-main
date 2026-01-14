@@ -9,9 +9,7 @@ import axios from 'axios';
 import './TeamSection.css';
 
 const { Title, Paragraph } = Typography;
-const API_URL = process.env.NODE_ENV === 'production' 
-  ? 'https://api.sapatech.kz/api' 
-  : 'http://localhost:3002/api';
+const API_URL = 'http://localhost:3002/api';
 
 const TeamSection = () => {
   const { t } = useTranslation();
@@ -21,11 +19,25 @@ const TeamSection = () => {
   // Загрузка данных о команде из API
   useEffect(() => {
     const fetchTeamData = async () => {
+      // В продакшне (GitHub Pages) API недоступен, поэтому сразу используем статические данные.
+      if (process.env.NODE_ENV === 'production') {
+        setTeamData({
+          description: t('team.description'),
+          employeesCount: 40,
+          photos: [],
+        });
+        setLoading(false);
+        return;
+      }
+
       try {
         const response = await axios.get(`${API_URL}/team`);
         setTeamData(response.data);
       } catch (error) {
-        console.error('Ошибка загрузки данных команды:', error);
+        if (process.env.NODE_ENV === 'development') {
+          // eslint-disable-next-line no-console
+          console.error('Ошибка загрузки данных команды:', error);
+        }
         // Fallback на данные по умолчанию
         setTeamData({
           description: t('team.description'),
