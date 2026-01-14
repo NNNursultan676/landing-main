@@ -21,7 +21,10 @@ i18n
   .use(Backend)
   .use(new I18nextBrowserLanguageDetector(null, {
       lookupLocalStorage: 'locale',
-      order: ['localStorage', 'navigator'],
+      // Сначала читаем язык только из localStorage.
+      // Если там ничего нет — всегда используем fallbackLng (ru),
+      // чтобы по умолчанию сайт открывался на русском.
+      order: ['localStorage'],
     })
   )
   // .use(LanguageDetector)
