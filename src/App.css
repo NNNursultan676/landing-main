@@ -20,13 +20,12 @@
   box-sizing: border-box;
 }
 
-/* ⚠️ Автодоводка только для главной и о нас */
+/* Автодоводка отключена - scroll-snap-type убран */
 html {
   scroll-behavior: smooth;
   overflow-y: auto;
   overflow-x: hidden;
-  /* ⚠️ scroll-snap-type работает только для блоков с scroll-snap-align (главная и о нас) */
-  scroll-snap-type: y proximity; /* proximity вместо mandatory для более мягкой доводки */
+  /* scroll-snap-type отключен - автодоводка не используется */
   /* Hide default scrollbar but keep functionality */
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -54,25 +53,24 @@ body {
   max-width: 100vw;
 }
 
-* {
+/* Автодоводка отключена - scroll-snap-align не используется */
+/* * {
   scroll-snap-align: none;
-}
+} */
 
-/* ⚠️ КРИТИЧНО: Каждый блок с автодоводкой до идеальной позиции - ослаблена для плавного скролла */
-.section-snap {
-  /* ⚠️ КРИТИЧНЫЕ СВОЙСТВА ДЛЯ АВТОДОВОДКИ - ослаблены для мягкости */
+/* Автодоводка отключена - класс .section-snap больше не используется */
+/* .section-snap {
   scroll-snap-align: start;
-  scroll-snap-stop: normal; /* ⚠️ Изменено с always на normal для более плавного скролла */
-  height: 100vh; /* ⚠️ Каждый блок занимает весь экран - НЕ МЕНЯТЬ */
+  scroll-snap-stop: normal;
+  height: 100vh;
   min-height: 100vh;
   max-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   position: relative;
-  /* ⚠️ overflow-y убран специально чтобы не мешать scroll-snap - НЕ ДОБАВЛЯТЬ */
   overflow-x: hidden;
-}
+} */
 
 /* Обертка для контента внутри секции контактов - нормальный блок */
 .contacts-section-content {
@@ -99,13 +97,13 @@ body {
   display: block;
 }
 
-/* ⚠️ Отступ для якорных ссылок с учетом фиксированного навбара */
+/* Отступ для якорных ссылок с учетом фиксированного навбара */
 #about,
 #products,
 #partners,
 #contacts,
 #solutions {
-  scroll-margin-top: 0; /* Убираем отступ - секции должны быть на самом верху для автодоводки */
+  scroll-margin-top: 72px; /* Отступ для фиксированного навбара */
 }
 
 /* Container Styles */
