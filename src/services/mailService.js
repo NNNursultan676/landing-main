@@ -3,7 +3,6 @@
 import axios from 'axios';
 
 export const sendMail = async (mailData) => {
-  console.log('Mail data:', mailData);
   const url = '/send'; // Proxy endpoint
   const headers = {
     'Content-Type': 'application/json',

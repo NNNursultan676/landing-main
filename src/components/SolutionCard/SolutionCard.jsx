@@ -22,7 +22,11 @@ const SolutionCard = ({ image, title, description, variant = 'default', onClick 
       const solutionId = variant === 'custom' ? 'custom-solutions' : 
                         variant === 'conveyor' ? 'credit-conveyor' : 
                         variant === 'broker' ? 'credit-broker' : 'default';
-      console.log('Navigate to:', solutionId);
+      if (process.env.NODE_ENV === 'development') {
+        // В продакшене не логируем клики, только в режиме разработки
+        // eslint-disable-next-line no-console
+        console.log('Navigate to:', solutionId);
+      }
     }
   };
 

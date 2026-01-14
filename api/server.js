@@ -21,6 +21,29 @@ const DATA_DIR = path.join(__dirname, 'data');
 // Создаем директорию для данных, если её нет
 fs.ensureDirSync(DATA_DIR);
 
+// Вспомогательные функции для работы с JSON-файлами (асинхронно)
+const readJsonFile = async (filename, defaultValue) => {
+  const filePath = path.join(DATA_DIR, filename);
+  try {
+    const exists = await fs.pathExists(filePath);
+    if (!exists && defaultValue !== undefined) {
+      await fs.writeJson(filePath, defaultValue, { spaces: 2 });
+      return defaultValue;
+    }
+    return await fs.readJson(filePath);
+  } catch (error) {
+    if (defaultValue !== undefined) {
+      return defaultValue;
+    }
+    throw error;
+  }
+};
+
+const writeJsonFile = async (filename, data) => {
+  const filePath = path.join(DATA_DIR, filename);
+  await fs.writeJson(filePath, data, { spaces: 2 });
+};
+
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
@@ -58,9 +81,9 @@ initDataFiles();
 /**
  * GET /api/vacancies - Получить все вакансии
  */
-app.get('/api/vacancies', (req, res) => {
+app.get('/api/vacancies', async (req, res) => {
   try {
-    const data = fs.readJsonSync(path.join(DATA_DIR, 'vacancies.json'));
+    const data = await readJsonFile('vacancies.json', []);
     res.json(data);
   } catch (error) {
     res.status(500).json({ error: 'Ошибка чтения вакансий' });
@@ -70,17 +93,16 @@ app.get('/api/vacancies', (req, res) => {
 /**
  * POST /api/vacancies - Создать новую вакансию
  */
-app.post('/api/vacancies', (req, res) => {
+app.post('/api/vacancies', async (req, res) => {
   try {
-    const filePath = path.join(DATA_DIR, 'vacancies.json');
-    const vacancies = fs.readJsonSync(filePath);
+    const vacancies = await readJsonFile('vacancies.json', []);
     const newVacancy = {
       id: Date.now().toString(),
       ...req.body,
       createdAt: new Date().toISOString()
     };
     vacancies.push(newVacancy);
-    fs.writeJsonSync(filePath, vacancies, { spaces: 2 });
+    await writeJsonFile('vacancies.json', vacancies);
     res.json(newVacancy);
   } catch (error) {
     res.status(500).json({ error: 'Ошибка создания вакансии' });
@@ -90,16 +112,15 @@ app.post('/api/vacancies', (req, res) => {
 /**
  * PUT /api/vacancies/:id - Обновить вакансию
  */
-app.put('/api/vacancies/:id', (req, res) => {
+app.put('/api/vacancies/:id', async (req, res) => {
   try {
-    const filePath = path.join(DATA_DIR, 'vacancies.json');
-    const vacancies = fs.readJsonSync(filePath);
+    const vacancies = await readJsonFile('vacancies.json', []);
     const index = vacancies.findIndex(v => v.id === req.params.id);
     if (index === -1) {
       return res.status(404).json({ error: 'Вакансия не найдена' });
     }
     vacancies[index] = { ...vacancies[index], ...req.body, updatedAt: new Date().toISOString() };
-    fs.writeJsonSync(filePath, vacancies, { spaces: 2 });
+    await writeJsonFile('vacancies.json', vacancies);
     res.json(vacancies[index]);
   } catch (error) {
     res.status(500).json({ error: 'Ошибка обновления вакансии' });
@@ -109,12 +130,11 @@ app.put('/api/vacancies/:id', (req, res) => {
 /**
  * DELETE /api/vacancies/:id - Удалить вакансию
  */
-app.delete('/api/vacancies/:id', (req, res) => {
+app.delete('/api/vacancies/:id', async (req, res) => {
   try {
-    const filePath = path.join(DATA_DIR, 'vacancies.json');
-    const vacancies = fs.readJsonSync(filePath);
+    const vacancies = await readJsonFile('vacancies.json', []);
     const filtered = vacancies.filter(v => v.id !== req.params.id);
-    fs.writeJsonSync(filePath, filtered, { spaces: 2 });
+    await writeJsonFile('vacancies.json', filtered);
     res.json({ success: true });
   } catch (error) {
     res.status(500).json({ error: 'Ошибка удаления вакансии' });
@@ -125,24 +145,18 @@ app.delete('/api/vacancies/:id', (req, res) => {
  * POST /api/vacancies/:id/applications - Отправить отклик на вакансию
  * Безопасность: используем whitelist полей, чтобы предотвратить перезапись серверных полей
  */
-app.post('/api/vacancies/:id/applications', (req, res) => {
+app.post('/api/vacancies/:id/applications', async (req, res) => {
   try {
     // Проверяем существование вакансии
-    const vacanciesFilePath = path.join(DATA_DIR, 'vacancies.json');
-    const vacancies = fs.readJsonSync(vacanciesFilePath);
+    const vacancies = await readJsonFile('vacancies.json', []);
     const vacancy = vacancies.find(v => v.id === req.params.id);
     
     if (!vacancy) {
       return res.status(404).json({ error: 'Вакансия не найдена' });
     }
 
-    const applicationsFilePath = path.join(DATA_DIR, 'applications.json');
-    
     // Инициализируем файл applications.json, если его нет
-    let applications = [];
-    if (fs.existsSync(applicationsFilePath)) {
-      applications = fs.readJsonSync(applicationsFilePath);
-    }
+    const applications = await readJsonFile('applications.json', []);
     
     // Whitelist разрешенных полей от клиента (безопасность)
     const allowedFields = ['name', 'email', 'phone', 'resume'];
@@ -167,7 +181,7 @@ app.post('/api/vacancies/:id/applications', (req, res) => {
     };
     
     applications.push(newApplication);
-    fs.writeJsonSync(applicationsFilePath, applications, { spaces: 2 });
+    await writeJsonFile('applications.json', applications);
     
     res.json({ 
       success: true, 
@@ -184,9 +198,9 @@ app.post('/api/vacancies/:id/applications', (req, res) => {
 /**
  * GET /api/articles - Получить все статьи
  */
-app.get('/api/articles', (req, res) => {
+app.get('/api/articles', async (req, res) => {
   try {
-    const data = fs.readJsonSync(path.join(DATA_DIR, 'articles.json'));
+    const data = await readJsonFile('articles.json', []);
     res.json(data);
   } catch (error) {
     res.status(500).json({ error: 'Ошибка чтения статей' });
@@ -196,17 +210,16 @@ app.get('/api/articles', (req, res) => {
 /**
  * POST /api/articles - Добавить новую статью
  */
-app.post('/api/articles', (req, res) => {
+app.post('/api/articles', async (req, res) => {
   try {
-    const filePath = path.join(DATA_DIR, 'articles.json');
-    const articles = fs.readJsonSync(filePath);
+    const articles = await readJsonFile('articles.json', []);
     const newArticle = {
       id: Date.now().toString(),
       ...req.body,
       createdAt: new Date().toISOString()
     };
     articles.push(newArticle);
-    fs.writeJsonSync(filePath, articles, { spaces: 2 });
+    await writeJsonFile('articles.json', articles);
     res.json(newArticle);
   } catch (error) {
     res.status(500).json({ error: 'Ошибка добавления статьи' });
@@ -216,16 +229,15 @@ app.post('/api/articles', (req, res) => {
 /**
  * PUT /api/articles/:id - Обновить статью
  */
-app.put('/api/articles/:id', (req, res) => {
+app.put('/api/articles/:id', async (req, res) => {
   try {
-    const filePath = path.join(DATA_DIR, 'articles.json');
-    const articles = fs.readJsonSync(filePath);
+    const articles = await readJsonFile('articles.json', []);
     const index = articles.findIndex(a => a.id === req.params.id);
     if (index === -1) {
       return res.status(404).json({ error: 'Статья не найдена' });
     }
     articles[index] = { ...articles[index], ...req.body, updatedAt: new Date().toISOString() };
-    fs.writeJsonSync(filePath, articles, { spaces: 2 });
+    await writeJsonFile('articles.json', articles);
     res.json(articles[index]);
   } catch (error) {
     res.status(500).json({ error: 'Ошибка обновления статьи' });
@@ -235,12 +247,11 @@ app.put('/api/articles/:id', (req, res) => {
 /**
  * DELETE /api/articles/:id - Удалить статью
  */
-app.delete('/api/articles/:id', (req, res) => {
+app.delete('/api/articles/:id', async (req, res) => {
   try {
-    const filePath = path.join(DATA_DIR, 'articles.json');
-    const articles = fs.readJsonSync(filePath);
+    const articles = await readJsonFile('articles.json', []);
     const filtered = articles.filter(a => a.id !== req.params.id);
-    fs.writeJsonSync(filePath, filtered, { spaces: 2 });
+    await writeJsonFile('articles.json', filtered);
     res.json({ success: true });
   } catch (error) {
     res.status(500).json({ error: 'Ошибка удаления статьи' });
@@ -251,9 +262,9 @@ app.delete('/api/articles/:id', (req, res) => {
 /**
  * GET /api/team - Получить информацию о команде
  */
-app.get('/api/team', (req, res) => {
+app.get('/api/team', async (req, res) => {
   try {
-    const data = fs.readJsonSync(path.join(DATA_DIR, 'team.json'));
+    const data = await readJsonFile('team.json', {});
     res.json(data);
   } catch (error) {
     res.status(500).json({ error: 'Ошибка чтения данных команды' });
@@ -263,12 +274,11 @@ app.get('/api/team', (req, res) => {
 /**
  * PUT /api/team - Обновить информацию о команде
  */
-app.put('/api/team', (req, res) => {
+app.put('/api/team', async (req, res) => {
   try {
-    const filePath = path.join(DATA_DIR, 'team.json');
-    const team = fs.readJsonSync(filePath);
+    const team = await readJsonFile('team.json', {});
     const updated = { ...team, ...req.body, updatedAt: new Date().toISOString() };
-    fs.writeJsonSync(filePath, updated, { spaces: 2 });
+    await writeJsonFile('team.json', updated);
     res.json(updated);
   } catch (error) {
     res.status(500).json({ error: 'Ошибка обновления данных команды' });
@@ -279,9 +289,9 @@ app.put('/api/team', (req, res) => {
 /**
  * GET /api/products - Получить информацию о продуктах
  */
-app.get('/api/products', (req, res) => {
+app.get('/api/products', async (req, res) => {
   try {
-    const data = fs.readJsonSync(path.join(DATA_DIR, 'products.json'));
+    const data = await readJsonFile('products.json', {});
     res.json(data);
   } catch (error) {
     res.status(500).json({ error: 'Ошибка чтения данных продуктов' });
@@ -291,12 +301,11 @@ app.get('/api/products', (req, res) => {
 /**
  * PUT /api/products - Обновить информацию о продуктах
  */
-app.put('/api/products', (req, res) => {
+app.put('/api/products', async (req, res) => {
   try {
-    const filePath = path.join(DATA_DIR, 'products.json');
-    const products = fs.readJsonSync(filePath);
+    const products = await readJsonFile('products.json', {});
     const updated = { ...products, ...req.body, updatedAt: new Date().toISOString() };
-    fs.writeJsonSync(filePath, updated, { spaces: 2 });
+    await writeJsonFile('products.json', updated);
     res.json(updated);
   } catch (error) {
     res.status(500).json({ error: 'Ошибка обновления данных продуктов' });

@@ -54,9 +54,12 @@ const DemoModal = () => {
 
       // Step 3: Send the mail
       const mailResponse = await sendMail(mailData);
-      console.log('Mail response:', mailResponse);
 
-      if (mailResponse.success !== 'Сообщение успешно отправлено') {
+      const isSuccess =
+        mailResponse?.success === true ||
+        mailResponse?.success === 'Сообщение успешно отправлено';
+
+      if (!isSuccess) {
         toast.error(t('demoModal.alerts.error'));
         return;
       }

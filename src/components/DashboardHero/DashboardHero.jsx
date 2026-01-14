@@ -61,8 +61,9 @@ const DashboardHero = () => {
       : demoText;
     modalService.openModal(modalData);
     
-    // Логируем email для отладки (в production можно убрать)
+    // Логируем email только в режиме разработки
     if (email && process.env.NODE_ENV === 'development') {
+      // eslint-disable-next-line no-console
       console.log('Email для демо:', email);
     }
   };

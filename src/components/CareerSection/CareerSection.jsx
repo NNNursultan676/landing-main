@@ -50,10 +50,13 @@ const CareerSection = () => {
   const handleSubmit = async (values) => {
     try {
       // Здесь должна быть отправка на сервер
-      console.log('Отклик на вакансию:', {
-        vacancy: selectedVacancy?.title,
-        ...values,
-      });
+      if (process.env.NODE_ENV === 'development') {
+        // eslint-disable-next-line no-console
+        console.log('Отклик на вакансию (local debug):', {
+          vacancy: selectedVacancy?.title,
+          ...values,
+        });
+      }
       message.success(t('career.applyForm.success'));
       setIsModalOpen(false);
       form.resetFields();

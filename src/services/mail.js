@@ -8,9 +8,12 @@ export default function ContactUs() {
 
     emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', e.target, 'YOUR_USER_ID')
       .then((result) => {
-          window.location.reload()  //This is if you still want the page to reload (since e.preventDefault() cancelled that behavior) 
+          window.location.reload();  //This is if you still want the page to reload (since e.preventDefault() cancelled that behavior) 
       }, (error) => {
-          console.log(error.text);
+          if (process.env.NODE_ENV === 'development') {
+            // eslint-disable-next-line no-console
+            console.log(error.text);
+          }
       });
   }
 

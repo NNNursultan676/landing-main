@@ -88,15 +88,13 @@ const Nav = () => {
         }
       }
       
-      if (newActiveSection !== activeSection) {
-        setActiveSection(newActiveSection);
-      }
+      setActiveSection(prev => (prev !== newActiveSection ? newActiveSection : prev));
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [activeSection]);
+  }, []);
 
   // Языковые опции
   const languageOptions = [
