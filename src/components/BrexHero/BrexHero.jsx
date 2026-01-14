@@ -18,18 +18,6 @@ const BrexHero = () => {
 
   const currentLang = (i18n.language || 'ru').split('-')[0];
 
-  const emailPlaceholders = {
-    en: 'Enter company email',
-    kk: 'Компания email енгізіңіз',
-    ru: 'Введите email компании',
-  };
-
-  const heroNotes = {
-    en: 'Sapa Technologies is your digital partner in the fintech market',
-    kk: 'Sapa Technologies — fintech нарығындағы сіздің цифрлық серіктесіңіз',
-    ru: 'Sapa Technologies — ваш цифровой партнер на рынке fintech',
-  };
-
   const handleGetStarted = () => {
     if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return;
@@ -58,7 +46,7 @@ const BrexHero = () => {
           <div className="brex-hero-form">
             <Space.Compact style={{ width: '100%', maxWidth: '480px' }}>
               <Input
-                placeholder={emailPlaceholders[currentLang] || emailPlaceholders.ru}
+                placeholder={t('emailPlaceholder')}
                 size="large"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -70,17 +58,13 @@ const BrexHero = () => {
                 onClick={handleGetStarted}
                 className="brex-hero-button"
               >
-                {currentLang === 'en'
-                  ? 'Order Demo'
-                  : currentLang === 'kk'
-                  ? 'Демоға тапсырыс жасау'
-                  : 'Заказать демо'}
+                {t('demo')}
               </Button>
             </Space.Compact>
           </div>
 
           <Paragraph className="brex-hero-note">
-            {heroNotes[currentLang] || heroNotes.ru}
+            {t('heroNote')}
           </Paragraph>
         </div>
       </div>
