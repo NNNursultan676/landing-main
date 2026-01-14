@@ -44,7 +44,7 @@ const BrexHero = () => {
           <div className="brex-hero-form">
             <Space.Compact style={{ width: '100%', maxWidth: '480px' }}>
               <Input
-                placeholder={t('emailPlaceholder')}
+                placeholder="Введите email компании"
                 size="large"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -56,13 +56,13 @@ const BrexHero = () => {
                 onClick={handleGetStarted}
                 className="brex-hero-button"
               >
-                {t('demo')}
+                Заказать демо
               </Button>
             </Space.Compact>
           </div>
 
           <Paragraph className="brex-hero-note">
-            {t('heroNote')}
+            Sapa Technologies — ваш цифровой партнер на рынке fintech
           </Paragraph>
         </div>
       </div>

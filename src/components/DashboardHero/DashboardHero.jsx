@@ -90,7 +90,7 @@ const DashboardHero = () => {
           <div className="dashboard-hero-form">
             <Space.Compact style={{ width: '100%', maxWidth: '520px' }}>
               <Input
-                placeholder={t('emailPlaceholder')}
+                placeholder="Введите email компании"
                 size="large"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -103,7 +103,7 @@ const DashboardHero = () => {
                 className="dashboard-hero-button"
                 icon={<ArrowRightOutlined />}
               >
-                {t('demo')}
+                Заказать демо
               </Button>
             </Space.Compact>
           </div>
