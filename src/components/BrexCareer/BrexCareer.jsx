@@ -22,77 +22,12 @@ const API_URL = process.env.NODE_ENV === 'production'
   : 'http://localhost:3002/api';
 
 const BrexCareer = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [vacancies, setVacancies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedVacancy, setSelectedVacancy] = useState(null);
   const [form] = Form.useForm();
-
-  const currentLang = (i18n.language || 'ru').split('-')[0];
-
-  const uiTexts = {
-    badge: {
-      en: 'Career',
-      kk: 'Мансап',
-      ru: 'Карьера',
-    },
-    loading: {
-      en: 'Loading vacancies...',
-      kk: 'Вакансиялар жүктелуде...',
-      ru: 'Загрузка вакансий...',
-    },
-    requirementsTitle: {
-      en: 'Requirements:',
-      kk: 'Талаптар:',
-      ru: 'Требования:',
-    },
-    applyButton: {
-      en: 'Apply',
-      kk: 'Өтініш беру',
-      ru: 'Откликнуться',
-    },
-    modalTitlePrefix: {
-      en: 'Application for vacancy:',
-      kk: 'Вакансияға өтініш:',
-      ru: 'Отклик на вакансию:',
-    },
-    formNameLabel: {
-      en: 'Name',
-      kk: 'Аты',
-      ru: 'Имя',
-    },
-    formNamePlaceholder: {
-      en: 'Your name',
-      kk: 'Атыңыз',
-      ru: 'Ваше имя',
-    },
-    formPhoneLabel: {
-      en: 'Phone',
-      kk: 'Телефон',
-      ru: 'Телефон',
-    },
-    formPhonePlaceholder: {
-      en: '+7 (___) ___-__-__',
-      kk: '+7 (___) ___-__-__',
-      ru: '+7 (___) ___-__-__',
-    },
-    formAboutLabel: {
-      en: 'About you',
-      kk: 'Өзіңіз туралы',
-      ru: 'О себе',
-    },
-    formAboutPlaceholder: {
-      en: 'Tell us about your experience and skills',
-      kk: 'Тәжірибеңіз бен дағдыларыңыз туралы жазыңыз',
-      ru: 'Расскажите о себе, опыте работы и навыках',
-    },
-    formSubmit: {
-      en: 'Send application',
-      kk: 'Өтініш жіберу',
-      ru: 'Отправить отклик',
-    },
-  };
 
   useEffect(() => {
     const fetchVacancies = async () => {
@@ -119,7 +54,7 @@ const BrexCareer = () => {
   const handleSubmit = async (values) => {
     try {
       if (!selectedVacancy || !selectedVacancy.id) {
-        message.error('Ошибка: вакансия не выбрана');
+        message.error(t('career.errors.noVacancySelected'));
         return;
       }
 
@@ -132,30 +67,27 @@ const BrexCareer = () => {
       );
 
       if (response.data && response.data.success) {
-        message.success(
-          t('career.applyForm.success') || 
-          'Ваш отклик успешно отправлен! Мы свяжемся с вами в ближайшее время.'
-        );
+        message.success(t('career.applyForm.success'));
         
         setIsModalOpen(false);
         form.resetFields();
       } else {
-        throw new Error('Сервер вернул неожиданный ответ');
+        throw new Error(t('career.errors.unexpectedResponse'));
       }
     } catch (error) {
       console.error('Ошибка отправки отклика:', error);
-      let errorMessage = 'Произошла ошибка при отправке отклика. Пожалуйста, попробуйте еще раз.';
+      let errorMessage = t('career.errors.default');
       
       if (error.response) {
         if (error.response.status === 404) {
-          errorMessage = 'Вакансия не найдена. Пожалуйста, обновите страницу.';
+          errorMessage = t('career.errors.notFound');
         } else if (error.response.status >= 500) {
-          errorMessage = 'Ошибка на сервере. Пожалуйста, попробуйте позже.';
+          errorMessage = t('career.errors.serverError');
         } else if (error.response.data && error.response.data.error) {
           errorMessage = error.response.data.error;
         }
       } else if (error.request) {
-        errorMessage = 'Не удалось подключиться к серверу. Проверьте подключение к интернету.';
+        errorMessage = t('career.errors.networkError');
       }
       
       message.error(errorMessage);
@@ -206,16 +138,16 @@ const BrexCareer = () => {
       <div className="brex-career-container">
         <div className="brex-career-header">
           <Title level={2} className="brex-career-title">
-            {t('career.title') || uiTexts.badge[currentLang] || uiTexts.badge.ru}
+            {t('career.title')}
           </Title>
           <Paragraph className="brex-career-subtitle">
-            {t('career.subtitle') || 'We are looking for talented people to build the future of fintech'}
+            {t('career.subtitle')}
           </Paragraph>
         </div>
 
         {loading ? (
           <div className="brex-career-loading">
-            {uiTexts.loading[currentLang] || uiTexts.loading.ru}
+            {t('career.loading')}
           </div>
         ) : (
           <Row gutter={[24, 24]} className="brex-career-grid">
@@ -261,7 +193,7 @@ const BrexCareer = () => {
                     icon={<RocketOutlined />}
                     block
                   >
-                    {uiTexts.applyButton[currentLang] || uiTexts.applyButton.ru}
+                    {t('career.apply')}
                   </Button>
                 </Card>
               </Col>
@@ -273,8 +205,7 @@ const BrexCareer = () => {
       <Modal
         title={
           <div className="brex-modal-title">
-            <RocketOutlined /> {uiTexts.modalTitlePrefix[currentLang] || uiTexts.modalTitlePrefix.ru}{' '}
-            {selectedVacancy?.title}
+            <RocketOutlined /> {t('career.applyForm.title')}: {selectedVacancy?.title}
           </div>
         }
         open={isModalOpen}
@@ -288,46 +219,44 @@ const BrexCareer = () => {
         <Form form={form} layout="vertical" onFinish={handleSubmit}>
           <Form.Item
             name="name"
-            label={uiTexts.formNameLabel[currentLang] || uiTexts.formNameLabel.ru}
+            label={t('career.applyForm.name')}
             rules={[{ required: true }]}
           >
             <Input
               size="large"
-              placeholder={uiTexts.formNamePlaceholder[currentLang] || uiTexts.formNamePlaceholder.ru}
+              placeholder={t('career.applyForm.name')}
             />
           </Form.Item>
           <Form.Item 
             name="email" 
-            label="Email" 
+            label={t('career.applyForm.email')}
             rules={[{ required: true, type: 'email' }]}
           >
-            <Input size="large" type="email" placeholder="your.email@example.com" />
+            <Input size="large" type="email" placeholder={t('career.applyForm.email')} />
           </Form.Item>
           <Form.Item
             name="phone"
-            label={uiTexts.formPhoneLabel[currentLang] || uiTexts.formPhoneLabel.ru}
+            label={t('career.applyForm.phone')}
             rules={[{ required: true }]}
           >
             <Input
               size="large"
-              placeholder={uiTexts.formPhonePlaceholder[currentLang] || uiTexts.formPhonePlaceholder.ru}
+              placeholder={t('career.applyForm.phone')}
             />
           </Form.Item>
           <Form.Item
             name="resume"
-            label={uiTexts.formAboutLabel[currentLang] || uiTexts.formAboutLabel.ru}
+            label={t('career.applyForm.resume')}
             rules={[{ required: true }]}
           >
             <TextArea
               rows={6}
-              placeholder={
-                uiTexts.formAboutPlaceholder[currentLang] || uiTexts.formAboutPlaceholder.ru
-              }
+              placeholder={t('career.applyForm.placeholder')}
             />
           </Form.Item>
           <Form.Item>
             <Button type="primary" htmlType="submit" block size="large" icon={<CheckCircleOutlined />}>
-              {uiTexts.formSubmit[currentLang] || uiTexts.formSubmit.ru}
+              {t('career.applyForm.submit')}
             </Button>
           </Form.Item>
         </Form>

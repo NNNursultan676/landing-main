@@ -58,8 +58,8 @@ const BrexProducts = () => {
     setSelectedProduct({
       ...product,
       variant: product.id,
-      projects: { title: 'Основные возможности', elements: product.points },
-      services: { title: 'Преимущества', elements: product.benefits },
+      projects: { title: t('products.modal.capabilities'), elements: product.points },
+      services: { title: t('products.modal.benefits'), elements: product.benefits },
     });
     setIsModalOpen(true);
   };
@@ -100,7 +100,7 @@ const BrexProducts = () => {
                   {product.description}
                 </Paragraph>
                 <div className="brex-product-link">
-                  Узнать больше →
+                  {t('products.learnMore')}
                 </div>
               </Card>
             </Col>

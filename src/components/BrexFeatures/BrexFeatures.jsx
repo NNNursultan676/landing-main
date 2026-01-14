@@ -28,17 +28,17 @@ const BrexFeatures = () => {
             <Col xs={24} lg={12}>
               <div className="brex-feature-image-placeholder brex-feature-image-1">
                 <div className="brex-feature-image-content">
-                  Кредитный конвейер
+                  {t('features.conveyor.imageLabel')}
                 </div>
               </div>
             </Col>
             <Col xs={24} lg={12}>
               <div className="brex-feature-content">
                 <Title level={3} className="brex-feature-title">
-                  Кредитный конвейер — автоматизация всего цикла
+                  {t('features.conveyor.title')}
                 </Title>
                 <Paragraph className="brex-feature-description">
-                  Комплексное решение для автоматизации всего цикла кредитования — от подачи заявки до принятия решения и сопровождения. Вся система является 100% собственной разработкой, что позволяет гибко адаптироваться под требования клиентов и регуляторов. Благодаря автоматизации бизнес-процессов клиенты достигают до 50% оптимизации операционных расходов.
+                  {t('features.conveyor.description')}
                 </Paragraph>
                 <Button
                   type="primary"
@@ -47,7 +47,7 @@ const BrexFeatures = () => {
                   className="brex-feature-button"
                   icon={<ArrowRightOutlined />}
                 >
-                  Узнать больше о конвейере
+                  {t('features.conveyor.button')}
                 </Button>
               </div>
             </Col>
@@ -60,10 +60,10 @@ const BrexFeatures = () => {
             <Col xs={24} lg={12}>
               <div className="brex-feature-content">
                 <Title level={3} className="brex-feature-title">
-                  Кредитный брокер — единая платформа для всех
+                  {t('features.broker.title')}
                 </Title>
                 <Paragraph className="brex-feature-description">
-                  Цифровая платформа, объединяющая дилерские центры, банки и МФО. Более 300 дилеров и 6 финансовых организаций уже работают через нашу платформу, обеспечивая быструю обработку заявок и прозрачность процесса. Платформа представлена более чем в 20 городах Казахстана.
+                  {t('features.broker.description')}
                 </Paragraph>
                 <Button
                   type="primary"
@@ -72,14 +72,14 @@ const BrexFeatures = () => {
                   className="brex-feature-button"
                   icon={<ArrowRightOutlined />}
                 >
-                  Узнать больше о брокере
+                  {t('features.broker.button')}
                 </Button>
               </div>
             </Col>
             <Col xs={24} lg={12}>
               <div className="brex-feature-image-placeholder brex-feature-image-2">
                 <div className="brex-feature-image-content">
-                  Кредитный брокер
+                  {t('features.broker.imageLabel')}
                 </div>
               </div>
             </Col>

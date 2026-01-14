@@ -66,7 +66,7 @@ const FooterBlock = () => {
           <div className="footer-section">
             <p className="footer-title">{t('footer.address')}</p>
             <p className="footer-text">
-              г. Алматы, ул. Шашкина, 24, БЦ K Plaza
+              {t('contacts.address')}
             </p>
           </div>
         </Col>

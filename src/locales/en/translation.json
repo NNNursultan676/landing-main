@@ -233,10 +233,51 @@
        }
      },
      "trustedBy": {
-       "description": "Trusted by 300+ partners across the country"
+       "description": "Trusted by 300+ partners"
      },
      "demoModalSuccess": {
        "title": "Request accepted!"
+     },
+     "products": {
+       "learnMore": "Learn more →",
+       "modal": {
+         "capabilities": "Key Features",
+         "benefits": "Benefits",
+         "ourClients": "Our Clients",
+         "financialOrganizations": "Financial Organizations",
+         "dealers": "Dealers",
+         "dealersText": "More than {{count}} dealers are connected and running their business through the platform",
+         "orderDemo": "Order Demo",
+         "close": "Close"
+       }
+     },
+     "features": {
+       "conveyor": {
+         "imageLabel": "Credit Conveyor",
+         "title": "Credit Conveyor — automation of the entire cycle",
+         "description": "A comprehensive solution for automating the entire lending cycle — from application submission to decision-making and support. The entire system is 100% proprietary development, which allows flexible adaptation to customer and regulatory requirements. Thanks to business process automation, clients achieve up to 50% optimization of operating expenses.",
+         "button": "Learn more about the conveyor"
+       },
+       "broker": {
+         "imageLabel": "Credit Broker",
+         "title": "Credit Broker — unified platform for everyone",
+         "description": "A digital platform that unites dealerships, banks, and MFIs. More than 300 dealers and 6 financial organizations are already working through our platform, ensuring fast application processing and process transparency. The platform is represented in more than 20 cities of Kazakhstan.",
+         "button": "Learn more about the broker"
+       }
+     },
+     "contacts": {
+       "address": "Almaty, Shashkina St., 24, BC K Plaza",
+       "mapTitle": "Sapa Technologies office map"
+     },
+     "career": {
+       "errors": {
+         "noVacancySelected": "Error: vacancy not selected",
+         "unexpectedResponse": "Server returned unexpected response",
+         "default": "An error occurred while submitting the application. Please try again.",
+         "notFound": "Vacancy not found. Please refresh the page.",
+         "serverError": "Server error. Please try again later.",
+         "networkError": "Could not connect to server. Check your internet connection."
+       }
      }
    }
    

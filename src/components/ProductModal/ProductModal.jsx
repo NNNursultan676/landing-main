@@ -78,7 +78,7 @@ const ProductModal = ({ visible, onClose, product, orderDemo }) => {
         {/* Клиенты для Кредитного конвейера */}
         {product?.variant === 'conveyor' && productInfo?.clients && productInfo.clients.length > 0 && (
           <div>
-            <Title level={4} className='header-6 secondary'>Наши клиенты</Title>
+            <Title level={4} className='header-6 secondary'>{t('products.modal.ourClients')}</Title>
             <div className="clients-list">
               {productInfo.clients.map((client, index) => (
                 <Tag key={index} color="blue" className="client-tag">
@@ -94,7 +94,7 @@ const ProductModal = ({ visible, onClose, product, orderDemo }) => {
           <div>
             {productInfo.financialOrganizations && productInfo.financialOrganizations.length > 0 && (
               <div style={{ marginBottom: 24 }}>
-                <Title level={4} className='header-6 secondary'>Финансовые организации</Title>
+                <Title level={4} className='header-6 secondary'>{t('products.modal.financialOrganizations')}</Title>
                 <div className="clients-list">
                   {productInfo.financialOrganizations.map((org, index) => (
                     <Tag key={index} color="green" className="client-tag">
@@ -106,9 +106,9 @@ const ProductModal = ({ visible, onClose, product, orderDemo }) => {
             )}
             {productInfo.dealers > 0 && (
               <div>
-                <Title level={4} className='header-6 secondary'>Дилеры</Title>
+                <Title level={4} className='header-6 secondary'>{t('products.modal.dealers')}</Title>
                 <Paragraph className='paragraph-1'>
-                  Более {productInfo.dealers} дилеров подключены и ведут свой бизнес через платформу
+                  {t('products.modal.dealersText', { count: productInfo.dealers })}
                 </Paragraph>
               </div>
             )}
@@ -141,10 +141,10 @@ const ProductModal = ({ visible, onClose, product, orderDemo }) => {
 
       <div className="actions">
         <Button onClick={() => orderDemo()} type="primary" className="button primary-btn">
-          Заказать демо
+          {t('products.modal.orderDemo')}
         </Button>
         <Button type="default" className="button default-btn" onClick={onClose}>
-          Закрыть
+          {t('products.modal.close')}
         </Button>
       </div>
     </Modal>

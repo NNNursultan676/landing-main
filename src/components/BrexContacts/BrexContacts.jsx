@@ -63,7 +63,7 @@ const BrexContacts = () => {
                 {t('contactsSection.address')}
               </Title>
               <Paragraph className="brex-contact-text">
-                г. Алматы, ул. Шашкина, 24, БЦ K Plaza
+                {t('contacts.address')}
               </Paragraph>
               <a 
                 href="https://2gis.kz/almaty/geo/70000001066943138/76.933728,43.222690" 
@@ -84,7 +84,7 @@ const BrexContacts = () => {
             allowFullScreen=""
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            title="Карта офиса Sapa Technologies"
+            title={t('contacts.mapTitle')}
           />
         </div>
       </div>
